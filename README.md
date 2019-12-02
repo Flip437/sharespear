@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+# GITHUB
+NE JAMAIS CODER SUR MASTER NE JAMAIS PUSH SUR MASTER
 
-* Configuration
+$ git checkout master : pour s’assurer qu’on est bien sur la branche master sur son ordi.
 
-* Database creation
 
-* Database initialization
+$ git pull origin master : pour récupérer de GitHub la dernière version de master.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+$ git branch nom_de_ta_feature : pour créer une branche nommée  “nom_de_ta_feature” à partir de master qui est désormais à jour.
 
-* Deployment instructions
 
-* ...
+$ git checkout nom_de_ta_feature : pour se positionner sur la branche “nom_de_ta_feature”.
+
+$ git add nom_page pour préparer à commit les fichiers ayant été modifiés
+
+$ git commit -m “commentaire sur mon commit” pour faire un commit
+
+$git push origin nom_de_branche
+
+AVANT DE PUSH SUR TA BRANHCE POUR FAIRE UN MASTER
+
+Fusionner la branche contenant ton travail avec le dernier master en local
+
+$ git checkout master
+$ git pull origin master
+$ git checkout nom_de_ta_feature
+$ git merge master
+$ git push origin nom_de_branche
+
+
+Depuis le site github merge sur github
