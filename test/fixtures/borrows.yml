@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2019-12-03 10:33:38
+  end_date: 2019-12-03 10:33:38
+  message: MyText
+  borrow_status: 1
+
+two:
+  start_date: 2019-12-03 10:33:38
+  end_date: 2019-12-03 10:33:38
+  message: MyText
+  borrow_status: 1
