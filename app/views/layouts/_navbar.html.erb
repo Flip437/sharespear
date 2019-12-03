@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-white">
+  <div class="container">
+
+  <%= link_to root_path do%>
+    <span class="navbar-brand">Sharespeare</span>
+  <% end %>
+   
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <!-- SI UTILISATEUR CONNECTÉ, ON AFFICHE UNE DROPDOWN -->
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              LogIn / SignUp
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to root_path do %> 
+                <span class="dropdown-item">Profil</span>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <span class="dropdown-item">Log Out</span>
+              <% end %>
+            </div>
+          </li>
+        <!-- SI UTILISATEUR NON CONNECTÉ, ON AFFICHE UNE AUTRE DROPDOWN -->
+        <% else %>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              LogIn / SignIn
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to new_user_session_path do %>
+                <span class="nav-link">LogIn</span>
+              <% end %>
+              <%= link_to new_user_registration_path do %>
+                <span class="nav-link">SignUp</span>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+
+  </div>
+</nav>
