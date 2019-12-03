@@ -1,0 +1,2 @@
+class BookCopy < ApplicationRecord
+end
