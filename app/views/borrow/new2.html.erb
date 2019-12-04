@@ -1,0 +1,46 @@
+<div class="container">  
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Titre du livre</label>
+        <h2> <%=@book.title %> </h2>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Propriétaire</label>
+        <h2> <%=User.find(@book.user_id).first_name %> <%=User.find(@book.user_id).last_name %> </h2>
+      </div>
+    </div>
+
+    <div class="form-group">
+    <div class="form-control" id="exampleFormControlSelect1">
+
+    <div class="form-group">
+      <label for="inputAddress">Message au Propriétaire</label> 
+           
+        <%= form_for @borrow, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+          <%= f.label 'message' %></br>
+          <%= f.text_area :message, size: "60x12", class: "form-control" %>    
+      </div>
+  
+          <label for="exampleFormControlSelect1"><%= f.label 'durée' %></label>
+          <%= f.select :duree, options_for_select(
+            [
+              ['1 mois', 1],
+              ['2 mois', 2],
+              ['3 mois', 3],
+              ['4 mois', 4],
+              ['5 mois', 5],
+              ['6 mois', 6],
+              ['7 mois', 7],
+              ['8 mois', 8],
+              ['9 mois', 9],
+              ['10 mois', 10],
+              ['11 mois', 11],
+              ['12 mois', 12]
+            ], 2), { class: "form form-group form-control", id: "exampleFormControlSelect1" } %>
+        </div>          
+            <%= f.submit "Emmprunter ce livre :)", class: "btn btn-primary" %>
+          <% end %>
+    </div> 
+</div>
