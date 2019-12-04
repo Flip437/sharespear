@@ -15,7 +15,7 @@ class Borrow < ApplicationRecord
   validates :book_copy_id, presence: true
   validate :user_id_borrow_different_user_id_book_owner
   #validate :user_id_cant_borrow_more_than_10_books_same_time
-  validate :user_cant_borrow_a_book_not_available
+  #validate :user_cant_borrow_a_book_not_available
 
   private
 
@@ -29,8 +29,12 @@ class Borrow < ApplicationRecord
 
   def start_date_in_the_future
 
-    if start_date < DateTime.now
+    if end_date < DateTime.now
       errors.add(:end_date, "must be in the future")
+    end
+
+    if start_date > DateTime.now
+      errors.add(:start_date, "must be in the future")
     end
 
   end
