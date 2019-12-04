@@ -31,32 +31,103 @@ User.destroy_all
 end
 
 BookCopy.destroy_all
-10.times do |index|
-  10.times do |book_copy|
+9.times do |index|
+
+  #5 livre dispo
+  5.times do |index2|
       book_copy = BookCopy.create(
           title: Faker::Book.title,
           author: Faker::Book.author,
           description: Faker::Name.first_name,
-          status: true,
+          status: true, # [true, false].sample,
           category: Faker::Book.genre,
-          user_id: index
+          user_id: index+1
       )
   end
-  puts "User #{index} has 10 book_copy"
-end
-
-
-Borrow.destroy_all
-9.times do |index|
-  2.times do |borrow|
+  puts "User #{index+1} has 5 book_copy dispo"
+  #5 livre dispo en demande d'emprunt par utilisateur par utilisateur +1
+  5.times do |index2|
+      book_copy = BookCopy.create(
+          title: Faker::Book.title,
+          author: Faker::Book.author,
+          description: Faker::Name.first_name,
+          status: true, # [true, false].sample,
+          category: Faker::Book.genre,
+          user_id: index+1
+      )
       borrow = Borrow.create(
-          start_date: Faker::Date.forward(days: 0),
-          end_date: Faker::Date.forward(days: 23),
+          start_date: Date.today,
+          end_date: Date.today >> 2,
           message: Faker::Lorem.sentence,
-          borrow_status: rand(3),
-          user_id: index+1,
-          book_copy_id: rand(1..50)
+          borrow_status: 0,
+          user_id: index+2,
+          book_copy_id: book_copy.id
       )
   end
-  puts "User #{index} borrow 2 books_copy to #{index+1}"
+  puts "User #{index+1} has 5 book_copy dispo avec 1 demande d'emprunt"
+
+  #5 livre non dispo et accepte
+  5.times do |book_copy_id_nb|
+      book_copy = BookCopy.create(
+          title: Faker::Book.title,
+          author: Faker::Book.author,
+          description: Faker::Name.first_name,
+          status: false, # [true, false].sample,
+          category: Faker::Book.genre,
+          user_id: index+1
+      )
+      borrow = Borrow.create(
+          start_date: Date.today,
+          end_date: Date.today >> 2,
+          message: Faker::Lorem.sentence,
+          borrow_status: 2,
+          user_id: index+2,
+          book_copy_id: book_copy.id
+      )
+  end
+  puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et accepte"
+
+  #5 livre non dispo et recup par empruntur
+  5.times do |book_copy_id_nb|
+      book_copy = BookCopy.create(
+          title: Faker::Book.title,
+          author: Faker::Book.author,
+          description: Faker::Name.first_name,
+          status: false, # [true, false].sample,
+          category: Faker::Book.genre,
+          user_id: index+1
+      )
+      borrow = Borrow.create(
+          start_date: Date.today,
+          end_date: Date.today >> 2,
+          message: Faker::Lorem.sentence,
+          borrow_status: 3,
+          user_id: index+2,
+          book_copy_id: book_copy.id
+      )
+  end
+  puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et recupere"
+
+  #5 livre dispo et termine
+  5.times do |book_copy_id_nb|
+      book_copy = BookCopy.create(
+          title: Faker::Book.title,
+          author: Faker::Book.author,
+          description: Faker::Name.first_name,
+          status: true, # [true, false].sample,
+          category: Faker::Book.genre,
+          user_id: index+1
+      )
+      borrow = Borrow.create(
+          start_date: Date.today,
+          end_date: Date.today >> 2,
+          message: Faker::Lorem.sentence,
+          borrow_status: 4,
+          user_id: index+2,
+          book_copy_id: book_copy.id
+      )
+  end
+  puts "User #{index+1} has 5 book_copy more avec status dispo car emprunt termine"
+
+
 end
