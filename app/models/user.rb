@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   has_many :book_copies
   has_many :borrows
-  
+
+
+
 end

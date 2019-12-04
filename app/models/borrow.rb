@@ -2,4 +2,55 @@ class Borrow < ApplicationRecord
   attr_accessor :duree
   belongs_to :book_copy
   belongs_to :user
+
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validate :start_date_in_the_future
+  validate :end_date_after_start_date
+
+
+  validates :message, presence: true, length: { maximum: 400 }
+  validates :borrow_status, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 4 }
+  validates :user_id, presence: true
+  validates :book_copy_id, presence: true
+  validate :user_id_borrow_different_user_id_book_owner
+  #validate :user_id_cant_borrow_more_than_10_books_same_time
+  validate :user_cant_borrow_a_book_not_available
+
+  private
+
+  def end_date_after_start_date
+    return if end_date.blank? || start_date.blank?
+
+    if end_date < start_date
+      errors.add(:end_date, "must be after the start date")
+    end
+  end
+
+  def start_date_in_the_future
+
+    if start_date < DateTime.now
+      errors.add(:end_date, "must be in the future")
+    end
+
+  end
+
+  def user_id_borrow_different_user_id_book_owner
+
+    if user_id == BookCopy.find(book_copy_id).user_id
+        errors.add(:user_id, "can't borrow your book")
+    end
+
+  end
+
+  def user_cant_borrow_a_book_not_available
+
+    if BookCopy.find(book_copy_id).status == false
+        errors.add(:user_id, "can't borrow this book it's not available")
+    end
+
+  end
+
+
+
 end

@@ -37,10 +37,26 @@ BookCopy.destroy_all
           title: Faker::Book.title,
           author: Faker::Book.author,
           description: Faker::Name.first_name,
-          status: Faker::Name.last_name,
+          status: true,
           category: Faker::Book.genre,
           user_id: index
       )
-      puts "BookCopy user #{index} added"
   end
+  puts "User #{index} has 10 book_copy"
+end
+
+
+Borrow.destroy_all
+9.times do |index|
+  2.times do |borrow|
+      borrow = Borrow.create(
+          start_date: Faker::Date.forward(days: 0),
+          end_date: Faker::Date.forward(days: 23),
+          message: Faker::Lorem.sentence,
+          borrow_status: rand(3),
+          user_id: index+1,
+          book_copy_id: rand(1..50)
+      )
+  end
+  puts "User #{index} borrow 2 books_copy to #{index+1}"
 end
