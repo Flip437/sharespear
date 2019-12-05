@@ -44,11 +44,11 @@
     </div>
     <ul class="list-group list-group-flush">
       <% @book_I_borrow_tab.each {|n| %>
-      <li class="list-group-item"><%= BookCopy.find(n.book_copy_id).title %> | <%=" Deadline: #{n.end_date}"%>
+      <li class="list-group-item"><%= BookCopy.find(n.book_copy_id).title %> | <%=" Deadline: #{n.end_date.strftime('%b %d %Y')}"%>
         <button type="button" class="btn btn-primary" ><%= link_to "Detail", bookcopy_borrow_path(n.book_copy_id,n.id)%></button>
       <% } %>
       <% @book_I_borrow_recup_tab.each {|n| %>
-      <li class="list-group-item"><%= BookCopy.find(n.book_copy_id).title %> | <%=" Deadline: #{n.end_date}"%>
+      <li class="list-group-item"><%= BookCopy.find(n.book_copy_id).title %> | <%=" Deadline: #{n.end_date.strftime('%b %d %Y')}"%>
         <button type="button" class="btn btn-primary" ><%= link_to "Detail", bookcopy_borrow_path(n.book_copy_id,n.id)%></button>
       <% } %>
 
