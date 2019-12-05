@@ -9,7 +9,7 @@ class BorrowController < ApplicationController
     end
 
     def create
-puts "IN CREATEEEEEEEEEEEEEEEEEEEEE"
+        puts "IN CREATEEEEEEEEEEEEEEEEEEEEE"
         @borrow = Borrow.new(borrow_params)
         @borrow.user_id = current_user.id
         @borrow.start_date = Date.today
@@ -30,8 +30,6 @@ puts "IN CREATEEEEEEEEEEEEEEEEEEEEE"
 
         if @borrow.save
             flash[:success] = "Borrow successfully created"
-            book_copy_update_status = BookCopy.find(@borrow.book_copy_id)
-            book_copy_update_status.update(status: false)
             redirect_to root_path
         else
             puts @borrow.errors
@@ -50,7 +48,7 @@ puts "IN CREATEEEEEEEEEEEEEEEEEEEEE"
       puts bouton_value
 
 
-      # DEmande de pret refuse
+      # Demande de pret refuse
       if bouton_value=='0'
 
         borrow_to_update = Borrow.find(params[:id])
@@ -62,9 +60,10 @@ puts "IN CREATEEEEEEEEEEEEEEEEEEEEE"
       elsif bouton_value=='1'
 
         borrow_to_update = Borrow.find(params[:id])
-
         borrow_to_update.update(borrow_status:2)
         UserMailer.borrow_accepted_email(borrow_to_update).deliver_now
+        book_copy_status_update = BookCopy.find(params[:bookcopy_id])
+        book_copy_status_update.update(status: false)
 
       # Livre recupere
       elsif bouton_value=='2'
@@ -76,6 +75,16 @@ puts "IN CREATEEEEEEEEEEEEEEEEEEEEE"
       end
 
       redirect_to user_dashboard_index_path(current_user)
+
+    end
+
+    def show
+
+
+      @borrow_to_show = Borrow.find(params[:id])
+      @book_to_show = BookCopy.find(params[:bookcopy_id])
+      @user_preteur = User.find(@book_to_show.user_id)
+      @user_emprunteur = User.find(@borrow_to_show.user_id)
 
     end
 

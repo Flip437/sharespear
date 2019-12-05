@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
   def index
     #Mes livres prêté
+    @user=User.find(current_user.id)
     @book_copy_not_available_tab=BookCopy.where(["status = ? and user_id = ?", false, current_user.id])
 
     #Demandes de prêt reçu
