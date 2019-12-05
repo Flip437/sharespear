@@ -1,10 +1,10 @@
 class DashboardController < ApplicationController
   def index
     #Mes livres prêté
-    @book_copy_not_available_tab=BookCopy.where(["status = ? and user_id = ?", false, 3])
+    @book_copy_not_available_tab=BookCopy.where(["status = ? and user_id = ?", false, current_user.id])
 
     #Demandes de prêt reçu
-    book_copy_available_tab=BookCopy.where(["status = ? and user_id = ?", true, 3])
+    book_copy_available_tab=BookCopy.where(["status = ? and user_id = ?", true, current_user.id])
     puts book_copy_available_tab
     @ask_book_tab=[]
     book_copy_available_tab.each do |n|
@@ -19,12 +19,12 @@ class DashboardController < ApplicationController
 
     #Mes emprunts
 
-    @book_I_borrow_tab=Borrow.where(["user_id = ? and borrow_status = ?",3, 2])
-    @book_I_borrow_recup_tab=Borrow.where(["user_id = ? and borrow_status = ?",3, 3])
+    @book_I_borrow_tab=Borrow.where(["user_id = ? and borrow_status = ?",current_user.id, 2])
+    @book_I_borrow_recup_tab=Borrow.where(["user_id = ? and borrow_status = ?",current_user.id, 3])
 
     #Mes demandes d'emprunt envoyé :
 
-    @book_asked_to_borrow = Borrow.where(["user_id = ? and borrow_status = ?",3, 0])
+    @book_asked_to_borrow = Borrow.where(["user_id = ? and borrow_status = ?",current_user.id, 0])
 
   end
 end
