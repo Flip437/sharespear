@@ -30,8 +30,6 @@ class BorrowController < ApplicationController
 
         if @borrow.save
             flash[:success] = "Borrow successfully created"
-            book_copy_update_status = BookCopy.find(@borrow.book_copy_id)
-            book_copy_update_status.update(status: false)
             redirect_to root_path
         else
             puts @borrow.errors
