@@ -56,12 +56,15 @@ puts "IN CREATEEEEEEEEEEEEEEEEEEEEE"
         borrow_to_update = Borrow.find(params[:id])
 
         borrow_to_update.update(borrow_status:1)
+        UserMailer.borrow_declined_email(borrow_to_update).deliver_now
+
       # Demande de pret accepte
       elsif bouton_value=='1'
 
         borrow_to_update = Borrow.find(params[:id])
 
         borrow_to_update.update(borrow_status:2)
+        UserMailer.borrow_accepted_email(borrow_to_update).deliver_now
 
       # Livre recupere
       elsif bouton_value=='2'
@@ -74,13 +77,7 @@ puts "IN CREATEEEEEEEEEEEEEEEEEEEEE"
 
       redirect_to user_dashboard_index_path(current_user)
 
-
-
-
-
     end
-
-
 
     def borrow_params
         params.require(:borrow).permit(:message)
