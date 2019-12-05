@@ -27,4 +27,8 @@ class DashboardController < ApplicationController
     @book_asked_to_borrow = Borrow.where(["user_id = ? and borrow_status = ?",current_user.id, 0])
 
   end
+
+  def update
+
+  end
 end
