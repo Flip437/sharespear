@@ -11,7 +11,7 @@
       <li class="list-group-item"><%="#{n.title}"%> de <%=" #{n.author}"%>
       <br>
       <button type="button" class="btn btn-primary">Demander retour</button>
-      <button type="button" class="btn btn-primary">Voir details pret</button>
+      <button type="button" class="btn btn-primary" ><%= link_to "Detail", bookcopy_borrow_path(n.id,Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id)%></button>
       <button type="button" class="btn btn-primary"><%= link_to "Livre recupere", bookcopy_borrow_path(n.id, Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id,:bouton_value => 2), method:"patch"%></button>
 
       </li>
@@ -29,7 +29,7 @@
         <br>
         <button type="button" class="btn btn-primary"><%= link_to "Accepter", bookcopy_borrow_path(n.book_copy_id,n.id, :bouton_value => 1), method:"patch"%></button>
         <button type="button" class="btn btn-primary" ><%= link_to "Refuser", bookcopy_borrow_path(n.book_copy_id,n.id, :bouton_value => 0), method:"patch"%></button>
-        <button type="button" class="btn btn-primary">Voir details pret</button>
+        <button type="button" class="btn btn-primary" ><%= link_to "Detail", bookcopy_borrow_path(n.book_copy_id,n.id)%></button>
       </li>
       <% } %>
     </ul>
