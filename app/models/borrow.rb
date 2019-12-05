@@ -10,12 +10,12 @@ class Borrow < ApplicationRecord
 
 
   validates :message, presence: true, length: { maximum: 400 }
-  validates :borrow_status, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 4 }
+  validates :borrow_status, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 3 }
   validates :user_id, presence: true
   validates :book_copy_id, presence: true
   validate :user_id_borrow_different_user_id_book_owner
   #validate :user_id_cant_borrow_more_than_10_books_same_time
-  #validate :user_cant_borrow_a_book_not_available
+  validate :user_cant_borrow_a_book_not_available
 
   private
 

@@ -6,4 +6,6 @@ class BookcopyController < ApplicationController
         puts @book.title
     end
 
+    
+
 end

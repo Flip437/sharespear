@@ -8,9 +8,12 @@
     </div>
     <ul class="list-group list-group-flush">
       <% @book_copy_not_available_tab.each {|n| %>
-      <li class="list-group-item"><%="#{n.title}"%> ||<%=" #{n.author}"%>
-      <button type="button" class="btn btn-primary">Demander le retour</button>
-      <button type="button" class="btn btn-primary">Livre Recupere</button>
+      <li class="list-group-item"><%="#{n.title}"%> de <%=" #{n.author}"%>
+      <br>
+      <button type="button" class="btn btn-primary">Demander retour</button>
+      <button type="button" class="btn btn-primary">Voir details pret</button>
+      <button type="button" class="btn btn-primary"><%= link_to "Livre recupere", bookcopy_borrow_path(n.id, Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id,:bouton_value => 2), method:"patch"%></button>
+
       </li>
       <% } %>
     </ul>
@@ -22,9 +25,11 @@
     </div>
     <ul class="list-group list-group-flush">
       <% @ask_book_tab.each {|n| %>
-      <li class="list-group-item"><%= BookCopy.find(n.book_copy_id).title %> | <%="Emprunteur_id: #{n.user_id}"%> | <%=" Deadline: #{n.end_date}"%>
-        <button type="button" class="btn btn-primary">Accepter</button>
-        <button type="button" class="btn btn-primary">Refuser</button>
+      <li class="list-group-item"><%= BookCopy.find(n.book_copy_id).title %> | <%="Emprunté par: #{User.find(n.user_id).first_name}"%> | <%=" Deadline: #{n.end_date.strftime('%b %d %Y')}"%>
+        <br>
+        <button type="button" class="btn btn-primary"><%= link_to "Accepter", bookcopy_borrow_path(n.book_copy_id,n.id, :bouton_value => 1), method:"patch"%></button>
+        <button type="button" class="btn btn-primary" ><%= link_to "Refuser", bookcopy_borrow_path(n.book_copy_id,n.id, :bouton_value => 0), method:"patch"%></button>
+        <button type="button" class="btn btn-primary">Voir details pret</button>
       </li>
       <% } %>
     </ul>
@@ -54,7 +59,9 @@
     </div>
     <ul class="list-group list-group-flush">
       <% @book_asked_to_borrow.each {|n| %>
-      <li class="list-group-item"><%= BookCopy.find(n.book_copy_id).title %> </li>
+      <li class="list-group-item"><%= BookCopy.find(n.book_copy_id).title %>   <br>      <button type="button" class="btn btn-primary">Voir details pret</button>
+ </li>
+
       <% } %>
     </ul>
   </div>
