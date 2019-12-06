@@ -13,14 +13,14 @@
     </div>
     </div>
   </div>
-  
-  </br></br></br>
+
+  <br><br><br>
 
   <div class="form-control">
     <div class="form-group">
-      <label for="inputAddress">Message au Propriétaire</label> 
+      <label for="inputAddress">Message au Propriétaire</label>
       <%= form_for @borrow, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-        <%= f.label 'message' %></br>
+        <%= f.label 'message' %><br>
         <%= f.text_area :message, size: "60x12", class: "form-control" %>
         <%= f.label 'durée' %>
         <%= f.select :duree, options_for_select(
