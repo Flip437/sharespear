@@ -1,0 +1,102 @@
+<div class="profile-page">
+    <div class="wrapper">
+        <div class="page-header page-header-small" filter-color="orange">
+            <div class="page-header-image" data-parallax="true" style="background-image: url('../assets/img/book_bg.jpg') ;">
+            </div>
+            <div class="content-center">
+                <div class="photo-container">
+                    <img src="../assets/img/ryan.jpg" alt="">
+                </div>
+                <h3 class="title"><%= User.find(current_user.id).first_name%> <%= User.find(current_user.id).last_name%></h3>
+                <p class="category"><%= User.find(current_user.id).city%></p>
+                <div class="content">
+                    <div class="social-description">
+                        <h2><%= @user_library.count %></h2>
+                        <p>Livres</p>
+                    </div>
+                    <div class="social-description">
+                        <h2><%= @user_library.where(status: false).count %></h2>
+                        <p>Prêté en cours</p>
+                    </div>
+                    <div class="social-description">
+                        <h2>000</h2>
+                        <p>Emprunté</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container section">
+          <center>
+            <div class="container">
+                <div class="button-container">
+                    <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
+                    <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Twitter">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </div>
+                <h3 class="title">About me</h3>
+                <h5 class="description text-center">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
+
+                  <div class="col-md-12">
+                      <h4 class="title text-center">My Library</h4>
+                      <br>
+                      <br>
+                      <% @user_library.each do |book| %>
+                      <div class="card" style="width: 20rem;">
+                        <div class="card-body">
+                          <% if book.status==false %>
+                            <span class="badge badge-warning">Emprenté</span>
+                          <% end %>
+                          <% if book.status==true %>
+                            <span class="badge badge-success">Disponible</span>
+                          <% end %>
+                          <h4 class="card-title"><%= book.title %></h4>
+                          <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
+                          <p class="card-text"><%= book.description %></p>
+                          <p class="card-text">Genre : <%= book.category %></p>
+                          <a href="#" class="card-link">More details</a>
+                        </div>
+                      </div>
+                      <% end %>
+
+                  </div>
+
+            </div>
+            </center>
+        </div>
+
+        <footer class="footer footer-default ">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#creative">
+                                Creative Tim
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#creative">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#creative">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#creative">
+                                License
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright">
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
