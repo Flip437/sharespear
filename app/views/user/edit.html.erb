@@ -21,7 +21,7 @@
         <%= User.find(current_user.id).street %>
       </p>
       <a href="#pablo" class="btn btn-primary btn-round">Modifier Informations</a>
-      <a  class="btn btn-primary btn-round"><%= link_to "Modif password", edit_user_path %></a>
+      <a  href="<%= edit_user_registration_path %>" class="btn btn-primary btn-round">Modif password</a>
     </div>
   </div>
 
