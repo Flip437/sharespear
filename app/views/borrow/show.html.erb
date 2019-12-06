@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <% if @borrow_to_show.borrow_status==0 %>
+      <% if @borrow_to_show.borrow_status==0  && current_user.id== @user_preteur.id %>
       <button type="button" class="btn btn-primary"><%= link_to "Accepter", bookcopy_borrow_path(@borrow_to_show.book_copy_id,@borrow_to_show.id, :bouton_value => 1), method:"patch"%></button>
       <button type="button" class="btn btn-primary" ><%= link_to "Refuser", bookcopy_borrow_path(@borrow_to_show.book_copy_id,@borrow_to_show.id, :bouton_value => 0), method:"patch"%></button>
       <% end %>
