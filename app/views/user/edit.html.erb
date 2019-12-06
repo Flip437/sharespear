@@ -1,0 +1,29 @@
+
+<h1></h1>
+<div class="container">
+  <div class="card card-pricing">
+    <div class="card-body">
+      <h6 class="category">My informations</h6>
+      <div class="icon icon-primary">
+          <i class="now-ui-icons users_circle-08"></i>
+      </div>
+      <h3 class="card-title"><%= User.find(current_user.id).first_name %> <%= User.find(current_user.id).last_name %></h3>
+      <p class="card-description">
+        Mail : <%= User.find(current_user.id).email %>
+        <br>
+        Numero : <%= User.find(current_user.id).phone %>
+        <br>
+        Description: <%= User.find(current_user.id).description %>
+        <br>
+        Adresse : <%= User.find(current_user.id).city %>
+        <%= User.find(current_user.id).zip_code %> |
+        <%= User.find(current_user.id).street_nb %>
+        <%= User.find(current_user.id).street %>
+      </p>
+      <a href="#pablo" class="btn btn-primary btn-round">Modifier Informations</a>
+      <a  class="btn btn-primary btn-round"><%= link_to "Modif password", edit_user_path %></a>
+    </div>
+  </div>
+
+
+</div>
