@@ -1,26 +1,61 @@
-<div class="container">
-  <% if current_user %>
-      <h1><%= User.find(current_user.id).first_name %><br></h1>
-  <% end %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
 
+  <div class="homepage_title">
+      <%= image_tag("homepage/img3.jpg", :class => "homepage_img")%>
+      <h1 class="homepage_title_1">Read, share, have fun
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search_bar">
+      </h1>
+      <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          All books
+        </a>
+      </p>
 
-    <div class="row">
-    <% @book_copy_array.each do |book| %>
-        <div class="col-md-4 mb-5">
+      <div class="collapse" id="collapseExample">
+        <div class="container">
+            <div class="row">
+            <% @book_copy_array.each do |book| %>
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <%= book.title %><br>
+                            <%= User.find(book.user_id).first_name %>
 
-            <div class="card h-100">
-                <div class="card-body">
-                    <%= book.title %><br>
-                    <h1><%= User.find(book.user_id).first_name %></h1>
-
-                    <img style="max-width:100% ; max-height:100%" src="https://image.shutterstock.com/image-vector/book-icon-sign-design-260nw-553945819.jpg" >
-                    <% if current_user %>
-                        <button type="button" class="btn btn-secondary"><%= link_to "Emprunter ce livre", new_bookcopy_borrow_path(book) %></button>
-                    <% end %>
+                            <img style="max-width:100% ; max-height:100%" src="https://image.shutterstock.com/image-vector/book-icon-sign-design-260nw-553945819.jpg" >
+                            <% if current_user %>
+                                <button type="button" class="btn btn-primary btn-round"><%= link_to "Emprunter ce livre", new_bookcopy_borrow_path(book) %></button>
+                            <% end %>
+                        </div>
+                    </div>
                 </div>
+            <% end %>
             </div>
-
         </div>
-    <% end %>
-    </div>
-</div>
+      </div>
+  </div>
+
+    <br>
+    <br>
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+
+</html>
