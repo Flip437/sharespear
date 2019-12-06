@@ -14,8 +14,15 @@
  *= require css/bootstrap.min
  *= require css/now-ui-kit
  *= require css/demo
+
+ *= require sign_in
+ *= require sign_up
+ *= require homepage
+ 
+
  *= require navbar
  *= require_tree .
  *= require_self
 
+>>>>>>> master
  */
