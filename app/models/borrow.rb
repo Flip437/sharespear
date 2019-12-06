@@ -21,7 +21,6 @@ class Borrow < ApplicationRecord
   private
 
   def borrow_asking
-    puts "AFTER CREATEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
     UserMailer.borrow_asking_email(self).deliver_now
   end
 
