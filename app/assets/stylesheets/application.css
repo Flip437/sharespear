@@ -16,4 +16,7 @@
  *= require css/now-ui-kit
  *= require css/demo
  
+ *= require sign_in
+ *= require sign_up
+ 
  */
