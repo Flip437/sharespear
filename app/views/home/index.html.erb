@@ -7,7 +7,7 @@
     <title>Document</title>
   </head>
   <body>
-    
+
   <div class="homepage_title">
       <%= image_tag("homepage/img3.jpg", :class => "homepage_img")%>
       <h1 class="homepage_title_1">Read, share, have fun
@@ -18,7 +18,7 @@
           All books
         </a>
       </p>
-      
+
       <div class="collapse" id="collapseExample">
         <div class="container">
             <div class="row">
@@ -31,7 +31,7 @@
 
                             <img style="max-width:100% ; max-height:100%" src="https://image.shutterstock.com/image-vector/book-icon-sign-design-260nw-553945819.jpg" >
                             <% if current_user %>
-                                <button type="button" class=><%= link_to "Emprunter ce livre", new_bookcopy_borrow_path(book) %></button>
+                                <button type="button" class="btn btn-primary btn-round"><%= link_to "Emprunter ce livre", new_bookcopy_borrow_path(book) %></button>
                             <% end %>
                         </div>
                     </div>
@@ -41,39 +41,21 @@
         </div>
       </div>
   </div>
-  
+
     <br>
     <br>
-    
 
 
 
 
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
 
   </body>
-  
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
