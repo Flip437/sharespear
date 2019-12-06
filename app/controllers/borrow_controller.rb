@@ -1,15 +1,11 @@
 class BorrowController < ApplicationController
 
     def new
-        puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-        puts params
-        puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
         @borrow = Borrow.new
         @book = BookCopy.find(params[:bookcopy_id])
     end
 
     def create
-        puts "IN CREATEEEEEEEEEEEEEEEEEEEEE"
         @borrow = Borrow.new(borrow_params)
         @borrow.user_id = current_user.id
         @borrow.start_date = Date.today
@@ -26,7 +22,6 @@ class BorrowController < ApplicationController
         puts @borrow.user_id
         puts @borrow.book_copy_id
         puts "borow elementttttttttttttttttttttttttttttttttttttttttttt"
-
 
         if @borrow.save
             flash[:success] = "Borrow successfully created"
@@ -46,7 +41,6 @@ class BorrowController < ApplicationController
       puts params.inspect
       bouton_value= params[:bouton_value]
       puts bouton_value
-
 
       # Demande de pret refuse
       if bouton_value=='0'
@@ -79,13 +73,10 @@ class BorrowController < ApplicationController
     end
 
     def show
-
-
       @borrow_to_show = Borrow.find(params[:id])
       @book_to_show = BookCopy.find(params[:bookcopy_id])
       @user_preteur = User.find(@book_to_show.user_id)
       @user_emprunteur = User.find(@borrow_to_show.user_id)
-
     end
 
     def borrow_params

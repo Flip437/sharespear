@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :borrows
 
   def welcome_send
-    puts "USER CREATEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
     UserMailer.welcome_email(self).deliver_now
   end
 
