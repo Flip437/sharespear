@@ -9,7 +9,7 @@
       </div>
       <h3 class="card-title"><%= User.find(current_user.id).first_name %> <%= User.find(current_user.id).last_name %></h3>
       <p class="card-description">
-        Mail : <%= User.find(current_user.id).email %>
+        Email : <%= User.find(current_user.id).email %>
         <br>
         Numero : <%= User.find(current_user.id).phone %>
         <br>
@@ -20,8 +20,70 @@
         <%= User.find(current_user.id).street_nb %>
         <%= User.find(current_user.id).street %>
       </p>
-      <a href="#pablo" class="btn btn-primary btn-round">Modifier Informations</a>
-      <a  href="<%= edit_user_registration_path %>" class="btn btn-primary btn-round">Modif password</a>
+
+
+        <%= form_for(@user, url: user_path(@user.id), html: {method: "patch"}) do |f| %>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= f.label 'Email' %><br>
+            <%= f.email_field :email, class: "form-control"%>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label 'Password' %><br>
+            <%= f.password_field :password, class: "form-control"%>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= f.label 'Prenom' %><br>
+            <%= f.text_field :first_name, class: "form-control"%>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label 'Nom' %><br>
+            <%= f.text_field :last_name, class: "form-control"%>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <%= f.label 'Description' %><br>
+          <%= f.text_area :description, class: "form-control"%>
+
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= f.label 'City' %>
+            <%= f.select :city, options_for_select(
+              [
+                ['Paris'],
+                ['Lyon'],
+                ['Bordeaux'],
+
+              ]),{}, { class: "form form-group form-control"} %>
+          </div>
+          <div class="form-group col-md-2">
+            <%= f.label 'Zip' %><br>
+            <%= f.number_field :zip_code, class: "form-control"%>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= f.label 'Adresse' %><br>
+            <%= f.text_field :street, class: "form-control"%>
+          </div>
+          <div class="form-group col-md-2">
+            <%= f.label 'Numero de rue' %><br>
+            <%= f.text_field :street_nb, class: "form-control"%>
+          </div>
+        </div>
+
+
+
+
+        <a  href="<%= edit_user_registration_path %>" class="btn btn-primary">Modif password</a>
+        <%= f.submit "Modifier les informations" , class: "btn btn-primary"%>
+        <% end %>
+
+
     </div>
   </div>
 
