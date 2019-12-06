@@ -1,5 +1,6 @@
 class Borrow < ApplicationRecord
   attr_accessor :duree
+  after_create :borrow_asking
   belongs_to :book_copy
   belongs_to :user
 
@@ -18,6 +19,11 @@ class Borrow < ApplicationRecord
   validate :user_cant_borrow_a_book_not_available
 
   private
+
+  def borrow_asking
+    puts "AFTER CREATEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+    UserMailer.borrow_asking_email(self).deliver_now
+  end
 
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?

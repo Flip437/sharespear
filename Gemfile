@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'letter_opener'
 end
 
 group :test do
@@ -68,8 +69,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'database_cleaner'
 gem "faker", "~> 2.7"
 gem "table_print", "~> 1.5"
-gem "letter_opener", "~> 1.7"
-gem "dotenv-rails"
 gem "devise", "~> 4.7"
 gem 'stripe'
 gem 'rename', '~> 1.0', '>= 1.0.6'
