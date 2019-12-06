@@ -24,10 +24,8 @@ module Sharespeare
       :enable_starttls_auto => true,
       :port => 587,
       :authentication => 'plain',
-      # :user_name => ENV['MAILJET_LOGIN'],
-      # :password =>  ENV['MAILJET_PWD']
-      :user_name => '229389ec0ca1dbe0b4f44bb104329ed6',
-      :password =>  '7547df89bc045b3e3a889e60a5b1348a'
+      :user_name => ENV['MAILJET_LOGIN'],
+      :password =>  ENV['MAILJET_PWD']
     }
   end
 end
