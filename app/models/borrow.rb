@@ -1,6 +1,6 @@
 class Borrow < ApplicationRecord
   attr_accessor :duree
-  #after_create :borrow_asking
+  after_create :borrow_asking, :borrow_time_remaining
   belongs_to :book_copy
   belongs_to :user
 
@@ -20,9 +20,17 @@ class Borrow < ApplicationRecord
 
   private
 
-  # def borrow_asking
-  #   UserMailer.borrow_asking_email(self).deliver_now
-  # end
+  def borrow_asking
+    UserMailer.borrow_asking_email(self).deliver_now
+  end
+
+  def borrow_time_remaining
+    @duration = (self.end_date - self.start_date) / 3600
+    @timealert1 = @duration - 7*24
+    @timealert2 = @duration - 2*24
+    UserMailer.borrow_remaining_time_email(self).deliver_later(wait_until: @timealert1.hours.from_now)
+    UserMailer.borrow_remaining_time_email(self).deliver_later(wait_until: @timealert2.hours.from_now)
+  end
 
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?
