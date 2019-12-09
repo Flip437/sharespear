@@ -28,11 +28,20 @@ class UserMailer < ApplicationMailer
     mail(to: @borrower.email, subject: "Emprunt refusé") 
   end
 
-  def borrow_remaining_time_email(borrow)
+  def borrow_remaining_time_email(borrow, timeremaining)
+    @borrow = borrow
+    @timeremaining = timeremaining
+    @borrower = User.find(@borrow.user_id)
+    @owner = User.find(BookCopy.find(@borrow.book_copy_id).user_id)
+    mail(to: @borrower.email, subject: "Attention, tu vas bientôt rendre votre livre")
+  end
+
+  def borrow_book_rendered_email(borrow)
     @borrow = borrow
     @borrower = User.find(@borrow.user_id)
     @owner = User.find(BookCopy.find(@borrow.book_copy_id).user_id)
-    mail(to: @borrower.email, subject: "")
+    mail(to: @borrower.email, subject: "Ton livre à bien été rendu !")
   end
+
 
 end
