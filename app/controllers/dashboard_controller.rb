@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+  before_action :authenticate_user!
   def index
     #Mes livres prêté
     @user=User.find(current_user.id)
