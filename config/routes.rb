@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, path: 'users'
   root 'home#index'
 
+  resources :home, only: [:index]
   resources :user do
     resources :dashboard, only: [:index]
   end
