@@ -59,6 +59,16 @@ class BorrowController < ApplicationController
         book_copy_status_update = BookCopy.find(params[:bookcopy_id])
         book_copy_status_update.update(status: false)
 
+        #passe à refusé tous les autres
+        book_copy = BookCopy.find(borrow_to_update.book_copy_id)
+        book_borrow_tab = book_copy.borrow_status_0?
+        book_borrow_tab.each do |n|
+          n.update(borrow_status:1)
+        end
+
+
+
+
       # Livre recupere
       elsif bouton_value=='2'
         borrow_to_update = Borrow.find(params[:id])
