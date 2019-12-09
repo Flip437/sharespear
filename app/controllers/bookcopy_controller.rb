@@ -1,4 +1,5 @@
 class BookcopyController < ApplicationController
+    before_action :authenticate_user!
 
     def show
         puts params
@@ -6,6 +7,6 @@ class BookcopyController < ApplicationController
         puts @book.title
     end
 
-    
+
 
 end

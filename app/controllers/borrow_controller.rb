@@ -1,5 +1,5 @@
 class BorrowController < ApplicationController
-
+    before_action :authenticate_user!
     def new
         puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
         puts params
