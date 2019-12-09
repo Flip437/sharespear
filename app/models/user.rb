@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :book_copies
   has_many :borrows
+    has_one_attached :avatar
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
