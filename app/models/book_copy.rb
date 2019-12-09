@@ -7,6 +7,7 @@ class BookCopy < ApplicationRecord
   validates :status, inclusion: { in: [ true, false ] }
   validates :category, presence: true
   validates :user_id, presence: true
+  validates :isbn, presence: true
 
 
 

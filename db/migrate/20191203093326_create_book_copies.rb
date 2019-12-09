@@ -6,6 +6,7 @@ class CreateBookCopies < ActiveRecord::Migration[5.2]
       t.text :description
       t.boolean :status
       t.string :category
+      t.integer :isbn
       t.belongs_to :user, index: true #cette ligne rajoute la référence à la table users
 
       t.timestamps
