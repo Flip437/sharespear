@@ -4,8 +4,8 @@ class UserMailer < ApplicationMailer
   def welcome_email(user)
     @user = user 
     @url  = 'http://monsite.fr/login' 
-    #mail(to: @user.email, subject: 'Bienvenue chez nous !')
-    mail(to: @user.email, subject: "Demande d'inscription") do |format|
+    mail(to: @user.email, subject: 'Bienvenue chez nous !')
+    #mail(to: @user.email, subject: "Demande d'inscription") do |format|
       format.html
     end
   end
