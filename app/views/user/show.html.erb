@@ -37,6 +37,9 @@
                         <i class="fa fa-instagram"></i>
                     </a>
                 </div>
+                <div class="container section">
+                  <a href="<%=new_bookcopy_path%>" class="card-link btn-primary">Add a book </a>
+                </div>
                 <h3 class="title">About me</h3>
                 <h5 class="description text-center">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
 
@@ -57,7 +60,8 @@
                           <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
                           <p class="card-text"><%= book.description %></p>
                           <p class="card-text">Genre : <%= book.category %></p>
-                          <a href="#" class="card-link">More details</a>
+                          <a href="<%=bookcopy_path(book.id)%>" class="card-link">More details</a>
+
                         </div>
                       </div>
                       <% end %>
@@ -99,4 +103,3 @@
             </div>
         </footer>
     </div>
-</body>
