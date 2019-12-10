@@ -11,6 +11,8 @@ DatabaseCleaner.allow_remote_database_url = true
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
+url_photo_link= "http://books.google.com/books/content?id=1IyauAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+
 User.destroy_all
 10.times.with_index do |user, index|
     user = User.create(
@@ -42,6 +44,7 @@ BookCopy.destroy_all
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
           isbn: "102020200",
+          photo_link: url_photo_link,
           user_id: index+1
       )
   end
@@ -55,6 +58,7 @@ BookCopy.destroy_all
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
           isbn: "102020200",
+          photo_link: url_photo_link,
           user_id: index+1
       )
       borrow = Borrow.create(
@@ -77,6 +81,7 @@ BookCopy.destroy_all
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
           isbn: "102020200",
+          photo_link: url_photo_link,
           user_id: index+1
       )
       borrow = Borrow.create(
@@ -100,6 +105,7 @@ BookCopy.destroy_all
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
           isbn: 102020200,
+          photo_link: url_photo_link,
           user_id: index+1
       )
       borrow = Borrow.create(

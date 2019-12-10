@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_125605) do
     t.boolean "status"
     t.string "category"
     t.string "isbn"
+    t.string "photo_link", default: ""
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
