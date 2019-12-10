@@ -41,7 +41,7 @@ BookCopy.destroy_all
           description: Faker::Name.first_name,
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
-          isbn: 102020200,
+          isbn: "102020200",
           user_id: index+1
       )
   end
@@ -54,7 +54,7 @@ BookCopy.destroy_all
           description: Faker::Name.first_name,
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
-          isbn: 102020200,
+          isbn: "102020200",
           user_id: index+1
       )
       borrow = Borrow.create(
@@ -76,7 +76,7 @@ BookCopy.destroy_all
           description: Faker::Name.first_name,
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
-          isbn: 102020200,
+          isbn: "102020200",
           user_id: index+1
       )
       borrow = Borrow.create(

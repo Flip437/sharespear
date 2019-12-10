@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_125605) do
     t.text "description"
     t.boolean "status"
     t.string "category"
-    t.integer "isbn"
+    t.string "isbn"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

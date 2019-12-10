@@ -22,6 +22,7 @@ class BookcopyController < ApplicationController
       puts params.inspect
       @isbn = params[:book_copy][:isbn].gsub(/[.\s]/, '')
       puts @isbn
+      
 
       #@isbn=9780753555200
       url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + @isbn.to_s
@@ -29,19 +30,26 @@ class BookcopyController < ApplicationController
 
       if doc["totalItems"]==0
         puts "AIE AIE AIE"
+        redirect_to new_bookcopy_path
       else
+
         @book_infos=doc['items'][0]['volumeInfo']
-        @new_book_copy = BookCopy.new
-        @new_book_copy.title=@book_infos['title']
-        @new_book_copy.author=@book_infos['authors'][0]
-        @new_book_copy.description=@book_infos['description']
-        @new_book_copy.status=true
-        @new_book_copy.category=@book_infos['categories']
-        @new_book_copy.user_id= current_user.id
-        @new_book_copy.isbn= @isbn
-        @new_book_copy.save
+        @new_book_copy = BookCopy.create(title: @book_infos['title'],
+          title:  @book_infos['title'],
+          author: @book_infos['authors'][0],
+          description: @book_infos['description'],
+          status: true,
+          category: @book_infos['categories'],
+          user_id: current_user.id,
+          isbn: @isbn.to_s
+
+        )
+
+
 
         puts @new_book_copy.inspect
+
+        redirect_to new_bookcopy_path
 
       end
 
