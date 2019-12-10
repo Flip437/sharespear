@@ -78,6 +78,23 @@ class BookcopyController < ApplicationController
 
     end
 
+    def destroy
+
+      book = BookCopy.find(params[:id])
+
+      if book.delete
+        flash[:success] = "Livre supprimé :)"
+          redirect_to user_path(current_user.id)
+      else
+        flash[:error] = "Erreur :("
+          redirect_to user_path(current_user.id)
+      end
+
+
+
+
+    end
+
 
 
 end

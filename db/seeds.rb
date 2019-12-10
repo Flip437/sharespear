@@ -120,6 +120,4 @@ BookCopy.destroy_all
   puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et recupere"
 
 
-
-
 end
