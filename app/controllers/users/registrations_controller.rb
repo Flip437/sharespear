@@ -9,10 +9,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+
+  def create
+   
+    super
+    puts "paramsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+    puts params.inspects
+  end
 
   # GET /resource/edit
   # def edit
