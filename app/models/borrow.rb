@@ -18,6 +18,9 @@ class Borrow < ApplicationRecord
   #validate :user_id_cant_borrow_more_than_10_books_same_time
   validate :user_cant_borrow_a_book_not_available
 
+
+
+
   private
 
   def borrow_asking

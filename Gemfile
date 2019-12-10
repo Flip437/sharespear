@@ -58,7 +58,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  #gem 'dotenv-rails'
+  gem 'dotenv-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -73,3 +73,4 @@ gem "devise", "~> 4.7"
 gem 'stripe'
 gem 'rename', '~> 1.0', '>= 1.0.6'
 gem 'mailjet', '~> 1.5', '>= 1.5.4'
+gem 'nokogiri'

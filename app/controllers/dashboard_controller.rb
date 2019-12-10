@@ -1,16 +1,16 @@
 class DashboardController < ApplicationController
+  before_action :authenticate_user!
   def index
     #Mes livres prêté
     @user=User.find(current_user.id)
-    @book_copy_not_available_tab=BookCopy.where(["status = ? and user_id = ?", false, current_user.id])
+    @book_copy_not_available_tab=@user.book_copy_not_available_tab
 
     #Demandes de prêt reçu
-    book_copy_available_tab=BookCopy.where(["status = ? and user_id = ?", true, current_user.id])
-    puts book_copy_available_tab
+    book_copy_available_tab=@user.book_copy_available_tab
+
     @ask_book_tab=[]
     book_copy_available_tab.each do |n|
-
-      tab=Borrow.where(["borrow_status = ? and book_copy_id = ?", 0, n.id])
+      tab=n.borrow_status_0?
       if(tab.empty?)
       else
         @ask_book_tab=tab+@ask_book_tab
@@ -20,12 +20,12 @@ class DashboardController < ApplicationController
 
     #Mes emprunts
 
-    @book_I_borrow_tab=Borrow.where(["user_id = ? and borrow_status = ?",current_user.id, 2])
-    @book_I_borrow_recup_tab=Borrow.where(["user_id = ? and borrow_status = ?",current_user.id, 3])
+    @book_I_borrow_tab=@user.book_I_borrow_tab
+    @book_I_borrow_recup_tab=@user.book_I_borrow_recup_tab
 
     #Mes demandes d'emprunt envoyé :
 
-    @book_asked_to_borrow = Borrow.where(["user_id = ? and borrow_status = ?",current_user.id, 0])
+    @book_asked_to_borrow = @user.book_asked_to_borrow
 
   end
 

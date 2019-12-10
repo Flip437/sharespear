@@ -76,10 +76,7 @@
           </div>
         </div>
 
-
-
-
-        <a  href="<%= edit_user_registration_path %>" class="btn btn-primary">Modif password</a>
+        <a href="<%= edit_user_registration_path %>" class="btn btn-primary">Modif password</a>
         <%= f.submit "Modifier les informations" , class: "btn btn-primary"%>
         <% end %>
 
@@ -87,5 +84,19 @@
     </div>
   </div>
 
+  <h1>Page Profil</h1>
 
+<p>Bienvenue sur la page d'ajout d'un avatar pour le User portant l'id : <%=@user.id%></p>
+<h3>Avatar actuel</h3>
+<%if @user.avatar.attached?%>
+  <%= image_tag @user.avatar, alt: 'avatar' %>
+<%else%>
+  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+<%end%>
+
+<h3>Changer d'avatar ?</h3>
+<%= form_tag user_avatars_path(@user), multipart: true do %>
+  <%= file_field_tag :avatar %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
 </div>
