@@ -40,7 +40,7 @@ BookCopy.destroy_all
       book_copy = BookCopy.create(
           title: Faker::Book.title,
           author: Faker::Book.author,
-          description: Faker::Name.first_name,
+          description: Faker::TvShows::SiliconValley.quote,
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
           isbn: "102020200",
@@ -54,7 +54,7 @@ BookCopy.destroy_all
       book_copy = BookCopy.create(
           title: Faker::Book.title,
           author: Faker::Book.author,
-          description: Faker::Name.first_name,
+          description: Faker::Quotes::Shakespeare.hamlet_quote,
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
           isbn: "102020200",
@@ -77,7 +77,7 @@ BookCopy.destroy_all
       book_copy = BookCopy.create(
           title: Faker::Book.title,
           author: Faker::Book.author,
-          description: Faker::Name.first_name,
+          description: Faker::Quotes::Shakespeare.romeo_and_juliet_quote,
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
           isbn: "102020200",
@@ -101,7 +101,7 @@ BookCopy.destroy_all
       book_copy = BookCopy.create(
           title: Faker::Book.title,
           author: Faker::Book.author,
-          description: Faker::Name.first_name,
+          description: Faker::Quotes::Shakespeare.king_richard_iii_quote,
           status: true, # [true, false].sample,
           category: Faker::Book.genre,
           isbn: 102020200,

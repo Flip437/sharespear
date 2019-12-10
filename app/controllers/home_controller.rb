@@ -1,8 +1,15 @@
 class HomeController < ApplicationController
   def index
-    @book_copy_array = BookCopy.all
+
+    if current_user
+      @book_copy_array = BookCopy.all
+    else
+      @book_copy_array = BookCopy.all
+    end
+
   end
 
   def recherche
+
   end
 end
