@@ -1,10 +1,13 @@
 class UserController < ApplicationController
   before_action :authenticate_user!
 
+def create
+  @user = User.new
+end
+
+
   def edit
-
     @user = User.find(current_user.id)
-
   end
 
   def show
