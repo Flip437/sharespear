@@ -8,6 +8,7 @@ class BookCopy < ApplicationRecord
   validates :category, presence: true
   validates :user_id, presence: true
   validates :isbn, presence: true
+  validates :photo_link, presence: true
 
 
 
