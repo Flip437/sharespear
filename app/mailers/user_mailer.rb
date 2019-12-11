@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-  require 'mailjet'
 
   def welcome_email(user)
     @user = user 
@@ -42,6 +41,5 @@ class UserMailer < ApplicationMailer
     @owner = User.find(BookCopy.find(@borrow.book_copy_id).user_id)
     mail(to: @borrower.email, subject: "Ton livre à bien été rendu !")
   end
-
 
 end

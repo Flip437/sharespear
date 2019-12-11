@@ -14,15 +14,6 @@ class BorrowController < ApplicationController
         @borrow.borrow_status = 0
         @borrow.book_copy_id = params[:bookcopy_id]
 
-        puts "borow elementttttttttttttttttttttttttttttttttttttttttttt"
-        puts @borrow.start_date
-        puts @borrow.end_date
-        puts @borrow.message
-        puts @borrow.borrow_status
-        puts @borrow.user_id
-        puts @borrow.book_copy_id
-        puts "borow elementttttttttttttttttttttttttttttttttttttttttttt"
-
         if @borrow.save
             flash[:success] = "Borrow successfully created"
             redirect_to root_path
@@ -34,13 +25,8 @@ class BorrowController < ApplicationController
 
     end
 
-
     def update
-
-      puts "UPDATE"
-      puts params.inspect
       bouton_value= params[:bouton_value]
-      puts bouton_value
 
       # Demande de pret refuse
       if bouton_value=='0'
@@ -63,9 +49,6 @@ class BorrowController < ApplicationController
         book_borrow_tab.each do |n|
           n.update(borrow_status:1)
         end
-
-
-
 
       # Livre recupere
       elsif bouton_value=='2'
