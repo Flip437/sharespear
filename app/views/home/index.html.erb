@@ -1,41 +1,53 @@
+<div class="header-2">
 
-
-  <div class="homepage_title">
-      <%= image_tag("homepage/img3.jpg", :class => "homepage_img")%>
-      <h1 class="homepage_title_1">Read, share, have fun
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search_bar">
-      </h1>
-      <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          All books
-        </a>
-      </p>
-
-      <div class="collapse" id="collapseExample">
-        <div class="container">
-            <div class="row">
-            <% @book_copy_array.each do |book| %>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <%= book.title %><br>
-                            <%= User.find(book.user_id).first_name %>
-
-                            <img style="max-width:100% ; max-height:100%" src="https://image.shutterstock.com/image-vector/book-icon-sign-design-260nw-553945819.jpg" >
-                            <% if current_user %>
-                                <button type="button" class="btn btn-primary btn-round"><%= link_to "Emprunter ce livre", new_bookcopy_borrow_path(book) %></button>
-                            <% end %>
-                        </div>
-                    </div>
-                </div>
-            <% end %>
-            </div>
-        </div>
+  <div class="page-header header-filter" id="hello_world">
+      <div class="page-header-image" style="background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');"></div>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-8 ml-auto mr-auto text-center">
+                  <h1 class="title">Empruntez, Lisez, Prêtez</h1>
+                  <h5 class="description">Trouvez votre prochaine lecture proche de chez vous en fonction de vos goûts</h5>
+              </div>
+              <div class="col-md-10 ml-auto mr-auto">
+                  <div class="card card-raised card-form-horizontal card-plain" data-background-color="">
+                      <div class="card-body">
+                          <form method="" action="">
+                              <div class="row">
+                                  <div class="col-md-3">
+                                      <div class="form-group">
+                                          <input type="text" value="" placeholder="Full Name" class="form-control" autocomplete="family-name">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <div class="form-group">
+                                          <input type="email" placeholder="Your Email" class="form-control" autocomplete="email">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <div class="form-group">
+                                          <input type="password" placeholder="Password" class="form-control" autocomplete="current-password">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <button type="button" class="btn btn-primary btn-round btn-block">Join Us</button>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
   </div>
+</div>
+    
+    <!-- USER CONNECTED -->
 
-    <br>
-    <br>
+    
+    
+    
+    
+    
 
 
 
