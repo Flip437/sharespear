@@ -24,7 +24,7 @@ class BorrowController < ApplicationController
         end
 
     end
-
+   
     def update
       bouton_value= params[:bouton_value]
 
