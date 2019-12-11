@@ -13,9 +13,34 @@
         <h1 class="homepage_title_1">
           Read, share, have fun
         </h1>
-      <br><br>    
-      <%= render 'home/recommendation' %>
     </div>
+    <br><br>
+
+    <!-- // SEARCH -->
+    <center>
+      <div class="col-md-5 ml-auto mr-auto">
+        <div class="card card-login card-plain">
+        <%= form_tag searchbar_index_path, method: :get do %>
+          <div class="form-group">  
+            <%= text_field_tag :search1, params[:search1], placeholder: "Recherche", class:'form-control text-dark', id:'search_bar' %>
+            <br><br>
+            <%= text_field_tag :search2, params[:search2], placeholder: "Ville", class:'form-control text-dark', id:'search_bar' %>
+            <%= button_tag "Rechercher", class: 'btn btn-primary btn-round' %>
+          </div>  
+        <% end %>
+        </div>
+      </div>
+    </center>
+    <br><br>
+
+    <!-- // ALL BOOKS -->
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        All books
+      </a>
+    </p>
+    <%= render 'home/bookcopies' %>
+
     <br><br>
   </body>
 </html>
