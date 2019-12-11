@@ -39,13 +39,33 @@ class BookcopyController < ApplicationController
 
     def create
 
+      if params['imageLinks']
+        photo = params['imageLinks']['thumbnail']
+      else
+        photo= "http://books.google.com/books/content?id=1IyauAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      end
+
+      if  params[:categories]==nil
+        category = "other"
+      else
+        category = params[:categories][0]
+      end
+
+      if  params[:description]==nil
+        description = "no description"
+      else
+        description = params[:description]
+      end
+      
+
       @new_book_copy = BookCopy.create(
         title:  params[:title],
         author: params[:authors][0],
-        description: params[:description],
+        description: description,
         status: true,
-        category: params[:categories][0],
+        category: category,
         user_id: current_user.id,
+        photo_link: photo,
         isbn: params[:industryIdentifiers][0][:identifier]
       )
 
@@ -56,6 +76,23 @@ class BookcopyController < ApplicationController
         flash[:error] = "Erreur d'ajout :("
         redirect_to new_bookcopy_path
       end
+
+    end
+
+    def destroy
+
+      book = BookCopy.find(params[:id])
+
+      if book.delete
+        flash[:success] = "Livre supprimé :)"
+          redirect_to user_path(current_user.id)
+      else
+        flash[:error] = "Erreur :("
+          redirect_to user_path(current_user.id)
+      end
+
+
+
 
     end
 

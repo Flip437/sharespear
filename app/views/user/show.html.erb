@@ -59,7 +59,7 @@
                           <% end %>
                           <h4 class="card-title"><%= book.title %></h4>
                           <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
-                          
+                          <%= image_tag(book.photo_link) %>
                           <p class="card-text">Genre : <%= book.category %></p>
                           <a href="<%=bookcopy_path(book.id)%>" class="card-link">More details</a>
 
