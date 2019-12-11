@@ -1,5 +1,5 @@
 
-
+  <% if current_user %>
 <div class="container">
   <div class="col-md-8 ml-auto mr-auto text-center">
     <h2 class="title">Autour de vous.. regardez </h2>
@@ -30,6 +30,13 @@
 
   </div>
 
+  <% if @length_tab_book_copy==0 %>
+    <h1>No  livres found</h1>
+  <% end %>
+
+
+  <% if @length_tab_book_copy>0 %>
+
   <div class="row">
 
       <div class="col-md-10 ml-auto mr-auto">
@@ -40,7 +47,7 @@
               <div class="row">
                   <div class="col-md-5">
                       <div class="card-image">
-                          <img class="img img-raised rounded" src="assets/img/examples/card-blog4.jpg">
+                          <img class="img img-raised rounded" src=<%=@book_copy_array[0].photo_link%>>
                       </div>
                   </div>
                   <div class="col-md-7">
@@ -152,14 +159,23 @@
 
         </div>
     </div>
+  </div>
+<% end %>
+
+<div class="cd-section" id="testimonials">
 
     <div class="container">
         <div class="row">
 
             <div class="col-md-10 ml-auto mr-auto">
-                <h2 class="title">Et encore..</h2>
 
-                <br>
+                <% if @length_tab_book_copy>3%>
+                  <% n=4 %>
+                <% else %>
+                  <% n=0 %>
+                <% end %>
+
+                <%  for a in n..(@length_tab_book_copy-1) do %>
                 <div class="card card-plain card-blog">
                     <div class="row">
                         <div class="col-md-4">
@@ -169,76 +185,24 @@
                         </div>
                         <div class="col-md-8">
                             <h3 class="card-title">
-                                <a href="#pablo">Rover raised $65 million for pet sitting</a>
+                                <a href="#pablo"><%=@book_copy_array[a].title%></a>
                             </h3>
                             <p class="card-description">
-                                Finding temporary housing for your dog should be as easy as renting an Airbnb. That’s the idea behind Rover, which raised $65 million to expand its pet sitting and dog-walking businesses.. <a href="#pablo"> Read More </a>
+                               <%=@book_copy_array[a].description%> <a href="#pablo"> Read More </a>
                             </p>
 
 								<div class="author">
 								   <img src="assets/img/olivia.jpg" alt="..." class="avatar img-raised">
-								   <span><%=@book_copy_array[4].title%></span>
+								   <span><%=@book_copy_array[a].user.first_name%></span>
 								</div>
 
                         </div>
                     </div>
                 </div>
-
-                <div class="card card-plain card-blog">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card-image">
-                                <a href="#pablo">
-                                    <img class="img img-raised rounded" src="assets/img/examples/card-blog11.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <h3 class="card-title">
-                                <a href="#pablo">MateLabs mixes machine learning with IFTTT</a>
-                            </h3>
-                            <p class="card-description">
-                                If you’ve ever wanted to train a machine learning model and integrate it with IFTTT, you now can with a new offering from MateLabs. MateVerse, a platform where novices can spin out machine... <a href="#pablo"> Read More </a>
-                            </p>
-                            <div class="author">
-                               <img src="assets/img/james.jpg" alt="..." class="avatar img-raised">
-                               <span>John Mannes</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card card-plain card-blog">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card-image">
-                                <a href="#pablo">
-                                    <img class="img img-raised rounded" src="assets/img/examples/card-blog12.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <h3 class="card-title">
-                                <a href="#pablo">US venture investment ticks up in Q2 2017</a>
-                            </h3>
-                            <p class="card-description">
-                                Venture investment in U.S. startups rose sequentially in the second quarter of 2017, boosted by large, late-stage financings and a few outsized early-stage rounds in tech and healthcare.. <a href="#pablo"> Read More </a>
-                            </p>
-                            <div class="author">
-                               <img src="assets/img/michael.jpg" alt="..." class="avatar img-raised">
-                               <span>Devin Coldewey</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <% end %>
             </div>
-
         </div>
-
     </div>
-
-
-
-
   </div>
+
+  <% end %>

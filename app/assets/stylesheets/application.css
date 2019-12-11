@@ -19,7 +19,6 @@
  *= require sign_up
  *= require homepage
  
-
  *= require navbar
  *= require_tree .
  *= require_self
