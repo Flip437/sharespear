@@ -1,0 +1,23 @@
+
+	<div class="card bg-light-gray" id='book-form'>
+		<div class="card-header text-center">
+			<%if @book_infos == -1 %>
+				<h1>No books found</h1>
+			<%else %>
+				<h4 class='mt-2 mb-0'>Mon livre</h4>
+
+				<p>Titre : <%= @book_infos["title"] %></p>
+				<p>Auteur(s) : <% @book_infos["authors"].each do |author| %>
+								  <%= author %>
+				<% end %>
+				</p>
+				<p>Date : <%= @book_infos["publishedDate"] %></p>
+
+				<%= image_tag(@book_infos['imageLinks']['thumbnail']) if @book_infos['imageLinks'] %>
+
+			<p>Est-ce bien votre livre ?</p>
+			<%= link_to "Ajouter",  bookcopy_index_path(@book_infos), :method=> :post %>
+
+			<% end %>
+		</div>
+	</div>

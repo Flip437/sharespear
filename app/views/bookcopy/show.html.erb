@@ -1,1 +1,26 @@
-<h1><%= @book.title %></h1>
+
+<div class="container">
+  <div class="card text-center card-pricing">
+    <div class="card-body">
+      <div class="icon icon-primary">
+        <%= image_tag(@book.photo_link) %>
+      </div>
+
+      <h4 class="card-title"><%= @book.title %></h4>
+      <p class="card-text"><%= @book.author %></p>
+      <p class="card-text"><%= @book.category %></p>
+      <div class="card">
+        <div class="card-body">
+          <blockquote class="blockquote blockquote-primary mb-0">
+            <p><%= @book.description %></p>
+          </blockquote>
+        </div>
+      </div>
+
+      <% if @book.user_id==current_user.id %>
+      <button type="button" class="btn btn-primary"><%= link_to "Supprimer", bookcopy_path(@book.id), method:"delete"%></button>
+      <% end %>
+
+    </div>
+  </div>
+</div>

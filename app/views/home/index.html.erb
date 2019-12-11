@@ -6,56 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
   </head>
+
   <body>
-
-  <div class="homepage_title">
+    <div class="homepage_title">
       <%= image_tag("homepage/img3.jpg", :class => "homepage_img")%>
-      <h1 class="homepage_title_1">Read, share, have fun
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search_bar">
+      <h1 class="homepage_title_1">
+        Read, share, have fun
       </h1>
-      <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          All books
-        </a>
-      </p>
 
-      <div class="collapse" id="collapseExample">
-        <div class="container">
-            <div class="row">
-            <% @book_copy_array.each do |book| %>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <%= book.title %><br>
-                            <%= User.find(book.user_id).first_name %>
+    </div>
 
-                            <img style="max-width:100% ; max-height:100%" src="https://image.shutterstock.com/image-vector/book-icon-sign-design-260nw-553945819.jpg" >
-                            <% if current_user %>
-                                <button type="button" class="btn btn-primary btn-round"><%= link_to "Emprunter ce livre", new_bookcopy_borrow_path(book) %></button>
-                            <% end %>
-                        </div>
-                    </div>
-                </div>
-            <% end %>
-            </div>
+    <!-- // SEARCH -->
+    <center>
+      <div class="col-md-5 ml-auto mr-auto">
+        <div class="card card-login card-plain">
+        <%= form_tag searchbar_index_path, method: :get do %>
+          <div class="form-group">
+            <%= text_field_tag :search1, params[:search1], placeholder: "Recherche", class:'form-control text-dark', id:'search_bar' %>
+            <br><br>
+            <%= text_field_tag :search2, params[:search2], placeholder: "Ville", class:'form-control text-dark', id:'search_bar' %>
+            <%= button_tag "Rechercher", class: 'btn btn-primary btn-round' %>
+          </div>
+        <% end %>
         </div>
       </div>
-  </div>
+    </center>
+    <br><br>
+
+    <!-- // ALL BOOKS -->
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        All books
+      </a>
+    </p>
+    <%= render 'home/bookcopies' %>
+
+    <br><br>
 
     <br>
     <br>
 
-
-
-
-
-
-
-
-
-
-
+    <%= render 'home/recommendation' %>
 
   </body>
-
 </html>

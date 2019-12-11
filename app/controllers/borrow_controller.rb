@@ -44,18 +44,16 @@ class BorrowController < ApplicationController
 
       # Demande de pret refuse
       if bouton_value=='0'
-
         borrow_to_update = Borrow.find(params[:id])
-
         borrow_to_update.update(borrow_status:1)
-        #UserMailer.borrow_declined_email(borrow_to_update).deliver_now
+        UserMailer.borrow_declined_email(borrow_to_update).deliver_now
 
       # Demande de pret accepte
       elsif bouton_value=='1'
 
         borrow_to_update = Borrow.find(params[:id])
         borrow_to_update.update(borrow_status:2)
-        #UserMailer.borrow_accepted_email(borrow_to_update).deliver_now
+        UserMailer.borrow_accepted_email(borrow_to_update).deliver_now
         book_copy_status_update = BookCopy.find(params[:bookcopy_id])
         book_copy_status_update.update(status: false)
 
@@ -75,7 +73,7 @@ class BorrowController < ApplicationController
         book_copy_status_update = BookCopy.find(params[:bookcopy_id])
         borrow_to_update.update(borrow_status:3)
         book_copy_status_update.update(status: true)
-
+        UserMailer.borrow_book_rendered_email(borrow_to_update).deliver_now
       end
 
       redirect_to user_dashboard_index_path(current_user)
