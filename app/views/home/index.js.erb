@@ -1,0 +1,2 @@
+$('#books-receiver').text('')
+$("<%= j render 'bookcopies', books: @book_copy_array %>").prependTo($('#books-receiver')).hide().fadeIn(500);

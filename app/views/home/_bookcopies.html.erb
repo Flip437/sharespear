@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+    <% @book_copy_array.each do |book| %>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <%= book.title %><br>
+                    <%= User.find(book.user_id).first_name %>
+
+                    <img style="max-width:100% ; max-height:100%" src="https://image.shutterstock.com/image-vector/book-icon-sign-design-260nw-553945819.jpg" >
+                    <% if current_user %>
+                        <button type="button" class="btn btn-primary btn-round"><%= link_to "Emprunter ce livre", new_bookcopy_borrow_path(book) %></button>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>

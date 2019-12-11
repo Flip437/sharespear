@@ -10,14 +10,23 @@ class BookCopy < ApplicationRecord
   validates :isbn, presence: true
   validates :photo_link, presence: true
 
-
-
-def borrow_status_0?
-
-  return Borrow.where(["borrow_status = ? and book_copy_id = ?", 0, self.id])
-
-end
-
-
+  def borrow_status_0?
+    return Borrow.where(["borrow_status = ? and book_copy_id = ?", 0, self.id])
+  end
+  
+  def self.search(search, bsearch)
+    if search
+      @booktitles = self.where('title ILIKE ?', "%#{search}%")
+      @booksearched = []
+      @booktitles.each do |book|
+        if book.user.city.downcase == bsearch.downcase
+          @booksearched << book
+        end
+      end
+      return @booksearched
+    else
+      all
+    end
+  end
 
 end

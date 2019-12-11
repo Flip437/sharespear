@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  
   def index
 
     if current_user
@@ -9,7 +10,4 @@ class HomeController < ApplicationController
 
   end
 
-  def recherche
-
-  end
 end
