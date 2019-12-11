@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index
 
     if current_user
@@ -22,8 +23,6 @@ class HomeController < ApplicationController
         puts "#{array[i]} is in the array"
       end
 
-
-
       @book_copy_array[0] = @book_copy_array_all[array[0]]
       @book_copy_array[1] = @book_copy_array_all[array[1]]
       @book_copy_array[2] = @book_copy_array_all[array[2]]
@@ -44,7 +43,4 @@ class HomeController < ApplicationController
 
   end
 
-  def recherche
-
-  end
 end
