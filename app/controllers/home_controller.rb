@@ -4,6 +4,8 @@ class HomeController < ApplicationController
 
     if current_user
 
+      puts "HOMEMEMEMMEMEME ICICICICIICICICICICICIICICICICICIICIC"
+
       @user_around_tab = User.where(zip_code: current_user.zip_code)
       @book_copy_array_all = []
 
@@ -13,32 +15,31 @@ class HomeController < ApplicationController
 
       @length_tab_book_copy_all = @book_copy_array_all.length
 
+      #puts @length_tab_book_copy_all
+
       array = []
-      9.times do |i|
-        puts "Iteration #{i} -------------------------"
-        x = rand @length_tab_book_copy_all
-        redo if array.include?(x).tap{ |type| puts "does array include #{x}? #{type ? "yes" : "no"}" }
-        puts "x=#{x}, i=#{i}"
+      20.times do |i|
+        #puts "Iteration #{i} -------------------------"
+        x = rand (@length_tab_book_copy_all)
+        redo if array.include?(x)
         array[i] = x
-        puts "#{array[i]} is in the array"
       end
 
-      @book_copy_array[0] = @book_copy_array_all[array[0]]
-      @book_copy_array[1] = @book_copy_array_all[array[1]]
-      @book_copy_array[2] = @book_copy_array_all[array[2]]
-      @book_copy_array[3]= @book_copy_array_all[array[3]]
-      @book_copy_array[4]= @book_copy_array_all[array[4]]
-      @book_copy_array[5] = @book_copy_array_all[array[5]]
-      @book_copy_array[6] = @book_copy_array_all[array[6]]
-      @book_copy_array[7]= @book_copy_array_all[array[7]]
-      @book_copy_array[8] = @book_copy_array_all[array[8]]
+      puts @book_copy_array_all.length
+
+      if @book_copy_array_all.length>20
+
+        20.times do |i|
+          @book_copy_array[i] = @book_copy_array_all[array[i]]
+        end
+      else
+        @book_copy_array_all.length.times do |i|
+          @book_copy_array[i] = @book_copy_array_all[array[i]]
+        end
+      end
 
       @length_tab_book_copy =  @book_copy_array.length
 
-      puts @book_copy_array
-
-    else
-      @book_copy_array = BookCopy.all
     end
 
   end
