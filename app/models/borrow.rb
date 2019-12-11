@@ -24,7 +24,7 @@ class Borrow < ApplicationRecord
   private
 
   def borrow_asking
-    #UserMailer.borrow_asking_email(self).deliver_now
+    UserMailer.borrow_asking_email(self).deliver_now
   end
 
   def borrow_time_remaining
