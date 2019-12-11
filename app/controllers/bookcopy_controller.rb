@@ -56,6 +56,7 @@ class BookcopyController < ApplicationController
       else
         description = params[:description]
       end
+      
 
       @new_book_copy = BookCopy.create(
         title:  params[:title],

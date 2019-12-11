@@ -51,7 +51,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    builder (3.2.3)
+    builder (3.2.4)
     byebug (11.0.1)
     capybara (3.29.0)
       addressable
@@ -102,6 +102,10 @@ GEM
     io-like (0.3.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -248,6 +252,7 @@ DEPENDENCIES
   dotenv-rails
   faker (~> 2.7)
   jbuilder (~> 2.5)
+  letter_opener
   listen (>= 3.0.5, < 3.2)
   mailjet (~> 1.5, >= 1.5.4)
   nokogiri
