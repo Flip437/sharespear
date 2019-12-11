@@ -67,7 +67,7 @@
     <% if current_user && @length_tab_book_copy>0 %>
 
     <div class="col-md-8 ml-auto mr-auto text-center">
-      <h2 class="title">Autour de vous.. regardez </h2>
+      <h2 class="title">Autour de vous dans le <%= current_user.zip_code %>.. regardez  </h2>
 
 
       <ul class="nav nav-pills nav-pills-danger justify-content-center" role="tablist">
@@ -95,8 +95,6 @@
       </ul>
     </div>
     <% end %>
-    <% end %>
-
 
     <div id="reco">
 
@@ -104,6 +102,11 @@
 
     </div>
 
+    <% end %>
 
-  </body>
-</html>
+    <% if current_user && @length_tab_book_copy==0 %>
+
+    <h1>No  livres found around you</h1>
+
+
+    <% end %>
