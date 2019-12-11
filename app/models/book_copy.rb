@@ -11,12 +11,16 @@ class BookCopy < ApplicationRecord
 
 
 
-def borrow_status_0?
+  def borrow_status_0?
+    return Borrow.where(["borrow_status = ? and book_copy_id = ?", 0, self.id])
+  end
 
-  return Borrow.where(["borrow_status = ? and book_copy_id = ?", 0, self.id])
-
-end
-
-
+  def self.search(search)
+    if search
+      where('title ILIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
 
 end

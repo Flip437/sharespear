@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, path: 'users', controllers: { registrations: 'users/registrations' }
   root 'home#index'
-
+  get '/search' => 'home#search', :as => 'search_page'
   resources :home, only: [:index]
   resources :user do
     resources :dashboard, only: [:index]

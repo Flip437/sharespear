@@ -33,8 +33,8 @@ class Borrow < ApplicationRecord
     @timealert2 = @duration - 2*24
     @timeremaining1 = 7
     @timeremaining2 = 2
-    #UserMailer.borrow_remaining_time_email(self, @timeremaining1).deliver_later(wait_until: @timealert1.hours.from_now)
-    #UserMailer.borrow_remaining_time_email(self, @timeremaining2).deliver_later(wait_until: @timealert2.hours.from_now)
+    UserMailer.borrow_remaining_time_email(self, @timeremaining1).deliver_later(wait_until: @timealert1.hours.from_now)
+    UserMailer.borrow_remaining_time_email(self, @timeremaining2).deliver_later(wait_until: @timealert2.hours.from_now)
     UserMailer.borrow_remaining_time_email(self, @timeremaining1).deliver_now
     UserMailer.borrow_remaining_time_email(self, @timeremaining2).deliver_now
   end
@@ -60,21 +60,15 @@ class Borrow < ApplicationRecord
   end
 
   def user_id_borrow_different_user_id_book_owner
-
     if user_id == BookCopy.find(book_copy_id).user_id
         errors.add(:user_id, "can't borrow your book")
     end
-
   end
 
   def user_cant_borrow_a_book_not_available
-
     if BookCopy.find(book_copy_id).status == false
         errors.add(:user_id, "can't borrow this book it's not available")
     end
-
   end
-
-
 
 end
