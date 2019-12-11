@@ -64,7 +64,49 @@
     <br>
     <br>
 
-    <%= render 'home/recommendation' %>
+    <% if current_user && @length_tab_book_copy>0 %>
 
-  </body>
-</html>
+    <div class="col-md-8 ml-auto mr-auto text-center">
+      <h2 class="title">Autour de vous dans le <%= current_user.zip_code %>.. regardez  </h2>
+
+
+      <ul class="nav nav-pills nav-pills-danger justify-content-center" role="tablist">
+        <li class="nav-item">
+
+            <%= link_to "All",  home_index_path(:category_selected => "All"), class: "nav-link", remote:true %>
+
+        </li>
+        <% if @dropD.length>4 %>
+        <% 3.times { |i| %>
+        <li class="nav-item">
+          <%= link_to @dropD[i],  home_index_path(:category_selected => @dropD[i]), class: "nav-link", remote:true %>
+        </li>
+        <% } %>
+        <div class="dropdown">
+          <button class="btn btn-secondary btn-round dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Autre
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% (@dropD.length-1-3).times { |i| %>
+              <%= link_to @dropD[i+3],  home_index_path(:category_selected => @dropD[i+3]), class: "dropdown-item", remote:true %>
+            <% } %>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <% end %>
+
+    <div id="reco">
+
+      <%= render 'home/recommendation', book_array: @book_copy_array %>
+
+    </div>
+
+    <% end %>
+
+    <% if current_user && @length_tab_book_copy==0 %>
+
+    <h1>No  livres found around you</h1>
+
+
+    <% end %>
