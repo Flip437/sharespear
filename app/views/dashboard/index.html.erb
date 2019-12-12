@@ -5,37 +5,23 @@
 <br>
 <br>
 <div class="container">
-<br />
+</br>
 <center>
   <div class="row">
   <div class="card col" style="width: 33rem;">
     <div class="card-body">
       <center><h3><b>Mes livres prêtés</b></h3></center>
-
-      <ul class="list-group list-group-flush gugu">
+      <ul class="list-group list-group-flush">
         <% @book_copy_not_available_tab.each {|n| %>
-        <li class="list-group-item"><b><%="#{n.title}"%></b> <br /> <%=" #{n.author}"%>
-        <br>
-        <%= link_to "Livre recupere", bookcopy_borrow_path(n.id, Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id,:bouton_value => 2), method:"patch", class: "btn btn-success btn-round btn-small"%>
-        <%= link_to "Demander retour", root_path , class: "btn btn-danger btn-round" %>
-
-        <%= link_to "Detail", bookcopy_borrow_path(n.id,Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id), class: "btn btn-primary btn-round"%>
-
+        <li class="list-group-item"><%="#{n.title}"%> de <%=" #{n.author}"%>
+          <br>
+          <%= link_to "Demander le retour du livre", user_dashboard_path(current_user.id, n.id), method:"patch", class:"btn btn-primary"%>
+          <%= link_to "Detail", bookcopy_borrow_path(n.id,Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id), class:"btn btn-primary"%>
+          <%= link_to "Livre recupere", bookcopy_borrow_path(n.id, Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id,:bouton_value => 2), method:"patch", class:"btn btn-primary"%>
         </li>
         <% } %>
       </ul>
     </div>
-<<<<<<< HEAD
-    <ul class="list-group list-group-flush">
-      <% @book_copy_not_available_tab.each {|n| %>
-      <li class="list-group-item"><%="#{n.title}"%> de <%=" #{n.author}"%>
-      <br>
-      <%= link_to "Demander le retour du livre", user_dashboard_path(current_user.id, n.id), method:"patch", class:"btn btn-primary"%>
-      <%= link_to "Detail", bookcopy_borrow_path(n.id,Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id), class:"btn btn-primary"%>
-      <%= link_to "Livre recupere", bookcopy_borrow_path(n.id, Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id,:bouton_value => 2), method:"patch", class:"btn btn-primary"%>
-=======
->>>>>>> master
-
   </div>
   <div class="col-1">
 
