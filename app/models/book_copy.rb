@@ -33,8 +33,6 @@ class BookCopy < ApplicationRecord
     end
   end
 
-
-
   def newbook(book)
     if book
       @isbn = book[:isbn].gsub(/[.\s]/, '')
@@ -56,34 +54,5 @@ class BookCopy < ApplicationRecord
     end
     return sessiona, sessionb
   end
-
-  def createbook(bookinfos, isbn)
-
-    @book_infos = bookinfos
-    @isbn = isbn
-    puts "$$$$$$$$$$$$"
-    puts @book_infos
-    puts "$$$$$$$$$$$$"
-
-    if @book_infos['imageLinks']
-      photo = @book_infos['imageLinks']['thumbnail']
-    else
-      photo= "http://books.google.com/books/content?id=1IyauAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-    end
-
-    if  @book_infos["categories"]==nil
-      @book_infos["categories"] = "other"
-    else
-      @book_infos["categories"] = @book_infos["categories"][0]
-    end
-
-    if  @book_infos["description"]==nil
-      @book_infos["description"] = "laisse toi tenter"
-    end
-
-    return @book_infos, photo, @isbn
-  
-  end
-
 
 end
