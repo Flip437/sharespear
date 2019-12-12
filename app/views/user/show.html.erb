@@ -5,22 +5,26 @@
             </div>
             <div class="content-center">
                 <div class="photo-container">
-                    <img src="../assets/img/ryan.jpg" alt="">
+                  <% if @user.avatar.attached? %>
+                  <%= image_tag @user.avatar, alt: 'avatar' %>
+                  <% else %>
+                    <img src="../assets/img/emilyz.jpg" alt="">
+                  <% end %>
                 </div>
-                <h3 class="title"><%= User.find(current_user.id).first_name%> <%= User.find(current_user.id).last_name%></h3>
-                <p class="category"><%= User.find(current_user.id).city%></p>
+                <h3 class="title"><%= @user.first_name%> <%= @user.last_name%></h3>
+                <p class="category"><%= @user.city%></p>
                 <div class="content">
                     <div class="social-description">
                         <h2><%= @user_library.count %></h2>
                         <p>Livres</p>
                     </div>
                     <div class="social-description">
-                        <h2><%= @user_library.where(status: false).count %></h2>
-                        <p>Prêté en cours</p>
+                        <h2><%= @user.book_copy_not_available_tab.count %></h2>
+                        <p>Prêts en cours</p>
                     </div>
                     <div class="social-description">
-                        <h2>000</h2>
-                        <p>Emprunté</p>
+                        <h2><%= @user.book_I_borrow_tab.count + @user.book_I_borrow_recup_tab.count %></h2>
+                        <p>Emprunts</p>
                     </div>
                 </div>
             </div>
@@ -29,24 +33,33 @@
           <center>
             <div class="container">
                 <div class="button-container">
-                    <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
-                    <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Twitter">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                </div>
-                <div class="container section">
-                  <%= link_to 'Ajouter un livre', new_bookcopy_path, class: "btn btn-default btn-round btn-lg" %>
+
+                    <% if current_user.id==@user.id %>
+                      <%= link_to 'Ajouter des livres', new_bookcopy_path, class: "btn btn-primary btn-round btn-lg" %>
+                      <%= link_to 'Modifier mes informations', edit_user_path(@user.id), class: "btn btn-default btn-round btn-lg" %>
+                    <% else %>
+
+                      <%= link_to 'Follow', user_path(@user.id), class: "btn btn-primary btn-round btn-lg btn-lg" %>
+
+                    <% end %>
+                    <%= link_to( user_path(@user.id), class: "btn btn-default btn-round btn-lg btn-icon") do %>
+                    <i class="fa fa-twitter"></i>
+                    <%end%>
+                    <%= link_to( user_path(@user.id), class: "btn btn-default btn-round btn-lg btn-icon") do %>
+                    <i class="fa fa-instagram"></i>
+                    <%end%>
 
                 </div>
-                <h3 class="title">About me</h3>
-                <h5 class="description text-center">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
-
+                <h3 class="title">À propos de moi</h3>
+                <h5 class="description text-center"><%= @user.description %></h5>
                   <div class="col-md-12">
-                      <h4 class="title text-center">My Library</h4>
-                      <br>
+                      <h4 class="title text-center">Ma bibliothèque</h4>
+                      <% if current_user.id==@user.id %>
+                      <div class="container section">
+                        <%= link_to 'Ajouter des livres', new_bookcopy_path, class: "btn btn-default btn-round btn-lg" %>
+
+                      </div>
+                      <% end %>
                       <br>
                       <% @user_library.each do |book| %>
                       <div class="card" style="width: 20rem;">
@@ -72,35 +85,4 @@
             </div>
             </center>
         </div>
-
-        <footer class="footer footer-default ">
-            <div class="container">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#creative">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creative">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creative">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creative">
-                                License
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright">
-                </div>
-            </div>
-        </footer>
     </div>
