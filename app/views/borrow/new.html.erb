@@ -1,46 +1,47 @@
-<div class="container">
+<div class="my-auto" style= "background-image: url('https://images.unsplash.com/photo-1517770413964-df8ca61194a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');background-size: cover; height: 100vh;">
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container ">
 
-  <div class="form-control">
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Titre du livre</label>
-      <h2> <%=@book.title %> </h2>
-    </div>
 
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Propriétaire</label>
-      <h2> <%=User.find(@book.user_id).first_name %> <%=User.find(@book.user_id).last_name %> </h2>
+  <div class="card text-center my-auto">
+    <div class="card-body">
+      <h3 class="card-title"><%=@book.title %></h3>
     </div>
+    <div class="container">
+    <%= form_for @borrow, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+    <br>
+      <%= f.label 'message au propriétaire' %><br>
+      <%= f.text_area :message, size: "60x12", class: "form-control" %>
+      <br>
+      <%= f.label 'durée' %>
+      <%= f.select :duree, options_for_select(
+        [
+          ['1 mois', 1],
+          ['2 mois', 2],
+          ['3 mois', 3],
+          ['4 mois', 4],
+          ['5 mois', 5],
+          ['6 mois', 6],
+          ['7 mois', 7],
+          ['8 mois', 8],
+          ['9 mois', 9],
+          ['10 mois', 10],
+          ['11 mois', 11],
+          ['12 mois', 12]
+        ], 2),{}, { class: "form form-group form-control"} %>
+      <%= f.submit "Envoyer" , class: "btn btn-primary btn-round btn-lg"%>
+    <% end %>
+    </div>
+    <div class="card-footer text-muted mb-2">
+      <div class="card-header mt-2">
+        Propriétaire : <%=User.find(@book.user_id).first_name %> <%=User.find(@book.user_id).last_name %>
+      </div>
     </div>
   </div>
-
-  <br><br><br>
-
-  <div class="form-control">
-    <div class="form-group">
-      <label for="inputAddress">Message au Propriétaire</label>
-      <%= form_for @borrow, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-        <%= f.label 'message' %><br>
-        <%= f.text_area :message, size: "60x12", class: "form-control" %>
-        <%= f.label 'durée' %>
-        <%= f.select :duree, options_for_select(
-          [
-            ['1 mois', 1],
-            ['2 mois', 2],
-            ['3 mois', 3],
-            ['4 mois', 4],
-            ['5 mois', 5],
-            ['6 mois', 6],
-            ['7 mois', 7],
-            ['8 mois', 8],
-            ['9 mois', 9],
-            ['10 mois', 10],
-            ['11 mois', 11],
-            ['12 mois', 12]
-          ], 2),{}, { class: "form form-group form-control"} %>
-        <%= f.submit "Create" , class: "btn btn-primary"%>
-      <% end %>
-    </div>
-  </div>
+</div>
 
 </div>

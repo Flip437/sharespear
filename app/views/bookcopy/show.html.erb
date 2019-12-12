@@ -1,26 +1,67 @@
+<div class="card card-background" style="background-image: url('https://images.unsplash.com/photo-1517770413964-df8ca61194a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')">
 
-<div class="container">
-  <div class="card text-center card-pricing">
-    <div class="card-body">
-      <div class="icon icon-primary">
-        <%= image_tag(@book.photo_link) %>
+  <div class="card-body">
+    <div class="card-title">
+      <h3>"Les seuls livres que j'ai dans ma bibliothèque sont des livres qu'on m'a prêtés.."</h3>
+    </div>
+  <div class="card-footer text-left">
+
+      <div class="stats-link pull-right">
+        <a href="#pablo" class="footer-link">sharespeare.com</a>
       </div>
-
-      <h4 class="card-title"><%= @book.title %></h4>
-      <p class="card-text"><%= @book.author %></p>
-      <p class="card-text"><%= @book.category %></p>
-      <div class="card">
-        <div class="card-body">
-          <blockquote class="blockquote blockquote-primary mb-0">
-            <p><%= @book.description %></p>
-          </blockquote>
-        </div>
-      </div>
-
-      <% if @book.user_id==current_user.id %>
-      <button type="button" class="btn btn-primary"><%= link_to "Supprimer", bookcopy_path(@book.id), method:"delete"%></button>
-      <% end %>
-
     </div>
   </div>
+</div>
+
+
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 text-center my-auto">
+                <%= image_tag(@book.photo_link, class: "img-fluid") %>
+                <br>
+                <br>
+                <% if @book.status==false %>
+                  <span class="badge badge-warning">Emprenté</span>
+                <% end %>
+                <% if @book.status==true %>
+                  <span class="badge badge-success">Disponible</span>
+                <% end %>
+            </div>
+            <div class="col-md-6 ml-auto mr-auto">
+                <h2 class="title"> <%= @book.title %> </h2>
+                <h5 class="category"><%= @book.author %></h5>
+                <h6 class="main-price"><%= @book.category %></h6>
+
+                <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
+                  <div class="card card-plain">
+                    <div class="card-header" role="tab" id="headingOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Description
+                            <i class="now-ui-icons arrows-1_minimal-down"></i>
+                        </a>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="card-body">
+                        <p><%= @book.description %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                <% if @book.user_id==current_user.id %>
+                  <%= link_to "Supprimer", bookcopy_path(@book.id), method:"delete", class:"btn btn-primary"%>
+
+                <% else %>
+                <% if @book.status==true %>
+                  <%= link_to "Emprunter", new_bookcopy_borrow_path(@book.id), class:"btn btn-primary btn-round btn-lg"%>
+                <% end %>
+              <% end %>
+              </div>
+            </div>
+
+        </div>
+    </div>
 </div>
