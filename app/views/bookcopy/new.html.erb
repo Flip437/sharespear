@@ -1,4 +1,10 @@
-<h1> Ajouter un livre </h1>
+<div class="my-auto" style= "background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2053&q=80');background-size: cover; height: 100vh;">
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
 
 <div class="card bg-light-gray" id='book-form'>
   <div class="card-header text-center">
@@ -10,16 +16,18 @@
   <%= form_for( @new_book_copy, url: new_bookcopy_path, html: {method: "get"}, remote: true) do |f| %>
 
   <div class="form-group col-md-6">
-    <%= f.label 'ISDN' %><br>
+    <%= f.label ' ' %><br>
     <%= f.number_field :isbn, class: "form-control text-center"%>
   </div>
 
 
-  <%= f.submit "GO add ISDN" , class: "btn btn-primary text-center"%>
+  <%= f.submit "GO" , class: "btn btn-primary btn-round text-center"%>
   <% end %>
   </center>
 </div>
 
 <div id="book-receiver">
 
+</div>
+</div>
 </div>

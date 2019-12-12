@@ -50,6 +50,11 @@
   
 }
 
+.sisu_nc {
+  display: flex;
+  justify-content: space-between;
+}
+
   
   
   
