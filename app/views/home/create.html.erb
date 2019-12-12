@@ -1,9 +1,9 @@
 <div class="card text-center">
 
   <div class="card-header mt-2">
-    Vous venez de donner 
+    Vous venez de donner <strong> <%=@amount / 100%> € </strong>!
   </div>
-
+  
   <div class="card-body">
     <h4 class="card-title">L'équipe de Sharespeare vous remerice :)</h4> 
     <%= form_tag home_index_path, method: :get do %>

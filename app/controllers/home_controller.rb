@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   
   def create
     # Amount in cents
-    @amount = params[:montant]
+    @amount = params[:montant].to_i * 100
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
       source: params[:stripeToken],
