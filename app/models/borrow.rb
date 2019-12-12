@@ -24,7 +24,7 @@ class Borrow < ApplicationRecord
   private
 
   def borrow_asking
-    UserMailer.borrow_asking_email(self).deliver_now
+    #UserMailer.borrow_asking_email(self).deliver_now
   end
 
   def borrow_time_remaining
@@ -33,8 +33,8 @@ class Borrow < ApplicationRecord
     @timeremaining2 = 2
     @timealert1 = @duration - @timeremaining1*24
     @timealert2 = @duration - @timeremaining2*24
-    UserMailer.borrow_remaining_time_email(self, @timeremaining1).deliver_later(wait_until: @timealert1.hours.from_now)
-    UserMailer.borrow_remaining_time_email(self, @timeremaining2).deliver_later(wait_until: @timealert2.hours.from_now)
+    #UserMailer.borrow_remaining_time_email(self, @timeremaining1).deliver_later(wait_until: @timealert1.hours.from_now)
+    #UserMailer.borrow_remaining_time_email(self, @timeremaining2).deliver_later(wait_until: @timealert2.hours.from_now)
   end
 
   def end_date_after_start_date
