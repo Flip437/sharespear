@@ -1,0 +1,40 @@
+<div class=“my-auto” style= “background-image: url(’https://images.unsplash.com/photo-1517770413964-df8ca61194a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');background-size: cover; height: 100vh;“>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="container ">
+        <div class="card text-center my-auto">
+
+            <div class="card-body">
+            <h3 class="card-title">Sharespeare est une application gratuite qui fonctionne via un système de dons.</h3>
+            <h4 class="card-title">Vous pouvez si vous le souhaitez donner pour la faire vivre.</h2>
+            </br></br></br>
+                <%= form_tag home_index_path, method: :post do %>
+                    <article>
+                        <% if flash[:error].present? %>
+                            <div id="error_explanation">
+                            <p><%= flash[:error] %></p>
+                            </div>
+                        <% end %>
+                        <%= label_tag(:montant, 'Votre don:') %>
+                        <div class="form-group mx-sm-3">
+                            <%= text_field_tag(:montant, "", size: "24x6", class:"form-control") %>
+                        </div>
+                    </article>
+                    <article>
+                        <%= hidden_field_tag(:stripeToken) %>
+                    </article>               
+                
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                            data-description="A month's subscription"
+                            data-amount="<%=params[:montant]%>"
+                            data-locale="auto"></script>
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+</div>
