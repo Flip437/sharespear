@@ -1,23 +1,11 @@
 class HomeController < ApplicationController
 
   def new
-    puts "IN NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
-    puts "AMOUNTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
-    @amount = params[:montant]
-    puts @amount
   end
   
   def create
-    puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-    puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-    puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-    puts params[:montant]
     # Amount in cents
     @amount = params[:montant]
-    puts "MONTANTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
-    puts "MONTANTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
-    puts "MONTANTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
-    puts @amount
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
       source: params[:stripeToken],
