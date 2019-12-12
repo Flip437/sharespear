@@ -1,3 +1,0 @@
-class MailbackController < ApplicationController
-
-end
