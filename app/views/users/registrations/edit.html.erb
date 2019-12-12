@@ -1,17 +1,16 @@
-
 <h1></h1>
 <div class="container">
 
   <div class="card text-center">
     <div class="card-body">
       <h4 class="card-title">Editer votre mot de passe</h4>
-
+      <center>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, class: "form-control gnark", autofocus: true, autocomplete: "email" %></span>
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -19,32 +18,33 @@
         <% end %>
         <br />
         <div class="field">
-          <%= f.label :password %> <i>(Laissez le champs vide si vous ne voulez pas le changer)</i>
+          <%= f.label :password , "Nouveau mot de passe"%> <i>(Laissez le champs vide si vous ne voulez pas le changer)</i>
           <br />
           <% if @minimum_password_length %>
-            <em><%= @minimum_password_length %> characters minimum</em>
+            <em><%= @minimum_password_length %> caratères minimum</em>
           <% end %>
-          <%= f.password_field :password, class: "form-control", autocomplete: "new-password" %>
+          <%= f.password_field :password,  class: "form-control gnark", autocomplete: "new-password" %>
         </div>
         <br />
         <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
+          <%= f.label :password_confirmation , "Confirmer le mot de passe"%><br />
+          <%= f.password_field :password_confirmation, class: "form-control gnark", autocomplete: "new-password" %>
         </div>
         <br />
         <div class="field">
-          <%= f.label :current_password %> <i>(Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications)</i><br />
-          <%= f.password_field :current_password, class: "form-control", autocomplete: "current-password" %>
+          <%= f.label :current_password , "Mot de passe actuel" %> <i>(Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications)</i><br />
+          <%= f.password_field :current_password, class: "form-control gnark", autocomplete: "current-password" %>
         </div>
-
+        <br />
         <div class="actions">
           <%= f.submit "Modifier", class:"btn btn-success btn-round" %>
         </div>
       <% end %>
+      <br />
+      </center>
 
 
-
-      <p>Vous voulez supprimer votre Compte ? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger" %></p>
+      <p>Vous voulez supprimer votre Compte ? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger" %></p>
 
       <%= link_to "Retour", :back %>
 

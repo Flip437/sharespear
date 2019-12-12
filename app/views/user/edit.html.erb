@@ -7,7 +7,7 @@
       <div class="content-center">
         <div class="photo-container">
           <%if @user.avatar.attached?%>
-          <img style="max-height: 100px;"
+          <img class="boo"
           <%= image_tag @user.avatar, alt: 'avatar' %>
           <%else%>
           <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
@@ -16,17 +16,17 @@
       </div>
       <br /><br />
       <%= form_tag user_avatars_path(@user), multipart: true do %>
-        <%= file_field_tag :avatar , class: "btn btn-success btn-sm btn-round"%>
+        <%= file_field_tag :avatar %>
         <br />
         <%= submit_tag "mettre à jour" , class: "btn btn-success btn-sm btn-round"%>
       <% end %>
 
       <h3 class="card-title"><%= User.find(current_user.id).first_name %> <%= User.find(current_user.id).last_name %></h3>
-      <center><div class="row">
+      <div class="row">
       <div class="col-4">
       </div>
-      <div class="col-4">
-      <p class="card-description" style="background-color: black;">
+      <div class="col-4 ska">
+      <p class="card-description dd">
         Email : <%= User.find(current_user.id).email %>
         <br>
         Numero : <%= User.find(current_user.id).phone %>
@@ -41,75 +41,76 @@
       </div>
       <div class="col-4">
       </div>
-      </div></center>
+      </div>
       <br />
         <%= form_for(@user, url: user_path(@user.id), html: {method: "patch"}) do |f| %>
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6 kak">
             <%= f.label 'Email' %><br>
-            <%= f.email_field :email, class: "form-control"%>
+            <%= f.email_field :email, class: "form-control sku"%>
           </div>
-          <div class="form-group col-md-6">
-            <%= f.label 'Password' %><br>
-            <%= f.password_field :password, class: "form-control"%>
+          <div class="form-group col-md-6 kak">
+            <%= f.label 'Mot de passe' %><br>
+            <%= f.password_field :password, class: "form-control sku"%>
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <%= f.label 'Prenom' %><br>
-            <%= f.text_field :first_name, class: "form-control"%>
+          <div class="form-group col-md-6 kak">
+            <%= f.label 'Prénom' %><br>
+            <%= f.text_field :first_name, class: "form-control sku"%>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6 kak">
             <%= f.label 'Nom' %><br>
-            <%= f.text_field :last_name, class: "form-control"%>
+            <%= f.text_field :last_name, class: "form-control sku"%>
           </div>
 
         </div>
-        <div class="form-group">
+        <div class="form-group descript">
           <%= f.label 'Description' %><br>
           <%= f.text_area :description, class: "form-control"%>
 
         </div>
         <div class="form-group col-md-12">
-          <%= f.label 'Phone' %><br>
-          <%= f.text_field :phone, class: "form-control"%>
+          <%= f.label 'Téléphone' %><br>
+          <%= f.text_field :phone, class: "form-control sku"%>
 
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= f.label 'Ville' %>
+            <br>
             <%= f.select :city, options_for_select(
               [
                 ['Paris'],
                 ['Lyon'],
                 ['Bordeaux'],
 
-              ]),{}, { class: "form form-group form-control"} %>
+              ]),{}, { class: "form form-group form-control sku"} %>
           </div>
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-6">
             <%= f.label 'Code Postal' %><br>
-            <%= f.number_field :zip_code, class: "form-control"%>
+            <%= f.number_field :zip_code, class: "form-control sku"%>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= f.label 'Adresse' %><br>
-            <%= f.text_field :street, class: "form-control"%>
+            <%= f.text_field :street, class: "form-control sku"%>
           </div>
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-6">
             <%= f.label 'Numero de rue' %><br>
-            <%= f.text_field :street_nb, class: "form-control"%>
+            <%= f.text_field :street_nb, class: "form-control sku"%>
           </div>
         </div>
         <a href="<%= edit_user_registration_path %>" class="btn btn-neutral">Modif password</a>
-        <%= f.submit "Modifier les informations" , class: "btn btn-success"%>
+        <%= f.submit "Modifier les informations" , class: "btn btn-success btn-round"%>
 
         <% end %>
     </div>
   </div>
   <div class="container-fluid">
             <div class="row">
-                <div class="col-12" style="background-color:black;"><center><h6 style="color:white"> Votre Avatar</h6></center></div>
+                <div class="col-2 zasta" style="background-color:black;"><center><h6 style="color:white"> Votre Avatar</h6></center></div>
             </div>
             </div>
             <br>
@@ -117,7 +118,7 @@
   <div class="content-center">
         <div class="photo-container">
           <%if @user.avatar.attached?%>
-          <img style="max-height: 50px;"
+          <img class="bii"
           <%= image_tag @user.avatar, alt: 'avatar' %>
           <%else%>
           <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
