@@ -26,7 +26,7 @@
       <h4 class="card-title"><%= @book_to_show.title %></h4>
       <p class="card-text">Appartennant à : <%= @user_preteur.first_name %> <%= @user_preteur.last_name %></p>
       <p class="card-text">Demandé par : <%= @user_emprunteur.first_name %> <%= @user_emprunteur.last_name %></p>
-      <p class="card-text">Du : <%= @borrow_to_show.start_date.strftime('%b %d %Y')%> Au : <%= @borrow_to_show.end_date.strftime('%b %d %Y')%> </p>
+      <p class="card-text">du <%= @borrow_to_show.start_date.strftime('%d %b  %Y')%> au <%= @borrow_to_show.end_date.strftime('%d %b  %Y')%> </p>
       <div class="card">
         <div class="card-body">
           <blockquote class="blockquote blockquote-primary mb-0">
@@ -42,9 +42,7 @@
       <% end %>
 
     </div>
-    <div class="card-footer text-muted mb-2">
-      Read more to Share more
-    </div>
+
   </div>
 
   <% if @borrow_to_show.borrow_status==0 && current_user.id== @user_preteur.id %>
@@ -59,9 +57,8 @@
       <ul class="card-description">
         <li>email : <%= @user_emprunteur.email %></li>
         <li>numero: <%= @user_emprunteur.phone %></li>
-        <li>adresse: <%= @user_emprunteur.city %> <%= @user_emprunteur.zip_code %> <%= @user_preteur.street %></li>
+        <li>rue: <%= @user_emprunteur.city %> <%= @user_emprunteur.zip_code %> <%= @user_preteur.street %></li>
       </ul>
-      <a href="#pablo" class="btn btn-primary btn-round">Send automatic email with my contact</a>
     </div>
   </div>
   <% end %>
@@ -79,7 +76,7 @@
       <ul class="card-description">
         <li>email : <%= @user_emprunteur.email %></li>
         <li>numero: <%= @user_emprunteur.phone %></li>
-        <li>adresse: <%= @user_emprunteur.city %> <%= @user_emprunteur.zip_code %>  <%= @user_preteur.street %></li>
+        <li>rue: <%= @user_emprunteur.city %> <%= @user_emprunteur.zip_code %>  <%= @user_preteur.street %></li>
       </ul>
       <a href="#pablo" class="btn btn-primary btn-round">Send automatic email with my contact</a>
     </div>
@@ -98,7 +95,7 @@
       <ul class="card-description">
         <li>email: <%= @user_emprunteur.email %></li>
         <li>numero: <%= @user_emprunteur.phone %></li>
-        <li>adresse: <%= @user_emprunteur.city %> <%= @user_emprunteur.zip_code %>  <%= @user_preteur.street %></li>
+        <li>rue: <%= @user_preteur.street %> <%= @user_emprunteur.city %> <%= @user_emprunteur.zip_code %>  </li>
       </ul>
       <a href="#pablo" class="btn btn-primary btn-round">Send automatic email with my contact</a>
     </div>
