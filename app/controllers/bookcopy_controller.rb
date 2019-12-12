@@ -30,9 +30,12 @@ class BookcopyController < ApplicationController
           puts "$$$$$OOOOOOO$$$$"
           @book_infos = JSON.load(open(url))['items'][0]['volumeInfo']
           puts @book_infos
-          if @book_infos["description"].length > 400
-              @book_infos["description"]=@book_infos["description"].slice(1..300)
+          if @book_infos["description"]
+            if @book_infos["description"].length > 400
+                @book_infos["description"]=@book_infos["description"].slice(1..300)
+            end
           end
+
             puts "$$$$$O11OOO$$$$"
           puts  @book_infos
           session[:book_infos] = @book_infos
@@ -65,7 +68,7 @@ class BookcopyController < ApplicationController
       end
 
       if  @book_infos["description"]==nil
-        description = "no description"
+        description = "laisse toi tenter"
       else
         description = @book_infos["description"]
       end
