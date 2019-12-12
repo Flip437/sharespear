@@ -29,6 +29,24 @@ User.destroy_all
         street_nb: Faker::Address.building_number
 
     )
+    a =rand(5)
+    if a == 1
+        user.avatar.attach(io: File.open('vendor/img/olivia.jpg'), filename: 'emilyz.jpg')
+    end
+    if a == 2
+      user.avatar.attach(io: File.open('vendor/img/emily.jpg'), filename: 'emilyz.jpg')
+    end
+    if a == 3
+      user.avatar.attach(io: File.open('vendor/img/james.jpg'), filename: 'emilyz.jpg')
+    end
+    if a == 4
+      user.avatar.attach(io: File.open('vendor/img/marie.jpg'), filename: 'emilyz.jpg')
+    end
+    if a == 5
+      user.avatar.attach(io: File.open('vendor/img/usher.jpg'), filename: 'emilyz.jpg')
+    end
+
+
     puts "User #{index} created"
 end
 

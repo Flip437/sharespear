@@ -11,7 +11,8 @@ class UserController < ApplicationController
   end
 
   def show
-    @user_library = BookCopy.where(user_id:current_user)
+    @user = User.find(params[:id])
+    @user_library = BookCopy.where(user_id:@user.id)
   end
 
   def update
