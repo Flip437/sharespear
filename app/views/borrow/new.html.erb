@@ -3,13 +3,15 @@
   <div class="form-control">
     <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Titre du livre</label>
-      <h2> <%=@book.title %> </h2>
+    <br /><br />
+      <center><label for="inputEmail4">Titre du livre</label>
+      <h2> <%=@book.title %> </h2></center>
     </div>
 
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Propriétaire</label>
-      <h2> <%=User.find(@book.user_id).first_name %> <%=User.find(@book.user_id).last_name %> </h2>
+    <br /><br />
+      <center><label for="inputPassword4">Propriétaire</label>
+      <h2> <%=User.find(@book.user_id).first_name %> <%=User.find(@book.user_id).last_name %> </h2></center>
     </div>
     </div>
   </div>
@@ -18,11 +20,11 @@
 
   <div class="form-control">
     <div class="form-group">
-      <label for="inputAddress">Message au Propriétaire</label>
-      <%= form_for @borrow, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+      <center><label for="inputAddress">Message au Propriétaire</label>
+      <%= form_for @borrow, url: {action: "create"}, html: {class: "nifty_form descript"} do |f| %>
         <%= f.label 'message' %><br>
         <%= f.text_area :message, size: "60x12", class: "form-control" %>
-        <%= f.label 'durée' %>
+        <br /><%= f.label 'durée' %>
         <%= f.select :duree, options_for_select(
           [
             ['1 mois', 1],
@@ -38,8 +40,9 @@
             ['11 mois', 11],
             ['12 mois', 12]
           ], 2),{}, { class: "form form-group form-control"} %>
-        <%= f.submit "Create" , class: "btn btn-primary"%>
+        <%= f.submit "Demander l'Emprunt" , class: "btn btn-primary"%>
       <% end %>
+      </center>
     </div>
   </div>
 
