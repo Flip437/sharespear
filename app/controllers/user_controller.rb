@@ -27,6 +27,7 @@ class UserController < ApplicationController
       user_to_change.update(zip_code: params[:user][:zip_code])
       user_to_change.update(street: params[:user][:street])
       user_to_change.update(street_nb: params[:user][:street_nb])
+      user_to_change.update(phone: params[:user][:phone])
 
       flash[:success] = "updated"
 
