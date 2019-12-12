@@ -7,10 +7,10 @@ class User < ApplicationRecord
 
   has_many :book_copies
   has_many :borrows
-    has_one_attached :avatar
+  has_one_attached :avatar
 
   def welcome_send
-    UserMailer.welcome_email(self).deliver_now
+    #UserMailer.welcome_email(self).deliver_now
   end
 
   def book_copy_not_available_tab
