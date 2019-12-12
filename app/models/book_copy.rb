@@ -32,10 +32,5 @@ class BookCopy < ApplicationRecord
       all
     end
   end
-<<<<<<< HEAD
-  
-end
-=======
 
 end
->>>>>>> master
