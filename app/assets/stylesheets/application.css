@@ -20,6 +20,8 @@
  *= require homepage
  *=require password_change
  *=require edit_user
+ *=require dashboardo
+
 
  *= require navbar
  *= require_tree .

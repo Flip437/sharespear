@@ -22,7 +22,9 @@
 }
 .bii{
     clip-path: circle(32% at 50% 50%);
-    max-height: 50px;
+    max-height: 120px;
+    margin-left: 40%;
+    margin-right: 40%;
 }
 
 .custom-file-upload {
