@@ -40,7 +40,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
-  gem 'letter_opener'
+  gem "letter_opener"
+  gem 'sucker_punch'
 end
 
 group :development do
@@ -74,3 +75,5 @@ gem 'stripe'
 gem 'rename', '~> 1.0', '>= 1.0.6'
 gem 'mailjet', '~> 1.5', '>= 1.5.4'
 gem 'nokogiri'
+gem 'better_errors'
+gem 'binding_of_caller'
