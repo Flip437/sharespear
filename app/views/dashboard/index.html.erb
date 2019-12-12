@@ -12,9 +12,9 @@
       <% @book_copy_not_available_tab.each {|n| %>
       <li class="list-group-item"><%="#{n.title}"%> de <%=" #{n.author}"%>
       <br>
-      <button type="button" class="btn btn-primary">Demander retour</button>
-      <button type="button" class="btn btn-primary" ><%= link_to "Detail", bookcopy_borrow_path(n.id,Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id)%></button>
-      <button type="button" class="btn btn-primary"><%= link_to "Livre recupere", bookcopy_borrow_path(n.id, Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id,:bouton_value => 2), method:"patch"%></button>
+      <%= link_to "Demander le retour du livre", user_dashboard_path(current_user.id, n.id), method:"patch", class:"btn btn-primary"%>
+      <%= link_to "Detail", bookcopy_borrow_path(n.id,Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id), class:"btn btn-primary"%>
+      <%= link_to "Livre recupere", bookcopy_borrow_path(n.id, Borrow.where(["book_copy_id = ? and borrow_status = ?",n.id, 2]).last.id,:bouton_value => 2), method:"patch", class:"btn btn-primary"%>
 
       </li>
       <% } %>

@@ -39,7 +39,7 @@ class BorrowController < ApplicationController
 
         borrow_to_update = Borrow.find(params[:id])
         borrow_to_update.update(borrow_status:2)
-        #UserMailer.borrow_accepted_email(borrow_to_update).deliver_now
+        UserMailer.borrow_accepted_email(borrow_to_update).deliver_now
         book_copy_status_update = BookCopy.find(params[:bookcopy_id])
         book_copy_status_update.update(status: false)
 

@@ -28,5 +28,5 @@ class BookCopy < ApplicationRecord
       all
     end
   end
-
+  
 end
