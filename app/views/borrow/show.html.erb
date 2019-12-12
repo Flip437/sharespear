@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Emprunt</h1>
+  <center><h1>Emprunt</h1></center>
   <div class="card text-center card-pricing">
     <div class="card-header mt-2">
       <% if @borrow_to_show.borrow_status==0 %>
@@ -46,7 +46,7 @@
   </div>
 
   <% if @borrow_to_show.borrow_status==0 && current_user.id== @user_preteur.id %>
-  <h1>Information de contact</h1>
+  <center><h1>Information de contact</h1></center>
   <div class="card card-pricing">
     <div class="card-body">
       <h6 class="category">Get in touch</h6>
@@ -66,7 +66,7 @@
 
 
   <% if @borrow_to_show.borrow_status==2 && current_user.id== @user_preteur.id %>
-  <h1>Information de contact</h1>
+  <center><h1>Information de contact</h1></center>
   <div class="card card-pricing">
     <div class="card-body">
       <h6 class="category">Get in touch</h6>
@@ -85,7 +85,7 @@
   <% end %>
 
   <% if @borrow_to_show.borrow_status==3 && current_user.id== @user_preteur.id %>
-  <h1>Information de contact</h1>
+  <center><h1>Information de contact</h1></center>
   <div class="card card-pricing">
     <div class="card-body">
       <h6 class="category">Get in touch</h6>
@@ -105,7 +105,7 @@
 
 
   <% if @borrow_to_show.borrow_status==2 && current_user.id== @user_emprunteur.id %>
-  <h1>Information de contact</h1>
+  <center><h1>Information de contact</h1></center>
   <div class="card card-pricing">
     <div class="card-body">
       <h6 class="category">Get in touch</h6>
@@ -125,7 +125,7 @@
 
 
   <% if @borrow_to_show.borrow_status==3 && current_user.id== @user_emprunteur.id %>
-  <h1>Information de contact</h1>
+  <center><h1>Information de contact</h1></center>
   <div class="card card-pricing">
     <div class="card-body">
       <h6 class="category">Get in touch</h6>
@@ -142,9 +142,4 @@
     </div>
   </div>
   <% end %>
-
-
-
-
-
 </div>
