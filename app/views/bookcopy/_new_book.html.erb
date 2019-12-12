@@ -16,9 +16,10 @@
 				<%= image_tag(@book_infos['imageLinks']['thumbnail']) if @book_infos['imageLinks'] %>
 				<br>
 				<p>Date : <%= @book_infos["publishedDate"] %></p>
+				<p>Isbn : <%= @isbn %></p>
 
 
-			<%= link_to "Ajouter",  bookcopy_index_path(@book_infos), :method=> :post, class: "btn btn-primary btn-round"%>
+			<%= link_to "Ajouter",  bookcopy_index_path(), :method=> :post, class: "btn btn-primary btn-round"%>
 
 			<% end %>
 		</div>
