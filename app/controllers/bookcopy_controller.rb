@@ -1,47 +1,23 @@
-
 require 'nokogiri'
 require 'open-uri'
 class BookcopyController < ApplicationController
-    before_action :authenticate_user!
+before_action :authenticate_user!
 
-    def show
-        puts params
-        @book = BookCopy.find(params[:id])
-        @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
-    end
+  def show
+      puts params
+      @book = BookCopy.find(params[:id])
+      @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
+  end
 
-    def new
-      @new_book_copy = BookCopy.new
-      puts params.inspect
-
-      if params[:book_copy]
-
-        puts params.inspect
-        @isbn = params[:book_copy][:isbn].gsub(/[.\s]/, '')
-        puts @isbn
-
-        url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + @isbn.to_s
-        doc=JSON.load(open(url))
-
-        if doc["totalItems"]==0
-          puts "$$$$$OOOOOOO$$$$"
-          @book_infos = -1
-        else
-          puts "$$$$$OOOOOOO$$$$"
-          @book_infos = JSON.load(open(url))['items'][0]['volumeInfo']
-          puts @book_infos
-          if @book_infos["description"]
-            if @book_infos["description"].length > 400
-                @book_infos["description"]=@book_infos["description"].slice(1..300)
-            end
-          end
-
-            puts "$$$$$O11OOO$$$$"
-          puts  @book_infos
-          session[:book_infos] = @book_infos
-          session[:isbn] = @isbn
-
-        end
+  def new
+    puts "SESSIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+    puts session[:book_infos]
+    puts params[:book_copy]
+    puts "SESSIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+    @new_book_copy = BookCopy.new
+    @book_infos = @new_book_copy.newbook(params[:book_copy])[0]
+    @isbn = @new_book_copy.newbook(params[:book_copy])[1]
+  end
 
       end
 
@@ -94,18 +70,16 @@ class BookcopyController < ApplicationController
 
     end
 
-    def destroy
 
-      book = BookCopy.find(params[:id])
-
-      if book.delete
-        flash[:success] = "Livre supprimé :)"
-          redirect_to user_path(current_user.id)
-      else
-        flash[:error] = "Erreur :("
-          redirect_to user_path(current_user.id)
-      end
-
+  def destroy
+    book = BookCopy.find(params[:id])
+    if book.delete
+      flash[:success] = "Livre supprimé :)"
+        redirect_to user_path(current_user.id)
+    else
+      flash[:error] = "Erreur :("
+        redirect_to user_path(current_user.id)
     end
+  end
 
 end
