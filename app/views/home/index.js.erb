@@ -1,2 +1,4 @@
-$('#books-receiver').text('')
-$("<%= j render 'bookcopies', books: @book_copy_array %>").prependTo($('#books-receiver')).hide().fadeIn(500);
+
+$('#reco').text('')
+
+$("<%= j render 'recommendation', book_array: @book_copy_filteredv2 %>").prependTo($('#reco')).hide().fadeIn(500);

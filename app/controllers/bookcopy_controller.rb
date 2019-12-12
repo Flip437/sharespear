@@ -8,11 +8,9 @@ class BookcopyController < ApplicationController
         puts params
         @book = BookCopy.find(params[:id])
         @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
-
     end
 
     def new
-
       @new_book_copy = BookCopy.new
 
       if params[:book_copy]
@@ -24,13 +22,10 @@ class BookcopyController < ApplicationController
         url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + @isbn.to_s
         doc=JSON.load(open(url))
 
-
         if doc["totalItems"]==0
           @book_infos = -1
         else
-
           @book_infos = JSON.load(open(url))['items'][0]['volumeInfo']
-
         end
 
       end
@@ -91,11 +86,6 @@ class BookcopyController < ApplicationController
           redirect_to user_path(current_user.id)
       end
 
-
-
-
     end
-
-
 
 end
