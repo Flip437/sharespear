@@ -1,87 +1,43 @@
-
 require 'nokogiri'
 require 'open-uri'
 class BookcopyController < ApplicationController
-    before_action :authenticate_user!
+before_action :authenticate_user!
 
-    def show
-        puts params
-        @book = BookCopy.find(params[:id])
-        @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
-    end
+  def show
+      puts params
+      @book = BookCopy.find(params[:id])
+      @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
+  end
 
-    def new
-      @new_book_copy = BookCopy.new
-      puts params.inspect
-
-      if params[:book_copy]
-
-        puts params.inspect
-        @isbn = params[:book_copy][:isbn].gsub(/[.\s]/, '')
-        puts @isbn
-
-        url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + @isbn.to_s
-        doc=JSON.load(open(url))
-
-        if doc["totalItems"]==0
-          puts "$$$$$OOOOOOO$$$$"
-          @book_infos = -1
-        else
-          puts "$$$$$OOOOOOO$$$$"
-          @book_infos = JSON.load(open(url))['items'][0]['volumeInfo']
-          puts @book_infos
-          if @book_infos["description"]
-            if @book_infos["description"].length > 400
-                @book_infos["description"]=@book_infos["description"].slice(1..300)
-            end
-          end
-
-            puts "$$$$$O11OOO$$$$"
-          puts  @book_infos
-          session[:book_infos] = @book_infos
-          session[:isbn] = @isbn
-
-        end
-
-      end
-
-    end
+  def new
+    puts "SESSIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+    puts session[:book_infos]
+    puts params
+    puts "SESSIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+    @new_book_copy = BookCopy.new
+    @book_infos = @new_book_copy.newbook(params[:book_copy])[0]
+    @isbn = @new_book_copy.newbook(params[:book_copy])[1]
+  end
 
     def create
-
-      @book_infos = session[:book_infos]
-      @isbn = session[:isbn]
-      puts "$$$$$$$$$$$$"
+      @new_book_copy = BookCopy.new
+      puts 'IN CONTROLEERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR'
+      puts session
+      puts session
+      puts 'IN CONTROLEERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR'
+      @book_infos = @new_book_copy.createbook(session[:book_infos], session[:isbn])
       puts @book_infos
-      puts "$$$$$$$$$$$$"
 
-      if @book_infos['imageLinks']
-        photo = @book_infos['imageLinks']['thumbnail']
-      else
-        photo= "http://books.google.com/books/content?id=1IyauAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-      end
-
-      if  @book_infos["categories"]==nil
-        category = "other"
-      else
-        category = @book_infos["categories"][0]
-      end
-
-      if  @book_infos["description"]==nil
-        description = "laisse toi tenter"
-      else
-        description = @book_infos["description"]
-      end
 
       @new_book_copy = BookCopy.create(
-        title:  @book_infos["title"],
-        author: @book_infos["authors"][0],
-        description: description,
+        title:  @book_infos[0]["title"],
+        author: @book_infos[0]["authors"][0],
+        description: @book_infos[0]["description"],
         status: true,
-        category: category,
+        category: @book_infos[0]["categories"],
         user_id: current_user.id,
-        photo_link: photo,
-        isbn: @isbn
+        photo_link: @book_infos[1],
+        isbn: @book_infos[2]
       )
 
       if @new_book_copy
@@ -94,18 +50,15 @@ class BookcopyController < ApplicationController
 
     end
 
-    def destroy
-
-      book = BookCopy.find(params[:id])
-
-      if book.delete
-        flash[:success] = "Livre supprimé :)"
-          redirect_to user_path(current_user.id)
-      else
-        flash[:error] = "Erreur :("
-          redirect_to user_path(current_user.id)
-      end
-
+  def destroy
+    book = BookCopy.find(params[:id])
+    if book.delete
+      flash[:success] = "Livre supprimé :)"
+        redirect_to user_path(current_user.id)
+    else
+      flash[:error] = "Erreur :("
+        redirect_to user_path(current_user.id)
     end
+  end
 
 end
