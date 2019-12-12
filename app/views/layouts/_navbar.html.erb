@@ -25,7 +25,6 @@
         <li class="nav-item active">
           <%= link_to "Profil", user_path(current_user.id), class: "nav-link" %><span class="sr-only">(current)</span>
         </li>
-<<<<<<< HEAD
       </ul>
   
         <ul class="navbar-nav ml-auto">
@@ -49,26 +48,6 @@
         
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown dropdown-menu-right">
-=======
-        <li class="nav-item dropdown">
-          <%= link_to "Edit / Sign Out", user_path(current_user.id), class: "nav-link", class: "nav-link dropdown-toggle", href: "#", id: "navbarDropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: true, expanded: false } %><span class="sr-only">(current)</span>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to edit_user_path(current_user.id) do %>
-            <span class="dropdown-item">Edit Profil</span>
-            <% end %>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-            <span class="dropdown-item">Sign Out</span>
-            <% end %>
-          </div>
-        </li>
-
-
-<!-- SI UTILISATEUR NON CONNECTÉ, ON AFFICHE UNE AUTRE DROPDOWN -->
-        <% else %>
-
-
-              <li class="nav-item dropdown">
->>>>>>> master
                 <%= link_to "Sign In / Sign Up", root_path, class: "nav-link", class: "nav-link dropdown-toggle", href: "#", id: "navbarDropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: true, expanded: false }
 
               %><span class="sr-only">(current)</span>
@@ -81,20 +60,11 @@
                 <%= link_to new_user_registration_path do %>
                 <span class="nav-link">Sign Up</span>
                 <% end %>
-<<<<<<< HEAD
             </ul>
             
         </div>
           </li>
       <% end %>
     
-=======
-
-        </div>
-          </li>
-      <% end %>
-    </ul>
-
->>>>>>> master
   </div>
 </nav>
