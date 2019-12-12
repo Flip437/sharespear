@@ -12,6 +12,7 @@ class BookcopyController < ApplicationController
 
     def new
       @new_book_copy = BookCopy.new
+      puts params.inspect
 
       if params[:book_copy]
 
@@ -23,9 +24,23 @@ class BookcopyController < ApplicationController
         doc=JSON.load(open(url))
 
         if doc["totalItems"]==0
+          puts "$$$$$OOOOOOO$$$$"
           @book_infos = -1
         else
+          puts "$$$$$OOOOOOO$$$$"
           @book_infos = JSON.load(open(url))['items'][0]['volumeInfo']
+          puts @book_infos
+          if @book_infos["description"]
+            if @book_infos["description"].length > 400
+                @book_infos["description"]=@book_infos["description"].slice(1..300)
+            end
+          end
+
+            puts "$$$$$O11OOO$$$$"
+          puts  @book_infos
+          session[:book_infos] = @book_infos
+          session[:isbn] = @isbn
+
         end
 
       end
@@ -34,34 +49,39 @@ class BookcopyController < ApplicationController
 
     def create
 
-      if params['imageLinks']
-        photo = params['imageLinks']['thumbnail']
+      @book_infos = session[:book_infos]
+      @isbn = session[:isbn]
+      puts "$$$$$$$$$$$$"
+      puts @book_infos
+      puts "$$$$$$$$$$$$"
+
+      if @book_infos['imageLinks']
+        photo = @book_infos['imageLinks']['thumbnail']
       else
         photo= "http://books.google.com/books/content?id=1IyauAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
       end
 
-      if  params[:categories]==nil
+      if  @book_infos["categories"]==nil
         category = "other"
       else
-        category = params[:categories][0]
+        category = @book_infos["categories"][0]
       end
 
-      if  params[:description]==nil
-        description = "no description"
+      if  @book_infos["description"]==nil
+        description = "laisse toi tenter"
       else
-        description = params[:description]
+        description = @book_infos["description"]
       end
-      
 
       @new_book_copy = BookCopy.create(
-        title:  params[:title],
-        author: params[:authors][0],
+        title:  @book_infos["title"],
+        author: @book_infos["authors"][0],
         description: description,
         status: true,
         category: category,
         user_id: current_user.id,
         photo_link: photo,
-        isbn: params[:industryIdentifiers][0][:identifier]
+        isbn: @isbn
       )
 
       if @new_book_copy

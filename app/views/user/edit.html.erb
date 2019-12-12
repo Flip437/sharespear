@@ -1,32 +1,30 @@
 
-<h1></h1>
+
+<div class="my-auto" style= "background-image: url('https://images.unsplash.com/photo-1517770413964-df8ca61194a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');background-size: cover; height: 100vh;">
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
   <div class="card card-pricing">
     <div class="card-body">
-      <h6 class="category">My informations</h6>
+      <h6 class="category">Mes informations</h6>
       <div class="icon icon-primary">
+
           <i class="now-ui-icons users_circle-08"></i>
       </div>
       <h3 class="card-title"><%= User.find(current_user.id).first_name %> <%= User.find(current_user.id).last_name %></h3>
-      <p class="card-description">
-        Email : <%= User.find(current_user.id).email %>
-        <br>
-        Numero : <%= User.find(current_user.id).phone %>
-        <br>
-        Description: <%= User.find(current_user.id).description %>
-        <br>
-        Adresse : <%= User.find(current_user.id).city %>
-        <%= User.find(current_user.id).zip_code %> |
-        <%= User.find(current_user.id).street_nb %>
-        <%= User.find(current_user.id).street %>
-      </p>
 
 
         <%= form_for(@user, url: user_path(@user.id), html: {method: "patch"}) do |f| %>
         <div class="form-row">
+
           <div class="form-group col-md-6">
             <%= f.label 'Email' %><br>
-            <%= f.email_field :email, class: "form-control"%>
+
+            <%= f.email_field :email, class: "form-control", readonly: true%>
+
           </div>
           <div class="form-group col-md-6">
             <%= f.label 'Password' %><br>
@@ -54,8 +52,8 @@
             <%= f.label 'City' %>
             <%= f.select :city, options_for_select(
               [
-                ['Paris'],
                 ['Lyon'],
+                ['Paris'],
                 ['Bordeaux'],
 
               ]),{}, { class: "form form-group form-control"} %>
@@ -63,6 +61,10 @@
           <div class="form-group col-md-2">
             <%= f.label 'Zip' %><br>
             <%= f.number_field :zip_code, class: "form-control"%>
+          </div>
+          <div class="form-group col-md-2">
+            <%= f.label 'Telephone' %><br>
+            <%= f.telephone_field :phone, class: "form-control"%>
           </div>
         </div>
         <div class="form-row">
@@ -75,28 +77,32 @@
             <%= f.text_field :street_nb, class: "form-control"%>
           </div>
         </div>
+        <%= link_to "Modifier mon mot de passe", edit_user_registration_path, class:"btn btn-primary btn-round"%>
+        <%= f.submit "Modifier les informations" , class: "btn btn-primary btn-round"%>
+        <% end %>
+        <p></p>
+        <h3>Votre avatar</h3>
+        <%if @user.avatar.attached?%>
+          <div class="card card-img-top" style="width: 20rem;">
+          <div class="card-avatar">
 
-        <a href="<%= edit_user_registration_path %>" class="btn btn-primary">Modif password</a>
-        <%= f.submit "Modifier les informations" , class: "btn btn-primary"%>
+            <%= image_tag @user.avatar, alt: 'avatar' %>
+
+          </div>
+          </div>
+        <%else%>
+          <p>=== Vous n'avez pas d'avatar ===</p>
+        <%end%>
+
+        <%= form_tag user_avatars_path(@user), multipart: true do %>
+          <%= file_field_tag :avatar %>
+          <%= submit_tag "mettre à jour", class: "btn btn-primary btn-round" %>
         <% end %>
 
 
     </div>
   </div>
 
-  <h1>Page Profil</h1>
 
-<p>Bienvenue sur la page d'ajout d'un avatar pour le User portant l'id : <%=@user.id%></p>
-<h3>Avatar actuel</h3>
-<%if @user.avatar.attached?%>
-  <%= image_tag @user.avatar, alt: 'avatar' %>
-<%else%>
-  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
-<%end%>
-
-<h3>Changer d'avatar ?</h3>
-<%= form_tag user_avatars_path(@user), multipart: true do %>
-  <%= file_field_tag :avatar %>
-  <%= submit_tag "mettre à jour" %>
-<% end %>
+</div>
 </div>

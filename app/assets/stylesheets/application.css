@@ -18,10 +18,14 @@
  *= require sign_in
  *= require sign_up
  *= require homepage
- 
+ *=require password_change
+
+ *=require dashboardo
+
+
+ *= require navbar
  *= require_tree .
  *= require_self
- *= require navbar
 
 
  */
