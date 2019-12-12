@@ -17,8 +17,7 @@
         <li class="list-group-item"><b><%="#{n.title}"%></b> <br /> <%=" #{n.author}"%>
         <br>
         <%= link_to "Livre recupéré", bookcopy_borrow_path(n.id, n.borrow_status_2?.last.id,:bouton_value => 2), method:"patch", class: "btn btn-success btn-round btn-small btn-sm"%>
-        <%= link_to "Demander retour", root_path , class: "btn btn-danger btn-round btn-sm" %>
-
+        <%= link_to "Demander retour", user_dashboard_path(current_user.id, n.id), method:"patch", class: "btn btn-danger btn-round btn-sm" %>
         <%= link_to "Detail", bookcopy_borrow_path(n.id,n.borrow_status_2?.last.id), class: "btn btn-primary btn-round btn-sm"%>
 
         </li>
