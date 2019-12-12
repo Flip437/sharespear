@@ -4,19 +4,21 @@
 			<%if @book_infos == -1 %>
 				<h1>No books found</h1>
 			<%else %>
-				<h4 class='mt-2 mb-0'>Mon livre</h4>
+				<h4 class='mt-2 mb-0'></h4>
 
-				<p>Titre : <%= @book_infos["title"] %></p>
+				<h4><%= @book_infos["title"] %></h4>
 				<p>Auteur(s) : <% @book_infos["authors"].each do |author| %>
 								  <%= author %>
 				<% end %>
 				</p>
-				<p>Date : <%= @book_infos["publishedDate"] %></p>
+
 
 				<%= image_tag(@book_infos['imageLinks']['thumbnail']) if @book_infos['imageLinks'] %>
+				<br>
+				<p>Date : <%= @book_infos["publishedDate"] %></p>
 
-			<p>Est-ce bien votre livre ?</p>
-			<%= link_to "Ajouter",  bookcopy_index_path(@book_infos), :method=> :post %>
+
+			<%= link_to "Ajouter",  bookcopy_index_path(@book_infos), :method=> :post, class: "btn btn-primary btn-round"%>
 
 			<% end %>
 		</div>

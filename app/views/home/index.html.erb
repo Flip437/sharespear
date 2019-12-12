@@ -1,4 +1,3 @@
-
 <div class="header-2">
 
   <div class="page-header header-filter" id="hello_world">
@@ -8,61 +7,33 @@
               <div class="col-md-8 ml-auto mr-auto text-center">
                   <h1 class="title">Empruntez, Lisez, Prêtez</h1>
                   <h5 class="description">Trouvez votre prochaine lecture proche de chez vous en fonction de vos goûts</h5>
-              </div>
-              <div class="col-md-10 ml-auto mr-auto">
-                  <div class="card card-raised card-form-horizontal card-plain" data-background-color="">
-                      <div class="card-body">
-                          <form method="" action="">
-                              <div class="row">
-                                  <div class="col-md-3">
-                                      <div class="form-group">
-                                          <input type="text" value="" placeholder="Full Name" class="form-control" autocomplete="family-name">
-                                      </div>
-                                  </div>
-                                  <div class="col-md-3">
-                                      <div class="form-group">
-                                          <input type="email" placeholder="Your Email" class="form-control" autocomplete="email">
-                                      </div>
-                                  </div>
-                                  <div class="col-md-3">
-                                      <div class="form-group">
-                                          <input type="password" placeholder="Password" class="form-control" autocomplete="current-password">
-                                      </div>
-                                  </div>
-                                  <div class="col-md-3">
-                                      <button type="button" class="btn btn-primary btn-round btn-block">Join Us</button>
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
+
+                    <div class="card card-login card-plain">
+                    <%= form_tag searchbar_index_path, method: :get do %>
+                      <div class="form-group">
+                        <%= text_field_tag :search1, params[:search1], placeholder: "Recherche", class:'form-control text-dark', id:'search_bar' %>
+                        <br><br>
+                        <%= text_field_tag :search2, params[:search2], placeholder: "Ville", class:'form-control text-dark', id:'search_bar' %>
+                        <br>
+                        <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round' %>
+                        <br>
+                        </div>
+                    <% end %>
+                    </div>
               </div>
           </div>
       </div>
   </div>
 </div>
-    <!-- // SEARCH -->
-    <center>
-      <div class="col-md-5 ml-auto mr-auto">
-        <div class="card card-login card-plain">
-        <%= form_tag searchbar_index_path, method: :get do %>
-          <div class="form-group">
-            <%= text_field_tag :search1, params[:search1], placeholder: "Recherche", class:'form-control text-dark', id:'search_bar' %>
-            <br><br>
-            <%= text_field_tag :search2, params[:search2], placeholder: "Ville", class:'form-control text-dark', id:'search_bar' %>
-            <%= button_tag "Rechercher", class: 'btn btn-primary btn-round' %>
-          </div>
-        <% end %>
-        </div>
-      </div>
-    </center>
-    <br><br>
+
+<!-- // SEARCH -->
+
+
+
 
 
     <br><br>
 
-    <br>
-    <br>
 
     <% if current_user && @length_tab_book_copy>0 %>
 
@@ -92,10 +63,10 @@
             <% } %>
           </div>
         </div>
+        <% end %>
       </ul>
     </div>
-    <% end %>
-
+    
     <div id="reco">
 
       <%= render 'home/recommendation', book_array: @book_copy_array %>
