@@ -39,7 +39,7 @@
                       <%= link_to 'Modifier mes informations', edit_user_path(@user.id), class: "btn btn-default btn-round btn-lg" %>
                     <% else %>
 
-                      <%= link_to 'Follow', new_bookcopy_path, class: "btn btn-primary btn-round btn-lg btn-lg" %>
+                      <%= link_to 'Follow', user_path(@user.id), class: "btn btn-primary btn-round btn-lg btn-lg" %>
 
                     <% end %>
                     <%= link_to( user_path(@user.id), class: "btn btn-default btn-round btn-lg btn-icon") do %>
@@ -50,7 +50,7 @@
                     <%end%>
 
                 </div>
-                <h3 class="title">À propos</h3>
+                <h3 class="title">À propos de moi</h3>
                 <h5 class="description text-center"><%= @user.description %></h5>
                   <div class="col-md-12">
                       <h4 class="title text-center">Ma bibliothèque</h4>
