@@ -14,4 +14,4 @@ Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf|otf)\z/
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( logo.png )
-Rails.application.config.assets.precompile += %w( emily.jpg )
+Rails.application.config.assets.precompile += %w( emilyz.jpg )
