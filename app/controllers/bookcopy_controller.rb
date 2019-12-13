@@ -13,55 +13,36 @@ before_action :authenticate_user!
     @new_book_copy = BookCopy.new
     @book_infos = @new_book_copy.newbook(params[:book_copy])[0]
     @isbn = @new_book_copy.newbook(params[:book_copy])[1]
+    session[:book_info] = @book_infos
+    session[:isbn] = @isbn
   end
 
-    def create
+  def create
+    @book_infos = session[:book_info]
+    @isbn = session[:isbn]
+    bookcopy = BookCopy.new
+    attributs = bookcopy.createif(@book_infos)
 
-      @book_infos = session[:book_infos]
-      @isbn = session[:isbn]
-      puts "$$$$$$$$$$$$"
-      puts @book_infos
-      puts "$$$$$$$$$$$$"
+    new_book_copy = BookCopy.create(
+      title:  attributs[0],
+      author: attributs[1],
+      description: attributs[2],
+      status: true,
+      category: attributs[3],
+      user_id: current_user.id,
+      photo_link: attributs[4],
+      isbn: @isbn
+    )
 
-      if @book_infos['imageLinks']
-        photo = @book_infos['imageLinks']['thumbnail']
-      else
-        photo= "http://books.google.com/books/content?id=1IyauAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-      end
-
-      if  @book_infos["categories"]==nil
-        category = "other"
-      else
-        category = @book_infos["categories"][0]
-      end
-
-      if  @book_infos["description"]==nil
-        description = "laisse toi tenter"
-      else
-        description = @book_infos["description"]
-      end
-
-      @new_book_copy = BookCopy.create(
-        title:  @book_infos["title"],
-        author: @book_infos["authors"][0],
-        description: description,
-        status: true,
-        category: category,
-        user_id: current_user.id,
-        photo_link: photo,
-        isbn: @isbn
-      )
-
-      if @new_book_copy
-        flash[:success] = "Livre ajouté :)"
-        redirect_to new_bookcopy_path
-      else
-        flash[:error] = "Erreur d'ajout :("
-        redirect_to new_bookcopy_path
-      end
-
+    if new_book_copy
+      flash[:success] = "Livre ajouté :)"
+      redirect_to new_bookcopy_path
+    else
+      flash[:error] = "Erreur d'ajout :("
+      redirect_to new_bookcopy_path
     end
 
+  end
 
   def destroy
     book = BookCopy.find(params[:id])
