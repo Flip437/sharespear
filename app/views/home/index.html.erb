@@ -1,11 +1,12 @@
 <div class="header-2">
   <div class="page-header header-filter" id="hello_world">
-      <div class="page-header-image" style="background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');"></div>
+      <div class="page-header-image" style="background-image: url('https://petapixel.com/assets/uploads/2017/11/4ef02ad7-8d1d-4436-8225-0fedf28c2450.jpg');"></div>
       <div class="container">
           <div class="row">
               <div class="col-md-8 ml-auto mr-auto text-center">
-                  <h1 class="title">Empruntez, Lisez, Prêtez</h1>
-                  <h5 class="description">Trouvez votre prochaine lecture proche de chez vous en fonction de vos goûts</h5>
+                  <%= image_tag("Artboard 1.png") %>
+                  <h2 class="title">Empruntez, Lisez, Prêtez.</h2>
+                  <h5 class="font-weight-normal">Trouvez votre prochaine lecture en fonction de vos goûts proche de chez vous.</h5>
 
                     <div class="card card-login card-plain">
                     <%= form_tag searchbar_index_path, method: :get do %>
@@ -25,13 +26,6 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row justify-content-md-center">
-    <%= link_to new_home_path, method: :get, class: 'btn btn-primary btn-lg btn-round now-ui-icons shopping_credit-card' do %>
-      <%= label_tag "Donner" %>
-    <% end %>
-  </div>
-</div>
 
 <br><br>
 
@@ -68,3 +62,154 @@
 <% if current_user && @length_tab_book_copy==0 %>
   <h1>No  livres found around you</h1>
 <% end %>
+
+
+
+<div class="section section-about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title">Qui sommes nous ?</h2>
+                <h5 class="description">Animés par l'impact de la lecture dans notre vie, c'est au détour d'un café que nous est venue l'idée de créer Shakespeare. Pourquoi laisser nos livres prendre la poussière
+                alors que quelq'un d'autre peut en profiter ?</h5>
+            </div>
+        </div>
+        <div class="separator separator-primary"></div>
+        <div class="section-story-overview">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- First image on the left side -->
+                    <div class="image-container image-left" style="background-image: url('https://imagizer.imageshack.com/img922/2264/cB1xj2.jpg')">
+                        <p class="blockquote blockquote-primary">"J'adore lire et le fait de pouvoir rendre mes livres utiles aussi pour les autres. En plus il y a une caution quand je prête mon livre donc ça me rassure 👍"
+                            <br>
+                            <br>
+                            <small>-Léa</small>
+                        </p>
+                    </div>
+                    <!-- Second image on the left side of the article -->
+                    <div class="image-container image-left-bottom" style="background-image: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')"></div>
+                </div>
+                <div class="col-md-5">
+                    <!-- First image on the right side, above the article -->
+                    <div class="image-container image-right" style="background-image: url('https://images.unsplash.com/photo-1473642676276-2d4ab561542e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')"></div>
+                    <h3>Pourquoi nous aider ?</h3>
+                    <p>Nous souhaitons permettre au plus de personne possible de pouvoir découvrir de nouvelles lectures à travers notre communauté. Vous pouvez rejoindre l'aventure en faisant un don.
+                    </p>
+                  
+                    <!-- bouton don -->
+                    <div class="container">
+                      <div class="row justify-content-md-center">
+                        <%= link_to new_home_path, method: :get, class: 'btn btn-primary btn-lg btn-round now-ui-icons shopping_credit-card' do %>
+                          <%= button_tag "Donner", class: "btn btn-primary btn-round btn-block"  %>
+                        <% end %>
+                      </div>
+                    </div>  
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+        <div class="contactus-1 section-image" style="background-image: url('../assets/img/bg27.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 ml-auto mr-auto">
+                <h2 class="title">Nous contacter</h2>
+                <div class="info info-horizontal">
+                    <div class="icon icon-primary">
+                        <i class="now-ui-icons location_pin"></i>
+                    </div>
+                    <div class="description">
+                        <h4 class="info-title">Oû nous trouver ?</h4>
+                        <p class="description">145 Cours Lafayette<br>
+                            69006 Lyon<br>
+                        </p>
+                    </div>
+                </div>
+                <div class="info info-horizontal">
+                    <div class="icon icon-primary">
+                        <i class="now-ui-icons tech_mobile"></i>
+                    </div>
+                    <div class="description">
+                        <h4 class="info-title">Nous contactez</h4>
+                        <p class="description">Arthur Wilbrod<br>
+                            +33 6 62 321 762<br>
+                            Lun. - Vend., 8:00-22:00
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-5 ml-auto mr-auto">
+                <div class="card card-contact card-raised">
+                    <form role="form" id="contact-form" method="post">
+                        <div class="card-header text-center">
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 pr-2">
+                                    <label>Prénom</label>
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                                      </div>
+                                      <input type="text" class="form-control" placeholder="First Name..." autocomplete="name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pl-2">
+                                    <div class="form-group">
+                                        <label>Nom</label>
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span>
+                                          </div>
+                                          <input type="text" class="form-control" placeholder="Last Name..." autocomplete="name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Adresse Email</label>
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
+                                  </div>
+                                  <input type="email" class="form-control" placeholder="Email Here..." autocomplete="email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Votre message</label>
+                                <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                    								<label class="form-check-label">
+                    									<input class="form-check-input" type="checkbox">
+                    									<span class="form-check-sign"></span>
+                    									Je ne suis pas un robot
+                    								</label>
+                    							</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary btn-round pull-right">Envoyer message</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+   
+            			<div class="copyright">
+            				Copyright © <script>document.write(new Date().getFullYear())</script>2019 Creative Tim All Rights Reserved.
+            			</div>
+            		</div>
+            	</footer>
