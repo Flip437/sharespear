@@ -37,7 +37,7 @@ class BookCopy < ApplicationRecord
 
       isbn = book_isbn.gsub(/[.\s]/, '')
       url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn.to_s
-      doc=JSON.load(open(url, 'User-Agent' => 'ruby').read)
+      doc=JSON.load(open(url, 'User-Agent' => 'ruby'))
 
       if doc["totalItems"]==0
 
