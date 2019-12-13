@@ -1,8 +1,7 @@
-
 	<div class="card bg-light-gray" id='book-form'>
 		<div class="card-header text-center">
-			<%if @book_infos == -1 %>
-				<h1>No books found</h1>
+			<%if @book_infos == "0" %>
+				<h1>Nous n'avons pas trouvé votre livre</h1>
 			<%else %>
 				<h4 class='mt-2 mb-0'></h4>
 
@@ -12,14 +11,13 @@
 				<% end %>
 				</p>
 
-
 				<%= image_tag(@book_infos['imageLinks']['thumbnail']) if @book_infos['imageLinks'] %>
 				<br>
 				<p>Date : <%= @book_infos["publishedDate"] %></p>
 				<p>Isbn : <%= @isbn %></p>
 
 
-			<%= link_to "Ajouter",  bookcopy_index_path(), :method=> :post, class: "btn btn-primary btn-round"%>
+			<%= link_to "Ajouter",  bookcopy_index_path, :method=> :post, class: "btn btn-primary btn-round"%>
 
 			<% end %>
 		</div>
