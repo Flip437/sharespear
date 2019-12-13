@@ -31,10 +31,12 @@
 
 <% if current_user && @length_tab_book_copy>0 %>
 <div class="col-md-8 ml-auto mr-auto text-center">
-  <h2 class="title">Autour de vous dans le <%= current_user.zip_code %>.. regardez  </h2>
+  <h2 class="title">Explorez, Découvrez dans votre quartier</h2>
+  <h5 class="description">Trouvez un livre autour de chez vous..</h5>
+  <br>
   <ul class="nav nav-pills nav-pills-danger justify-content-center" role="tablist">
     <li class="nav-item">
-        <%= link_to "All",  home_index_path(:category_selected => "All"), class: "nav-link", remote:true %>
+        <%= link_to "Tout",  home_index_path(:category_selected => "All"), class: "nav-link", remote:true %>
     </li>
     <% if @dropD.length>4 %>
     <% 3.times { |i| %>
@@ -42,8 +44,8 @@
       <%= link_to @dropD[i],  home_index_path(:category_selected => @dropD[i]), class: "nav-link", remote:true %>
     </li>
     <% } %>
-    <div class="dropdown">
-      <button class="btn btn-secondary btn-round dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <li class="dropdown">
+      <button class="btn btn-secondary btn-round dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin: 0px; padding: 1.1em;">
         Autre
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -51,19 +53,38 @@
           <%= link_to @dropD[i+3],  home_index_path(:category_selected => @dropD[i+3]), class: "dropdown-item", remote:true %>
         <% } %>
       </div>
-    </div>
-    <% end %>
+    </li>
+
   </ul>
+
 </div>
+
+<% end %>
 <div id="reco">
   <%= render 'home/recommendation', book_array: @book_copy_array %>
 </div>
 <% end %>
 <% if current_user && @length_tab_book_copy==0 %>
-  <h1>No  livres found around you</h1>
-<% end %>
+<div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+            <h2 class="title">Nous ne trouvons pas de livres autour de toi..</h2>
+            <h5 class="description">Partage le site autour de toi ou modifie ton arrondissement</h5>
+        </div>
+<div class="card card-background" style="background-image: url('https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')">
+          <div class="card-body">
+            <div class="card-title">
+              <h3>"Votre bibliothèque de quartier est vide"</h3>
+            </div>
+          <div class="card-footer text-left">
 
-
+              <div class="stats-link pull-right">
+                <a href="#pablo" class="footer-link">sharespeare.com</a>
+              </div>
+            </div>
+          </div>
+</div>
+</div>
+<% else %>
 
 <div class="section section-about-us">
     <div class="container">
@@ -206,10 +227,4 @@
         </div>
     </div>
 </div>
-        
-   
-            			<div class="copyright">
-            				Copyright © <script>document.write(new Date().getFullYear())</script>2019 Creative Tim All Rights Reserved.
-            			</div>
-            		</div>
-            	</footer>
+<% end %>

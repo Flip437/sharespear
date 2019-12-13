@@ -8,15 +8,51 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--     Fonts and icons     -->
+
+
+
+    <link rel="shortcut icon" href="lib/assets/img/logo.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-  
-  
+
+
     </head>
+
 
   <body>
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/flashborrow' %>
     <%= yield %>
+
+
+
   </body>
+  <footer class="footer footer-default">
+
+      <div class=" container ">
+          <nav>
+              <ul>
+                  <li>
+                          <%=link_to "Sharespeare", root_path%>
+
+                  </li>
+                  <li>
+                         <%=link_to "L'équipe", root_path%>
+
+                  </li>
+                  <li>
+
+
+                        <%=link_to "Blog", root_path%>
+
+                  </li>
+              </ul>
+          </nav>
+          <div class="copyright" id="copyright">
+              ©2019, Pensé par <%=link_to "Sharespeare", root_path%> et Codé avec amour par Flip, Arthur, Lucas et Sacha.
+          </div>
+      </div>
+
+  </footer>
+
 </html>

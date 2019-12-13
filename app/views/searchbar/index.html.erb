@@ -1,47 +1,22 @@
-<div class="profile-page">
-    <div class="wrapper">
-        <div class="page-header page-header-small" filter-color="orange">
-            <div class="page-header-image" data-parallax="true">
-            </div>
-            <div class="content-center">
-                <h3 class="title">Résultats de la recherche</h3>
-            </div>
-        </div>
+<div class="card card-background" style="background-image: url('https://images.unsplash.com/photo-1517770413964-df8ca61194a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')">
 
-        <div class="container section">
-          <center>
-            <%= render 'home/bookcopies' %>
-          </center>
-        </div>
-
-        <footer class="footer footer-default ">
-            <div class="container">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#creative">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creative">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creative">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creative">
-                                License
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright">
-                </div>
-            </div>
-        </footer>
+  <div class="card-body">
+    <div class="card-title">
+      <h3>Résultats de votre recherche</h3>
     </div>
+  <div class="card-footer text-left">
+
+    <div class="stats-link pull-right">
+      <%= link_to "sharespeare.com", root_path, class:"footer-link" %>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+<div class="container section">
+  <center>
+    <%= render 'home/bookcopies' %>
+  </center>
+</div>
