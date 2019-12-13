@@ -15,7 +15,6 @@ class DashboardController < ApplicationController
         @ask_book_tab=tab+@ask_book_tab
       end
     end
-    puts @ask_book_tab
     #Mes emprunts
     @book_I_borrow_tab=@user.book_I_borrow_tab
     @book_I_borrow_recup_tab=@user.book_I_borrow_recup_tab
@@ -27,7 +26,6 @@ class DashboardController < ApplicationController
   def update
     @borrow = Borrow.find_by(book_copy_id:params[:id])
     UserMailer.askbookback(@borrow).deliver_now
-    #redirect_to user_dashboard_index_path(current_user)
   end
 
 end
