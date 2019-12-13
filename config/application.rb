@@ -19,13 +19,13 @@ module Sharespeare
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :mailjet
 
-    config.action_mailer.smtp_settings = {
-      :address => "in.mailjet.com",
-      :enable_starttls_auto => true,
-      :port => 587,
-      :authentication => 'plain',
-      :user_name => ENV['MAILJET_LOGIN'],
-      :password =>  ENV['MAILJET_PWD']
-    }
+    # config.action_mailer.smtp_settings = {
+    #   :address => "in.mailjet.com",
+    #   :enable_starttls_auto => true,
+    #   :port => 587,
+    #   :authentication => 'plain',
+    #   :user_name => ENV['MAILJET_LOGIN'],
+    #   :password =>  ENV['MAILJET_PWD']
+    # }
   end
 end
