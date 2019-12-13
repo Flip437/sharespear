@@ -10,6 +10,8 @@ before_action :authenticate_user!
   end
 
   def new
+    session.delete(:book_info)
+    session.delete(:isbn)
     @new_book_copy = BookCopy.new
     @book_infos = @new_book_copy.newbook(params[:book_copy])[0]
     @isbn = @new_book_copy.newbook(params[:book_copy])[1]
