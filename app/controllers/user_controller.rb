@@ -29,10 +29,10 @@ class UserController < ApplicationController
       user_to_change.update(street_nb: params[:user][:street_nb])
       user_to_change.update(phone: params[:user][:phone])
 
-      flash[:success] = "updated"
+      flash[:success] = "Vos informations ont été mises à jour !"
 
     else
-      flash[:error] = "Sorry, you need to enter your password"
+      flash[:error] = "Veuillez entrer votre mot de passe svp"
     end
     redirect_to edit_user_path(current_user.id)
   end

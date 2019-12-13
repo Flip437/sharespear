@@ -11,16 +11,9 @@ before_action :authenticate_user!
 
   def new
     @new_book_copy = BookCopy.new
-    puts "ICICICIC333ICICI"
-    puts params.inspect
-
-    puts "ICICICIC333ICICI"
-
     if params[:book_copy]
     session.delete(:book_info)
     session.delete(:isbn)
-    puts "ICIICICC"
-    puts params.inspect
     @isbn = params[:book_copy]["isbn"].gsub(/[.\s]/, '')
     @book_infos = @new_book_copy.newbook(@isbn)
 
