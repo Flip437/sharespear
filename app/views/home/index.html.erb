@@ -15,7 +15,8 @@
                         <br><br>
                         <%= text_field_tag :search2, params[:search2], placeholder: "Ville", class:'form-control text-dark', id:'search_bar' %>
                         <br>
-                        <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %>
+                        <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %> <%= link_to "Faire un don", new_home_path, method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
+
                         <br>
                         </div>
                     <% end %>
@@ -155,7 +156,7 @@
                     <div class="card-avatar">
                       <%= image_tag("olivia.jpg", class:"img img-raised") %>
 
-          
+
 
                     </div>
 
