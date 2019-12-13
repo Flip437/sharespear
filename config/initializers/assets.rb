@@ -9,6 +9,9 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.paths << Rails.root.join('vendor')
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf|otf)\z/
+Rails.application.config.assets.precompile += %w( olivia.jpg )
+Rails.application.config.assets.precompile += %w( emilyz.jpg )
+Rails.application.config.assets.precompile += %w( james.jpg )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

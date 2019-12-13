@@ -28,19 +28,19 @@ User.destroy_all
     )
     a =rand(5)
     if a == 1
-        user.avatar.attach(io: File.open('vendor/img/olivia.jpg'), filename: 'emilyz.jpg')
+        user.avatar.attach(io: File.open('lib/assets/img/olivia.jpg'), filename: 'olivia.jpg')
     end
     if a == 2
-      user.avatar.attach(io: File.open('vendor/img/emily.jpg'), filename: 'emilyz.jpg')
+      user.avatar.attach(io: File.open('lib/assets/img/emily.jpg'), filename: 'emily.jpg')
     end
     if a == 3
-      user.avatar.attach(io: File.open('vendor/img/james.jpg'), filename: 'emilyz.jpg')
+      user.avatar.attach(io: File.open('lib/assets/img/james.jpg'), filename: 'james.jpg')
     end
     if a == 4
-      user.avatar.attach(io: File.open('vendor/img/marie.jpg'), filename: 'emilyz.jpg')
+      user.avatar.attach(io: File.open('lib/assets/img/marie.jpg'), filename: 'marie.jpg')
     end
     if a == 5
-      user.avatar.attach(io: File.open('vendor/img/usher.jpg'), filename: 'emilyz.jpg')
+      user.avatar.attach(io: File.open('lib/assets/img/usher.jpg'), filename: 'usher.jpg')
     end
 
 
@@ -80,7 +80,7 @@ BookCopy.destroy_all
 
   puts "User #{index+1} has 5 book_copy dispo"
   #5 livre dispo en demande d'emprunt par utilisateur par utilisateur +1
-  2.times do |index2|
+  3.times do |index2|
     isbn = @isbn1[@index_isbn]
     @index_isbn= @index_isbn+1
     puts isbn
@@ -116,7 +116,7 @@ BookCopy.destroy_all
 
 
   #5 livre non dispo et accepte
-  2.times do |book_copy_id_nb|
+  3.times do |book_copy_id_nb|
       isbn = @isbn1[@index_isbn]
       @index_isbn= @index_isbn+1
       puts isbn
@@ -152,7 +152,7 @@ BookCopy.destroy_all
 
 
   #5 livre dispo et recup par preteur / termine
-  2.times do |book_copy_id_nb|
+  1.times do |book_copy_id_nb|
       isbn = @isbn1[@index_isbn]
       @index_isbn= @index_isbn+1
       puts isbn
