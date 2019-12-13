@@ -15,11 +15,11 @@ class BorrowController < ApplicationController
       @borrow.book_copy_id = params[:bookcopy_id]
 
       if @borrow.save
-          flash[:success] = "Borrow successfully created"
+          flash[:success] = "Votre demande d'emprunt a été transmise :)"
           redirect_to root_path
       else
           puts @borrow.errors
-          flash[:error] = "Sorry, you're borrow didn't work"
+          flash[:error] = "Désolé, votre demande d'emprunt n'a pas été créée"
           redirect_to root_path
       end
 
