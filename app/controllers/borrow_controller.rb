@@ -25,16 +25,8 @@ class BorrowController < ApplicationController
 
   end
 
-<<<<<<< HEAD
-      # Demande de pret refuse
-      if bouton_value=='0'
-        borrow_to_update = Borrow.find(params[:id])
-        borrow_to_update.update(borrow_status:1)
-        UserMailer.borrow_declined_email(borrow_to_update).deliver_now
-=======
   def update
     bouton_value= params[:bouton_value]
->>>>>>> master
 
     # Demande de pret refuse
     if bouton_value=='0'
@@ -51,7 +43,6 @@ class BorrowController < ApplicationController
       book_copy_status_update = BookCopy.find(params[:bookcopy_id])
       book_copy_status_update.update(status: false)
 
-<<<<<<< HEAD
       # Livre recupere
       elsif bouton_value=='2'
         borrow_to_update = Borrow.find(params[:id])
@@ -59,13 +50,11 @@ class BorrowController < ApplicationController
         borrow_to_update.update(borrow_status:3)
         book_copy_status_update.update(status: true)
         UserMailer.borrow_book_rendered_email(borrow_to_update).deliver_now
-=======
       #passe à refusé tous les autres
       book_copy = BookCopy.find(borrow_to_update.book_copy_id)
       book_borrow_tab = book_copy.borrow_status_0?
       book_borrow_tab.each do |n|
         n.update(borrow_status:1)
->>>>>>> master
       end
 
     # Livre recupere
