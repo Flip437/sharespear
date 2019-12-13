@@ -8,20 +8,25 @@
           </div>
   </div>
   <% else %>
+  <h1></h1>
+  <div style="background-color:rgb(231, 236, 234)">
+
 
   <% if book_array.length>3 %>
+
 
   <div class="row">
 
       <div class="col-md-10 ml-auto mr-auto">
+        <div class="container">
           <h2 class="title"></h2>
 
           <br>
           <div class="card card-plain card-blog">
               <div class="row">
                   <div class="col-md-5">
-                      <div class="card-image">
-                        <%= image_tag book_array[0].photo_link, class: "img img-raised rounded" %>
+                      <div class="card-image text-center">
+                        <%= image_tag book_array[0].photo_link, class: "img-raised rounded" %>
 
                       </div>
                   </div>
@@ -60,17 +65,18 @@
 
                   </p></div>
                   <div class="col-md-5">
-                      <div class="card-image">
+                      <div class="card-image text-left align-bottom">
 
-                        <%= image_tag book_array[1].photo_link, class: "img img-raised rounded" %>
+                        <%= image_tag book_array[1].photo_link, class: "img-raised rounded" %>
                       </div>
                   </div>
               </div>
           </div>
 
       </div>
-
+</div>
   </div>
+  <div class="page-header-image" style="background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');">
 
   <div class="cd-section" id="testimonials">
 
@@ -140,6 +146,7 @@
             </div>
 
         </div>
+        </div>
     </div>
   </div>
 <% end %>
@@ -161,9 +168,10 @@
                 <div class="card card-plain card-blog">
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="card-image">
+                            <div class="card-image text-center">
+                              <br>
 
-                                <%= image_tag book_array[a].photo_link, class:"img-rounded" %>
+                                <%= image_tag book_array[a].photo_link, class:"rounded img-raised" %>
 
 
                             </div>
@@ -195,5 +203,7 @@
             </div>
         </div>
     </div>
+
   </div>
   <% end %>
+    </div>
