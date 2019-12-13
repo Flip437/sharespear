@@ -1,19 +1,36 @@
-<div class="container">
-    <div class="row">
-    <% @book_copy_array.each do |book| %>
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <%= book.title %><br>
-                    <%= User.find(book.user_id).first_name %>
 
-                    <img style="max-width:100% ; max-height:100%" src="https://image.shutterstock.com/image-vector/book-icon-sign-design-260nw-553945819.jpg" >
-                    <% if current_user %>
-                        <button type="button" class="btn btn-primary btn-round"><%= link_to "Emprunter ce livre", new_bookcopy_borrow_path(book) %></button>
-                    <% end %>
-                </div>
+
+
+<% @book_copy_array.each do |book| %>
+<div class="card card-plain card-blog">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card-image">
+                <%= image_tag book.photo_link, class:"img-rounded" %>
             </div>
         </div>
-    <% end %>
+        <div class="col-md-8">
+            <h3 class="card-title">
+              <%= link_to book.title, bookcopy_path(book.id) %>
+
+            </h3>
+            <p class="card-description">
+               <%=book.description%>  <%= link_to " Lire plus", bookcopy_path(book.id) %>
+            </p>
+            <h6 class="category text-primary">
+               <%=book.category%>
+            </h6>
+            <p></p>
+          <div class="author">
+              <% if book.user.avatar.attached?  %>
+              <%= image_tag book.user.avatar,class:"avatar img-raised", alt: 'avatar'%>
+               <% end  %>
+
+             <span>
+             <%= link_to book.user.first_name, user_path(book.user.id) %></span>
+
+          </div>
+        </div>
     </div>
 </div>
+<% end %>
