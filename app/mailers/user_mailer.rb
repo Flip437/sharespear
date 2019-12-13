@@ -49,7 +49,4 @@ class UserMailer < ApplicationMailer
     mail(to: @borrower.email, subject: "#{@owner.first_name} voudrait récupérer son livre")
   end
 
-  
-
-
 end
