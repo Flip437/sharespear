@@ -19,7 +19,7 @@ IV/ Conséquences:
   3. Nous espérons que le service sera actif lorsque le jury testera l'application.
   
 V/ Remerciements
-Les 4 memebres de l'équipe, Arthur Wilbrod, Sacha Palayret, Philippe Diollot, Lucas Grandviergne tiennent à remercier
+  Les 4 memebres de l'équipe, Arthur Wilbrod, Sacha Palayret, Philippe Diollot, Lucas Grandviergne tiennent à remercier
   notre mentor officiel : Frédéreic Bonnand mousaillon session 7
   notre mentor officieux : Léo  Robert mousaillon session 7
   l'équipe de THP pour la formation proposée
