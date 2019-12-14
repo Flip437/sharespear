@@ -38,10 +38,10 @@
                       <p class="card-description">
                         <%=book_array[0].description%><%= link_to "Voir plus", bookcopy_path(book_array[0].id) %>
                       </p>
-                      <p>                <% if @book.status==false %>
+                      <p>                <% if book_array[0].status==false %>
                                         <span class="badge badge-warning">Emprenté</span>
                                       <% end %>
-                                      <% if @book.status==true %>
+                                      <% if book_array[0].status==true %>
                                         <span class="badge badge-success">Disponible</span>
                                       <% end %></p>
                       <p class="author">
