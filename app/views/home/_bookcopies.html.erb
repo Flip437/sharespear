@@ -8,6 +8,13 @@
             <div class="card-image">
                 <%= image_tag book.photo_link, class:"img-rounded" %>
             </div>
+            <br>
+            <h6>                <% if book.status==false %>
+                              <span class="badge badge-warning">Emprenté</span>
+                            <% end %>
+                            <% if book.status==true %>
+                              <span class="badge badge-success">Disponible</span>
+                            <% end %></h6>
         </div>
         <div class="col-md-8">
             <h3 class="card-title">
