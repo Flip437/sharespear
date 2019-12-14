@@ -1,43 +1,49 @@
+<% if @book_copy_array.length == 0 %>
+  <div class="card bg-light-gray" id='book-form'>
+    <div class="card-header text-center">
+      <h1>Nous n'avons pas trouvé le livre que vous cherchez</h1>
+    </div>
+  </div>
+<% else %>
 
-
-
-<% @book_copy_array.each do |book| %>
-<div class="card card-plain card-blog">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card-image">
-                <%= image_tag book.photo_link, class:"img-rounded" %>
-            </div>
-            <br>
-            <h6>                <% if book.status==false %>
-                              <span class="badge badge-warning">Emprenté</span>
-                            <% end %>
-                            <% if book.status==true %>
-                              <span class="badge badge-success">Disponible</span>
-                            <% end %></h6>
-        </div>
-        <div class="col-md-8">
-            <h3 class="card-title">
-              <%= link_to book.title, bookcopy_path(book.id) %>
-
-            </h3>
-            <p class="card-description">
-               <%=book.description%>  <%= link_to " Lire plus", bookcopy_path(book.id) %>
-            </p>
-            <h6 class="category text-primary">
-               <%=book.category%>
-            </h6>
-            <p></p>
-          <div class="author">
-              <% if book.user.avatar.attached?  %>
-              <%= image_tag book.user.avatar,class:"avatar img-raised", alt: 'avatar'%>
-               <% end  %>
-
-             <span>
-             <%= link_to book.user.first_name, user_path(book.user.id) %></span>
-
+  <% @book_copy_array.each do |book| %>
+  <div class="card card-plain card-blog">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card-image">
+                  <%= image_tag book.photo_link, class:"img-rounded" %>
+              </div>
+              <br>
+              <h6>                <% if book.status==false %>
+                                <span class="badge badge-warning">Emprenté</span>
+                              <% end %>
+                              <% if book.status==true %>
+                                <span class="badge badge-success">Disponible</span>
+                              <% end %></h6>
           </div>
+          <div class="col-md-8">
+              <h3 class="card-title">
+                <%= link_to book.title, bookcopy_path(book.id) %>
+
+              </h3>
+              <p class="card-description">
+                <%=book.description%>  <%= link_to " Lire plus", bookcopy_path(book.id) %>
+              </p>
+              <h6 class="category text-primary">
+                <%=book.category%>
+              </h6>
+              <p></p>
+            <div class="author">
+                <% if book.user.avatar.attached?  %>
+                <%= image_tag book.user.avatar,class:"avatar img-raised", alt: 'avatar'%>
+                <% end  %>
+
+              <span>
+              <%= link_to book.user.first_name, user_path(book.user.id) %></span>
+
+              </div>
+            </div>
         </div>
     </div>
-</div>
+  <% end %>
 <% end %>
