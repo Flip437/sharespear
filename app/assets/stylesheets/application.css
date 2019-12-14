@@ -18,6 +18,7 @@
  *= require sign_in
  *= require sign_up
  *= require homepage
+ *= require font
  *=require password_change
 
  *=require dashboardo

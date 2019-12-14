@@ -13,7 +13,7 @@ url_photo_link= "http://books.google.com/books/content?id=1IyauAEACAAJ&printsec=
 User.destroy_all
 8.times.with_index do |user, index|
     user = User.create(
-        email: Faker::Internet.email,
+        email: "#{index}@yopmail.com",
         password: "password#{index}",
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -76,7 +76,7 @@ BookCopy.destroy_all
     )
 
   end
-  sleep(2)
+  sleep(4)
 
   puts "User #{index+1} has 5 book_copy dispo"
   #5 livre dispo en demande d'emprunt par utilisateur par utilisateur +1
@@ -110,7 +110,7 @@ BookCopy.destroy_all
       )
 
   end
-  sleep(2)
+  sleep(4)
 
   puts "User #{index+1} has 5 book_copy dispo avec 1 demande d'emprunt"
 
@@ -147,7 +147,7 @@ BookCopy.destroy_all
       book_copy.update(status:false)
 
   end
-  sleep(2)
+  sleep(4)
   puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et accepte"
 
 
@@ -182,9 +182,7 @@ BookCopy.destroy_all
       )
 
   end
-  sleep(3)
+  sleep(4)
   puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et recupere"
-
-
 
 end
