@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   def new
   end
-  
+
   def create
     # Amount in cents
     @amount = params[:montant].to_i * 100
@@ -10,14 +10,14 @@ class HomeController < ApplicationController
       email: params[:stripeEmail],
       source: params[:stripeToken],
     })
-  
+
     charge = Stripe::Charge.create({
       customer: customer.id,
       amount: @amount,
       description: 'Rails Stripe customer',
       currency: 'usd',
     })
-  
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
@@ -27,6 +27,9 @@ class HomeController < ApplicationController
 
 
   def index
+
+     @avatar_array = ["https://demos.creative-tim.com/now-ui-kit-pro/assets/img/mike.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/ryan.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/michael.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/james.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/olivia.jpg"]
+
 
     if current_user
 

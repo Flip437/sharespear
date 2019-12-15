@@ -108,6 +108,13 @@
                                     <div class="card-avatar">
                                       <% if book_array[2].user.avatar.attached? %>
                                       <%= image_tag book_array[2].user.avatar, alt: 'avatar' %>
+
+                                      <% else %>
+
+                                      <%  i =rand(5) %>
+
+                                      <%= image_tag @avatar_array[i] %>
+
                                       <% end %>
                                     </div>
 
@@ -137,6 +144,15 @@
                                     <div class="card-avatar">
                                       <% if book_array[3].user.avatar.attached? %>
                                           <%= image_tag book_array[3].user.avatar, alt: 'avatar'  %>
+
+
+                                          <% else %>
+
+                                          <%  i =rand(5) %>
+
+                                          <%= image_tag @avatar_array[i] %>
+
+
                                       <%end%>
                                     </div>
 
@@ -222,6 +238,16 @@
                           <div class="author">
                               <% if book_array[a].user.avatar.attached?  %>
                               <%= image_tag book_array[a].user.avatar,class:"avatar img-raised", alt: 'avatar'%>
+
+
+                              <% else %>
+
+                              <%  i =rand(5) %>
+
+                              <%= image_tag @avatar_array[i],class:"avatar img-raised" %>
+
+
+
                                <% end  %>
 
                              <span>

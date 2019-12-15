@@ -26,23 +26,6 @@ User.destroy_all
         street_nb: Faker::Address.building_number
 
     )
-    a =rand(5)
-    if a == 1
-        user.avatar.attach(io: File.open('lib/assets/img/olivia.jpg'), filename: 'olivia.jpg')
-    end
-    if a == 2
-      user.avatar.attach(io: File.open('lib/assets/img/emily.jpg'), filename: 'emily.jpg')
-    end
-    if a == 3
-      user.avatar.attach(io: File.open('lib/assets/img/james.jpg'), filename: 'james.jpg')
-    end
-    if a == 4
-      user.avatar.attach(io: File.open('lib/assets/img/marie.jpg'), filename: 'marie.jpg')
-    end
-    if a == 5
-      user.avatar.attach(io: File.open('lib/assets/img/usher.jpg'), filename: 'usher.jpg')
-    end
-
 
     puts "User #{index} created"
 end
@@ -74,7 +57,7 @@ BookCopy.destroy_all
       photo_link: attributs[4],
       isbn: isbn
     )
-  sleep(2)
+
   end
   sleep(4)
 
@@ -108,7 +91,7 @@ BookCopy.destroy_all
           user_id: index+2,
           book_copy_id: book_copy.id
       )
-  sleep(2)
+
   end
   sleep(4)
 
@@ -145,7 +128,7 @@ BookCopy.destroy_all
           book_copy_id: book_copy.id
       )
       book_copy.update(status:false)
-  sleep(2)
+
   end
   sleep(4)
   puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et accepte"
@@ -180,7 +163,7 @@ BookCopy.destroy_all
           user_id: index+2,
           book_copy_id: book_copy.id
       )
-  sleep(2)
+
   end
   sleep(4)
   puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et recupere"
