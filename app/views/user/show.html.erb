@@ -8,7 +8,7 @@
                   <% if @user.avatar.attached? %>
                   <%= image_tag @user.avatar, alt: 'avatar' %>
                   <% else %>
-                    <%= image_tag("emilyz.jpg", class:"img-fluid") %>
+                    <%= image_tag("https://demos.creative-tim.com/now-ui-kit-pro/assets/img/olivia.jpg", class:"img-fluid") %>
                   <% end %>
                 </div>
                 <h3 class="title"><%= @user.first_name%> <%= @user.last_name%></h3>
