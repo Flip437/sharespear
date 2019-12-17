@@ -38,43 +38,31 @@
   margin: 0 auto;
   display: inline-block;
   border-width: 5px;
-  color: white;
+  border-color: rgb(136, 136, 136);
   width: 600px;
-  
+  background-color: white;
+
+}
+
+#search_bar:hover {
+  font-size: 20px;
+  margin: 0 auto;
+  display: inline-block;
+  border-width: 5px;
+  border-color: rgb(249, 99, 50);
+  width: 600px;
+  background-color: white;
+
 }
 
 #hello_world {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .sisu_nc {
   display: flex;
   justify-content: space-between;
 }
-
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
