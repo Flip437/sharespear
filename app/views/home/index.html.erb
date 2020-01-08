@@ -5,21 +5,24 @@
           <div class="row">
               <div class="col-md-8 ml-auto mr-auto text-center">
                   <%= image_tag("Artboard_1.png") %>
-                  <h2 class="title">Empruntez, Lisez, Prêtez.</h2>
+                  <h2 class="title">Empruntez, Lisez, Prêtez à Lyon</h2>
                   <h5 class="font-weight-normal">Trouvez votre prochaine lecture en fonction de vos goûts proche de chez vous.</h5>
 
                     <div class="card card-login card-plain">
                     <%= form_tag searchbar_index_path, method: :get do %>
                       <div class="form-group">
                         <%= text_field_tag :search1, params[:search1], placeholder: "Recherche un livre", class:'form-control text-dark', id:'search_bar' %>
-                        <br><br>
-                        <%= text_field_tag :search2, params[:search2], placeholder: "Ville", class:'form-control text-dark', id:'search_bar' %>
+
                         <br>
                         <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %> <%= link_to "Faire un don", new_home_path, method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
 
                         <br>
                         </div>
+
                     <% end %>
+                    
+
+
                     </div>
               </div>
           </div>
