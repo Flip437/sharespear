@@ -1,18 +1,37 @@
 <!DOCTYPE html>
+<-- 0@yopmail.com / password0 !-->
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @borrower.first_name %> </h1>
-    <p>
-      <%=@owner.first_name%> voudrait récupérer son livre.
-    </p>
-    <p>
-      N'hésite pas à la contacter :) 
-    </p>
-    <p>
-      À très vite sur sharespeare.fr
-    </p>
+  <div class="my-auto" style= "background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2053&q=80');background-size: cover; height: 100vh;">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  </div>
+
+  <div class="container">
+    <div class="card bg-light-gray" id='book-form'>
+      <div class="card-header text-center">
+
+        <h1>Salut <%= @borrower.first_name %> hahaha </h1>
+        <p>
+          <%=@owner.first_name%> voudrait récupérer son livre.
+        </p>
+        <p>
+          N'hésite pas à la contacter :) 
+        </p>
+        <p>
+          À très vite sur sharespeare.fr
+        </p>
+
+        </div>
+      </div>
+    </div>
+
+
   </body>
 </html>
