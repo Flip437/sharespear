@@ -64,10 +64,10 @@
                       <% @user_library.each do |book| %>
                       <div class="card" style="width: 20rem;">
                         <div class="card-body">
-                          <% if book.status==false %>
-                            <span class="badge badge-warning">Emprenté</span>
+                          <% if book.status==0 %>
+                            <span class="badge badge-warning">Empreinté</span>
                           <% end %>
-                          <% if book.status==true %>
+                          <% if book.status==1 %>
                             <span class="badge badge-success">Disponible</span>
                           <% end %>
                           <h4 class="card-title"><%= book.title %></h4>

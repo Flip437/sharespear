@@ -12,7 +12,7 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_library = BookCopy.where(user_id:@user.id)
+    @user_library = BookCopy.where(user_id: @user.id, status: [0,1] )
   end
 
   def update
