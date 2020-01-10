@@ -51,7 +51,7 @@ BookCopy.destroy_all
       title:  attributs[0],
       author: attributs[1],
       description: attributs[2],
-      status: true,
+      status: 1,
       category: attributs[3],
       user_id: index+1,
       photo_link: attributs[4],
@@ -69,7 +69,10 @@ BookCopy.destroy_all
     puts isbn
 
     new_book_copy = BookCopy.new
+
+    puts new_book_copy
     book_infos = new_book_copy.newbook(isbn)
+    puts book_infos
 
     attributs = new_book_copy.createif(book_infos)
 
@@ -77,12 +80,13 @@ BookCopy.destroy_all
       title:  attributs[0],
       author: attributs[1],
       description: attributs[2],
-      status: true,
+      status: 1,
       category: attributs[3],
       user_id: index+1,
       photo_link: attributs[4],
       isbn: isbn
     )
+
     borrow = Borrow.create(
           start_date: Date.today,
           end_date: Date.today >> 2,
@@ -105,20 +109,24 @@ BookCopy.destroy_all
       puts isbn
 
       new_book_copy = BookCopy.new
+
       book_infos = new_book_copy.newbook(isbn)
 
+
       attributs = new_book_copy.createif(book_infos)
+
 
       book_copy = BookCopy.create(
         title:  attributs[0],
         author: attributs[1],
         description: attributs[2],
-        status: true,
+        status: 1,
         category: attributs[3],
         user_id: index+1,
         photo_link: attributs[4],
         isbn: isbn
       )
+      puts book_copy
       borrow = Borrow.create(
           start_date: Date.today,
           end_date: Date.today >> 2,
@@ -127,7 +135,7 @@ BookCopy.destroy_all
           user_id: index+2,
           book_copy_id: book_copy.id
       )
-      book_copy.update(status:false)
+      book_copy.update(status:0)
 
   end
   sleep(4)
@@ -144,17 +152,19 @@ BookCopy.destroy_all
       book_infos = new_book_copy.newbook(isbn)
 
       attributs = new_book_copy.createif(book_infos)
+      puts new_book_copy.inspect
 
       book_copy = BookCopy.create(
         title:  attributs[0],
         author: attributs[1],
         description: attributs[2],
-        status: true,
+        status: 1,
         category: attributs[3],
         user_id: index+1,
         photo_link: attributs[4],
         isbn: isbn
       )
+    
       borrow = Borrow.create(
           start_date: Date.today,
           end_date: Date.today >> 2,

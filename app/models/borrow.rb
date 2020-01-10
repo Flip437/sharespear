@@ -64,7 +64,7 @@ class Borrow < ApplicationRecord
   end
 
   def user_cant_borrow_a_book_not_available
-    if BookCopy.find(book_copy_id).status == false
+    if BookCopy.find(book_copy_id).status == 0
         errors.add(:user_id, "can't borrow this book it's not available")
     end
   end
