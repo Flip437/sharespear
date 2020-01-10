@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_125605) do
     t.string "title"
     t.string "author"
     t.text "description"
-    t.boolean "status"
+    t.integer "status"
     t.string "category"
     t.string "isbn"
     t.string "photo_link", default: ""
