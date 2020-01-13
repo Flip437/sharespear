@@ -1,37 +1,20 @@
-<!DOCTYPE html>
-<-- 0@yopmail.com / password0 !-->
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-  <div class="my-auto" style= "background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2053&q=80');background-size: cover; height: 100vh;">
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+<div class="card text-center mt-5" style="width: 30rem;" data-background-color="black">
+  <div class="card-header mt-2">
+    <h1>Salut <%= @borrower.first_name %></h1>
   </div>
 
-  <div class="container">
-    <div class="card bg-light-gray" id='book-form'>
-      <div class="card-header text-center">
+  <div class="card-body">
+    <h4 class="card-title">
+      <%=@owner.first_name%> voudrait récupérer son livre <%=@borrow.book_copy.title%>
+    </h4>
+    <p class="card-text">
+      Pour entrer en contact avec, tu peux suivre le lien ci - dessous pour retrouver les informations nécessaires
+    </p>
+    <%= link_to "Detail de l'emprunt", bookcopy_borrow_url(@borrow.book_copy_id,@borrow.id), class: "btn btn-primary btn-round btn-lg"%>
+  </div>
 
-        <h1>Salut <%= @borrower.first_name %> hahaha </h1>
-        <p>
-          <%=@owner.first_name%> voudrait récupérer son livre.
-        </p>
-        <p>
-          N'hésite pas à la contacter :) 
-        </p>
-        <p>
-          À très vite sur sharespeare.fr
-        </p>
-
-        </div>
-      </div>
-    </div>
-
-
-  </body>
-</html>
+  <div class="card-footer text-muted mb-2">
+    Mail automatique
+  </div>
+  
+</div>

@@ -18,5 +18,6 @@ module Sharespeare
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp
+    config.assets.precompile += %w( foundation_emails.css )
   end
 end
