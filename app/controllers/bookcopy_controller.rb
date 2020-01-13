@@ -33,7 +33,7 @@ before_action :authenticate_user!
       title:  attributs[0],
       author: attributs[1],
       description: attributs[2],
-      status: true,
+      status: 1,
       category: attributs[3],
       user_id: current_user.id,
       photo_link: attributs[4],
@@ -51,8 +51,17 @@ before_action :authenticate_user!
   end
 
   def destroy
+
     book = BookCopy.find(params[:id])
-    if book.delete
+    book.status=2
+    borrows_book = Borrow.where({ book_copy_id: book.id })
+    borrows_book.each do |book|
+      book.borrow_status=2
+      book.save
+    end
+    book.save
+
+    if book.status==2
       flash[:success] = "Livre supprimé :)"
         redirect_to user_path(current_user.id)
     else

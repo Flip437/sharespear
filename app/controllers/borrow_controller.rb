@@ -41,14 +41,14 @@ class BorrowController < ApplicationController
       borrow_to_update.update(borrow_status:2)
       UserMailer.borrow_accepted_email(borrow_to_update).deliver_now
       book_copy_status_update = BookCopy.find(params[:bookcopy_id])
-      book_copy_status_update.update(status: false)
+      book_copy_status_update.update(status: 0)
 
       # Livre recupere
       elsif bouton_value=='2'
         borrow_to_update = Borrow.find(params[:id])
         book_copy_status_update = BookCopy.find(params[:bookcopy_id])
         borrow_to_update.update(borrow_status:3)
-        book_copy_status_update.update(status: true)
+        book_copy_status_update.update(status: 1)
         UserMailer.borrow_book_rendered_email(borrow_to_update).deliver_now
       #passe à refusé tous les autres
       book_copy = BookCopy.find(borrow_to_update.book_copy_id)
@@ -62,7 +62,7 @@ class BorrowController < ApplicationController
       borrow_to_update = Borrow.find(params[:id])
       book_copy_status_update = BookCopy.find(params[:bookcopy_id])
       borrow_to_update.update(borrow_status:3)
-      book_copy_status_update.update(status: true)
+      book_copy_status_update.update(status: 1)
       UserMailer.borrow_book_rendered_email(borrow_to_update).deliver_now
     end
 
