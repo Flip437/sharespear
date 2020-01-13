@@ -14,11 +14,11 @@ class User < ApplicationRecord
   end
 
   def book_copy_not_available_tab
-    return BookCopy.where(["status = ? and user_id = ?", false, self.id])
+    return BookCopy.where(["status = ? and user_id = ?", 0, self.id])
   end
 
   def book_copy_available_tab
-    return BookCopy.where(["status = ? and user_id = ?", true, self.id])
+    return BookCopy.where(["status = ? and user_id = ?", 1, self.id])
   end
 
   def book_I_borrow_tab
