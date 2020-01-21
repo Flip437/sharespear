@@ -6,17 +6,18 @@
 	<h2>S'inscrire</h2>
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 	  <%= render "devise/shared/error_messages", resource: resource %>
-	  
+
 	  	<div class="field">
 			<%= f.label :email %><br />
 			<%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: 'sign_up_form'%>
 	  	</div>
+			<p></p>
 
 		<div class="field">
-			<%= f.label :Code_Postal %><br />
-			<%= f.text_field :zip_code, autofocus: true, autocomplete: "Téléphone", class: 'form-control', id: 'sign_up_form'%>
+			<%= f.label :Votre_Arrondissement %><br />
+			<%= f.select :zip_code, ["69001", "69002", "69003","69004","69005","69006","69007","69008","69009"] , autofocus: true, autocomplete: "quartier", class: 'form-control', id: 'sign_up_form'%>
 		</div>
-	  	
+		<p></p>
 		<div class="field">
 			<%= f.label :Mot_de_passe %>
 			<% if @minimum_password_length %>
@@ -24,7 +25,7 @@
 			<% end %><br />
 			<%= f.password_field :password, autocomplete: "new-password", class: 'form-control', id: 'sign_up_form'%>
 		</div>
-
+<p></p>
 		<div class="field">
 			<%= f.label :Confirmation_de_mot_de_passe %><br/>
 			<%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', id: 'sign_up_form' %>
@@ -45,7 +46,7 @@
 <script>
 (function() {
   var placesAutocomplete = places({
-    appId: "plFDMUATEQLD", //PUBLIC KEYS 
+    appId: "plFDMUATEQLD", //PUBLIC KEYS
     apiKey: "85d12aa1ef6eb5ab0c86b00d983e07d8", //PUBLIC KEYS
     container: document.querySelector('#user_zipcode'),
     templates: {
@@ -59,7 +60,3 @@
 
 })();
 </script>
-
-
-
-
