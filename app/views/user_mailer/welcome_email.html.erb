@@ -1,36 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
+<div class="card text-center mt-5" style="width: 30rem;" data-background-color="black">
+  <div class="card-header mt-2">
+    <h1>Salut à toi et bienvenue sur shaRespeare</h1>
+  </div>
 
-  <body>
-
-    <div class="my-auto" style= "background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2053&q=80');background-size: cover; height: 100vh;">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    </div>
-
-    <div class="container">
-      <div class="card bg-light-gray" id='book-form'>
-        <div class="card-header text-center">
-          <h1>Salut à toi et bienvenue chez nous !</h1>
-          <p>
-            Tu t'es inscrit sur sharespeare.fr en utilisant l'e-mail suivant : <%= @user.email %>.
-          </p>
-          <p>
-            Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
-          </p>
-          <p>
-            À très vite sur sharespeare.fr
-          </p>
-        </div>
-      </div>
-    
-
-
-  </body>
-</html>
+  <div class="card-body">
+    <h4 class="card-title">
+      Tu t'es inscrit sur shaRespeare.fr en utilisant l'e-mail suivant : <%= @user.email %>.
+    </h4>
+    <p class="card-text">
+      Pour accéder à ton espace client, connecte-toi <%= link_to 'ici', @url %>
+    </p>
+    <p>
+      À très vite sur shaRespeare !
+    </p>
+  </div>
+</div>

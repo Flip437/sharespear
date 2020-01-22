@@ -1,18 +1,34 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Salut <%= @owner.first_name %> </h1>
-    <p>
+<div class="card text-center mt-5" style="width: 30rem;" data-background-color="black">
+  <div class="card-header mt-2">
+    <h1>Salut <%= @owner.first_name %></h1>
+  </div>
+
+  <div class="card-body">
+    <h4 class="card-title">
       Tu as reçu une nouvelle demande d'emprunt de la part de <%= @borrower.first_name %>.
+    </h4>
+    <p class="card-text">
+      Pour retrouver les informations de cet emprunt, tu peux suivre ce lien
     </p>
-    <p>
-      Pour accéder à cette demande, RDV sur ton dashboard.
+    <%= link_to "Detail de l'emprunt", bookcopy_borrow_url(@borrow.book_copy_id,@borrow.id), class: "btn btn-primary btn-round btn-lg"%>
+
+    <p class="card-text">
+      Voici les informations concernant <%=@borrower.first_name%>
     </p>
-    <p>
-      À très vite sur sharespeare.fr
-    </p>
-  </body>
-</html>
+
+    <div class="info info-horizontal">
+      <div class="icon icon-primary">
+          <i class="business_briefcase-24 now-ui-icons"></i>
+      </div>
+      <div class="description">
+          <h4 class="info-title">Contact</h4>
+          <p>  <%=@borrower.first_name%>    <%=@borrower.last_name%>
+              <br>  Tel: <%=@borrower.phone%>
+              <br>  @: <%=@borrower.email%>
+              <br>  Ville: <%=@borrower.city%>
+              <br>  Rue: <%=@borrower.street%>
+          </p>
+      </div>
+    </div>
+  </div>
+</div>

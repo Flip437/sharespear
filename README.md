@@ -1,5 +1,5 @@
 # README
-Bonjour à tous et bienvenue sur Sharespeare, l'application de partage de livre en ligne dans votre quartier.
+Bonjour à tous et bienvenue sur shaRespeare, l'application de partage de livre en ligne dans votre quartier.
 
 I/ Pour voir la version en ligne du site, vous pouvez aller à l'adresse suivante : https://sharespeare.herokuapp.com/
 
@@ -26,4 +26,4 @@ V/ Remerciements
   l'équipe du projet Point of sales for suits and every business lines avec qui nous avons passé les 3 mois de la formation.
   
   Remerciements,
-  L'équipe Sharespeare
+  L'équipe shaRespeare

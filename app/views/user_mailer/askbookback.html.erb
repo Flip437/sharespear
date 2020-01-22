@@ -5,8 +5,12 @@
 
   <div class="card-body">
     <h4 class="card-title">
-      <%=@owner.first_name%> voudrait récupérer son livre <%=@borrow.book_copy.title%>
+      <%=@owner.first_name%> voudrait récupérer son livre
     </h4>
+    <br>
+    <h3>
+      " <%=@borrow.book_copy.title%> "
+    </h3>
     <p class="card-text">
       Pour entrer en contact avec, tu peux suivre le lien ci - dessous pour retrouver les informations nécessaires
     </p>
@@ -24,17 +28,14 @@
       <div class="description">
           <h4 class="info-title">Contact</h4>
           <p>  <%=@owner.first_name%>    <%=@owner.last_name%>
-              <br>  <%=@owner.phone%>
-              <br>  <%=@owner.email%>
-              <br>  <%=@owner.city%>
-              <br>  <%=@owner.street%>
+              <br>  Tel: <%=@owner.phone%>
+              <br>  @: <%=@owner.email%>
+              <br>  Ville: <%=@owner.city%>
+              <br>  Rue: <%=@owner.street%>
           </p>
       </div>
     </div>
-
-
-  
-    </div>
+  </div>
 
   <div class="card-footer text-muted mb-2">
     Mail automatique

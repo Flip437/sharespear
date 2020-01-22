@@ -32,7 +32,7 @@ class UserMailer < ApplicationMailer
     @timeremaining = timeremaining
     @borrower = User.find(@borrow.user_id)
     @owner = User.find(BookCopy.find(@borrow.book_copy_id).user_id)
-    mail(to: @borrower.email, subject: "Attention, tu vas bientôt rendre votre livre")
+    mail(to: @borrower.email, subject: "Attention, tu vas bientôt rendre le livre")
   end
 
   def borrow_book_rendered_email(borrow)
