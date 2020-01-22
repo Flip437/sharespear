@@ -6,15 +6,15 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-  google:
+google:
   service: GCS
-  project: todo-pic
+  project: sharespeare-pic
   credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
   bucket: sharespeare_bucket_1
-  
+
 google_dev:
   service: GCS
-  project: todo-pic
+  project: sharespeare-pic
   credentials: <%= Rails.root.join("config/secrets/sharespeare-pic.json") %>
   bucket: sharespeare_bucket_1
 
