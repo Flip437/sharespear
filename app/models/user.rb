@@ -9,6 +9,22 @@ class User < ApplicationRecord
   has_many :borrows
   has_one_attached :avatar
 
+
+  # instead of deleting, indicate the user requested a delete & timestamp it
+ def soft_delete
+   update_attribute(:deleted_at, Time.current)
+ end
+
+ # ensure user account is active
+ def active_for_authentication?
+   super && !deleted_at
+ end
+
+ # provide a custom message for a deleted account
+ def inactive_message
+   !deleted_at ? super : :deleted_account
+ end  
+
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
@@ -32,5 +48,7 @@ class User < ApplicationRecord
   def book_asked_to_borrow
     return Borrow.where(["user_id = ? and borrow_status = ?",self.id, 0])
   end
+
+
 
 end
