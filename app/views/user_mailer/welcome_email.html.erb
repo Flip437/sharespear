@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Salut à toi et bienvenue chez nous !</h1>
-    <p>
-      Tu t'es inscrit sur sharespeare.fr en utilisant l'e-mail suivant : <%= @user.email %>.
+<div class="card text-center mt-5" style="width: 30rem;" data-background-color="black">
+  <div class="card-header mt-2">
+    <h1>Salut à toi et bienvenue sur shaRespeare</h1>
+  </div>
+
+  <div class="card-body">
+    <h4 class="card-title">
+      Tu t'es inscrit sur shaRespeare.fr en utilisant l'e-mail suivant : <%= @user.email %>.
+    </h4>
+    <p class="card-text">
+      Pour accéder à ton espace client, connecte-toi <%= link_to 'ici', @url %>
     </p>
     <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+      À très vite sur shaRespeare !
     </p>
-    <p>
-      À très vite sur sharespeare.fr
-    </p>
-  </body>
-</html>
+  </div>
+</div>

@@ -1,18 +1,35 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Salut <%= @borrower.first_name %> </h1>
-    <p>
-      Ton livre a bien été rendu !
+<div class="card text-center mt-5" style="width: 30rem;" data-background-color="black">
+  <div class="card-header mt-2">
+    <h1>Salut <%= @borrower.first_name %></h1>
+  </div>
+
+  <div class="card-body">
+    <h4 class="card-title">
+      <%= @owner.first_name %> a bien confirmé qu'il a récupéré son livre.
+    </h4>
+        
+    <p class="card-text">
+      Voici les informations concernant <%=@owner.first_name%>
     </p>
-    <p>
-      Trop stylé nan ?
+
+    <div class="info info-horizontal">
+      <div class="icon icon-primary">
+          <i class="business_briefcase-24 now-ui-icons"></i>
+      </div>
+      <div class="description">
+          <h4 class="info-title">Contact</h4>
+          <p>  <%=@owner.first_name%>    <%=@owner.last_name%>
+              <br>  Tel: <%=@owner.phone%>
+              <br>  @: <%=@owner.email%>
+              <br>  Ville: <%=@owner.city%>
+              <br>  Rue: <%=@owner.street%>
+          </p>
+      </div>
+    </div>
+
+    <p class="card-text">
+      Bonne lecture sur shaRespeare
     </p>
-    <p>
-      À très vite sur sharespeare.fr
-    </p>
-  </body>
-</html>
+
+  </div>
+</div>
