@@ -80,10 +80,4 @@ gem 'nokogiri'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'stripe'
-<<<<<<< HEAD
-gem 'inky-rb', require: 'inky'
-# Stylesheet inlining for email
-gem 'premailer-rails'
-=======
 gem "google-cloud-storage", "~> 1.8", require: false
->>>>>>> master
