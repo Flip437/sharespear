@@ -3,6 +3,7 @@ class UserController < ApplicationController
 
   def create
     @user = User.new
+    @quartiers = ["aa", "bb"]
   end
 
 
