@@ -1,8 +1,13 @@
+<div class="my-auto" style= "background-image: url('https://images.unsplash.com/photo-1537015125382-74e1f1c99ac4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80');background-size: cover; height: 100vh;">
 <center>
+<div class="container">
 <br>
 <br>
 <br>
 <br>
+<div class="row">
+<div class="card col" style="width: 30rem; opacity: 0.95; ">
+	<br>
 	<h2>S'inscrire</h2>
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 	  <%= render "devise/shared/error_messages", resource: resource %>
@@ -14,7 +19,7 @@
 			<p></p>
 
 		<div class="field">
-			<%= f.label :Votre_Arrondissement %><br />
+			<%= f.label :arrondissement %><br />
 			<%= f.select :zip_code, ["69001", "69002", "69003","69004","69005","69006","69007","69008","69009"] , autofocus: true, autocomplete: "quartier", class: 'form-control', id: 'sign_up_form'%>
 		</div>
 		<p></p>
@@ -32,12 +37,56 @@
 		</div>
 
 		<div class="actions">
-			<%= f.submit "Go !", class:"btn btn-primary btn-round"  %>
+			<br>
+			<%= f.submit "C'est parti !", class:"btn btn-primary btn-round"  %>
 		</div>
 	<% end %>
 
 	<%= render "users/shared/links" %>
+	<br>
+	</div>
+	<div class="col-1">
+
+	</div>
+	<div class="col">
+		<center>
+		<div class="card col" style="width: 30rem; opacity: 0.95; ">
+			<br>
+			<img class="card-img-top" src="https://image.flaticon.com/icons/svg/992/992702.svg" style="border-radius: 5%; width: 10em;">
+			<br>
+			<br>
+						<h3>Nous nous développons sur <b>Lyon</b></h3>
+
+
+
+
+
+			<ul>
+				<li ><h5>Choissisez bien votre <b>arrondissement</b> pour avoir les meilleurs recommendations de Livres</h5></li>
+	<br>
+				<li > <h5>Entrez votre <b>email</b> pour avoir les alertes et notifications de contact</h5></li>
+			</ul>
+					<h4>Bon partage :-) </h4>
+
+
+
+
+			<br>
+
+
+
+	  </div>
+
+
+			</center>
+
+	</div>
+
+
+		</div>
+</div>
 </center>
+
 
 
 
@@ -60,3 +109,5 @@
 
 })();
 </script>
+
+</div>
