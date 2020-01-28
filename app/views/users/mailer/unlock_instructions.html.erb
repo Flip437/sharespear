@@ -1,7 +1,21 @@
-<p>Hello <%= @resource.email %>!</p>
+<div class="card text-center mt-5" style="width: 30rem;" data-background-color="black">
+  <div class="card-header mt-2">
+    <h1> Salut </h1>
+  </div>
+  
+  <div class="card-body">
+    <h4 class="card-title">
+      Ton compte a été bloqué à cause de trop nombreuses tentatives de connexion.
+    </h4>
+    <br>
+    <h3>
+        Clique sur le lien ci-dessous pour débloquer ton compte.
+    </h3>
+    <br>
+    <%= link_to 'Débloquer mon compte', unlock_url(@resource, unlock_token: @token) %>
+  </div>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
-
-<p>Click the link below to unlock your account:</p>
-
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+  <div class="card-footer text-muted mb-2">
+    Mail automatique
+  </div>
+</div>
