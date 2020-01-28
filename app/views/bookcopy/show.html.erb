@@ -22,10 +22,10 @@
                 <%= image_tag(@book.photo_link, class: "img-fluid") %>
                 <br>
                 <br>
-                <% if @book.status==false %>
+                <% if @book.status==0 %>
                   <span class="badge badge-warning">Emprenté</span>
                 <% end %>
-                <% if @book.status==true %>
+                <% if @book.status==1 %>
                   <span class="badge badge-success">Disponible</span>
                 <% end %>
             </div>
@@ -55,7 +55,7 @@
                   <%= link_to "Supprimer", bookcopy_path(@book.id), method:"delete", class:"btn btn-primary"%>
 
                 <% else %>
-                <% if @book.status==true %>
+                <% if @book.status==1 %>
                   <%= link_to "Emprunter", new_bookcopy_borrow_path(@book.id), class:"btn btn-primary btn-round btn-lg"%>
                 <% end %>
               <% end %>
