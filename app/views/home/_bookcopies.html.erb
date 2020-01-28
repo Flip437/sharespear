@@ -14,10 +14,10 @@
                   <%= image_tag book.photo_link, class:"img-rounded" %>
               </div>
               <br>
-              <h6>                <% if book.status==false %>
+              <h6>                <% if book.status==0 %>
                                 <span class="badge badge-warning">Emprenté</span>
                               <% end %>
-                              <% if book.status==true %>
+                              <% if book.status==1 %>
                                 <span class="badge badge-success">Disponible</span>
                               <% end %></h6>
           </div>
