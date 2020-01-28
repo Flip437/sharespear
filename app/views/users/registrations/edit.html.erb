@@ -15,7 +15,7 @@
 
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, class: "form-control gnark", autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, class: "form-control gnark", autofocus: true, autocomplete: "email", readonly: true %>
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
