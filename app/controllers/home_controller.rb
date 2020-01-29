@@ -28,7 +28,8 @@ class HomeController < ApplicationController
 
   def index
 
-     @avatar_array = [<%= asset_path 'sharespeare1.jpg' %>,<%= asset_path 'sharespeare2.jpg' %>,<%= asset_path 'sharespeare3.jpg' %>,<%= asset_path 'sharespeare4.jpg' %>,<%= asset_path 'sharespeare5.jpg' %>]
+
+     @avatar_array = ['sharespeare1.png', 'sharespeare2.png','sharespeare3.png','sharespeare4.png','sharespeare5.png','sharespeare6.png','sharespeare7.png','sharespeare8.png','sharespeare9.png']
 
 
     if current_user
