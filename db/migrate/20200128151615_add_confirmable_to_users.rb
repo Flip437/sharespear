@@ -13,8 +13,6 @@ class AddConfirmableToUsers < ActiveRecord::Migration[5.2]
     # All existing user accounts should be able to log in after this.
   end
 
-
-
   def down
     remove_columns :users, :confirmation_token, :confirmed_at, :confirmation_sent_at
     # remove_columns :users, :unconfirmed_email # Only if using reconfirmable

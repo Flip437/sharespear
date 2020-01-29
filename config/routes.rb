@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'mailback/new'
-  devise_for :users, path: 'users', controllers: { registrations: 'users/registrations' }
+  devise_for :users, path: 'users', controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
   root 'home#index'
   resources :searchbar, only: :index

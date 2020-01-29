@@ -4,14 +4,18 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    @email = params[:user][:email]
+    unless User.find_by(email: @email).confirmed?
+      flash[:error] = "Merci de confirmer ton compte avant de te connecter :)"
+    end
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy
