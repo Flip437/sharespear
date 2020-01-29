@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create :confirmation_instructions
+  after_create :welcome_send
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -25,9 +25,9 @@ class User < ApplicationRecord
    !deleted_at ? super : :deleted_account
  end  
 
-  def confirmation_instructions
-    UserMailer.confirmation_instructions(self).deliver_now
-  end
+  # def confirmation_instructions
+  #   UserMailer.confirmation_instructions(self).deliver_now
+  # end
  
   def welcome_send
     UserMailer.welcome_email(self).deliver_now

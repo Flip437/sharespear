@@ -1,10 +1,10 @@
 class UserMailer < ApplicationMailer
 
-  def confirmation_instructions(user)
-    @user = user
-    @url  = 'https://sharespeare.herokuapp.com/users/sign_in' 
-    mail(to: @user.email, subject: 'Merci de confirmer ton inscription')
-  end
+  # def confirmation_instructions(user)
+  #   @user = user
+  #   @url  = 'https://sharespeare.herokuapp.com/users/sign_in' 
+  #   mail(to: @user.email, subject: 'Merci de confirmer ton inscription')
+  # end
 
   def welcome_email(user)
     @user = user
