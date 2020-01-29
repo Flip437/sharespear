@@ -28,7 +28,7 @@ class HomeController < ApplicationController
 
   def index
 
-     @avatar_array = ["https://demos.creative-tim.com/now-ui-kit-pro/assets/img/mike.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/ryan.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/michael.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/james.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/olivia.jpg"]
+     @avatar_array = [<%= asset_path 'sharespeare1.jpg' %>,<%= asset_path 'sharespeare2.jpg' %>,<%= asset_path 'sharespeare3.jpg' %>,<%= asset_path 'sharespeare4.jpg' %>,<%= asset_path 'sharespeare5.jpg' %>]
 
 
     if current_user
