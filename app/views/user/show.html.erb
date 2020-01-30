@@ -6,7 +6,9 @@
             <div class="content-center">
                 <div class="photo-container">
                   <% if @user.avatar.attached? %>
-                  <%= image_tag @user.avatar, alt: 'avatar' %>
+
+                  <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+
                   <% else %>
                     <%= image_tag("sharespeare1.png", class:"img-fluid") %>
                   <% end %>
@@ -35,18 +37,11 @@
                 <div class="button-container">
 
                     <% if current_user.id==@user.id %>
+                    <center>
                       <%= link_to 'Ajouter des livres', new_bookcopy_path, class: "btn btn-primary btn-round btn-lg" %>
                       <%= link_to 'Modifier mes informations', edit_user_path(@user.id), class: "btn btn-default btn-round btn-lg" %>
+                      </center>
                     <% else %>
-
-                      <%= link_to 'Follow', user_path(@user.id), class: "btn btn-primary btn-round btn-lg btn-lg" %>
-
-                    <% end %>
-                    <%= link_to( user_path(@user.id), class: "btn btn-default btn-round btn-lg btn-icon") do %>
-                    <i class="fa fa-twitter"></i>
-                    <%end%>
-                    <%= link_to( user_path(@user.id), class: "btn btn-default btn-round btn-lg btn-icon") do %>
-                    <i class="fa fa-instagram"></i>
                     <%end%>
 
                 </div>

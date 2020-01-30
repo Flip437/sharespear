@@ -35,7 +35,7 @@
               <p></p>
             <div class="author">
                 <% if book.user.avatar.attached?  %>
-                <%= image_tag book.user.avatar,class:"avatar img-raised", alt: 'avatar'%>
+                <%= image_tag book.user.avatar.variant(resize_to_limit: [100, 100]),class:"avatar img-raised", alt: 'avatar' %>
                 <% end  %>
 
               <span>
