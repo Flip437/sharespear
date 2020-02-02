@@ -1,7 +1,7 @@
 <div class="card card-background" style="background-image: url('https://images.unsplash.com/photo-1517770413964-df8ca61194a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')">
   <div class="card-body">
     <div class="card-title">
-      <h3>"Les seuls livres que j'ai dans ma bibliothèque sont des livres qu'on m'a prêtés.."</h3>
+      <h3>"Les seuls livres que j'ai dans ma bibliothèque sont des livres qu'on m'a prêtés..haha"</h3>
     </div>
     <div class="card-footer text-left">
       <div class="stats-link pull-right">
@@ -62,3 +62,16 @@
         </div>
     </div>
 </div>
+
+
+
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+  <div>
+    <strong><%= comment.user_name %></strong>
+    <br>
+    <p><%= comment.body %></p>
+    <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+<% end %>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>
