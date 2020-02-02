@@ -1,39 +1,33 @@
-<div class="header-2">
-  <div class="page-header header-filter" id="hello_world">
-      <div class="page-header-image" style="background-image: url('https://images.unsplash.com/photo-1548048026-5a1a941d93d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');filter: blur(2px);"></div>
-      <div class="container">
-          <div class="row">
-              <div class="col-md-8 ml-auto mr-auto text-center">
-                  <%= image_tag("Artboard_1.png") %>
-                  <h2 class="title">Empruntez, Lisez, Prêtez à Lyon</h2>
-                  <h5 class="font-weight-normal">Trouvez votre prochaine lecture en fonction de vos goûts proche de chez vous.</h5>
 
-                    <div class="card card-login card-plain">
-                    <%= form_tag searchbar_index_path, method: :get do %>
-                      <div class="form-group">
-                        <%= text_field_tag :search1, params[:search1], placeholder: "Recherche un livre", class:'form-control text-dark', id:'search_bar' %>
-
-                        <br>
-                        <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %> <%= link_to "Faire un don", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
-
-                        <br>
-                        </div>
-
-                    <% end %>
-
-
-
-                    </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-
-
-<br><br>
 
 <% if current_user && @length_tab_book_copy>0 %>
+
+<div class="jumbotron" style="background-image: url(<%= asset_path 'back_img8.jpg' %>); background-size: 100%; background-size: cover;">
+<div class="col-md-8 ml-auto mr-auto text-center">
+   <div class="container for-about">
+   <%= image_tag("Artboard_1.png", height: "110") %>
+   </div>
+
+   <br>
+</div>
+
+<div class="card card-login card-plain text-center">
+<%= form_tag searchbar_index_path, method: :get do %>
+  <div class="form-group">
+    <%= text_field_tag :search1, params[:search1], placeholder: "Rechercher un livre à Lyon", class:'form-control text-dark', id:'search_bar' %>
+
+    <br>
+    <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %> <%= link_to "Faire un don", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
+
+    </div>
+
+<% end %>
+
+
+</div>
+
+</div>
+
 <div class="col-md-8 ml-auto mr-auto text-center">
   <h2 class="title">Explorez, Découvrez dans votre quartier</h2>
   <h5 class="description">Trouvez un livre autour de chez vous..</h5>
@@ -68,13 +62,48 @@
   <%= render 'home/recommendation', book_array: @book_copy_array %>
 </div>
 <% end %>
+
 <% if current_user && @length_tab_book_copy==0 %>
+<div class="header-2">
+  <div class="page-header header-filter" id="hello_world">
+      <div class="page-header-image" style="background-image: url(<%= asset_path 'back_img3.jpg' %>);filter: blur(2px);"></div>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-8 ml-auto mr-auto text-center">
+                  <%= image_tag("Artboard_1.png") %>
+                  <h2 class="title">Empruntez, Lisez, Prêtez à Lyon</h2>
+                  <h5 class="font-weight-normal">Trouvez votre prochaine lecture en fonction de vos goûts proche de chez vous.</h5>
+
+                    <div class="card card-login card-plain">
+                    <%= form_tag searchbar_index_path, method: :get do %>
+                      <div class="form-group">
+                        <%= text_field_tag :search1, params[:search1], placeholder: "Recherche un livre", class:'form-control text-dark', id:'search_bar' %>
+
+                        <br>
+                        <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %> <%= link_to "Faire un don", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
+
+                        <br>
+                        </div>
+
+                    <% end %>
+
+
+
+                    </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<br><br>
 <div class="row">
         <div class="col-md-8 ml-auto mr-auto text-center">
             <h2 class="title">Nous ne trouvons pas de livres autour de toi..</h2>
             <h5 class="description">Partage le site autour de toi ou modifie ton arrondissement</h5>
         </div>
-<div class="card card-background" style="background-image: url('https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')">
+<div class="card card-background" style="background-image: url(<%= asset_path "back_img7.jpg" %>)">
           <div class="card-body">
             <div class="card-title">
               <h3>"Votre bibliothèque de quartier est vide"</h3>
@@ -89,8 +118,43 @@
 </div>
 </div>
 <% end %>
+
 <% if current_user%>
 <% else %>
+<div class="header-2">
+  <div class="page-header header-filter" id="hello_world">
+      <div class="page-header-image" style="background-image: url(<%= asset_path 'back_img3.jpg' %>);filter: blur(2px);"></div>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-8 ml-auto mr-auto text-center">
+                  <%= image_tag("Artboard_1.png") %>
+                  <h2 class="title">Empruntez, Lisez, Prêtez à Lyon</h2>
+                  <h5 class="font-weight-normal">Trouvez votre prochaine lecture en fonction de vos goûts proche de chez vous.</h5>
+
+                    <div class="card card-login card-plain">
+                    <%= form_tag searchbar_index_path, method: :get do %>
+                      <div class="form-group">
+                        <%= text_field_tag :search1, params[:search1], placeholder: "Recherche un livre", class:'form-control text-dark', id:'search_bar' %>
+
+                        <br>
+                        <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %> <%= link_to "Faire un don", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
+
+                        <br>
+                        </div>
+
+                    <% end %>
+
+
+
+                    </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<br><br>
 
 
 <div class="section section-about-us">
@@ -105,13 +169,13 @@
 <div class="container-fluid">
   <div class="row">
       <div class="col-md-6 px-0">
-          <div class="card card-fashion card-background" style="background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2906&q=80')">
+          <div class="card card-fashion card-background" style="background-image: url(<%= asset_path 'biblio.png' %>)">
               <div class="card-body">
                   <div class="card-title text-left">
                     <h1>1</h1>
                       <h2>
 
-                              Je me connecte et j'ajoute mes livres sur shaRespeare
+                            <b>Ajoutez</b> vos livres sur shaRespeare
 
                       </h2>
                   </div>
@@ -124,7 +188,7 @@
 
                       <h4>
 
-                              Répertoriez vos livres dans votre bibliothèque en ligne, et partagez-les dans votre quartier en toute confiance grâce à notre plateforme.
+                              Répertoriez vos livres dans votre <b>bibliothèque en ligne</b>, et <b>partagez-les dans votre quartier</b> !
 
                       </h4>
 
@@ -151,7 +215,7 @@
               <div class="card-title">
                   <h4>
 
-                          Explorez les bibliothèques de votre quartier pour  emprunter votre nouveau livre préféré. Et prêtez les vôtres en toute sécurité !
+                          <b>Explorez nos recommendations</b> autour de chez vous, <b>choissisez votre genre</b> ou cherchez directement dans la barre de recherche !
 
                   </h4>
               </div>
@@ -159,12 +223,13 @@
       </div>
 
       <div class="col-md-6 px-0">
-          <div class="card card-fashion card-background" style="background-image: url('https://images.unsplash.com/photo-1476234251651-f353703a034d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80')">
+          <div class="card card-fashion card-background" style="background-image: url(<%= asset_path 'reco.png' %>)">
               <div class="card-body">
                   <div class="card-title text-left">
                     <h1>2</h1>
                       <h2>
-                          Je partage mes ouvrages avec mes proches du quartier
+                        <b>Explorez</b> et Trouvez votre prochaine lecture autour de chez vous !
+
                       </h2>
                   </div>
               </div>
@@ -180,7 +245,7 @@
                     <h1>3</h1>
                       <h2>
 
-                              Je peux gérer mes prêts et mes emprunts
+                              <b>Rencontrez</b>, Echangez et Empruntez votre livre !
 
                       </h2>
                   </div>
@@ -193,7 +258,7 @@
 
                       <h4>
 
-                            Ne cherchez plus où sont passés vos livres ! La section "Dashboard" vous permet de savoir à qui et quand vous avez prêté ce livre et même de le relancer par mail pour qu’il vous le rende.
+                            Une <b>prise de contact simplifié</b> avec des lecteurs passionné. <b>À vous de vous rencontrer !</b>
 
                       </h4>
 
@@ -207,13 +272,51 @@
       </div>
 
   </div>
+  <div class="row">
+      <div class="col-md-3 px-0">
+          <div class="card card-fashion card-background" style="background-image: url('https://images.unsplash.com/photo-1525696349533-cfd38bf00f0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')">
+
+          </div>
+      </div>
+
+      <div class="col-md-3 px-0">
+          <div class="card card-fashion arrow-left">
+              <div class="card-title">
+                  <h4>
+
+
+                          Ne cherchez plus où sont passés vos livres ! La section <b>"Tableau de Bord"</b> vous permet de savoir à qui et quand vous avez prêté un livre. Nous vous <b>informerons par mail</b> de l'actualité de vos livres.
+
+                  </h4>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-6 px-0">
+          <div class="card card-fashion card-background" style="background-image: url(<%= asset_path 'gerer.png' %>)">
+              <div class="card-body">
+                  <div class="card-title text-left">
+                    <h1>4</h1>
+                      <h2>
+                          <b>Gérez</b> vos prêts et vos emprunts sans soucis
+                      </h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div
+
+
+<br>
+<br>
 </div>
 </div>
     <div class="container text-center">
 
-      <h2>Nous fonctionnons vos dons</h2>
-      <p><b>Nous souhaitons permettre au plus grand nombre de pouvoir découvrir de nouvelles lectures à travers notre communauté.
-        Nous reversons une partie de vos dons à des associations comme Livre sans frontière ou Point Livres pour aider les plus démunies à accéder à la lecture.
+      <h2> Nous fonctionnons grâce à vos dons</h2>
+      <p><b><b>Sharespeare</b> c'est <b>100% gratuit</b> : Nous souhaitons permettre au plus grand nombre de pouvoir découvrir de nouvelles lectures à travers notre communauté.
+      Mais nous devons supporter les <b>coûts de fonctionnements</b> (serveurs et services).<br><b>Merci pour votre participation :-)</b>
+
         </b>
       </p>
 
@@ -221,26 +324,102 @@
       <!-- bouton don -->
       <div class="container">
         <div class="row justify-content-md-center">
-          <%= link_to "Faire un don", new_home_path, method: :get, class: 'btn btn-primary btn-round btn-lg '  %>
+          <%= link_to "Faire un don", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
         </div>
       </div>
+
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container" >
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-testimonial">
+                        <div class="card-avatar">
+                            <a href="#pablo">
+                                <%= image_tag("Arthur.jpg", class:"img img-raised") %>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                The networking at Web Summit is like no other European tech conference.
+                            </p>
+                        </div>
+                        <div class="icon icon-primary">
+                            <i class="fa fa-quote-right"></i>
+                        </div>
+                        <div class="card-footer">
+                            <h4 class="card-title">Michael Elijah</h4>
+                            <p class="category">@michaelelijah</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-testimonial">
+                        <div class="card-avatar">
+                            <a href="#pablo">
+                                <%= image_tag("Arthur.jpg", class:"img img-raised") %>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                The connections you make at Web Summit are unparalleled, we met users all over the world.
+                            </p>
+                        </div>
+                        <div class="icon icon-primary">
+                            <i class="fa fa-quote-right"></i>
+                        </div>
+                        <div class="card-footer">
+                            <h4 class="card-title">Olivia Harper</h4>
+                            <p class="category">@oliviaharper</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-testimonial">
+                        <div class="card-avatar">
+                            <a href="#pablo">
+                                <%= image_tag("Arthur.jpg", class:"img img-raised") %>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Web Summit will increase your appetite, your inspiration, and your network.
+                            </p>
+                        </div>
+                        <div class="icon icon-primary">
+                            <i class="fa fa-quote-right"></i>
+                        </div>
+                        <div class="card-footer">
+                            <h4 class="card-title">James Logan</h4>
+                            <p class="category">@jameslogan</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
 
     </div>
 </div>
 
 
+
 <br>
 <br>
-<br>
-<br>
+
 
 <div class="team-5 section-image" style="background-image: url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80')">
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
                 <h2 class="title">Notre équipe</h2>
-                <h4 class="description">Voici l'équipe de shakespeare</h4>
+                <h4 class="description">Voici l'équipe de shaRespeare</h4>
             </div>
         </div>
 
@@ -255,9 +434,9 @@
 
                     <div class="card-body">
                         <h3 class="card-title">Arthur Wilbrod</h3>
-                        <h6 class="category text-primary">CEO</h6>
+                        <h6 class="category text-primary">Créateur</h6>
                         <p class="card-description">
-                            <b>L'amour ne voit pas avec les yeux, mais avec l'âme. shakespeare</b>
+                            <b>L'amour ne voit pas avec les yeux, mais avec l'âme. <br> <i>shakespeare</i></b>
                         </p>
                     </div>
                 </div>
@@ -267,18 +446,18 @@
                 <div class="card card-profile">
                     <div class="card-avatar">
 
-                            <%= image_tag("lucas.png", class:"img img-raised") %>
+                            <%= image_tag("thp.png", class:"img img-raised") %>
 
 
                     </div>
 
                     <div class="card-body">
-                        <h4 class="card-title">Lucas grd et Sacha Palayret</h4>
-                        <h6 class="category text-primary">CTEs</h6>
+                        <h4 class="card-title">The Hacking Project</h4>
+                        <h6 class="category text-primary">Formation</h6>
 
                         <p class="card-description">
-                            <b>La pensée d'une femme court toujours en avant de ses actes, Lucas shakespeare<br><br>
-                            La femme est un mets digne des dieux, quand le diable ne l'assaisonne pas, Sacha shakespeare</b>
+                            <b>Bootcamp de 3 mois qui nous a permit de porter le projet shaRespeare <br><br>
+                          </b>
                         </p>
                     </div>
                 </div>
@@ -295,10 +474,10 @@
 
                     <div class="card-body">
                         <h4 class="card-title">Flip Diollot</h4>
-                        <h6 class="category text-primary">CTO</h6>
+                        <h6 class="category text-primary">Créateur</h6>
 
                         <p class="card-description">
-                            <b>Le chagrin, ce ver rongeur de la beauté. shakespeare</b>
+                            <b>Le chagrin, ce ver rongeur de la beauté.<br> <i>shakespeare</i></b>
                         </p>
                     </div>
                 </div>
@@ -313,16 +492,19 @@
 
 
         <div class="contactus-1 section-image" style="background-image: url('https://images.unsplash.com/photo-1533669955142-6a73332af4db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2878&q=80')">
+          <center>
+
+
     <div class="container">
-        <div class="row">
-            <div class="col-md-5 ml-auto mr-auto">
+
+
                 <h2 class="title">Nous contacter</h2>
                 <div class="info info-horizontal">
                     <div class="icon icon-primary">
                         <i class="now-ui-icons location_pin"></i>
                     </div>
                     <div class="description">
-                        <h4 class="info-title">Oû nous trouver ?</h4>
+                        <h4 class="info-title">Où nous trouver ?</h4>
                         <p><b>145 Cours Lafayette<br>
                             69006 Lyon<br>
                             </b>
@@ -335,63 +517,20 @@
                     </div>
                     <div class="description">
                         <h4 class="info-title">Nous contactez</h4>
-                        <p><b>Arthur Wilbrod<br>
-                            +33 6 62 321 762<br>
+                        <p><b>
+                            comptwil@gmail.com <br>
+                            +33 6 68 68 57 74 <br>
                             Lun. - Vend., 8:00-22:00
+
+                            </br>
                             </b>
                         </p>
                     </div>
                 </div>
 
-            </div>
-            <div class="col-md-5 ml-auto mr-auto">
-                <div class="card card-contact card-raised">
-                    <form role="form" id="contact-form" method="post">
-                        <div class="card-header text-center">
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 pr-2">
-                                    <label>Prénom</label>
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
-                                      </div>
-                                      <input type="text" class="form-control" placeholder=Prénom..." autocomplete="name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 pl-2">
-                                    <div class="form-group">
-                                        <label>Nom</label>
-                                        <div class="input-group">
-                                          <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span>
-                                          </div>
-                                          <input type="text" class="form-control" placeholder=Nom..." autocomplete="name">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Adresse Email</label>
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
-                                  </div>
-                                  <input type="email" class="form-control" placeholder="Adresse Email..." autocomplete="email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Votre message</label>
-                                <textarea name="message" class="form-control" id="message" rows="6"></textarea>
-                            </div>
 
-                        </div>
 
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
+    </center>
 </div>
 <% end %>

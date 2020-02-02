@@ -1,14 +1,16 @@
 <div class="profile-page">
     <div class="wrapper">
         <div class="page-header page-header-small" >
-            <div class="page-header-image" data-parallax="true" style="background-image: url('https://images.unsplash.com/photo-1465433045946-ba6506ce5a59?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') ;">
+            <div class="page-header-image" data-parallax="true" style="background-image: url(<%= asset_path "back_img9.jpg" %>) ;">
             </div>
             <div class="content-center">
                 <div class="photo-container">
                   <% if @user.avatar.attached? %>
-                  <%= image_tag @user.avatar, alt: 'avatar' %>
+
+                  <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+
                   <% else %>
-                    <%= image_tag("https://demos.creative-tim.com/now-ui-kit-pro/assets/img/olivia.jpg", class:"img-fluid") %>
+                    <%= image_tag("sharespeare1.png", class:"img-fluid") %>
                   <% end %>
                 </div>
                 <h3 class="title"><%= @user.first_name%> <%= @user.last_name%></h3>
@@ -35,18 +37,11 @@
                 <div class="button-container">
 
                     <% if current_user.id==@user.id %>
+                    <center>
                       <%= link_to 'Ajouter des livres', new_bookcopy_path, class: "btn btn-primary btn-round btn-lg" %>
                       <%= link_to 'Modifier mes informations', edit_user_path(@user.id), class: "btn btn-default btn-round btn-lg" %>
+                      </center>
                     <% else %>
-
-                      <%= link_to 'Follow', user_path(@user.id), class: "btn btn-primary btn-round btn-lg btn-lg" %>
-
-                    <% end %>
-                    <%= link_to( user_path(@user.id), class: "btn btn-default btn-round btn-lg btn-icon") do %>
-                    <i class="fa fa-twitter"></i>
-                    <%end%>
-                    <%= link_to( user_path(@user.id), class: "btn btn-default btn-round btn-lg btn-icon") do %>
-                    <i class="fa fa-instagram"></i>
                     <%end%>
 
                 </div>
