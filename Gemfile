@@ -82,4 +82,3 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'stripe'
 gem "google-cloud-storage", "~> 1.8", require: false
-gem 'commontator', '~> 4.10.0'
