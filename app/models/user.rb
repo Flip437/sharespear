@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :borrows
   has_one_attached :avatar
 
-
   # instead of deleting, indicate the user requested a delete & timestamp it
  def soft_delete
    update_attribute(:deleted_at, Time.current)
@@ -56,7 +55,5 @@ class User < ApplicationRecord
   def book_asked_to_borrow
     return Borrow.where(["user_id = ? and borrow_status = ?",self.id, 0])
   end
-
-
 
 end
