@@ -1,4 +1,4 @@
-<div class="my-auto" style= "background-image: url('https://images.unsplash.com/photo-1517770413964-df8ca61194a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');background-size: cover; height: 100vh;">
+<div class="my-auto" style= "background-image: url(<%= asset_path "back_img2.jpg" %>);background-size: cover; height: 100vh;">
 <br>
 <br>
 <br>
@@ -36,7 +36,7 @@
       <%= f.submit "Envoyer" , class: "btn btn-primary btn-round btn-lg"%>
     <% end %>
     </div>
-    <%= link_to "Faire un don à shaRespeare", new_home_path, method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
+    <%= link_to "Faire un don", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
     <div class="card-footer text-muted mb-2">
       <div class="card-header mt-2">
         Propriétaire : <%=User.find(@book.user_id).first_name %> <%=User.find(@book.user_id).last_name %>
