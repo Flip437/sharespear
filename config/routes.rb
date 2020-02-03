@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'comments/New'
+  get 'comments/Create'
   get 'mailback/new'
   devise_for :users, path: 'users', controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
@@ -13,6 +15,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :bookcopy do
     resources :borrow
+    resources :comments
   end
+
+  resources :comments do
+    resources :comments
+  end
+
   resources :mailback, only: :new
 end
