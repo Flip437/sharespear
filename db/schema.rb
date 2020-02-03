@@ -92,9 +92,11 @@ ActiveRecord::Schema.define(version: 2020_02_03_163036) do
   create_table "posts", force: :cascade do |t|
     t.string "content"
     t.bigint "book_copy_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_copy_id"], name: "index_posts_on_book_copy_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

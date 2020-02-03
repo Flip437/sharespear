@@ -4,17 +4,11 @@ class BookcopyController < ApplicationController
 before_action :authenticate_user!
 
   def show
-    puts "IN SHOWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+    puts "IN SHOWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW of bookcopy controller"
       @book = BookCopy.find(params[:id])
       @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
       @user = current_user
-      @post = Post.new
-
-  # ajouter une colonne user_id au comment
-  # créer les variables dans ce controller pour afficher le fils de discussion : 
-  #   nombre de commentaires sur ce livre
-  #    nom du user qui a commenté
-# faire le fil de discussion avec une boucle each et pas une collection
+      @post = Post.create
   end
 
   def new
@@ -28,10 +22,10 @@ before_action :authenticate_user!
     session[:book_info] = @book_infos
     session[:isbn] = @isbn
     end
-
   end
 
   def create
+    puts "IN CREATEEEEEEEEEEEEEEEEEEEEEEEE of bookcopy controller"
     @book_infos = session[:book_info]
     @isbn = session[:isbn]
     bookcopy = BookCopy.new
