@@ -1,14 +1,13 @@
 class User < ApplicationRecord
-  after_create :welcome_send
+  # after_save :welcome_send
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :book_copies
   has_many :borrows
   has_one_attached :avatar
-
 
   # instead of deleting, indicate the user requested a delete & timestamp it
  def soft_delete
@@ -25,8 +24,16 @@ class User < ApplicationRecord
    !deleted_at ? super : :deleted_account
  end  
 
+  # def confirmation_instructions
+  #   UserMailer.confirmation_instructions(self).deliver_now
+  # end
+ 
   def welcome_send
-    UserMailer.welcome_email(self).deliver_now
+      UserMailer.welcome_email(self).deliver_now
+  end
+
+  def after_confirmation
+    self.welcome_send
   end
 
   def book_copy_not_available_tab
@@ -48,7 +55,5 @@ class User < ApplicationRecord
   def book_asked_to_borrow
     return Borrow.where(["user_id = ? and borrow_status = ?",self.id, 0])
   end
-
-
 
 end
