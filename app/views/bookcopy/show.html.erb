@@ -64,48 +64,61 @@
 </div>
 
 
-
-<ul>
 <h1> COMMENTAIRES </h1>
 
-<%= render partial: 'comments/comment', collection: @book.comments %>
-</ul>
+
+
+<%= render partial: 'posts/post', collection: @book.posts %>
+
+
 
 <div class="row">
   <div class="col-md-8 ml-auto mr-auto">
     <div class="media-area">
       <h3 class="title text-center"><small>Laisse un commentaire</small></h3>
       <div class="media">
-        <a class="pull-left" href="#pablo">
-          <div class="avatar">
-            <img class="media-object img-raised" src="assets/img/marie.jpg" alt="...">
-          </div>
-        </a>
+
+      <%= link_to user_path(current_user.id) do %>
+
+        <div class="avatar">     
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+          <% else %>
+            <%= image_tag("sharespeare1.png", class:"img-fluid") %>
+          <% end %>    
+        </div>
+
+      <%end%>
+
         <div class="media-body">
           <h5 class="media-heading"> <%= @user.first_name %> </h5>
 
           <div class="media media-post">
-            <a class="pull-left author" href="#pablo">
-              <div class="avatar">
-                <img class="media-object img-raised" alt="64x64" src="assets/img/michael.jpg">
-              </div>
-            </a>
+
             <div class="media-body">
-                <textarea class="form-control" placeholder="donne ton avis sur le livre ici ..." rows="4"></textarea>
-                <div class="media-footer">
-                  <a href="#pablo" class="btn btn-primary pull-right">
-                    <i class="now-ui-icons ui-1_send"></i> Reply
-                  </a>
-                </div>
+
+              <%= form_for @post, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+                <br>
+                <%= f.text_area :content, size: "60x12", class: "form-control", placeholder: "Donne ton avis sur le livre" %>
+                <br>
+                <%= button_tag( :class => "btn btn-primary pull-right") do %>
+                  Commenter <i class="now-ui-icons ui-1_send"></i>
+                <% end %>
+              <% end %>
+
             </div>
+
+
+
+
+
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
 
 
 <div class="row">

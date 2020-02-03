@@ -1,6 +1,6 @@
 class BookCopy < ApplicationRecord
   belongs_to :user
-  has_many :comments, as: :commentable
+  has_many :posts
 
   validates :title, presence: true, length: { minimum: 1 }
   validates :author, presence: true, length: { minimum: 2 }

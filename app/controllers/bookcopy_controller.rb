@@ -8,6 +8,7 @@ before_action :authenticate_user!
       @book = BookCopy.find(params[:id])
       @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
       @user = current_user
+      @post = Post.new
 
   # ajouter une colonne user_id au comment
   # créer les variables dans ce controller pour afficher le fils de discussion : 

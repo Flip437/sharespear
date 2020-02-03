@@ -8,7 +8,7 @@ class CreateBookCopies < ActiveRecord::Migration[5.2]
       t.string :category
       t.string :isbn
       t.string :photo_link, default: ""
-      t.belongs_to :user, index: true #cette ligne rajoute la référence à la table users
+      t.belongs_to :user, index: true
 
       t.timestamps
     end
