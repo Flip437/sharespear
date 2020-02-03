@@ -64,9 +64,46 @@
 </div>
 
 
-<h1> COMMENTAIRES </h1>
+<% @post_array.each do |post| %>
 
-<%= render partial: 'posts/post', collection: @book.posts %>
+<div class="row">
+  <div class="col-md-8 ml-auto mr-auto">
+    <div class="media-area">
+      <h3 class="title text-center"><small></small></h3>
+      <div class="media">
+
+        <%= link_to user_path(current_user.id) do %>
+          <div class="avatar">     
+            <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+            <% else %>
+              <%= image_tag("sharespeare1.png", class:"img-fluid") %>
+            <% end %>    
+          </div>
+        <%end%>
+        
+        <div class="media-body">
+          <h5 class="media-heading"> <%= post.user.first_name %> </h5>
+          <p> <%= post.content %> </p>
+          <div class="media-footer">
+            <a href="#pablo" class="btn btn-primary btn-neutral pull-right" rel="tooltip" title="" data-original-title="Reply to Comment">
+              <i class="now-ui-icons ui-1_send"></i> Reply
+            </a>
+            <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
+              <i class="now-ui-icons ui-2_favourite-28"></i> 243
+            </a>
+          </div>
+        </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+
+
+
 
 <div class="row">
   <div class="col-md-8 ml-auto mr-auto">
@@ -88,7 +125,7 @@
           <h5 class="media-heading"> <%= @user.first_name %> </h5>
           <div class="media media-post">
             <div class="media-body">
-              <%= form_with scope: :post, url: bookcopy_posts_path(BookCopy.first, @post), html: {class: "nifty_form"} do |f| %>
+              <%= form_with scope: :post, url: bookcopy_posts_path(@book, @post), html: {class: "nifty_form"} do |f| %>
                 <br>
                 <%= f.text_area :content, size: "60x12", class: "form-control", placeholder: "Donne ton avis sur le livre" %>
                 <br>
@@ -106,16 +143,60 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="row">
   <div class="col-md-8 ml-auto mr-auto">
     <div class="media-area">
-      <h3 class="title text-center"><small>10 Comments</small></h3>
+      <h3 class="title text-center"><small>Commentaires</small></h3>
       <div class="media">
+
         <a class="pull-left" href="#pablo">
           <div class="avatar">
             <img class="media-object img-raised" src="assets/img/marie.jpg" alt="...">
           </div>
         </a>
+
         <div class="media-body">
           <h5 class="media-heading">Tina Andrew <small class="text-muted">· 7 minutes ago</small></h5>
 

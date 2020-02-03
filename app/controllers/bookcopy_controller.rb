@@ -4,11 +4,11 @@ class BookcopyController < ApplicationController
 before_action :authenticate_user!
 
   def show
-    puts "IN SHOWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW of bookcopy controller"
       @book = BookCopy.find(params[:id])
       @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
       @user = current_user
-      @post = Post.create
+      @post_array = @book.posts
+
   end
 
   def new
@@ -25,7 +25,6 @@ before_action :authenticate_user!
   end
 
   def create
-    puts "IN CREATEEEEEEEEEEEEEEEEEEEEEEEE of bookcopy controller"
     @book_infos = session[:book_info]
     @isbn = session[:isbn]
     bookcopy = BookCopy.new

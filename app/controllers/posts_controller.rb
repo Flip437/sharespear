@@ -9,7 +9,8 @@ class PostsController < ApplicationController
   def create
       @post = Post.new(post_params)
       @post.user_id = current_user.id
-      @post.book_copy = BookCopy.find(params[:bookcopy_id])
+      @book = BookCopy.find(params[:bookcopy_id])
+      @post.book_copy = @book
 
       if @post.save
           flash[:success] = "Ton commentaire a bien été posté"
