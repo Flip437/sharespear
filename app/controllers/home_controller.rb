@@ -28,7 +28,8 @@ class HomeController < ApplicationController
 
   def index
 
-     @avatar_array = ["https://demos.creative-tim.com/now-ui-kit-pro/assets/img/mike.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/ryan.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/michael.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/james.jpg","https://demos.creative-tim.com/now-ui-kit-pro/assets/img/olivia.jpg"]
+
+     @avatar_array = ['sharespeare1.png', 'sharespeare2.png','sharespeare3.png','sharespeare4.png','sharespeare5.png','sharespeare6.png','sharespeare7.png','sharespeare8.png']
 
 
     if current_user
