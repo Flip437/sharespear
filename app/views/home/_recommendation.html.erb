@@ -37,10 +37,10 @@
                       <p class="card-description">
                         <%=book_array[0].description%><%= link_to "Voir plus", bookcopy_path(book_array[0].id) %>
                       </p>
-                      <h6>                <% if book_array[0].status==false %>
+                      <h6>                <% if book_array[0].status==0 %>
                                         <span class="badge badge-warning">Emprenté</span>
                                       <% end %>
-                                      <% if book_array[0].status==true %>
+                                      <% if book_array[0].status==1 %>
                                         <span class="badge badge-success">Disponible</span>
                                       <% end %></h6>
                       <p class="author">
@@ -64,10 +64,10 @@
                       <p class="card-description">
                         <%=book_array[1].description%> <%= link_to "Voir plus", bookcopy_path(book_array[1].id) %>
                       </p>
-                      <h6>                <% if book_array[1].status==false %>
+                      <h6>                <% if book_array[1].status==0 %>
                                         <span class="badge badge-warning">Emprenté</span>
                                       <% end %>
-                                      <% if book_array[1].status==true %>
+                                      <% if book_array[1].status==1 %>
                                         <span class="badge badge-success">Disponible</span>
                                       <% end %></h6>
                       <p class="author">
@@ -129,10 +129,10 @@
 
                                         <div class="card-footer">
                                             <h6 class="category text-primary"><%=book_array[2].category%></h6>
-                                            <h6>                <% if book_array[2].status==false %>
+                                            <h6>                <% if book_array[2].status==0 %>
                                                               <span class="badge badge-warning">Emprenté</span>
                                                             <% end %>
-                                                            <% if book_array[2].status==true %>
+                                                            <% if book_array[2].status==1 %>
                                                               <span class="badge badge-success">Disponible</span>
                                                             <% end %></h6>
                                         </div>
@@ -163,10 +163,10 @@
 
                                         <div class="card-footer">
                                             <h6 class="category text-primary"><%=book_array[3].category%></h6>
-                                            <h6>                <% if book_array[3].status==false %>
+                                            <h6>                <% if book_array[3].status==0 %>
                                                               <span class="badge badge-warning">Emprenté</span>
                                                             <% end %>
-                                                            <% if book_array[3].status==true %>
+                                                            <% if book_array[3].status==1 %>
                                                               <span class="badge badge-success">Disponible</span>
                                                             <% end %></h6>
                                         </div>
@@ -222,10 +222,10 @@
 
 
                             </h3>
-                            <h6>                <% if book_array[a].status==false %>
+                            <h6>                <% if book_array[a].status==0 %>
                                               <span class="badge badge-warning">Emprenté</span>
                                             <% end %>
-                                            <% if book_array[a].status==true %>
+                                            <% if book_array[a].status==1 %>
                                               <span class="badge badge-success">Disponible</span>
                                             <% end %></h6>
                             <p class="card-description">

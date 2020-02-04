@@ -6,7 +6,7 @@
         <%= link_to user_path(current_user.id) do %>
 
           <div class="avatar">     
-            <% if @user.avatar.attached? %>
+            <% if current_user.avatar.attached? %>
               <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
             <% else %>
               <%= image_tag("sharespeare1.png", class:"img-fluid") %>
@@ -15,10 +15,10 @@
         <%end%>
 
         <div class="media-body">
-          <h5 class="media-heading"> <%= @user.first_name %> </h5>
+          <h5 class="media-heading"> <%= current_user.first_name %> </h5>
           <div class="media media-post">
             <div class="media-body">
-              <%= form_with scope: :post, url: bookcopy_posts_path(@book, @post), html: {class: "nifty_form"} do |f| %>
+              <%= form_with scope: :post, url: bookcopy_posts_path(@book), html: {class: "nifty_form"} do |f| %>
                 <br>
                 <%= f.text_area :content, size: "60x12", class: "form-control", placeholder: "Donne ton avis sur le livre" %>
                 <br>

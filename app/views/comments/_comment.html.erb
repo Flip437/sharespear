@@ -1,4 +1,4 @@
-<div class="media media-post">
+<div class="media media-post", id="comment_receiver<%=index+1%>">
   <%= link_to user_path(current_user.id) do %>
     <div class="avatar">     
       <% if comment.user.avatar.attached? %>
@@ -9,12 +9,22 @@
     </div>
   <%end%>
   <div class="media-body">
-    <h5 class="media-heading"> <%= comment.user.first_name %> <small class="text-muted">· 2 Days Ago</small></h5>
+    <h5 class="media-heading"> <%= comment.user.first_name %> <small class="text-muted"> </small></h5>
     <p> <%= comment.content %> </p>
     <div class="media-footer">
-      <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
-        <i class="now-ui-icons ui-2_favourite-28"></i> 243
-      </a>
+
+    <%= link_to bookcopy_post_comment_path(@book, post, comment), :method=> :put, :class => "btn btn-danger btn-neutral pull-right" do %>
+      <i class="now-ui-icons ui-2_favourite-28"></i> <%= comment.like %>
+    <%end%>
+
+    <% if comment.user == current_user %>
+      <%= link_to bookcopy_post_comment_path(@book, post, comment), :method=> :delete, :class => "btn btn-danger btn-neutral pull-right" do %>
+        <i class="now-ui-icons ui-1_simple-remove"></i>
+      <%end%>
+    <% end %>
+
+
+
     </div>
   </div>
 </div>
