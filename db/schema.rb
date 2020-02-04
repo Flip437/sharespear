@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2020_02_04_095822) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
+    t.integer "like"
     t.bigint "post_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -101,6 +102,8 @@ ActiveRecord::Schema.define(version: 2020_02_04_095822) do
 
   create_table "posts", force: :cascade do |t|
     t.string "content"
+    t.integer "like", default: 0
+    t.integer "status", default: 1
     t.bigint "book_copy_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
