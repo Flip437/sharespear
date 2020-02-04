@@ -1,29 +1,26 @@
-class CommentsController < ApplicationController
+class PostsController < ApplicationController
 
   def new
   end
 
   def update
-    puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-    puts params
-    @comment = Comment.find(params[:id])
-    @comment.like += 1
-    @comment.save
+    @post = Post.find(params[:id])
+    @post.like += 1
+    @post.save
     redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
   end
 
   def create
-      @comment = Comment.new(comment_params)
-      @comment.user_id = current_user.id
+      @post = Post.new(post_params)
+      @post.user_id = current_user.id
       @book = BookCopy.find(params[:bookcopy_id])
-      @post = Post.find(params[:post_id])
-      @comment.post = @post
+      @post.book_copy = @book
 
-      if @comment.save
+      if @post.save
           flash[:success] = "Ton commentaire a bien été posté"
           redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       else
-          puts @comment.errors
+          puts @post.errors
           flash[:error] = "Désolé, il y a eu une erreur"
           redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       end
@@ -31,13 +28,13 @@ class CommentsController < ApplicationController
 
   def destroy
     puts params
-    @comment = Comment.find(params[:id])
-    @comment.content = "deleted"
-    @comment.like = 0
-    @comment.status = 0
-    @comment.save
+    @post = Post.find(params[:id])
+    @post.content = "deleted"
+    @post.like = 0
+    @post.status = 0
+    @post.save
     
-    if @comment.save
+    if @post.save
       flash[:success] = "Ton commentaire a bien été posté"
       redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       # respond_to do |f|
@@ -45,7 +42,7 @@ class CommentsController < ApplicationController
       #   f.js
       # end
     else
-      puts @comment.errors
+      puts @post.errors
       flash[:error] = "Désolé, il y a eu une erreur"
       redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
     end
@@ -53,8 +50,8 @@ class CommentsController < ApplicationController
 
   private
 
-  def comment_params
-    params.require(:comment).permit(:content)
+  def post_params
+    params.require(:post).permit(:content)
   end
   
 end

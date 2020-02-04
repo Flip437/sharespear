@@ -1,13 +1,30 @@
-<li>
-  <%= comment.content %> -
+<div class="media media-post", id="comment_receiver<%=index+1%>">
+  <%= link_to user_path(current_user.id) do %>
+    <div class="avatar">     
+      <% if comment.user.avatar.attached? %>
+        <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+      <% else %>
+        <%= image_tag("sharespeare1.png", class:"img-fluid") %>
+      <% end %>    
+    </div>
+  <%end%>
+  <div class="media-body">
+    <h5 class="media-heading"> <%= comment.user.first_name %> <small class="text-muted"> </small></h5>
+    <p> <%= comment.content %> </p>
+    <div class="media-footer">
 
-  <%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :content, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
-      <% end %>
+    <%= link_to bookcopy_post_comment_path(@book, post, comment), :method=> :put, :class => "btn btn-danger btn-neutral pull-right" do %>
+      <i class="now-ui-icons ui-2_favourite-28"></i> <%= comment.like %>
+    <%end%>
 
-  <ul>
-      <%= render partial: 'comments/comment', collection: comment.comments %>
-  </ul>
+    <% if comment.user == current_user %>
+      <%= link_to bookcopy_post_comment_path(@book, post, comment), :method=> :delete, :class => "btn btn-danger btn-neutral pull-right" do %>
+        <i class="now-ui-icons ui-1_simple-remove"></i>
+      <%end%>
+    <% end %>
 
-</li>
+
+
+    </div>
+  </div>
+</div>

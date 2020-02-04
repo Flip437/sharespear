@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'comments/New'
   get 'comments/Create'
   get 'mailback/new'
@@ -15,11 +17,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :bookcopy do
     resources :borrow
-    resources :comments
-  end
-
-  resources :comments do
-    resources :comments
+    resources :posts do
+      resources :comments
+    end
   end
 
   resources :mailback, only: :new

@@ -2,6 +2,8 @@
 
 one:
   content: MyString
+  commentable_id: 1
 
 two:
   content: MyString
+  commentable_id: 1
