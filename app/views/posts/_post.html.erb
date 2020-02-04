@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-8 ml-auto mr-auto">
       <div class="media-area">
-        <h3 class="title text-center"><small> Comentaires </small></h3>
+        <h3 class="title text-center"><small>  </small></h3>
 
         <div class="media", id="post_receiver<%=index%>">
 
@@ -30,11 +30,9 @@
               <%end%>
 
               <% if post.user == current_user %>
-
                 <%= link_to bookcopy_post_path(@book, post), :method=> :delete, remote: true, :class => "btn btn-danger btn-neutral pull-right" do %>
                   <i class="now-ui-icons ui-1_simple-remove"></i>
                 <%end%>
-
               <% end %>
 
             </div>
