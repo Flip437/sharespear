@@ -63,15 +63,13 @@
     </div>
 </div>
 
----------------------------------------------------------------------------
+
 <% @post_array.each do |post| %>
 
 <div class="row">
   <div class="col-md-8 ml-auto mr-auto">
     <div class="media-area">
-
-      <h3 class="title text-center"><small></small></h3>
-
+      <h3 class="title text-center"><small> Comentaires </small></h3>
 
       <div class="media">
 
@@ -89,67 +87,19 @@
 
           <h5 class="media-heading"> <%= post.user.first_name %> </h5>
           <p> <%= post.content %> </p>
+
           <div class="media-footer">
-            <a href="#pablo" class="btn btn-primary btn-neutral pull-right" rel="tooltip" title="" data-original-title="Reply to Comment">
-              <i class="now-ui-icons ui-1_send"></i> Reply
-            </a>
+
             <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
               <i class="now-ui-icons ui-2_favourite-28"></i> 243
             </a>
           </div>
 
-          <div class="media media-post">
+          <% post.comments.each do |comment|%>
+            <%= render 'comments/comment', comment: comment %>
+          <% end %>
 
-            <%= link_to user_path(current_user.id) do %>
-              <div class="avatar">     
-                <% if @user.avatar.attached? %>
-                  <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
-                <% else %>
-                  <%= image_tag("sharespeare1.png", class:"img-fluid") %>
-                <% end %>    
-              </div>
-            <%end%>
-
-            <div class="media-body">
-              <h5 class="media-heading">Tina Andrew <small class="text-muted">· 2 Days Ago</small></h5>
-              <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>
-              <p> Don't forget, You're Awesome!</p>
-              <div class="media-footer">
-                <a href="#pablo" class="btn btn-primary btn-neutral pull-right" rel="tooltip" title="" data-original-title="Reply to Comment">
-                  <i class="now-ui-icons ui-1_send"></i> Reply
-                </a>
-                <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
-                  <i class="now-ui-icons ui-2_favourite-28"></i> 243
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="media media-post">
-
-            <%= link_to user_path(current_user.id) do %>
-              <div class="avatar">     
-                <% if @user.avatar.attached? %>
-                  <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
-                <% else %>
-                  <%= image_tag("sharespeare1.png", class:"img-fluid") %>
-                <% end %>    
-              </div>
-            <%end%>
-
-            <div class="media-body">
-              <%= form_with scope: :post, url: bookcopy_posts_path(@book, @post), html: {class: "nifty_form"} do |f| %>
-                <br>
-                <%= f.text_area :content, size: "60x12", class: "form-control", placeholder: "Donne ton avis sur le livre" %>
-                <br>
-                <%= button_tag( :class => "btn btn-primary pull-right") do %>
-                  Commenter <i class="now-ui-icons ui-1_send"></i>
-                <% end %>
-              <% end %>
-            </div>
-
-          </div>
+          <%= render 'comments/newcom', post: post %>
 
         </div>  
       
@@ -159,46 +109,5 @@
   </div>
 </div>
 <% end %>
--------------------------------------------------------------------
 
-
-
-
---------------------------------------------------------------------------------------------------------------------
-<div class="row">
-  <div class="col-md-8 ml-auto mr-auto">
-    <div class="media-area">
-      <h3 class="title text-center"><small>Laisse un commentaire</small></h3>
-      <div class="media">
-        <%= link_to user_path(current_user.id) do %>
-
-          <div class="avatar">     
-            <% if @user.avatar.attached? %>
-              <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
-            <% else %>
-              <%= image_tag("sharespeare1.png", class:"img-fluid") %>
-            <% end %>    
-          </div>
-        <%end%>
-
-        <div class="media-body">
-          <h5 class="media-heading"> <%= @user.first_name %> </h5>
-          <div class="media media-post">
-            <div class="media-body">
-              <%= form_with scope: :post, url: bookcopy_posts_path(@book, @post), html: {class: "nifty_form"} do |f| %>
-                <br>
-                <%= f.text_area :content, size: "60x12", class: "form-control", placeholder: "Donne ton avis sur le livre" %>
-                <br>
-                <%= button_tag( :class => "btn btn-primary pull-right") do %>
-                  Commenter <i class="now-ui-icons ui-1_send"></i>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-----------------------------------------------------------------------------------------------------------------
+<%= render "posts/newpost" %>

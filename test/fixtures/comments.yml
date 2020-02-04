@@ -2,10 +2,6 @@
 
 one:
   content: MyString
-  commentable_id: 1
-  commentable_type: MyString
 
 two:
   content: MyString
-  commentable_id: 1
-  commentable_type: MyString

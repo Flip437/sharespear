@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :book_copies
   has_many :borrows
   has_many :posts
+  has_many :comments
   has_one_attached :avatar
 
   # instead of deleting, indicate the user requested a delete & timestamp it

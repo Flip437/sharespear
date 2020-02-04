@@ -1,0 +1,20 @@
+<div class="media media-post">
+  <%= link_to user_path(current_user.id) do %>
+    <div class="avatar">     
+      <% if comment.user.avatar.attached? %>
+        <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+      <% else %>
+        <%= image_tag("sharespeare1.png", class:"img-fluid") %>
+      <% end %>    
+    </div>
+  <%end%>
+  <div class="media-body">
+    <h5 class="media-heading"> <%= comment.user.first_name %> <small class="text-muted">· 2 Days Ago</small></h5>
+    <p> <%= comment.content %> </p>
+    <div class="media-footer">
+      <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
+        <i class="now-ui-icons ui-2_favourite-28"></i> 243
+      </a>
+    </div>
+  </div>
+</div>
