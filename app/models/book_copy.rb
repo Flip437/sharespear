@@ -35,15 +35,11 @@ class BookCopy < ApplicationRecord
   end
 
   def newbook(book_isbn)
-
       isbn = book_isbn.gsub(/[.\s]/, '')
       url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn.to_s
       doc=JSON.load(open(url, 'User-Agent' => 'ruby'))
-
       if doc["totalItems"]==0
-
         sessiona = "0"
-
       else
         book_infos = doc['items'][0]['volumeInfo']
         if book_infos["description"]
@@ -52,11 +48,10 @@ class BookCopy < ApplicationRecord
           end
         end
         sessiona = book_infos
-
       end
-
     return sessiona
   end
+
 
   def createif(bookinfos)
     if bookinfos["description"]
@@ -90,9 +85,16 @@ class BookCopy < ApplicationRecord
     else
       title = bookinfos["title"]
     end
-
     return title, author, description, category, photo
+  end
 
+
+  def already_borrowed(user)
+    if Borrow.where(["user_id = ? and book_copy_id = ? and borrow_status = ?", user.id, self.id, 3]).count != 0
+      return true
+    else
+      return false
+    end
   end
 
 end
