@@ -31,16 +31,16 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.content = "deleted"
     @post.like = 0
-    @post.status = 0
+    @post.status = 1
     @post.save
     
     if @post.save
       flash[:success] = "Ton commentaire a bien été posté"
-      redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
-      # respond_to do |f|
-      #   f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
-      #   f.js
-      # end
+      #redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+      respond_to do |f|
+        f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
+        f.js
+      end
     else
       puts @post.errors
       flash[:error] = "Désolé, il y a eu une erreur"

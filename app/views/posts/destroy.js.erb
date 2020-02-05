@@ -1,4 +1,17 @@
-function reply_click(clicked_id)
-{
-    alert(clicked_id);
+var cardContent = document.getElementsByClassName('testdel');
+var viewbtns = document.getElementsByClassName('postbtndel');
+
+
+
+
+for (let i = 0; i < viewbtns.length; i++) {
+
+
+    let del = function(){
+        console.log("dans la fonction");
+        };
+
+    viewbtns[i].addEventListener('click', del);
+
+
 };
