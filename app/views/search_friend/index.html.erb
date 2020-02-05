@@ -1,0 +1,31 @@
+<div class="card card-background" style="background-image: url(<%= asset_path "back_img7.jpg" %>)">
+
+  <div class="card-body">
+    <div class="card-title">
+      <h3>Résultats de votre recherche</h3>
+    </div>
+  <div class="card-footer text-left">
+
+    <div class="stats-link pull-right">
+      <%= link_to "sharespeare.herokuapp.com", root_path, class:"footer-link" %>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="container section">
+  <center>
+    <div class="card" style="width: 20rem;">
+      <div class="card-body">
+    <% if @friend_array_search.count == 0  %>
+      <h4>Pas de resultats.. il y a peut être une erreur de pseudo </h4>
+    <% end %>
+    <% @friend_array_search.each do |friend| %>
+
+      <%= link_to friend.first_name, user_path(friend.id) %>
+      <br>
+    <% end %>
+    </div>
+    </div>
+  </center>
+</div>

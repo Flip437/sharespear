@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   resources :searchbar, only: :index
+  resources :search_friend, only: :index
   resources :home, only: [:index, :new, :create]
   resources :user do
     resources :dashboard, only: [:index, :update]

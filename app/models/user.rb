@@ -59,4 +59,13 @@ class User < ApplicationRecord
     return Borrow.where(["user_id = ? and borrow_status = ?",self.id, 0])
   end
 
+  def self.search(search)
+    if search
+      @users = self.where('first_name ILIKE ?', "%#{search}%")
+      return @users
+    else
+      return false
+    end
+  end
+
 end
