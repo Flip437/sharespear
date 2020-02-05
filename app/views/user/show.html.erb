@@ -42,13 +42,28 @@
                       <%= link_to 'Modifier mes informations', edit_user_path(@user.id), class: "btn btn-default btn-round btn-lg" %>
                       </center>
                     <% else %>
+                      <% if @user_follow_query==nil %>
+                      <%= link_to "Suivre",  user_follow_index_path(@user.id), :method=> :post, class: "btn btn-primary btn-round btn-lg"%>
+                      <% else %>
+                      <%= link_to "Ne plus suivre",  user_follow_path(current_user.id, @user_follow_query.id), :method=> :delete, class: "btn btn-primary btn-round btn-lg"%>
+                      <%end%>
                     <%end%>
 
                 </div>
                 <h3 class="title">À propos de moi</h3>
                 <h5 class="description text-center"><%= @user.description %></h5>
+                <h3 class="title">Mes Amis</h3>
+                <h4>
+                ~
+                <% @user_follow.each do |follow| %>
+                  <% user =User.find(follow.follow_user_id)  %>
+                  <%= link_to user.first_name, user_path(user.id) %>
+
+                  ~
+                <% end %>
+                </h4>
                   <div class="col-md-12">
-                      <h4 class="title text-center">Ma bibliothèque</h4>
+                      <h3 class="title text-center">Ma bibliothèque</h3>
                       <% if current_user.id==@user.id %>
                       <div class="container section">
                         <%= link_to 'Ajouter des livres', new_bookcopy_path, class: "btn btn-default btn-round btn-lg" %>

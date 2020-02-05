@@ -14,6 +14,8 @@ class UserController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_library = BookCopy.where(user_id: @user.id, status: [0,1] )
+    @user_follow = Follow.where(user_id: @user.id, active: true)
+    @user_follow_query = Follow.where(user_id: current_user.id, follow_user_id: @user.id, active: true).first
   end
 
   def update
