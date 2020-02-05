@@ -1,4 +1,4 @@
-=begin
+
 require 'faker'
 DatabaseCleaner.allow_production = true
 DatabaseCleaner.allow_remote_database_url = true
@@ -164,7 +164,7 @@ BookCopy.destroy_all
         photo_link: attributs[4],
         isbn: isbn
       )
-    
+
       borrow = Borrow.create(
           start_date: Date.today,
           end_date: Date.today >> 2,
@@ -179,5 +179,5 @@ BookCopy.destroy_all
   puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et recupere"
 
 end
-=end
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
