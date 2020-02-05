@@ -36,11 +36,11 @@ class PostsController < ApplicationController
     
     if @post.save
       flash[:success] = "Ton commentaire a bien été posté"
-      redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
-      # respond_to do |f|
-      #   f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
-      #   f.js
-      # end
+      #redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+      respond_to do |f|
+        f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
+        f.js
+      end
     else
       puts @post.errors
       flash[:error] = "Désolé, il y a eu une erreur"
