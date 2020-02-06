@@ -6,7 +6,7 @@
       <div class="media-area">
         <h3 class="title text-center"><small>  </small></h3>
 
-        <div class="media post">
+        <div class="media post<%=index%>">
 
           <%= link_to user_path(current_user.id) do %>
             <div class="avatar">     
@@ -30,7 +30,7 @@
               <%end%>
 
               <% if post.user == current_user %>
-                <%= link_to bookcopy_post_path(@book, post), :method=> :delete, remote: true, :class => "btn btn-danger btn-neutral pull-right postbtndel" do %>
+                <%= link_to bookcopy_post_path(@book, post, :loopindex => index), :method=> :delete, remote: true, :class => "btn btn-danger btn-neutral pull-right postbtndel#{index}" do %>
                   <i class="now-ui-icons ui-1_simple-remove"></i>
                 <%end%>
               <% end %>

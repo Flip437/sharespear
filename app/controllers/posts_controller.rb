@@ -27,19 +27,31 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
     puts params
+    puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
+    puts "POSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+    puts params[:loopindex]
+    puts "POSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+    @loopindex = params[:loopindex]
+
     @post = Post.find(params[:id])
     @post.content = "deleted"
     @post.like = 0
     @post.status = 1
     @post.save
     
+    @btn = ".postbtndel#{@loopindex}"
+    @postdiv = ".post#{@loopindex}"
+    puts "BTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+    puts @btn
+    puts "BTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
     if @post.save
       flash[:success] = "Ton commentaire a bien été posté"
       #redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       respond_to do |f|
         f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
-        f.js
+        f.js 
       end
     else
       puts @post.errors
