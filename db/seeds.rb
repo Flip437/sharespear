@@ -179,5 +179,5 @@ BookCopy.destroy_all
   puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et recupere"
 
 end
-
-#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.destroy_all
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
