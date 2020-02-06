@@ -52,6 +52,26 @@ class BookCopy < ApplicationRecord
     return sessiona
   end
 
+  def newbook_title(book_title,index)
+      isbn = book_title.gsub(/[.\s]/, '')
+      url = "https://www.googleapis.com/books/v1/volumes?q=" + book_title.to_s
+      doc=JSON.load(open(url, 'User-Agent' => 'ruby'))
+      if doc["totalItems"]==0
+        sessiona = "0"
+      else
+        book_infos = doc['items'][index]['volumeInfo']
+        if book_infos["description"]
+          if book_infos["description"].length > 400
+              book_infos["description"]=book_infos["description"].slice(1..300)
+          end
+        end
+        sessiona = book_infos
+      end
+    return sessiona
+  end
+
+
+
 
   def createif(bookinfos)
     if bookinfos["description"]
@@ -76,16 +96,26 @@ class BookCopy < ApplicationRecord
       description = bookinfos["description"]
     end
     if  bookinfos["authors"]==nil
-      author = "no info"
+      author = "#"
     else
       author = bookinfos["authors"][0]
     end
     if  bookinfos["title"]==nil
-      title = "no title"
+      title = "#"
     else
       title = bookinfos["title"]
     end
-    return title, author, description, category, photo
+    if  bookinfos["industryIdentifiers"][0]==nil
+      isbn = "#"
+    else
+      isbn = bookinfos['industryIdentifiers'][0]['identifier']
+    end
+    if  bookinfos["publishedDate"]==nil
+      date = "#"
+    else
+      date = bookinfos['publishedDate']
+    end
+    return title, author, description, category, photo, isbn, date
   end
 
 

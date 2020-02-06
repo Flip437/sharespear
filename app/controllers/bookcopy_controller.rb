@@ -14,32 +14,76 @@ before_action :authenticate_user!
 
   def new
     @new_book_copy = BookCopy.new
-    if params[:book_copy]
-    session.delete(:book_info)
-    session.delete(:isbn)
-    @isbn = params[:book_copy]["isbn"].gsub(/[.\s]/, '')
-    @book_infos = @new_book_copy.newbook(@isbn)
+    #if params[:book_copy]
+    #session.delete(:book_info)
+    #session.delete(:isbn)
+    #@isbn = params[:book_copy]["isbn"].gsub(/[.\s]/, '')
+    #@book_infos = @new_book_copy.newbook(@isbn)
 
-    session[:book_info] = @book_infos
-    session[:isbn] = @isbn
+    #session[:book_info] = @book_infos
+    #session[:isbn] = @isbn
+    #end
+    if params[:book_copy]
+      session.delete(:book_info)
+      session.delete(:isbn)
+      @title = params[:book_copy]["title"].gsub(/[.\s]/, '')
+      puts "ICICIC"
+
+      puts @title
+
+      @book_infos_table=[]
+      book_infos1 = @new_book_copy.newbook_title(@title,0)
+
+      if book_infos1 != "0"
+
+          attributs1 = @new_book_copy.createif(book_infos1)
+          @book_infos_table << attributs1
+
+          puts   "000"
+
+          book_infos2 = @new_book_copy.newbook_title(@title,1)
+          if book_infos2 != "0"
+
+              attributs2 = @new_book_copy.createif(book_infos2)
+              @book_infos_table << attributs2
+              puts   "111"
+
+              book_infos3 = @new_book_copy.newbook_title(@title,2)
+              if book_infos3 != "0"
+                  puts   "222"
+                  attributs3 = @new_book_copy.createif(book_infos3)
+                  @book_infos_table << attributs3
+              end
+
+          end
+
+          puts @book_infos_table.inspect
+
+      else
+
+        @book_infos_table=0
+
+      end
+
+      session[:book_info] =  @book_infos_table
+
     end
   end
 
   def create
-    @book_infos = session[:book_info]
-    @isbn = session[:isbn]
-    bookcopy = BookCopy.new
-    attributs = bookcopy.createif(@book_infos)
+    numero_selected = params[:numero_selected]
+    book_information = session[:book_info][numero_selected.to_i]
+
 
     new_book_copy = BookCopy.create(
-      title:  attributs[0],
-      author: attributs[1],
-      description: attributs[2],
+      title:  book_information[0],
+      author: book_information[1],
+      description: book_information[2],
       status: 1,
-      category: attributs[3],
+      category: book_information[3],
       user_id: current_user.id,
-      photo_link: attributs[4],
-      isbn: @isbn
+      photo_link: book_information[4],
+      isbn: book_information[5]
     )
 
     if new_book_copy
