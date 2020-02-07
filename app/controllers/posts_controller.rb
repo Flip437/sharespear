@@ -36,6 +36,7 @@ class PostsController < ApplicationController
   def destroy
 
     @post = Post.find(params[:id])
+<<<<<<< HEAD
     @post.comments.destroy_all
     @post.destroy
 
@@ -48,6 +49,19 @@ class PostsController < ApplicationController
       respond_to do |f|
         f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
         f.js 
+=======
+    @post.content = "deleted"
+    @post.like = 0
+    @post.status = 0
+    @post.save
+    
+    if @post.save
+      flash[:success] = "Ton commentaire a bien été posté"
+      #redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+      respond_to do |f|
+        f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
+        f.js
+>>>>>>> master
       end
     else
       puts @post.errors

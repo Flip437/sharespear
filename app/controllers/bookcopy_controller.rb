@@ -7,6 +7,9 @@ before_action :authenticate_user!
       @book = BookCopy.find(params[:id])
       @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
       @post_array = @book.posts
+      puts "RETURNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+      puts @book.already_borrowed(current_user)
+      puts "RETURNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
   end
 
   def new

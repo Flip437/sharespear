@@ -82,3 +82,4 @@ gem 'binding_of_caller'
 gem 'stripe'
 gem "google-cloud-storage", "~> 1.8", require: false
 gem 'activeadmin'
+gem 'social-share-button', '~> 0.1.6'

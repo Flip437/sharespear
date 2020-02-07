@@ -28,6 +28,7 @@
             </div>
             <div class="col-md-6 ml-auto mr-auto">
                 <h2 class="title"> <%= @book.title %> </h2>
+                <%= social_share_button_tag("Voyez ce livre !", :url => "https://sharespeare.herokuapp.com/bookcopy/#{@book.id}") %>
                 <h5 class="category"><%= @book.author %></h5>
                 <h6 class="main-price"><%= @book.category %></h6>
 
@@ -50,15 +51,25 @@
                 <div class="row justify-content-center">
                 <% if @book.user_id==current_user.id %>
                   <%= link_to "Supprimer", bookcopy_path(@book.id), method:"delete", class:"btn btn-primary"%>
-
-                <% else %>
-                <% if @book.status==1 %>
-                  <%= link_to "Emprunter", new_bookcopy_borrow_path(@book.id), class:"btn btn-primary btn-round btn-lg"%>
+                <% elsif %>
+                  <% @book.status==1 && @book.already_borrowed(current_user) == false %>
+                    <%= link_to "Emprunter", new_bookcopy_borrow_path(@book.id), class:"btn btn-primary btn-round btn-lg"%>
+                <% elsif %>
+                  <% @book.status==1 && @book.already_borrowed(current_user) == true %>
+                  <div class="card" data-background-color="black">
+                    <div class="card-body content-danger">
+                      <h4 class="card-title">Tu as déja lu ce livre.</h4>
+                      <p class="card-description">
+                          Veux-tu tout de même le réemprunter ??
+                      </p>
+                      <div class="card-footer text-center">
+                          <%= link_to "Oui", new_bookcopy_borrow_path(@book.id), class:"btn btn-primary btn-round btn-lg"%>
+                      </div>
+                    </div>
+                  </div>
                 <% end %>
-              <% end %>
               </div>
             </div>
-
         </div>
     </div>
 </div>
