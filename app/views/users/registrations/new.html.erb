@@ -12,7 +12,7 @@
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 	  <%= render "devise/shared/error_messages", resource: resource %>
 			<div class="field">
-				<%= f.label :first_name %><br>
+				<%= f.label :Pseudo %><br>
 				<%= f.text_field :first_name, autofocus: true,autocomplete: "pseudo", class: "form-control", id: 'sign_up_form'%>
 			</div>
 			<p></p>
@@ -23,7 +23,7 @@
 			<p></p>
 		<div class="field">
 			<%= f.label :arrondissement %><br />
-			<%= f.select :zip_code, ["69001", "69002", "69003","69004","69005","69006","69007","69008","69009","69100"] , autofocus: true, autocomplete: "quartier", class: 'form-control', id: 'sign_up_form'%>
+			<%= f.select :zip_code, [["Lyon 1","69001"],["Lyon 2","69002"],["Lyon 3","69003"],["Lyon 4","69004"],["Lyon 5","69005"],["Lyon 6","69006"],["Lyon 7","69007"],["Lyon 8","69008"], ["Lyon 9","69009"],["Villeurbanne","69100"],["Caluire-et-Cuire","69300"],["La Mulatière","69142"],["Tassin-la-Demi-Lune","69160"],["Écully","69130"],["Oullins","69600"],["Bron","69500"]] , autofocus: true, autocomplete: "quartier", class: 'form-control', id: 'sign_up_form'%>
 		</div>
 		<p></p>
 		<div class="field">
