@@ -1,1 +1,1 @@
-$('.comment_receiver').append('<%=  j render partial: "comments/comment", locals: {index: "last_index",post: @post, comment: @comment} %>');
+$('.comment_receiver').append('<%=  j render partial: "comments/comment", locals: {index: @ajaxindex, post: @post, comment: @comment} %>');

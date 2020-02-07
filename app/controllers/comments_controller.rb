@@ -4,8 +4,6 @@ class CommentsController < ApplicationController
   end
 
   def update
-    puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-    puts params
     @comment = Comment.find(params[:id])
     @comment.like += 1
     @comment.save
@@ -18,6 +16,10 @@ class CommentsController < ApplicationController
       @book = BookCopy.find(params[:bookcopy_id])
       @post = Post.find(params[:post_id])
       @comment.post = @post
+
+      @bookid = params[:bookcopy_id]
+      @postid = params[:post_id]
+      @ajaxindex = Comment.where("post_id = #{@postid}").count
 
       if @comment.save
           respond_to do |f|
