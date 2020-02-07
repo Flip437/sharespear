@@ -34,23 +34,7 @@ class BookCopy < ApplicationRecord
     end
   end
 
-  def newbook(book_isbn)
-      isbn = book_isbn.gsub(/[.\s]/, '')
-      url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn.to_s
-      doc=JSON.load(open(url, 'User-Agent' => 'ruby'))
-      if doc["totalItems"]==0
-        sessiona = "0"
-      else
-        book_infos = doc['items'][0]['volumeInfo']
-        if book_infos["description"]
-          if book_infos["description"].length > 400
-              book_infos["description"]=book_infos["description"].slice(1..300)
-          end
-        end
-        sessiona = book_infos
-      end
-    return sessiona
-  end
+
 
   def newbook_title(book_title,index)
       isbn = book_title.gsub(/[.\s]/, '')
@@ -82,7 +66,7 @@ class BookCopy < ApplicationRecord
     if bookinfos['imageLinks']
       photo = bookinfos['imageLinks']['thumbnail']
     else
-      photo="http://books.google.com/books/content?id=1IyauAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      photo="no_picture_found_sk.png"
     end
 
     if  bookinfos["categories"]==nil
@@ -96,22 +80,22 @@ class BookCopy < ApplicationRecord
       description = bookinfos["description"]
     end
     if  bookinfos["authors"]==nil
-      author = "#"
+      author = "~"
     else
       author = bookinfos["authors"][0]
     end
     if  bookinfos["title"]==nil
-      title = "#"
+      title = "~"
     else
       title = bookinfos["title"]
     end
-    if  bookinfos["industryIdentifiers"][0]==nil
-      isbn = "#"
+    if  bookinfos["industryIdentifiers"]==nil
+      isbn = "~"
     else
       isbn = bookinfos['industryIdentifiers'][0]['identifier']
     end
     if  bookinfos["publishedDate"]==nil
-      date = "#"
+      date = "~"
     else
       date = bookinfos['publishedDate']
     end

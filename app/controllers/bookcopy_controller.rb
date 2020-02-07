@@ -25,11 +25,11 @@ before_action :authenticate_user!
     #end
     if params[:book_copy]
       session.delete(:book_info)
-      session.delete(:isbn)
+
       @title = params[:book_copy]["title"].gsub(/[.\s]/, '')
       puts "ICICIC"
 
-      puts @title
+      
 
       @book_infos_table=[]
       book_infos1 = @new_book_copy.newbook_title(@title,0)
