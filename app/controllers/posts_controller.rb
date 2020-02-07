@@ -17,38 +17,27 @@ class PostsController < ApplicationController
       @post.book_copy = @book
 
       if @post.save
-          flash[:success] = "Ton commentaire a bien été posté"
-          redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+          respond_to do |f|
+            f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
+            f.js 
+          end
       else
-          puts @post.errors
           flash[:error] = "Désolé, il y a eu une erreur"
           redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       end
   end
 
   def destroy
-    puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-    puts params
-    puts "PARAMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-    puts "POSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
-    puts params[:loopindex]
-    puts "POSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
-    @loopindex = params[:loopindex]
 
     @post = Post.find(params[:id])
-    @post.content = "deleted"
-    @post.like = 0
-    @post.status = 1
-    @post.save
-    
+    @post.comments.destroy_all
+    @post.destroy
+
+    @loopindex = params[:loopindex]
     @btn = ".postbtndel#{@loopindex}"
     @postdiv = ".post#{@loopindex}"
-    puts "BTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
-    puts @btn
-    puts "BTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
-    if @post.save
-      flash[:success] = "Ton commentaire a bien été posté"
-      #redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+
+    if @post.destroy
       respond_to do |f|
         f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
         f.js 

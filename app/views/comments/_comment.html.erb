@@ -1,4 +1,4 @@
-<div class="media media-post">
+<div class="media media-post com<%=index%>">
   <%= link_to user_path(current_user.id) do %>
     <div class="avatar">     
       <% if comment.user.avatar.attached? %>
@@ -18,7 +18,7 @@
     <%end%>
 
     <% if comment.user == current_user %>
-      <%= link_to bookcopy_post_comment_path(@book, post, comment), :method=> :delete, :class => "btn btn-danger btn-neutral pull-right combtndel" do %>
+      <%= link_to bookcopy_post_comment_path(@book, post, comment, :loopindex => index), :method=> :delete, :class => "btn btn-danger btn-neutral pull-right combtndel#{index}", remote: true do %>
         <i class="now-ui-icons ui-1_simple-remove"></i>
       <%end%>
     <% end %>

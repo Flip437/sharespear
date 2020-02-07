@@ -1,59 +1,52 @@
-<% @post_array.each.with_index do |post, index| %>
-  <% if post.status == 1 %>
+<div class="row">
+  <div class="col-md-8 ml-auto mr-auto">
+    <div class="media-area">
+      <h3 class="title text-center"><small>  </small></h3>
 
-  <div class="row">
-    <div class="col-md-8 ml-auto mr-auto">
-      <div class="media-area">
-        <h3 class="title text-center"><small>  </small></h3>
+      <div class="media post<%=index%>">
 
-        <div class="media post<%=index%>">
+        <%= link_to user_path(current_user.id) do %>
+          <div class="avatar">     
+            <% if post.user.avatar.attached? %>
+              <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+            <% else %>
+              <%= image_tag("sharespeare1.png", class:"img-fluid") %>
+            <% end %>    
+          </div>
+        <%end%>
+        
+        <div class="media-body">
 
-          <%= link_to user_path(current_user.id) do %>
-            <div class="avatar">     
-              <% if post.user.avatar.attached? %>
-                <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
-              <% else %>
-                <%= image_tag("sharespeare1.png", class:"img-fluid") %>
-              <% end %>    
-            </div>
-          <%end%>
-          
-          <div class="media-body">
+          <h5 class="media-heading"> <%= post.user.first_name %> </h5>
+          <p> <%= post.content %> </p>
 
-            <h5 class="media-heading"> <%= post.user.first_name %> </h5>
-            <p> <%= post.content %> </p>
+          <div class="media-footer">
 
-            <div class="media-footer">
+            <%= link_to bookcopy_post_path(@book, post), :method=> :put, :class => "btn btn-danger btn-neutral pull-right" do %>
+              <i class="now-ui-icons ui-2_favourite-28"></i> <%= post.like %>
+            <%end%>
 
-              <%= link_to bookcopy_post_path(@book, post), :method=> :put, :class => "btn btn-danger btn-neutral pull-right" do %>
-                <i class="now-ui-icons ui-2_favourite-28"></i> <%= post.like %>
+            <% if post.user == current_user %>
+              <%= link_to bookcopy_post_path(@book, post, :loopindex => index), :method=> :delete, remote: true, :class => "btn btn-danger btn-neutral pull-right postbtndel#{index}" do %>
+                <i class="now-ui-icons ui-1_simple-remove"></i>
               <%end%>
-
-              <% if post.user == current_user %>
-                <%= link_to bookcopy_post_path(@book, post, :loopindex => index), :method=> :delete, remote: true, :class => "btn btn-danger btn-neutral pull-right postbtndel#{index}" do %>
-                  <i class="now-ui-icons ui-1_simple-remove"></i>
-                <%end%>
-              <% end %>
-
-            </div>
-
-            <% post.comments.each.with_index do |comment, index|%>
-              <% if comment.status  == 1 %>
-                <%= render 'comments/comment', comment: comment, post: post, index: index %>
-              <% end %>
             <% end %>
 
-            <%= render 'comments/newcom', post: post %>
+          </div>
 
-          </div>  
-        
-        </div>
-        
+          <% post.comments.each.with_index do |comment, index|%>
+            <%= render 'comments/comment', comment: comment, post: post, index: index %>
+          <% end %>
+
+          <div class="comment_receiver">
+          </div>
+
+          <%= render 'comments/newcom', post: post %>
+
+        </div>  
+      
       </div>
+      
     </div>
   </div>
-
-  <% end %>
-<% end %>
-
-<%= render "posts/newpost" %>
+</div>
