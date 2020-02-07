@@ -1,5 +1,4 @@
 class SearchbarController < ApplicationController
-  autocomplete :book_copy, :title
 
     def index
 
