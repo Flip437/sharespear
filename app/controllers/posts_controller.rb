@@ -13,8 +13,14 @@ class PostsController < ApplicationController
   def create
       @post = Post.new(post_params)
       @post.user_id = current_user.id
+      @bookid = params[:bookcopy_id]
       @book = BookCopy.find(params[:bookcopy_id])
       @post.book_copy = @book
+      @lastindex = Post.where("book_copy_id = 1").last.id
+
+
+      puts "last indexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      puts @lastindex
 
       if @post.save
           respond_to do |f|
@@ -36,6 +42,7 @@ class PostsController < ApplicationController
     @loopindex = params[:loopindex]
     @btn = ".postbtndel#{@loopindex}"
     @postdiv = ".post#{@loopindex}"
+
 
     if @post.destroy
       respond_to do |f|
