@@ -35,7 +35,6 @@ class BookCopy < ApplicationRecord
   end
 
 
-
   def newbook_title(book_title,index)
       isbn = book_title.gsub(/[.\s]/, '')
       url = "https://www.googleapis.com/books/v1/volumes?q=" + book_title.to_s

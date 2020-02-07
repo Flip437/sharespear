@@ -34,7 +34,10 @@ class HomeController < ApplicationController
 
     if current_user
 
-      @user_around_tab = User.where(zip_code: current_user.zip_code)
+
+      zip = current_user.zip_code
+
+      @user_around_tab = User.where(zip_code: zip )
       @book_copy_array_all = []
       @user_around_tab.each { |n| @book_copy_array_all = (@book_copy_array_all << n.book_copies).flatten! }
       @book_copy_array = []

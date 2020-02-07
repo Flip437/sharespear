@@ -24,6 +24,7 @@
 //= require js/core/bootstrap.min
 //= require js/plugins/moment.min
 
+
 //= require js/plugins/bootstrap-switch
 //= require js/plugins/bootstrap-tagsinput
 //= require js/plugins/bootstrap-selectpicker
