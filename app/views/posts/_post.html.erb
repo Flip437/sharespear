@@ -1,10 +1,9 @@
-<h1> <%= index %> </h1>
-<div class="row">
+<div class="row post<%=index%>">
   <div class="col-md-8 ml-auto mr-auto">
     <div class="media-area">
       <h3 class="title text-center"><small>  </small></h3>
 
-      <div class="media post<%=index%>">
+      <div class="media">
 
         <%= link_to user_path(current_user.id) do %>
           <div class="avatar">     

@@ -13,14 +13,11 @@ class PostsController < ApplicationController
   def create
       @post = Post.new(post_params)
       @post.user_id = current_user.id
-      @bookid = params[:bookcopy_id]
       @book = BookCopy.find(params[:bookcopy_id])
-      @post.book_copy = @book
-      @lastindex = Post.where("book_copy_id = 1").last.id
-
-
-      puts "last indexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      puts @lastindex
+      @post.book_copy = @book      
+      
+      @bookid = params[:bookcopy_id]
+      @ajaxindex = Post.where("book_copy_id = #{@bookid}").count
 
       if @post.save
           respond_to do |f|
@@ -37,12 +34,10 @@ class PostsController < ApplicationController
 
     @post = Post.find(params[:id])
     @post.comments.destroy_all
-    @post.destroy
 
     @loopindex = params[:loopindex]
     @btn = ".postbtndel#{@loopindex}"
     @postdiv = ".post#{@loopindex}"
-
 
     if @post.destroy
       respond_to do |f|
@@ -50,7 +45,6 @@ class PostsController < ApplicationController
         f.js 
       end
     else
-      puts @post.errors
       flash[:error] = "Désolé, il y a eu une erreur"
       redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
     end
