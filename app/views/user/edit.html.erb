@@ -13,7 +13,7 @@
       </div>
       <h3 class="card-title"><%= User.find(current_user.id).first_name %> <%= User.find(current_user.id).last_name %></h3>
         <%= form_for(@user, url: user_path(@user.id), html: {method: "patch"}) do |f| %>
-        
+
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= f.label 'Email' %><br>
@@ -27,7 +27,7 @@
 
         <div class="form-row">
           <div class="form-group col-md-6">
-            <%= f.label 'Prenom' %><br>
+            <%= f.label 'Pseudo' %><br>
             <%= f.text_field :first_name, class: "form-control"%>
           </div>
           <div class="form-group col-md-6">
