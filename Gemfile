@@ -73,7 +73,6 @@ gem 'database_cleaner'
 gem "faker", "~> 2.7"
 gem "table_print", "~> 1.5"
 gem "devise", "~> 4.7"
-gem 'stripe'
 gem 'rename', '~> 1.0', '>= 1.0.6'
 gem 'mailjet', '~> 1.5', '>= 1.5.4'
 gem 'nokogiri'
