@@ -34,6 +34,24 @@ class BookCopy < ApplicationRecord
     end
   end
 
+  def newbook(book_isbn)
+      isbn = book_isbn.gsub(/[.\s]/, '')
+      url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn.to_s
+      doc=JSON.load(open(url, 'User-Agent' => 'ruby'))
+      if doc["totalItems"]==0
+        sessiona = "0"
+      else
+        book_infos = doc['items'][0]['volumeInfo']
+        if book_infos["description"]
+          if book_infos["description"].length > 400
+              book_infos["description"]=book_infos["description"].slice(1..300)
+          end
+        end
+        sessiona = book_infos
+      end
+    return sessiona
+  end
+
 
   def newbook_title(book_title,index)
       isbn = book_title.gsub(/[.\s]/, '')
