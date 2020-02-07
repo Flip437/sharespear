@@ -37,11 +37,14 @@ class HomeController < ApplicationController
 
       zip = current_user.zip_code
 
-      @user_around_tab = User.where(zip_code: zip )
+      @user_around_tab = User.where(zip_code: zip)
+
       @book_copy_array_all = []
       @user_around_tab.each { |n| @book_copy_array_all = (@book_copy_array_all << n.book_copies).flatten! }
       @book_copy_array = []
       @length_tab_book_copy_all = @book_copy_array_all.length
+      puts "ICICI ICI"
+      puts @length_tab_book_copy_all
 
       array = []
       20.times do |i|
