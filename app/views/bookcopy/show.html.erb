@@ -75,4 +75,12 @@
 </div>
 
 <h3 class="title text-center">Commentaires</h3>
-  <%= render "posts/post" %>
+
+<% @post_array.each.with_index do |post, index| %>
+  <%= render "posts/post", post: post, index: index  %>
+<% end %>
+
+<div class="post_receiver">
+</div>
+
+<%= render "posts/newpost" %>
