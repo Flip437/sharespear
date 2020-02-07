@@ -12,8 +12,8 @@
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 	  <%= render "devise/shared/error_messages", resource: resource %>
 			<div class="field">
-				<%= f.label 'Prenom' %><br>
-				<%= f.text_field :first_name, class: "form-control", id: 'sign_up_form'%>
+				<%= f.label :pseudo %><br>
+				<%= f.text_field :first_name, autofocus: true,autocomplete: "pseudo", class: "form-control", id: 'sign_up_form'%>
 			</div>
 			<p></p>
 	  	<div class="field">
@@ -23,7 +23,7 @@
 			<p></p>
 		<div class="field">
 			<%= f.label :arrondissement %><br />
-			<%= f.select :zip_code, ["69001", "69002", "69003","69004","69005","69006","69007","69008","69009"] , autofocus: true, autocomplete: "quartier", class: 'form-control', id: 'sign_up_form'%>
+			<%= f.select :zip_code, ["69001", "69002", "69003","69004","69005","69006","69007","69008","69009","69100"] , autofocus: true, autocomplete: "quartier", class: 'form-control', id: 'sign_up_form'%>
 		</div>
 		<p></p>
 		<div class="field">
