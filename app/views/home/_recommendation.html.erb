@@ -1,14 +1,14 @@
 <% if book_array.length==0 %>
-  <div class="row">
-          <div class="col-md-8 ml-auto mr-auto text-center">
-              <h2 class="title">Nous ne trouvons pas de livres autour de toi..</h2>
-              <h5 class="description">Partage le site autour de toi ou modifie ton arrondissement</h5>
+<div class="row">
+  <div class="col-md-8 ml-auto mr-auto text-center">
+    <h2 class="title">Nous ne trouvons pas de livres autour de toi..</h2>
+    <h5 class="description">Partage le site autour de toi ou modifie ton arrondissement</h5>
 
-          </div>
   </div>
-  <% else %>
-  <h1></h1>
-  <div style="background-color:rgb(231, 236, 234)">
+</div>
+<% else %>
+<h1></h1>
+<div style="background-color:rgb(231, 236, 234)">
 
 
   <% if book_array.length>3 %>
@@ -16,252 +16,257 @@
 
   <div class="row">
 
-      <div class="col-md-10 ml-auto mr-auto">
-        <div class="container">
-          <h2 class="title"></h2>
+    <div class="col-md-10 ml-auto mr-auto">
+      <div class="container">
+        <h2 class="title"></h2>
 
-          <br>
-          <div class="card card-plain card-blog">
-              <div class="row">
-                  <div class="col-md-5">
-                      <div class="card-image text-center">
-                        <%= image_tag book_array[0].photo_link, class: "img-raised rounded" %>
+        <br>
+        <div class="card card-plain card-blog">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="card-image text-center">
+                <%= image_tag book_array[0].photo_link, class: "img-raised rounded" %>
 
-                      </div>
-                  </div>
-                  <div class="col-md-7">
-                      <h6 class="category text-info mt-3"><%=book_array[0].category%></h6>
-                      <h3 class="card-title">
-                          <%= link_to book_array[0].title, bookcopy_path(book_array[0].id) %>
-                      </h3>
-                      <p class="card-description">
-                        <%=book_array[0].description%><%= link_to "Voir plus", bookcopy_path(book_array[0].id) %>
-                      </p>
-                      <h6>                <% if book_array[0].status==0 %>
-                                        <span class="badge badge-warning">Emprenté</span>
-                                      <% end %>
-                                      <% if book_array[0].status==1 %>
-                                        <span class="badge badge-success">Disponible</span>
-                                      <% end %></h6>
-                      <p class="author">
-                          par <b><%= link_to book_array[0].user.first_name, user_path(book_array[0].user.id) %></b>
-                          , le <%=book_array[0].created_at.strftime('%d %b %Y')%>
-
-                  </p></div>
               </div>
-          </div>
-          <p></p>
+            </div>
+            <div class="col-md-7">
+              <h6 class="category text-info mt-3"><%=book_array[0].category%></h6>
+              <h3 class="card-title">
+                <%= link_to book_array[0].title, bookcopy_path(book_array[0].id) %>
+              </h3>
+              <p class="card-description">
+                <%=book_array[0].description%><%= link_to "Voir plus", bookcopy_path(book_array[0].id) %>
+              </p>
+              <h6>                <% if book_array[0].status==0 %>
+                <span class="badge badge-warning">Emprenté</span>
+                <% end %>
+                <% if book_array[0].status==1 %>
+                <span class="badge badge-success">Disponible</span>
+                <% end %></h6>
+                <p class="author">
+                  par <b><%= link_to book_array[0].user.first_name, user_path(book_array[0].user.id) %></b>
+                  , le <%=book_array[0].created_at.strftime('%d %b %Y')%>
 
-          <div class="card card-plain card-blog">
+                </p></div>
+              </div>
+            </div>
+            <p></p>
+
+            <div class="card card-plain card-blog">
               <div class="row">
-                  <div class="col-md-7">
-                      <h6 class="category text-success">
-                          <i class="now-ui-icons now-ui-icons media-2_sound-wave"></i> <%=book_array[1].category%>
-                      </h6>
-                      <h3 class="card-title">
-                          <%= link_to book_array[1].title, bookcopy_path(book_array[1].id) %>
-                      </h3>
-                      <p class="card-description">
-                        <%=book_array[1].description%> <%= link_to "Voir plus", bookcopy_path(book_array[1].id) %>
-                      </p>
-                      <h6>                <% if book_array[1].status==0 %>
-                                        <span class="badge badge-warning">Emprenté</span>
-                                      <% end %>
-                                      <% if book_array[1].status==1 %>
-                                        <span class="badge badge-success">Disponible</span>
-                                      <% end %></h6>
-                      <p class="author">
-                        par <b><%= link_to book_array[1].user.first_name, user_path(book_array[1].user.id) %></b>
-                        , le <%=book_array[1].created_at.strftime('%d %b %Y')%>
+                <div class="col-md-7">
+                  <h6 class="category text-success">
+                    <i class="now-ui-icons now-ui-icons media-2_sound-wave"></i> <%=book_array[1].category%>
+                  </h6>
+                  <h3 class="card-title">
+                    <%= link_to book_array[1].title, bookcopy_path(book_array[1].id) %>
+                  </h3>
+                  <p class="card-description">
+                    <%=book_array[1].description%> <%= link_to "Voir plus", bookcopy_path(book_array[1].id) %>
+                  </p>
+                  <h6>                <% if book_array[1].status==0 %>
+                    <span class="badge badge-warning">Emprenté</span>
+                    <% end %>
+                    <% if book_array[1].status==1 %>
+                    <span class="badge badge-success">Disponible</span>
+                    <% end %></h6>
+                    <p class="author">
+                      par <b><%= link_to book_array[1].user.first_name, user_path(book_array[1].user.id) %></b>
+                      , le <%=book_array[1].created_at.strftime('%d %b %Y')%>
 
-                  </p></div>
-                  <div class="col-md-5">
+                    </p></div>
+                    <div class="col-md-5">
                       <div class="card-image text-left align-bottom">
 
                         <%= image_tag book_array[1].photo_link, class: "img-raised rounded" %>
                       </div>
+                    </div>
                   </div>
+                </div>
+
               </div>
+            </div>
           </div>
+          
+          <div class="page-header-image" style="background-image: url(<%= asset_path "book_back1.jpg" %>);">
 
-      </div>
-</div>
-  </div>
-  <div class="page-header-image" style="background-image: url(<%= asset_path "book_back1.jpg" %>);">
+            <div class="cd-section" id="testimonials">
 
-  <div class="cd-section" id="testimonials">
+              <div class="testimonials-2">
 
-    <div class="testimonials-2">
+                <div class="container">
 
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="carouselExampleIndicators2" class="carousel slide">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div id="carouselExampleIndicators2" class="carousel slide">
                         <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators2" data-slide-to="1" class=""></li>
+                          <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                          <li data-target="#carouselExampleIndicators2" data-slide-to="1" class=""></li>
                         </ol>
                         <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item justify-content-center active">
-                                <div class="card card-testimonial card-plain">
-                                    <div class="card-avatar">
-                                      <% if book_array[2].user.avatar.attached? %>
-                                      <%= image_tag book_array[2].user.avatar, alt: 'avatar' %>
+                          <div class="carousel-item justify-content-center active">
+                            <div class="card card-testimonial card-plain">
+                              <div class="card-avatar">
+                                <% if book_array[2].user.avatar.attached? %>
+                                <%= image_tag book_array[2].user.avatar, alt: 'avatar' %>
 
-                                      <% else %>
+                                <% else %>
 
-                                      <%  i =rand(8) %>
+                                <%  i =rand(8) %>
 
-                                      <%= image_tag @avatar_array[i] %>
+                                <%= image_tag @avatar_array[i] %>
 
-                                      <% end %>
-                                    </div>
+                                <% end %>
+                              </div>
 
 
-                                    <div class="card-body">
+                              <div class="card-body">
 
-                                        <h5 class="card-description">"<%=book_array[2].description%>
-                                        </h5>
-                                        <h3 class="card-title">
-                                          <%= link_to book_array[2].title, bookcopy_path(book_array[2].id) %>
-                                        </h3>
+                                <h5 class="card-description">"<%=book_array[2].description%>
+                                </h5>
+                                <h3 class="card-title">
+                                  <%= link_to book_array[2].title, bookcopy_path(book_array[2].id) %>
+                                </h3>
 
-                                        <div class="card-footer">
-                                            <h6 class="category text-primary"><%=book_array[2].category%></h6>
-                                            <h6>                <% if book_array[2].status==0 %>
-                                                              <span class="badge badge-warning">Emprenté</span>
-                                                            <% end %>
-                                                            <% if book_array[2].status==1 %>
-                                                              <span class="badge badge-success">Disponible</span>
-                                                            <% end %></h6>
-                                        </div>
-                                    </div>
+                                <div class="card-footer">
+                                  <h6 class="category text-primary"><%=book_array[2].category%></h6>
+                                  <h6>                <% if book_array[2].status==0 %>
+                                    <span class="badge badge-warning">Emprenté</span>
+                                    <% end %>
+                                    <% if book_array[2].status==1 %>
+                                    <span class="badge badge-success">Disponible</span>
+                                    <% end %></h6>
+                                  </div>
                                 </div>
+                              </div>
                             </div>
                             <div class="carousel-item justify-content-center">
-                                <div class="card card-testimonial card-plain">
-                                    <div class="card-avatar">
-                                      <% if book_array[3].user.avatar.attached? %>
-                                          <%= image_tag book_array[3].user.avatar, alt: 'avatar'  %>
+                              <div class="card card-testimonial card-plain">
+                                <div class="card-avatar">
+                                  <% if book_array[3].user.avatar.attached? %>
+                                  <%= image_tag book_array[3].user.avatar, alt: 'avatar'  %>
 
 
-                                          <% else %>
+                                  <% else %>
 
-                                          <%  i =rand(8) %>
+                                  <%  i =rand(8) %>
 
-                                          <%= image_tag @avatar_array[i] %>
+                                  <%= image_tag @avatar_array[i] %>
 
 
-                                      <%end%>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <h5 class="card-description">"<%=book_array[3].description%>"
-                                        </h5>
-                                        <h3 class="card-title"><%= link_to book_array[3].title, bookcopy_path(book_array[3].id) %></h3>
-
-                                        <div class="card-footer">
-                                            <h6 class="category text-primary"><%=book_array[3].category%></h6>
-                                            <h6>                <% if book_array[3].status==0 %>
-                                                              <span class="badge badge-warning">Emprenté</span>
-                                                            <% end %>
-                                                            <% if book_array[3].status==1 %>
-                                                              <span class="badge badge-success">Disponible</span>
-                                                            <% end %></h6>
-                                        </div>
-
-                                    </div>
+                                  <%end%>
                                 </div>
+
+                                <div class="card-body">
+                                  <h5 class="card-description">"<%=book_array[3].description%>"
+                                  </h5>
+                                  <h3 class="card-title"><%= link_to book_array[3].title, bookcopy_path(book_array[3].id) %></h3>
+
+                                  <div class="card-footer">
+                                    <h6 class="category text-primary"><%=book_array[3].category%></h6>
+                                    <h6>                <% if book_array[3].status==0 %>
+                                      <span class="badge badge-warning">Emprenté</span>
+                                      <% end %>
+                                      <% if book_array[3].status==1 %>
+                                      <span class="badge badge-success">Disponible</span>
+                                      <% end %></h6>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
                             </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                              <i class="now-ui-icons arrows-1_minimal-left"></i>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                              <i class="now-ui-icons arrows-1_minimal-right"></i>
+                            </a>
+                          </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                            <i class="now-ui-icons arrows-1_minimal-left"></i>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-                            <i class="now-ui-icons arrows-1_minimal-right"></i>
-                        </a>
+                      </div>
+
                     </div>
+                  </div>
                 </div>
-            </div>
+              </div>
+              <% end %>
+              <br>
+              <br>
 
-        </div>
-        </div>
-    </div>
-  </div>
-<% end %>
 
-<div class="cd-section" id="testimonials">
 
-    <div class="container">
-        <div class="row">
+                  <div class="row">
 
-            <div class="col-md-10 ml-auto mr-auto">
+                    <div class="col-md-10 ml-auto mr-auto">
 
-                <% if book_array.length>3 %>
-                  <% n=3 %>
-                <% else %>
-                  <% n=0 %>
-                <% end %>
 
-                <%  for a in n..(book_array.length-1) do %>
-                <div class="card card-plain card-blog">
-                    <div class="row">
-                        <div class="col-md-4">
+                      <% if book_array.length>3 %>
+                      <% n=4 %>
+                      <% else %>
+                      <% n=0 %>
+                      <% end %>
+
+                      <%  for a in n..(book_array.length-1) do %>
+                      <div class="card card-plain card-blog">
+                        <div class="row">
+                          <div class="col-md-4">
                             <div class="card-image text-center">
                               <br>
 
-                                <%= image_tag book_array[a].photo_link, class:"rounded img-raised" %>
+                              <%= image_tag book_array[a].photo_link, class:"rounded img-raised" %>
 
 
                             </div>
-                        </div>
-                        <div class="col-md-8">
+                          </div>
+                          <div class="col-md-8">
                             <h3 class="card-title">
                               <%= link_to book_array[a].title, bookcopy_path(book_array[a].id) %>
 
 
                             </h3>
                             <h6>                <% if book_array[a].status==0 %>
-                                              <span class="badge badge-warning">Emprenté</span>
-                                            <% end %>
-                                            <% if book_array[a].status==1 %>
-                                              <span class="badge badge-success">Disponible</span>
-                                            <% end %></h6>
-                            <p class="card-description">
-                               <%=book_array[a].description%>  <%= link_to " Lire plus", bookcopy_path(book_array[a].id) %>
-                            </p>
-                            <h6 class="category text-primary">
-                               <%=book_array[a].category%>
-                            </h6>
-                            <p></p>
-                          <div class="author">
-                              <% if book_array[a].user.avatar.attached?  %>
-                              <%= image_tag book_array[a].user.avatar,class:"avatar img-raised", alt: 'avatar'%>
+                              <span class="badge badge-warning">Emprenté</span>
+                              <% end %>
+                              <% if book_array[a].status==1 %>
+                              <span class="badge badge-success">Disponible</span>
+                              <% end %></h6>
+                              <p class="card-description">
+                                <%=book_array[a].description%>  <%= link_to " Lire plus", bookcopy_path(book_array[a].id) %>
+                              </p>
+                              <h6 class="category text-primary">
+                                <%=book_array[a].category%>
+                              </h6>
+                              <p></p>
+                              <div class="author">
+                                <% if book_array[a].user.avatar.attached?  %>
+                                <%= image_tag book_array[a].user.avatar,class:"avatar img-raised", alt: 'avatar'%>
 
 
-                              <% else %>
+                                <% else %>
 
-                              <%  i =rand(8) %>
+                                <%  i =rand(8) %>
 
-                              <%= image_tag @avatar_array[i],class:"avatar img-raised" %>
+                                <%= image_tag @avatar_array[i],class:"avatar img-raised" %>
 
 
 
-                               <% end  %>
+                                <% end  %>
 
-                             <span>
-                             <%= link_to book_array[a].user.first_name, user_path(book_array[a].user.id) %></span>
+                                <span>
+                                  <%= link_to book_array[a].user.first_name, user_path(book_array[a].user.id) %></span>
 
+                                </div>
+                              </div>
+                            </div>
                           </div>
+                          <% end %>
                         </div>
-                    </div>
-                </div>
-                <% end %>
-            </div>
-        </div>
-    </div>
+                      </div>
 
-  </div>
-  <% end %>
-    </div>
+
+
+
+                </div>
+
+                  <% end %>

@@ -36,67 +36,141 @@ class HomeController < ApplicationController
 
 
       zip = current_user.zip_code
+      @zip_name = ""
 
-      @user_around_tab = User.where(zip_code: zip)
-
-      @book_copy_array_all = []
-      @user_around_tab.each { |n| @book_copy_array_all = (@book_copy_array_all << n.book_copies).flatten! }
-      @book_copy_array = []
-      @length_tab_book_copy_all = @book_copy_array_all.length
-      puts "ICICI ICI"
-      puts @length_tab_book_copy_all
-
-      array = []
-      20.times do |i|
-        x = rand (@length_tab_book_copy_all)
-        redo if array.include?(x)
-        array[i] = x
+      if zip=="69001"
+        @zip_name = "Lyon 1 - Terreaux"
+      end
+      if zip=="69002"
+        @zip_name = "Lyon 2 - Bellecour"
+      end
+      if zip=="69003"
+        @zip_name = "Lyon 3 - La Part-Dieu"
+      end
+      if zip=="69004"
+        @zip_name = "Lyon 4 - Croix-Rousse"
+      end
+      if zip=="69005"
+        @zip_name = "Lyon 5 - Vieux Lyon"
+      end
+      if zip=="69006"
+        @zip_name = "Lyon 1 - Terreaux"
+      end
+      if zip=="69007"
+        @zip_name = "Lyon 7 - Jean Macé"
+      end
+      if zip=="69008"
+        @zip_name = "Lyon 8 - Monplaisir"
+      end
+      if zip=="69009"
+        @zip_name = "Lyon 9 - Vaise"
+      end
+      if zip=="69100"
+        @zip_name = "Villeurbanne"
+      end
+      if zip=="69100"
+        @zip_name = "Villeurbanne"
+      end
+      if zip=="69300"
+        @zip_name = "Caluire-et-Cuire"
+      end
+      if zip=="69142"
+        @zip_name = "La Mulatière"
+      end
+      if zip=="69160"
+        @zip_name = "Tassin-la-Demi-Lune"
+      end
+      if zip=="69130"
+        @zip_name = "Écully"
+      end
+      if zip=="69600"
+        @zip_name = "Oullins"
+      end
+      if zip=="69500"
+        @zip_name = "Bron"
       end
 
-      if @book_copy_array_all.length>20
+      user_around_tab = User.where(zip_code: zip)
 
-        20.times do |i|
-          @book_copy_array[i] = @book_copy_array_all[array[i]]
-        end
-      else
-        @book_copy_array_all.length.times do |i|
-          @book_copy_array[i] = @book_copy_array_all[array[i]]
-        end
-      end
 
-      @length_tab_book_copy =  @book_copy_array.length
+      book_copy_array_all = []
 
-      @dropD = []
-      d = 0
-      @book_copy_array.length.times do |i|
-        if @dropD.include?(@book_copy_array[i].category)
+      if user_around_tab.first.book_copies
+
+        user_around_tab.each { |n| book_copy_array_all = (book_copy_array_all << n.book_copies).flatten! }
+        @book_copy_array = []
+        puts "ICIIC"
+        puts book_copy_array_all.inspect
+        book_copy_array_all.reject! {|book| book.status == 2}
+        puts book_copy_array_all.inspect
+
+        @length_tab_book_copy_all = book_copy_array_all.length
+
+        puts @length_tab_book_copy_all
+
+
+        if @length_tab_book_copy_all >20
+
+          array = []
+          20.times do |i|
+            array[i] = i
+          end
+          array = array.shuffle
+
+          20.times do |i|
+            @book_copy_array[i] = book_copy_array_all[array[i]]
+          end
+
         else
-           @dropD[d] = @book_copy_array[i].category
-           d=d+1
+          array = []
+
+          @length_tab_book_copy_all.times do |i|
+            array[i] = i
+          end
+          array = array.shuffle
+          @length_tab_book_copy_all.times do |i|
+            @book_copy_array[i] = book_copy_array_all[array[i]]
+          end
+        end
+
+        @length_tab_book_copy =  @book_copy_array.length
+
+        @dropD = []
+        d = 0
+        book_copy_array_all=book_copy_array_all.shuffle
+        @length_tab_book_copy_all.times do |i|
+          if @dropD.include?(book_copy_array_all[i].category)
+          else
+            @dropD[d] = book_copy_array_all[i].category
+            d=d+1
+          end
+          @dropD = @dropD.sort
+
         end
 
       end
 
-    end
+      if params[:category_selected]
 
-    if params[:category_selected]
+        cate = params[:category_selected]
+        if cate == "All"
 
-      cate = params[:category_selected]
-      if cate == "All"
+          @book_copy_filteredv2 = @book_copy_array
 
-        @book_copy_filteredv2 = @book_copy_array
+        else
+          @book_copy_filteredv2 = book_copy_array_all.select { |book| book.category == cate }
+        end
 
-      else
-        @book_copy_filteredv2 = @book_copy_array_all.select { |book| book.category == cate }
+      end
+
+      respond_to do |format|
+        format.html{}
+        format.js{}
       end
 
     end
 
-    respond_to do |format|
-      format.html{}
-      format.js{}
-    end
+      end
 
-  end
 
 end

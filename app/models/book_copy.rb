@@ -87,7 +87,7 @@ class BookCopy < ApplicationRecord
     end
 
     if  bookinfos["categories"]==nil
-      category = "other"
+      category = "Other"
     else
       category = bookinfos["categories"][0]
     end
