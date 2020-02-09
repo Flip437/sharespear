@@ -16,18 +16,18 @@
 
         <div class="form-row">
           <div class="form-group col-md-6">
-            <%= f.label 'Email' %><br>
+            <%= f.label 'Email*' %><br>
             <%= f.email_field :email, class: "form-control", readonly: true%>
           </div>
           <div class="form-group col-md-6">
-            <%= f.label 'Password' %><br>
+            <%= f.label 'Password*' %><br>
             <%= f.password_field :password, class: "form-control"%>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
-            <%= f.label 'Pseudo' %><br>
+            <%= f.label 'Pseudo*' %><br>
             <%= f.text_field :first_name, class: "form-control"%>
           </div>
           <div class="form-group col-md-6">
@@ -42,7 +42,7 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <%= f.label 'City' %>
+            <%= f.label 'Ville*' %>
             <%= f.select :city, options_for_select(
               [
                 ['Lyon'],
@@ -50,7 +50,7 @@
               ]),{}, { class: "form form-group form-control"} %>
           </div>
           <div class="form-group col-md-2">
-              <%= f.label :Votre_Arrondissement %><br />
+              <%= f.label 'Votre_Arrondissement*' %><br />
               <%= f.select :zip_code,  [["Lyon 1 - Terreaux ","69001"],["Lyon 2 - Bellecour","69002"],["Lyon 3 - La Part-Dieu","69003"],["Lyon 4 - Croix-Rousse","69004"],["Lyon 5 - Vieux Lyon","69005"],["Lyon 6 - Brotteaux","69006"],["Lyon 7 - Jean Macé","69007"],["Lyon 8 - Monplaisir","69008"], ["Lyon 9 - Vaise","69009"],["Villeurbanne","69100"],["Caluire-et-Cuire","69300"],["La Mulatière","69142"],["Tassin-la-Demi-Lune","69160"],["Écully","69130"],["Oullins","69600"],["Bron","69500"]] , autofocus: true, autocomplete: "quartier", class: 'form-control', id: 'sign_up_form'%>
           </div>
           <div class="form-group col-md-2">

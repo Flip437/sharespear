@@ -14,10 +14,15 @@
     <div class="container">
     <%= form_for @borrow, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
     <br>
-      <%= f.label 'message au propriétaire' %><br>
-      <%= f.text_area :message, size: "60x12", class: "form-control" %>
+      <%= f.label 'message au propriétaire*' %><br>
+      <%= f.text_area :message, size: "60x12", class: "form-control", placeholder:"Expliquez qui vous êtes et pourquoi vous voulez emprunter son livre.. " %>
       <br>
-      <%= f.label 'durée' %>
+
+
+
+      <div class="form-row ">
+      <div class="form-group col-md-3">
+      <%= f.label 'durée*' %>
       <%= f.select :duree, options_for_select(
         [
           ['1 mois', 1],
@@ -33,9 +38,32 @@
           ['11 mois', 11],
           ['12 mois', 12]
         ], 2),{}, { class: "form form-group form-control"} %>
+        </div>
+
+        <div class="form-group col-md-3 ">
+        <label for="">Email*</label>
+        <input class="form-control" value="<%=@user.email%>" readonly= "true">
+        </input>
+        </div>
+        <div class="form-group col-md-3">
+        <label for="">Numéro de Téléphone</label>
+        <input class="form-control" value="<%=@user.phone%>" readonly= "true">
+        </input>
+        </div>
+        <div class="form-group col-md-3">
+          <br>
+          <br>
+          <%= link_to "Modifier mes informations",edit_user_path(current_user.id) %>
+
+
+        </div>
+        </div>
+<br>
+
       <%= f.submit "Envoyer" , class: "btn btn-primary btn-round btn-lg"%>
     <% end %>
     </div>
+
     <%= link_to "Faire un don", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
     <div class="card-footer text-muted mb-2">
       <div class="card-header mt-2">

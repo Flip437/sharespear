@@ -3,6 +3,7 @@ class BorrowController < ApplicationController
   def new
       @borrow = Borrow.new
       @book = BookCopy.find(params[:bookcopy_id])
+      @user = User.find(current_user.id)
   end
 
   def create
