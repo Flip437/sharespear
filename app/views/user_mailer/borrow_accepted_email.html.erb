@@ -7,19 +7,30 @@
     <h4 class="card-title">
       Ta demande d'emprunt a été acceptée par <%=@owner.first_name%>
     </h4>
+
+    <br><br><br>
+    
     <p class="card-text">
       Pour retrouver les informations de cet emprunt, tu peux suivre ce lien
     </p>
     <%= link_to "Detail de l'emprunt", bookcopy_borrow_url(@borrow.book_copy_id,@borrow.id), class: "btn btn-primary btn-round btn-lg"%>
-
-    <p class="card-text">
+    
+    <br><br><br>
+    
+    <h3 class="card-text">
       Voici les informations concernant <%=@owner.first_name%>
-    </p>
+    </h3>
 
     <div class="info info-horizontal">
-      <div class="icon icon-primary">
-          <i class="business_briefcase-24 now-ui-icons"></i>
-      </div>
+      <div class="content-center">
+        <div class="photo-container">
+          <% if @owner.avatar.attached? %>
+            <%= image_tag @owner.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+          <% else %>
+            <%= image_tag("sharespeare1.png", class:"img-fluid") %>
+          <% end %>
+        </div>
+     </div>
       <div class="description">
           <h4 class="info-title">Contact</h4>
           <p>  <%=@owner.first_name%>    <%=@owner.last_name%>

@@ -12,13 +12,19 @@
     </p>
     <%= link_to "Detail de l'emprunt", bookcopy_borrow_url(@borrow.book_copy_id,@borrow.id), class: "btn btn-primary btn-round btn-lg"%>
 
-    <p class="card-text">
+    <h3 class="card-text">
       Voici les informations concernant <%=@owner.first_name%>
-    </p>
+    </h3>
 
     <div class="info info-horizontal">
-      <div class="icon icon-primary">
-          <i class="business_briefcase-24 now-ui-icons"></i>
+      <div class="content-center">
+        <div class="photo-container">
+          <% if @owner.avatar.attached? %>
+            <%= image_tag @owner.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+          <% else %>
+            <%= image_tag("sharespeare1.png", class:"img-fluid") %>
+          <% end %>
+        </div>
       </div>
       <div class="description">
           <h4 class="info-title">Contact</h4>
