@@ -2,7 +2,7 @@
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
-Devise::Mailer.layout "user_mailer"
+# Devise::Mailer.layout "user_mailer"
 Devise.setup do |config|
 
   # The secret key used by Devise. Devise uses this key to generate
@@ -20,7 +20,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'example@gmail.com'
+  config.mailer_sender = 'sharespeare01@gmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
