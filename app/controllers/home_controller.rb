@@ -171,7 +171,6 @@ class HomeController < ApplicationController
                   book_copy_array_all = []
                   @friends_around_tab.each { |n| book_copy_array_all = (book_copy_array_all << n.book_copies).flatten! }
         
-                  puts book_copy_array_all.inspect
                   @book_copy_array = []
                   book_copy_array_all.reject! {|book| book.status == 2}
                   @length_tab_book_copy_all = book_copy_array_all.length

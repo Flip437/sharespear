@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--     Fonts and icons     -->
-    <link rel="shortcut icon" type="image/x-icon" href="lib/assets/img/logo.png" />
+    <link rel="shortcut icon" type="image/png" href=<%= asset_path "logo.png"%>/>
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -36,7 +36,7 @@
               </ul>
           </nav>
           <div class="copyright" id="copyright">
-              ©2019, <%=link_to "Sharespeare", landing_page_index_path%> est Pensé et Codé avec amour par Flip et Arthur à LYON
+              ©2019, <%=link_to "Sharespeare", landing_page_index_path%> est Pensé et Codé avec le Coeur par Flip et Arthur à LYON
           </div>
       </div>
   </footer>
