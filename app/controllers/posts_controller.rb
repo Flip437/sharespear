@@ -14,36 +14,38 @@ class PostsController < ApplicationController
       @post = Post.new(post_params)
       @post.user_id = current_user.id
       @book = BookCopy.find(params[:bookcopy_id])
-      @post.book_copy = @book
+      @post.book_copy = @book      
+      
+      @bookid = params[:bookcopy_id]
+      @ajaxindex = Post.where("book_copy_id = #{@bookid}").count
 
       if @post.save
-          flash[:success] = "Ton commentaire a bien été posté :)"
-          redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+          respond_to do |f|
+            f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
+            f.js 
+          end
       else
-          puts @post.errors
-          flash[:error] = "Désolé, il y a eu une erreur :("
+          flash[:error] = "Désolé, il y a eu une erreur"
           redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       end
   end
 
   def destroy
-    puts params
-    @post = Post.find(params[:id])
-    @post.content = "deleted"
-    @post.like = 0
-    @post.status = 0
-    @post.save
 
-    if @post.save
-      flash[:success] = "Ton commentaire a bien été posté :)"
-      #redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+    @post = Post.find(params[:id])
+    @post.comments.destroy_all
+
+    @loopindex = params[:loopindex]
+    @btn = ".postbtndel#{@loopindex}"
+    @postdiv = ".post#{@loopindex}"
+
+    if @post.destroy
       respond_to do |f|
         f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
-        f.js
+        f.js 
       end
     else
-      puts @post.errors
-      flash[:error] = "Désolé, il y a eu une erreur :("
+      flash[:error] = "Désolé, il y a eu une erreur"
       redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
     end
   end

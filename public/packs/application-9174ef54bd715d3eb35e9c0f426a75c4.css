@@ -1,0 +1,61 @@
+
+i.frontFlipBtn[data-v-6fb8108a],
+i.backFlipBtn[data-v-6fb8108a] {
+    position:absolute; 
+    right: 20px; 
+    top: 20px;
+    color:#FFFFFF;
+}
+i.backFlipBtn[data-v-6fb8108a] {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+.flip-container[data-v-6fb8108a] {
+  -webkit-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+}
+.flip-container[data-v-6fb8108a] {
+  min-height: 120px;
+}
+.flipper[data-v-6fb8108a] {
+  -moz-transform: perspective(1000px);
+  -moz-transform-style: preserve-3d;
+  position: relative;
+}
+.front[data-v-6fb8108a],
+.back[data-v-6fb8108a] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: 0.6s;
+  -moz-transform-style: preserve-3d;
+  -o-transition: 0.6s;
+  -o-transform-style: preserve-3d;
+  -ms-transition: 0.6s;
+  -ms-transform-style: preserve-3d;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.back[data-v-6fb8108a] {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  position: absolute;
+}
+.flip-container.flipped .back[data-v-6fb8108a] {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+.flip-container.flipped .front[data-v-6fb8108a] {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.front[data-v-6fb8108a] {
+  z-index: 2;
+}
+
+/*# sourceMappingURL=application-9174ef54bd715d3eb35e9c0f426a75c4.css.map*/
