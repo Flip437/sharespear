@@ -11,6 +11,9 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     @email = params[:user][:email]
+    puts "EMAILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+    puts @email = params[:user][:email]
+    puts "EMAILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
     if User.find_by(email: @email) == nil
       flash[:error] = "Tu n'as pas de compte utilisateur, merci d'en créer un :)"
     elsif User.find_by(email: @email).confirmed? == false
