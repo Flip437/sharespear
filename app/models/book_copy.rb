@@ -21,20 +21,11 @@ class BookCopy < ApplicationRecord
 
   def self.search(search, bsearch)
     if search
-<<<<<<< HEAD
       booktitles = self.where('title ILIKE ?', "%#{search}%")
       booksearched = []
       booktitles.each do |book|
         if book.user.city.downcase == bsearch.downcase
           booksearched << book
-=======
-      @booktitles = self.where('title ILIKE ?', "%#{search}%")
-      @booksearched = []
-      @booktitles.each do |book|
-        #if book.user.city.downcase == bsearch.downcase
-        if book.status < 2
-          @booksearched << book
->>>>>>> 890c1777df6ea11e4c0491d7219c4b2ca53337e2
         end
         #end
       end

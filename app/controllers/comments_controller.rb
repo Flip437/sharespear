@@ -4,10 +4,6 @@ class CommentsController < ApplicationController
   end
 
   def update
-<<<<<<< HEAD
-=======
-
->>>>>>> 890c1777df6ea11e4c0491d7219c4b2ca53337e2
     @comment = Comment.find(params[:id])
     @comment.like += 1
     @comment.save
@@ -26,27 +22,18 @@ class CommentsController < ApplicationController
       @ajaxindex = Comment.where("post_id = #{@postid}").count
 
       if @comment.save
-<<<<<<< HEAD
           respond_to do |f|
             f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
             f.js 
           end
       else
           flash[:error] = "Désolé, il y a eu une erreur"
-=======
-          flash[:success] = "Ton commentaire a bien été posté :)"
-          redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
-      else
-
-          flash[:error] = "Désolé, il y a eu une erreur :("
->>>>>>> 890c1777df6ea11e4c0491d7219c4b2ca53337e2
           redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       end
   end
 
 
   def destroy
-<<<<<<< HEAD
     @comment = Comment.find(params[:id])
     @comment.destroy
 
@@ -60,22 +47,6 @@ class CommentsController < ApplicationController
         f.js 
       end
 
-=======
-
-    @comment = Comment.find(params[:id])
-    @comment.content = "deleted"
-    @comment.like = 0
-    @comment.status = 0
-    @comment.save
-
-    if @comment.save
-      flash[:success] = "Ton commentaire a bien été posté :)"
-      redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
-      # respond_to do |f|
-      #   f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
-      #   f.js
-      # end
->>>>>>> 890c1777df6ea11e4c0491d7219c4b2ca53337e2
     else
       puts @comment.errors
       flash[:error] = "Désolé, il y a eu une erreur :("

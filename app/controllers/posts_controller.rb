@@ -20,20 +20,12 @@ class PostsController < ApplicationController
       @ajaxindex = Post.where("book_copy_id = #{@bookid}").count
 
       if @post.save
-<<<<<<< HEAD
           respond_to do |f|
             f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
             f.js 
           end
       else
           flash[:error] = "Désolé, il y a eu une erreur"
-=======
-          flash[:success] = "Ton commentaire a bien été posté :)"
-          redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
-      else
-          puts @post.errors
-          flash[:error] = "Désolé, il y a eu une erreur :("
->>>>>>> 890c1777df6ea11e4c0491d7219c4b2ca53337e2
           redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       end
   end
@@ -41,7 +33,6 @@ class PostsController < ApplicationController
   def destroy
 
     @post = Post.find(params[:id])
-<<<<<<< HEAD
     @post.comments.destroy_all
 
     @loopindex = params[:loopindex]
@@ -49,27 +40,12 @@ class PostsController < ApplicationController
     @postdiv = ".post#{@loopindex}"
 
     if @post.destroy
-=======
-    @post.content = "deleted"
-    @post.like = 0
-    @post.status = 0
-    @post.save
-
-    if @post.save
-      flash[:success] = "Ton commentaire a bien été posté :)"
-      #redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
->>>>>>> 890c1777df6ea11e4c0491d7219c4b2ca53337e2
       respond_to do |f|
         f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
         f.js 
       end
     else
-<<<<<<< HEAD
       flash[:error] = "Désolé, il y a eu une erreur"
-=======
-      puts @post.errors
-      flash[:error] = "Désolé, il y a eu une erreur :("
->>>>>>> 890c1777df6ea11e4c0491d7219c4b2ca53337e2
       redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
     end
   end
