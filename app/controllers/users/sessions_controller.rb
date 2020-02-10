@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
     if User.find_by(email: @email) == nil
       flash[:error] = "Tu n'as pas de compte utilisateur, merci d'en créer un :)"
     elsif User.find_by(email: @email).confirmed? == false
-      flash[:error] = "Merci de confirmer ton email avant de te connecter"
+      flash[:error] = "Merci de confirmer ton email avant de te connecter :D"
     end
     super
   end

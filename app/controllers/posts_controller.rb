@@ -17,11 +17,11 @@ class PostsController < ApplicationController
       @post.book_copy = @book
 
       if @post.save
-          flash[:success] = "Ton commentaire a bien été posté"
+          flash[:success] = "Ton commentaire a bien été posté :)"
           redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       else
           puts @post.errors
-          flash[:error] = "Désolé, il y a eu une erreur"
+          flash[:error] = "Désolé, il y a eu une erreur :("
           redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       end
   end
@@ -33,9 +33,9 @@ class PostsController < ApplicationController
     @post.like = 0
     @post.status = 0
     @post.save
-    
+
     if @post.save
-      flash[:success] = "Ton commentaire a bien été posté"
+      flash[:success] = "Ton commentaire a bien été posté :)"
       #redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
       respond_to do |f|
         f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
       end
     else
       puts @post.errors
-      flash[:error] = "Désolé, il y a eu une erreur"
+      flash[:error] = "Désolé, il y a eu une erreur :("
       redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
     end
   end
@@ -53,5 +53,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:content)
   end
-  
+
 end

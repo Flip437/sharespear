@@ -19,8 +19,8 @@ class BorrowController < ApplicationController
           flash[:success] = "Votre demande d'emprunt a été transmise :)"
           redirect_to root_path
       else
-          puts @borrow.errors
-          flash[:error] = "Désolé, votre demande d'emprunt n'a pas été créée"
+          
+          flash[:error] = "Désolé, votre demande d'emprunt n'a pas fonctionné :("
           redirect_to root_path
       end
 

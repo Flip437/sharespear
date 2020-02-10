@@ -158,7 +158,7 @@ class HomeController < ApplicationController
               @book_copy_filteredv2=[]
 
               if @user.follows.first
-                puts "CICICI"
+
 
                 @friends_around_tab = []
                 @user.follows.each do |n|
@@ -170,7 +170,7 @@ class HomeController < ApplicationController
                 if @friends_around_tab.first.book_copies
                   book_copy_array_all = []
                   @friends_around_tab.each { |n| book_copy_array_all = (book_copy_array_all << n.book_copies).flatten! }
-                  puts "ISIISI "
+        
                   puts book_copy_array_all.inspect
                   @book_copy_array = []
                   book_copy_array_all.reject! {|book| book.status == 2}

@@ -7,9 +7,9 @@ before_action :authenticate_user!
       @book = BookCopy.find(params[:id])
       @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
       @post_array = @book.posts
-      puts "RETURNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
-      puts @book.already_borrowed(current_user)
-      puts "RETURNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+
+
+
   end
 
   def new
@@ -27,9 +27,9 @@ before_action :authenticate_user!
       session.delete(:book_info)
 
       @title = params[:book_copy]["title"].gsub(/[.\s]/, '')
-      puts "ICICIC"
 
-      
+
+
 
       @book_infos_table=[]
       book_infos1 = @new_book_copy.newbook_title(@title,0)
@@ -39,25 +39,25 @@ before_action :authenticate_user!
           attributs1 = @new_book_copy.createif(book_infos1)
           @book_infos_table << attributs1
 
-          puts   "000"
+
 
           book_infos2 = @new_book_copy.newbook_title(@title,1)
           if book_infos2 != "0"
 
               attributs2 = @new_book_copy.createif(book_infos2)
               @book_infos_table << attributs2
-              puts   "111"
+
 
               book_infos3 = @new_book_copy.newbook_title(@title,2)
               if book_infos3 != "0"
-                  puts   "222"
+
                   attributs3 = @new_book_copy.createif(book_infos3)
                   @book_infos_table << attributs3
               end
 
           end
 
-          puts @book_infos_table.inspect
+    
 
       else
 
@@ -87,10 +87,10 @@ before_action :authenticate_user!
     )
 
     if new_book_copy
-      flash[:success] = "Livre ajouté :)"
+      flash[:success] = "Livre ajouté à votre bibliothèque:)"
       redirect_to new_bookcopy_path
     else
-      flash[:error] = "Erreur d'ajout :("
+      flash[:error] = "Erreur d'ajout du livre :("
       redirect_to new_bookcopy_path
     end
 
@@ -111,7 +111,7 @@ before_action :authenticate_user!
       flash[:success] = "Livre supprimé :)"
         redirect_to user_path(current_user.id)
     else
-      flash[:error] = "Erreur :("
+      flash[:error] = "Erreur de suppression :("
         redirect_to user_path(current_user.id)
     end
   end

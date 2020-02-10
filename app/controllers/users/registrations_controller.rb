@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    flash[:success] = "Vérifie maintenant tes emails et confirme ton compte"
+    flash[:success] = "Vérifie maintenant tes emails et confirme ton compte :D"
   end
 
   # GET /resource/edit

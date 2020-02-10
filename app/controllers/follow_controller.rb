@@ -2,7 +2,7 @@ class FollowController < ApplicationController
 
   def create
 
-    puts params.inspect
+
     follow = Follow.new
     follow.user_id = current_user.id
     follow.follow_user_id = params["user_id"]
@@ -14,10 +14,10 @@ class FollowController < ApplicationController
     else
 
       if follow.save
-        flash[:success] = "Follow ajouté :)"
+        flash[:success] = "Tu le suis :)"
         redirect_to user_path(params["user_id"])
       else
-        flash[:error] = "Erreur d'ajout du Follow :("
+        flash[:error] = "Erreur, tu ne peux pas le suivre :("
         redirect_to user_path(params["user_id"])
       end
 
@@ -27,7 +27,7 @@ class FollowController < ApplicationController
 
   def destroy
 
-    puts params.inspect
+
 
     follow_destroy = Follow.find(params[:id])
 
@@ -35,8 +35,8 @@ class FollowController < ApplicationController
       flash[:success] = "Tu ne le suis plus :) "
       redirect_to user_path(params["user_id"])
     else
-      puts follow_destroy.delete
-      flash[:error] = "Désolé, il y a eu une erreur"
+    
+      flash[:error] = "Désolé, il y a eu une erreur :("
       redirect_to user_path(params["user_id"])
     end
 
