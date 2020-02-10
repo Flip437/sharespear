@@ -8,6 +8,17 @@
 </div>
 <% else %>
 <h1></h1>
+<% if @ami ==1 %>
+<center>
+<h4>
+~
+<% @friends_around_tab.each do |follow| %>
+  <%= link_to follow.first_name, user_path(follow.id) %>
+  ~
+<% end %>
+</h4>
+</center>
+<% end %>
 <div style="background-color:rgb(231, 236, 234)">
 
 
@@ -87,7 +98,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="page-header-image" style="background-image: url(<%= asset_path "book_back1.jpg" %>);">
 
             <div class="cd-section" id="testimonials">

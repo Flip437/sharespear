@@ -147,27 +147,29 @@ class HomeController < ApplicationController
           @user = User.find(current_user.id)
 
           if params[:category_selected]
+            @ami =0
 
             cate = params[:category_selected]
             if cate == "All"
 
               @book_copy_filteredv2 = @book_copy_array
             elsif cate == "Amis"
+              @ami =1
               @book_copy_filteredv2=[]
 
               if @user.follows.first
                 puts "CICICI"
 
-                friends_around_tab = []
+                @friends_around_tab = []
                 @user.follows.each do |n|
                   a = User.find(n.follow_user_id)
                   if a.deleted_at == nil
-                    friends_around_tab = (friends_around_tab << a)
+                    @friends_around_tab = (@friends_around_tab << a)
                   end
                 end
-                if friends_around_tab.first.book_copies
+                if @friends_around_tab.first.book_copies
                   book_copy_array_all = []
-                  friends_around_tab.each { |n| book_copy_array_all = (book_copy_array_all << n.book_copies).flatten! }
+                  @friends_around_tab.each { |n| book_copy_array_all = (book_copy_array_all << n.book_copies).flatten! }
                   puts "ISIISI "
                   puts book_copy_array_all.inspect
                   @book_copy_array = []
