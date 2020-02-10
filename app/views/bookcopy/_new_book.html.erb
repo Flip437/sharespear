@@ -1,24 +1,27 @@
 	<div class="card bg-light-gray" id='book-form'>
 		<div class="card-header text-center">
-			<%if @book_infos == "0" %>
+
+			<%if @book_infos_table == 0 %>
 				<h1>Nous n'avons pas trouvé votre livre</h1>
 			<%else %>
+				<%index =0  %>
+				<% @book_infos_table.each do |book| %>
+
 				<h4 class='mt-2 mb-0'></h4>
 
-				<h4><%= @book_infos["title"] %></h4>
-				<p>Auteur(s) : <% @book_infos["authors"].each do |author| %>
-								  <%= author %>
-				<% end %>
+				<h4><%= book[0] %></h4>
+				<p>Auteur(s) : <%= book[1] %>
 				</p>
 
-				<%= image_tag(@book_infos['imageLinks']['thumbnail']) if @book_infos['imageLinks'] %>
+				<%= image_tag(book[4]) if book[4] %>
 				<br>
-				<p>Date : <%= @book_infos["publishedDate"] %></p>
-				<p>Isbn : <%= @isbn %></p>
+				<p>Date : <%= book[6] %></p>
+				<p>ISBN : <%= book[5] %></p>
 
 
-			<%= link_to "Ajouter",  bookcopy_index_path, :method=> :post, class: "btn btn-primary btn-round"%>
-
+			<%= link_to "Ajouter",  bookcopy_index_path(:numero_selected => index ), :method=> :post, class: "btn btn-primary btn-round"%>
+			<% index = index + 1  %>
+			<% end %>
 			<% end %>
 		</div>
 	</div>

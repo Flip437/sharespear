@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :borrows
   has_many :posts
   has_many :comments
+  has_many :follows
   has_one_attached :avatar
 
   # instead of deleting, indicate the user requested a delete & timestamp it
@@ -24,12 +25,12 @@ class User < ApplicationRecord
  # provide a custom message for a deleted account
  def inactive_message
    !deleted_at ? super : :deleted_account
- end  
+ end
 
   # def confirmation_instructions
   #   UserMailer.confirmation_instructions(self).deliver_now
   # end
- 
+
   def welcome_send
       UserMailer.welcome_email(self).deliver_now
   end
@@ -56,6 +57,15 @@ class User < ApplicationRecord
 
   def book_asked_to_borrow
     return Borrow.where(["user_id = ? and borrow_status = ?",self.id, 0])
+  end
+
+  def self.search(search)
+    if search
+      @users = self.where('first_name ILIKE ?', "%#{search}%")
+      return @users
+    else
+      return false
+    end
   end
 
 end

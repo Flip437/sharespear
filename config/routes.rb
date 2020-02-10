@@ -9,10 +9,13 @@ Rails.application.routes.draw do
 
   root 'home#index'
   resources :searchbar, only: :index
+  resources :landing_page, only: :index 
+  resources :search_friend, only: :index
   resources :home, only: [:index, :new, :create]
   resources :user do
     resources :dashboard, only: [:index, :update]
     resources :avatars, only: [:create]
+    resources :follow, only: [:create,:destroy, :show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :bookcopy do

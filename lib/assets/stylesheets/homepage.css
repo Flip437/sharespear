@@ -39,7 +39,7 @@
   display: inline-block;
   border-width: 5px;
   border-color: rgb(136, 136, 136);
-  width: 600px;
+
   background-color: white;
 
 }
@@ -50,7 +50,6 @@
   display: inline-block;
   border-width: 5px;
   border-color: rgb(249, 99, 50);
-  width: 600px;
   background-color: white;
 
 }

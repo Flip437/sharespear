@@ -8,20 +8,19 @@
 
 <div class="card bg-light-gray" id='book-form'>
   <div class="card-header text-center">
-    <h4 class='mt-2 mb-0'>Tapez le numero ISDN</h4>
-    <%= link_to("Ou trouver le numero ISDN ?", "https://fr.wikipedia.org/wiki/International_Standard_Book_Number#/media/Fichier:Isbn13.GIF") %>
+    <h4 class='mt-2 mb-0'>Rentrez le <b>Titre</b> ou <b>Auteur</b> de votre livre</h4>
   </div>
 
   <center>
-  <%= form_for( @new_book_copy, url: new_bookcopy_path, html: {method: "get"}, remote: true) do |f| %>
+  <%= form_for( @new_book_copy, url: new_bookcopy_path(:index => 1), html: {method: "get"}, remote: true) do |f| %>
 
   <div class="form-group col-md-6">
     <%= f.label ' ' %><br>
-    <%= f.number_field :isbn, class: "form-control text-center"%>
+    <%= f.text_field :title, class: "form-control text-center"%>
   </div>
 
 
-  <%= f.submit "GO" , class: "btn btn-primary btn-round text-center"%>
+  <%= f.submit "Rechercher" , class: "btn btn-primary btn-round text-center"%>
   <% end %>
   </center>
 </div>
@@ -29,5 +28,7 @@
 <div id="book-receiver">
 
 </div>
+
 </div>
+
 </div>
