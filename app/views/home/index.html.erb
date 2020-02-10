@@ -10,20 +10,29 @@
 
    <br>
 </div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col-7">
+    <div class="card card-login card-plain text-center">
+    <%= form_tag searchbar_index_path, method: :get do %>
+      <div class="form-group">
+        <%= text_field_tag :search1, params[:search1], placeholder: "Rechercher un livre à Lyon", class:'form-control text-dark', id:'search_bar' %>
+        <br>
+        <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %> <%= link_to "Nous soutenir", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
 
-<div class="card card-login card-plain text-center">
-<%= form_tag searchbar_index_path, method: :get do %>
-  <div class="form-group">
-    <%= text_field_tag :search1, params[:search1], placeholder: "Rechercher un livre à Lyon", class:'form-control text-dark', id:'search_bar' %>
-    <br>
-    <br/><%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %> <%= link_to "Faire un don", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
+        </div>
+    <% end %>
 
     </div>
 
-<% end %>
+   </div>
+   <div class="col">
 
+   </div>
 
 </div>
+
 
 </div>
 
@@ -33,7 +42,7 @@
   <br>
   <ul class="nav nav-pills nav-pills-danger justify-content-center" role="tablist">
     <li class="nav-item">
-        <%= link_to "Mes Amis",  user_path(current_user.id), class: "nav-link", style: "color: orange;" %>
+        <%= link_to "Mes Amis",  home_index_path(:category_selected => "Amis"), class: "nav-link", style: "color: orange;",remote:true %>
     </li>
 
     <li class="nav-item">
