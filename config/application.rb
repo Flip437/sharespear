@@ -17,10 +17,8 @@ module Sharespeare
     # the framework and any gems in your application.
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
-    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.delivery_method = :letter_opener
     config.assets.precompile += %w( foundation_emails.css )
-
-
 
   end
 end

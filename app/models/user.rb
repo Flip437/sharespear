@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :borrows
   has_many :posts
   has_many :comments
+  has_many :usercomments
   has_many :follows
   has_one_attached :avatar
 
