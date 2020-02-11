@@ -32,152 +32,152 @@ end
 
 
 
-BookCopy.destroy_all
-7.times do |index|
+# BookCopy.destroy_all
+# 7.times do |index|
 
-  #5 livre dispo
+#   #5 livre dispo
 
-  3.times do |index2|
-    isbn = @isbn1[@index_isbn]
-    @index_isbn= @index_isbn+1
-    puts isbn
+#   3.times do |index2|
+#     isbn = @isbn1[@index_isbn]
+#     @index_isbn= @index_isbn+1
+#     puts isbn
 
-    new_book_copy = BookCopy.new
-    book_infos = new_book_copy.newbook(isbn)
+#     new_book_copy = BookCopy.new
+#     book_infos = new_book_copy.newbook(isbn)
 
-    attributs = new_book_copy.createif(book_infos)
+#     attributs = new_book_copy.createif(book_infos)
 
-    new_book_copy = BookCopy.create(
-      title:  attributs[0],
-      author: attributs[1],
-      description: attributs[2],
-      status: 1,
-      category: attributs[3],
-      user_id: index+1,
-      photo_link: attributs[4],
-      isbn: isbn
-    )
+#     new_book_copy = BookCopy.create(
+#       title:  attributs[0],
+#       author: attributs[1],
+#       description: attributs[2],
+#       status: 1,
+#       category: attributs[3],
+#       user_id: index+1,
+#       photo_link: attributs[4],
+#       isbn: isbn
+#     )
 
-  end
-  sleep(4)
+#   end
+#   sleep(4)
 
-  puts "User #{index+1} has 5 book_copy dispo"
-  #5 livre dispo en demande d'emprunt par utilisateur par utilisateur +1
-  3.times do |index2|
-    isbn = @isbn1[@index_isbn]
-    @index_isbn= @index_isbn+1
-    puts isbn
+#   puts "User #{index+1} has 5 book_copy dispo"
+#   #5 livre dispo en demande d'emprunt par utilisateur par utilisateur +1
+#   3.times do |index2|
+#     isbn = @isbn1[@index_isbn]
+#     @index_isbn= @index_isbn+1
+#     puts isbn
 
-    new_book_copy = BookCopy.new
+#     new_book_copy = BookCopy.new
 
-    puts new_book_copy
-    book_infos = new_book_copy.newbook(isbn)
-    puts book_infos
+#     puts new_book_copy
+#     book_infos = new_book_copy.newbook(isbn)
+#     puts book_infos
 
-    attributs = new_book_copy.createif(book_infos)
+#     attributs = new_book_copy.createif(book_infos)
 
-    book_copy = BookCopy.create(
-      title:  attributs[0],
-      author: attributs[1],
-      description: attributs[2],
-      status: 1,
-      category: attributs[3],
-      user_id: index+1,
-      photo_link: attributs[4],
-      isbn: isbn
-    )
+#     book_copy = BookCopy.create(
+#       title:  attributs[0],
+#       author: attributs[1],
+#       description: attributs[2],
+#       status: 1,
+#       category: attributs[3],
+#       user_id: index+1,
+#       photo_link: attributs[4],
+#       isbn: isbn
+#     )
 
-    borrow = Borrow.create(
-          start_date: Date.today,
-          end_date: Date.today >> 2,
-          message: Faker::Lorem.sentence,
-          borrow_status: 0,
-          user_id: index+2,
-          book_copy_id: book_copy.id
-      )
+#     borrow = Borrow.create(
+#           start_date: Date.today,
+#           end_date: Date.today >> 2,
+#           message: Faker::Lorem.sentence,
+#           borrow_status: 0,
+#           user_id: index+2,
+#           book_copy_id: book_copy.id
+#       )
 
-  end
-  sleep(4)
+#   end
+#   sleep(4)
 
-  puts "User #{index+1} has 5 book_copy dispo avec 1 demande d'emprunt"
-
-
-  #5 livre non dispo et accepte
-  3.times do |book_copy_id_nb|
-      isbn = @isbn1[@index_isbn]
-      @index_isbn= @index_isbn+1
-      puts isbn
-
-      new_book_copy = BookCopy.new
-
-      book_infos = new_book_copy.newbook(isbn)
+#   puts "User #{index+1} has 5 book_copy dispo avec 1 demande d'emprunt"
 
 
-      attributs = new_book_copy.createif(book_infos)
+#   #5 livre non dispo et accepte
+#   3.times do |book_copy_id_nb|
+#       isbn = @isbn1[@index_isbn]
+#       @index_isbn= @index_isbn+1
+#       puts isbn
+
+#       new_book_copy = BookCopy.new
+
+#       book_infos = new_book_copy.newbook(isbn)
 
 
-      book_copy = BookCopy.create(
-        title:  attributs[0],
-        author: attributs[1],
-        description: attributs[2],
-        status: 1,
-        category: attributs[3],
-        user_id: index+1,
-        photo_link: attributs[4],
-        isbn: isbn
-      )
-      puts book_copy
-      borrow = Borrow.create(
-          start_date: Date.today,
-          end_date: Date.today >> 2,
-          message: Faker::Lorem.sentence,
-          borrow_status: 2,
-          user_id: index+2,
-          book_copy_id: book_copy.id
-      )
-      book_copy.update(status:0)
-
-  end
-  sleep(4)
-  puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et accepte"
+#       attributs = new_book_copy.createif(book_infos)
 
 
-  #5 livre dispo et recup par preteur / termine
-  1.times do |book_copy_id_nb|
-      isbn = @isbn1[@index_isbn]
-      @index_isbn= @index_isbn+1
-      puts isbn
+#       book_copy = BookCopy.create(
+#         title:  attributs[0],
+#         author: attributs[1],
+#         description: attributs[2],
+#         status: 1,
+#         category: attributs[3],
+#         user_id: index+1,
+#         photo_link: attributs[4],
+#         isbn: isbn
+#       )
+#       puts book_copy
+#       borrow = Borrow.create(
+#           start_date: Date.today,
+#           end_date: Date.today >> 2,
+#           message: Faker::Lorem.sentence,
+#           borrow_status: 2,
+#           user_id: index+2,
+#           book_copy_id: book_copy.id
+#       )
+#       book_copy.update(status:0)
 
-      new_book_copy = BookCopy.new
-      book_infos = new_book_copy.newbook(isbn)
+#   end
+#   sleep(4)
+#   puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et accepte"
 
-      attributs = new_book_copy.createif(book_infos)
-      puts new_book_copy.inspect
 
-      book_copy = BookCopy.create(
-        title:  attributs[0],
-        author: attributs[1],
-        description: attributs[2],
-        status: 1,
-        category: attributs[3],
-        user_id: index+1,
-        photo_link: attributs[4],
-        isbn: isbn
-      )
+#   #5 livre dispo et recup par preteur / termine
+#   1.times do |book_copy_id_nb|
+#       isbn = @isbn1[@index_isbn]
+#       @index_isbn= @index_isbn+1
+#       puts isbn
 
-      borrow = Borrow.create(
-          start_date: Date.today,
-          end_date: Date.today >> 2,
-          message: Faker::Lorem.sentence,
-          borrow_status: 3,
-          user_id: index+2,
-          book_copy_id: book_copy.id
-      )
+#       new_book_copy = BookCopy.new
+#       book_infos = new_book_copy.newbook(isbn)
 
-  end
-  sleep(4)
-  puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et recupere"
+#       attributs = new_book_copy.createif(book_infos)
+#       puts new_book_copy.inspect
 
-end
+#       book_copy = BookCopy.create(
+#         title:  attributs[0],
+#         author: attributs[1],
+#         description: attributs[2],
+#         status: 1,
+#         category: attributs[3],
+#         user_id: index+1,
+#         photo_link: attributs[4],
+#         isbn: isbn
+#       )
+
+#       borrow = Borrow.create(
+#           start_date: Date.today,
+#           end_date: Date.today >> 2,
+#           message: Faker::Lorem.sentence,
+#           borrow_status: 3,
+#           user_id: index+2,
+#           book_copy_id: book_copy.id
+#       )
+
+#   end
+#   sleep(4)
+#   puts "User #{index+1} has 5 book_copy more emprunte par #{index+2} et recupere"
+
+# end
 AdminUser.destroy_all
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
