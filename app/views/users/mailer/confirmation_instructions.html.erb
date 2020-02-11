@@ -17,7 +17,7 @@
 
             <div class="card-body">
               <h4 class="card-title">
-                Merci <%= @user.first_name %>, tu vas participer au lancement d'une toute nouvelle application de partage de la culture :D
+                Merci <%= @user.first_name %>, tu vas participer au lancement d'une toute nouvelle application :D
               </h4>
               <p class="card-text">
                 Pour confirmer ton inscription et accéder à ShaRespeare, clique <b><%= link_to 'ici', confirmation_url(@resource, confirmation_token: @token) %></b>
