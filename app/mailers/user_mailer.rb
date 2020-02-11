@@ -2,13 +2,13 @@ class UserMailer < ApplicationMailer
 
   # def confirmation_instructions(user)
   #   @user = user
-  #   @url  = 'https://sharespeare.herokuapp.com/users/sign_in' 
+  #   @url  = 'https://sharespeare.herokuapp.com/users/sign_in'
   #   mail(to: @user.email, subject: 'Merci de confirmer ton inscription')
   # end
 
   def welcome_email(user)
     @user = user
-    @url  = 'https://sharespeare.herokuapp.com/users/sign_in' 
+    @url  = ''
     mail(to: @user.email, subject: 'Bienvenue chez nous !')
   end
 
@@ -30,7 +30,7 @@ class UserMailer < ApplicationMailer
     @borrow = borrow
     @borrower = User.find(@borrow.user_id)
     @owner = User.find(BookCopy.find(@borrow.book_copy_id).user_id)
-    mail(to: @borrower.email, subject: "Emprunt refusé") 
+    mail(to: @borrower.email, subject: "Emprunt refusé")
   end
 
   def borrow_remaining_time_email(borrow, timeremaining)
