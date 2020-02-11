@@ -1,0 +1,39 @@
+<div class="row post<%=index%>">
+  <div class="col-md-8 ml-auto mr-auto">
+    <div class="media-area">
+      <h3 class="title text-center"><small>  </small></h3>
+
+      <div class="media">
+
+        <%= link_to user_path(current_user.id) do %>
+          <div class="avatar">     
+            <% if post.user.avatar.attached? %>
+              <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+            <% else %>
+              <%= image_tag("sharespeare1.png", class:"img-fluid") %>
+            <% end %>    
+          </div>
+        <%end%>
+        
+        <div class="media-body">
+
+          <h5 class="media-heading"> <%= post.user.first_name %> </h5>
+          <p> <%= post.content %> </p>
+
+          <div class="media-footer">
+
+            <% if post.user == current_user %>
+              <%= link_to user_usercomment_path(@user, post, :loopindex => index), :method=> :delete, remote: true, :class => "btn btn-danger btn-neutral pull-right postbtndel#{index}" do %>
+                <i class="now-ui-icons ui-1_simple-remove"></i>
+              <%end%>
+            <% end %>
+
+          </div>
+
+        </div>  
+      
+      </div>
+      
+    </div>
+  </div>
+</div>
