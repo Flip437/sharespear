@@ -1,10 +1,4 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-</head>
-<body>
   <center>
     <div class="card text-center mt-5" data-background-color="black">
       <div class="card-header mt-2">
@@ -16,7 +10,7 @@
           C'est déjà la fin, tu vas devoir rendre ton livre à <%=@owner.first_name%> dans <%= @timeremaining %> jours !
         </h4>
         <p class="card-text">
-          Pour retrouver les informations de cet emprunt, tu peux suivre ce lien
+         Enjoy le temps qu'il te reste
         </p>
         <%= link_to "Detail de l'emprunt", bookcopy_borrow_url(@borrow.book_copy_id,@borrow.id), class: "btn btn-primary btn-round btn-lg"%>
 
@@ -25,18 +19,9 @@
         </h3>
 
         <div class="info info-horizontal">
-          <div class="content-center">
-            <div class="photo-container">
-              <% if @owner.avatar.attached? %>
-              <%= image_tag @owner.avatar, class:"img-fluid", style:"max-width: 200%;" %>
-              <% else %>
-              <%= image_tag("sharespeare1.png", class:"img-fluid") %>
-              <% end %>
-            </div>
-          </div>
           <div class="description">
             <h4 class="info-title">Contact</h4>
-            <p>  <%=@owner.first_name%>    <%=@owner.last_name%>
+            <p> <b><%=@owner.first_name%>    <%=@owner.last_name%></b>
               <br>  Tel: <a href="<%=@owner.phone%>"><%=@owner.phone%></a>
 
               <br>  @: <a href="<%=@owner.email%>"><%=@owner.email%></a>
@@ -47,5 +32,3 @@
       </div>
     </div>
   </center>
-</body>
-</html>
