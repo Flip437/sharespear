@@ -1,11 +1,19 @@
-<div class="card text-center mt-5" style="width: 30rem;" data-background-color="black">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <center>
+
+<div class="card text-center mt-5" data-background-color="black">
   <div class="card-header mt-2">
     <h1>Salut <%= @borrower.first_name %></h1>
   </div>
 
   <div class="card-body">
     <h4 class="card-title">
-      <%=@owner.first_name%> voudrait récupérer son livre
+      <%=@owner.first_name%> voudrait récupérer son livre :)
     </h4>
     <br>
     <h3>
@@ -18,7 +26,6 @@
 
     <p class="card-text">
       Voici les informations concernant <%=@owner.first_name%>
-      <%=@owner.first_name%>
     </p>
 
     <div class="info info-horizontal">
@@ -30,8 +37,6 @@
           <p>  <%=@owner.first_name%>    <%=@owner.last_name%>
               <br>  Tel: <%=@owner.phone%>
               <br>  @: <%=@owner.email%>
-              <br>  Ville: <%=@owner.city%>
-              <br>  Rue: <%=@owner.street%>
           </p>
       </div>
     </div>
@@ -40,5 +45,8 @@
   <div class="card-footer text-muted mb-2">
     Mail automatique
   </div>
-  
+
 </div>
+</center>
+</body>
+</html>
