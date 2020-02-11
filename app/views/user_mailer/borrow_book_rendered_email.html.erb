@@ -1,37 +1,16 @@
-<div class="card text-center mt-5" style="width: 30rem;" data-background-color="black">
+
+  <center>
+
+<div class="card text-center mt-5" data-background-color="black">
   <div class="card-header mt-2">
     <h1>Salut <%= @borrower.first_name %></h1>
   </div>
 
   <div class="card-body">
     <h4 class="card-title">
-      <%= @owner.first_name %> a bien confirmé qu'il a récupéré son livre.
+      <%= @owner.first_name %> a bien confirmé qu'il a récupéré son livre :D
+      Laisse lui un avis sur son profil :) 
     </h4>
-        
-    <h3 class="card-text">
-      Voici les informations concernant <%=@owner.first_name%>
-    </h3>
-
-    <div class="info info-horizontal">
-      <div class="content-center">
-        <div class="photo-container">
-          <% if @owner.avatar.attached? %>
-            <%= image_tag @owner.avatar, class:"img-fluid", style:"max-width: 200%;" %>
-          <% else %>
-            <%= image_tag("sharespeare1.png", class:"img-fluid") %>
-          <% end %>
-        </div>
-      </div>
-      <div class="description">
-          <h4 class="info-title">Contact</h4>
-          <p>  <%=@owner.first_name%>    <%=@owner.last_name%>
-              <br>  Tel: <%=@owner.phone%>
-              <br>  @: <%=@owner.email%>
-              <br>  Ville: <%=@owner.city%>
-              <br>  Rue: <%=@owner.street%>
-          </p>
-      </div>
-    </div>
 
     <p class="card-text">
       Bonne lecture sur shaRespeare
@@ -39,3 +18,5 @@
 
   </div>
 </div>
+
+</center>

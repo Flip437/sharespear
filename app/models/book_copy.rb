@@ -45,7 +45,7 @@ class BookCopy < ApplicationRecord
         book_infos = doc['items'][0]['volumeInfo']
         if book_infos["description"]
           if book_infos["description"].length > 400
-              book_infos["description"]=book_infos["description"].slice(1..300)
+              book_infos["description"]=book_infos["description"].slice(0..300)
           end
         end
         sessiona = book_infos
@@ -64,7 +64,7 @@ class BookCopy < ApplicationRecord
         book_infos = doc['items'][index]['volumeInfo']
         if book_infos["description"]
           if book_infos["description"].length > 400
-              book_infos["description"]=book_infos["description"].slice(1..300)
+              book_infos["description"]=book_infos["description"].slice(0..300)
           end
         end
         sessiona = book_infos
