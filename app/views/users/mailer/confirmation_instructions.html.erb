@@ -1,34 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <%= stylesheet_link_tag "application" %>
+  </head>
 
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-        </head>
-        <body>
-          <center>
+  <body>
 
+    <center>
+      <div class="card text-center mt-5"  data-background-color="black">
+        <div class="card-header mt-2">
+          <h1>Salut <b><%= @user.first_name %></b> et bienvenue sur ShaRespeare ! </h1>
+        </div>
 
-          <div class="card text-center mt-5"  data-background-color="black">
-            <div class="card-header mt-2">
-              <h1>Salut <b><%= @user.first_name %></b> et bienvenue sur ShaRespeare ! </h1>
-            </div>
+        <div class="card-body">
+          <h4 class="card-title">
+            Merci <%= @user.first_name %>, tu vas participer au lancement d'une toute nouvelle application :D
+          </h4>
+          <br>
+          <p class="card-text">
+            Pour confirmer ton inscription et accéder à ShaRespeare, clique <b><%= link_to 'ici', confirmation_url(@resource, confirmation_token: @token) %></b>
+          </p>
+          <p>
+            À très vite sur shaRespeare.fr !
 
-            <div class="card-body">
-              <h4 class="card-title">
-                Merci <%= @user.first_name %>, tu vas participer au lancement d'une toute nouvelle application :D
-              </h4>
-              <br>
-              <p class="card-text">
-                Pour confirmer ton inscription et accéder à ShaRespeare, clique <b><%= link_to 'ici', confirmation_url(@resource, confirmation_token: @token) %></b>
-              </p>
-              <p>
-                À très vite sur shaRespeare.fr !
+          </p>
+          <small>L'équipe ShaRespeare</small>
+        </div>
+      </div>
+    </center>
 
-              </p>
-              <small>L'équipe ShaRespeare</small>
-            </div>
-          </div>
-          </center>
-        </body>
-      </html>
+  </body>
+
+</html>
