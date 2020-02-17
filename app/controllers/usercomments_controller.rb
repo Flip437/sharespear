@@ -2,8 +2,10 @@ class UsercommentsController < ApplicationController
 
   def create
       @usercomment = Usercomment.new(usercomment_params)
-      @user = current_user
-      @usercomment.user = @user
+      @commenter = current_user
+      @commented = User.find(params[:user_id])
+      @usercomment.commenter = @commenter
+      @usercomment.commented = @commented
 
       @userid = params[:user_id]
       @ajaxindex = Usercomment.where("user_id = #{@userid}").count
