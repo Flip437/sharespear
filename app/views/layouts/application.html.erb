@@ -20,27 +20,26 @@
     <%= render 'layouts/flashborrow' %>
     <%= yield %>
   </body>
-  <footer class="footer footer-default sticky-bottom ">
 
+  <footer class="footer footer-default sticky-bottom ">
       <div class=" container ">
           <nav>
               <ul>
                   <li>
-                          <%=link_to "Sharespeare", landing_page_index_path%>
-
+                    <%=link_to "Sharespeare", landing_page_index_path%>
                   </li>
                   <li>
-                         <%=link_to "Nous contacter", landing_page_index_path%>
-
+                    <%=link_to "Nous contacter", landing_page_index_path%>
                   </li>
                   <li>
-                         <%=link_to "Espace Admin", "https://sharespeare.herokuapp.com/admin/login"%>
+                    <%=link_to "Espace Admin", "https://sharespeare.herokuapp.com/admin/login"%>
                   </li>
               </ul>
           </nav>
           <div class="copyright" id="copyright">
-              ©2019, <%=link_to "Sharespeare", landing_page_index_path%> est Pensé et Codé avec le Coeur par Flip et Arthur à LYON
+            ©2019, <%=link_to "Sharespeare", landing_page_index_path%> est Pensé et Codé avec le Coeur par Flip et Arthur à LYON
           </div>
       </div>
   </footer>
+
 </html>
