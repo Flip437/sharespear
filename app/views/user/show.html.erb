@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="col-md-12">
-                  <h3 class="title text-center">Mes avis</h3>
+                  <h3 class="title text-center"></h3>
                 </div>  
 
               </div>
@@ -110,9 +110,3 @@
     </div>
 </div>
 
-<% @usercomment_array.each.with_index do |post, index| %>
-  <%= render "usercomments/post", post: post, index: index  %>
-<% end %>                  
-<div class="post_receiver">
-</div>
-<%= render "usercomments/newpost" %>
