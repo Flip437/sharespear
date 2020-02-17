@@ -2,7 +2,7 @@ class UsercommentsController < ApplicationController
 
   def create
       @usercomment = Usercomment.new(usercomment_params)
-      @user = User.find(params[:user_id])
+      @user = current_user
       @usercomment.user = @user
 
       @userid = params[:user_id]
