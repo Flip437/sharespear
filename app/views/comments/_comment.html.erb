@@ -1,11 +1,11 @@
 <div class="media media-post com<%=index%>">
   <%= link_to user_path(current_user.id) do %>
-    <div class="avatar">     
+    <div class="avatar">
       <% if comment.user.avatar.attached? %>
-        <%= image_tag @user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+        <%= image_tag comment.user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
       <% else %>
         <%= image_tag("sharespeare1.png", class:"img-fluid") %>
-      <% end %>    
+      <% end %>
     </div>
   <%end%>
   <div class="media-body">

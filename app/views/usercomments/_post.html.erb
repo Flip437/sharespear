@@ -6,15 +6,15 @@
       <div class="media">
 
         <%= link_to user_path(current_user.id) do %>
-          <div class="avatar">     
+          <div class="avatar">
             <% if post.commenter.avatar.attached? %>
-              <%= image_tag @commenter.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+              <%= image_tag post.commenter.avatar, class:"img-fluid", style:"max-width: 200%;" %>
             <% else %>
               <%= image_tag("sharespeare1.png", class:"img-fluid") %>
-            <% end %>    
+            <% end %>
           </div>
         <%end%>
-        
+
         <div class="media-body">
 
           <h5 class="media-heading"> <%= post.commenter.first_name %> </h5>
@@ -30,10 +30,10 @@
 
           </div>
 
-        </div>  
-      
+        </div>
+
       </div>
-      
+
     </div>
   </div>
 </div>
