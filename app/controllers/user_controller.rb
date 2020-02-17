@@ -16,7 +16,7 @@ class UserController < ApplicationController
     @user_library = BookCopy.where(user_id: @user.id, status: [0,1] )
     @user_follow = Follow.where(user_id: @user.id, active: true)
     @user_follow_query = Follow.where(user_id: current_user.id, follow_user_id: @user.id, active: true).first
-    @usercomment_array = @user.usercomments
+    @usercomment_array = @user.received_comments
 
     @zip_name = ""
     zip = @user.zip_code
