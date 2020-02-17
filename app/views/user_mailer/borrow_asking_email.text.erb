@@ -1,0 +1,9 @@
+Salut <%= @owner.first_name %>
+Tu as reçu une nouvelle demande d'emprunt de la part de <%= @borrower.first_name %> ! :D
+
+Message de <%= @borrower.first_name %> :
+ "<%= @borrow.message %>"
+
+      Confirme ou refuse cette demande dans ton espace pour qu'il puisse te contacter :D
+
+    <%= link_to "Detail de l'emprunt", bookcopy_borrow_url(@borrow.book_copy_id,@borrow.id), class: "btn btn-primary btn-round btn-lg"%>
