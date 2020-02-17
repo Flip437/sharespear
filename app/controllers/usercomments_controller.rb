@@ -4,8 +4,8 @@ class UsercommentsController < ApplicationController
       @usercomment = Usercomment.new(usercomment_params)
       @commenter = current_user
       @commented = User.find(params[:user_id])
-      @usercomment.commenter = @commenter
-      @usercomment.commented = @commented
+      @usercomment.commenter_id = @commenter.id
+      @usercomment.commented_id = @commented.id
 
       @userid = params[:user_id]
       @ajaxindex = Usercomment.where("commented_id = #{@userid}").count
