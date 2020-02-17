@@ -7,7 +7,7 @@
 
           <div class="avatar">     
             <% if current_user.avatar.attached? %>
-              <%= image_tag current.avatar, class:"img-fluid", style:"max-width: 200%;" %>
+              <%= image_tag current_user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
             <% else %>
               <%= image_tag("sharespeare1.png", class:"img-fluid") %>
             <% end %>    

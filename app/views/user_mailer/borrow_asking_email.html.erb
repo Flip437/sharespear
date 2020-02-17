@@ -1,5 +1,5 @@
 
-  <center>
+
 
 <div class="card text-center mt-5" data-background-color="black">
   <div class="card-header mt-2">
@@ -29,14 +29,6 @@
       Voici les informations concernant <%=@borrower.first_name%>
     </h3>
     <div class="info info-horizontal">
-      <div class="content-center">
-        <div class="photo-container">
-          <% if @borrower.avatar.attached? %>
-            <%= image_tag @borrower.avatar, class:"img-fluid", style:"max-width: 200%;" %>
-          <% else %>
-            <%= image_tag("sharespeare1.png", class:"img-fluid") %>
-          <% end %>
-        </div>
       </div>
       <div class="description">
           <h4 class="info-title">Contact</h4>
@@ -51,4 +43,3 @@
     </div>
   </div>
 </div>
-</center>
