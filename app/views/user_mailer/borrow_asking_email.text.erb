@@ -1,40 +1,32 @@
-<div class="card text-center mt-5" data-background-color="black">
+<div class="card text-center mt-5" style="width: 30rem;" data-background-color="black">
   <div class="card-header mt-2">
     <h1>Salut <%= @owner.first_name %></h1>
   </div>
 
   <div class="card-body">
     <h4 class="card-title">
-      Tu as reçu une nouvelle demande d'emprunt de la part de <%= @borrower.first_name %> ! :D
+      Tu as reçu une nouvelle demande d'emprunt de la part de <%= @borrower.first_name %>.
     </h4>
-    <br><br>
-    <h3> Message de <%= @borrower.first_name %> : </h3>
-    <h4>
-      <i> "<%= @borrow.message %>" </i>
-    </h4>
-
-    <br><br><br>
-
     <p class="card-text">
-      Confirme ou refuse cette demande dans ton espace pour qu'il puisse te contacter :D
+      Pour retrouver les informations de cet emprunt, tu peux suivre ce lien
     </p>
     <%= link_to "Detail de l'emprunt", bookcopy_borrow_url(@borrow.book_copy_id,@borrow.id), class: "btn btn-primary btn-round btn-lg"%>
 
-    <br><br><br>
-
-    <h3 class="card-text">
+    <p class="card-text">
       Voici les informations concernant <%=@borrower.first_name%>
-    </h3>
+    </p>
+
     <div class="info info-horizontal">
+      <div class="icon icon-primary">
+          <i class="business_briefcase-24 now-ui-icons"></i>
       </div>
       <div class="description">
           <h4 class="info-title">Contact</h4>
           <p>  <%=@borrower.first_name%>    <%=@borrower.last_name%>
-              <br>  Tel: <a href="<%=@borrower.phone%>"><%=@borrower.phone%></a>
-
-              <br>  @: <a href="<%=@borrower.email%>"><%=@borrower.email%></a>
+              <br>  Tel: <%=@borrower.phone%>
+              <br>  @: <%=@borrower.email%>
               <br>  Ville: <%=@borrower.city%>
-              <br>  zip_code: <%=@borrower.zip_code%>
+              <br>  Rue: <%=@borrower.street%>
           </p>
       </div>
     </div>
