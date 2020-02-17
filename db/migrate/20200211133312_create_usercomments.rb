@@ -3,7 +3,8 @@ class CreateUsercomments < ActiveRecord::Migration[5.2]
     create_table :usercomments do |t|
       t.string :content
       t.integer :status, default: 1
-      t.belongs_to :user, index: true
+      t.references :commented, index: true
+      t.references :commenter, index: true
 
       t.timestamps
     end

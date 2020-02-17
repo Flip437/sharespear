@@ -9,7 +9,10 @@ class User < ApplicationRecord
   has_many :borrows
   has_many :posts
   has_many :comments
-  has_many :usercomments
+
+  has_many :sent_comments, foreign_key: 'commenter_id', class_name: "Usercomment"
+  has_many :received_comments, foreign_key: 'commented_id', class_name: "Usercomment"
+    
   has_many :follows
   has_one_attached :avatar
 

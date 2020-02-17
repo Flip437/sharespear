@@ -125,10 +125,12 @@ ActiveRecord::Schema.define(version: 2020_02_11_133312) do
   create_table "usercomments", force: :cascade do |t|
     t.string "content"
     t.integer "status", default: 1
-    t.bigint "user_id"
+    t.bigint "commented_id"
+    t.bigint "commenter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_usercomments_on_user_id"
+    t.index ["commented_id"], name: "index_usercomments_on_commented_id"
+    t.index ["commenter_id"], name: "index_usercomments_on_commenter_id"
   end
 
   create_table "users", force: :cascade do |t|
