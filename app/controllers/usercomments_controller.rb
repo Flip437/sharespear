@@ -8,7 +8,7 @@ class UsercommentsController < ApplicationController
       @usercomment.commented = @commented
 
       @userid = params[:user_id]
-      @ajaxindex = Usercomment.where("user_id = #{@userid}").count
+      @ajaxindex = Usercomment.where("commented_id = #{@userid}").count
 
       if @usercomment.save
           respond_to do |f|
