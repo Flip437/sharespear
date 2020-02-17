@@ -16,7 +16,7 @@ class UserMailer < ApplicationMailer
     @borrow = borrow
     @borrower = User.find(@borrow.user_id)
     @owner = User.find(BookCopy.find(@borrow.book_copy_id).user_id)
-    mail(to: @owner.email, subject: "Nouvel demande d'emprunt")
+    mail(to: @owner.email, subject: "Une Nouvelle demande d'emprunt")
   end
 
   def borrow_accepted_email(borrow)
@@ -38,14 +38,14 @@ class UserMailer < ApplicationMailer
     @timeremaining = timeremaining
     @borrower = User.find(@borrow.user_id)
     @owner = User.find(BookCopy.find(@borrow.book_copy_id).user_id)
-    mail(to: @borrower.email, subject: "Attention, tu vas bientôt rendre le livre")
+    mail(to: @borrower.email, subject: "Attention, tu vas bientôt devoir rendre le livre")
   end
 
   def borrow_book_rendered_email(borrow)
     @borrow = borrow
     @borrower = User.find(@borrow.user_id)
     @owner = User.find(BookCopy.find(@borrow.book_copy_id).user_id)
-    mail(to: @borrower.email, subject: "Ton livre à bien été rendu !")
+    mail(to: @borrower.email, subject: "Ton livre a bien été rendu !")
   end
 
   def askbookback(borrow)
