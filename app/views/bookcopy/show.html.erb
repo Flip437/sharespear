@@ -5,7 +5,7 @@
     </div>
     <div class="card-footer text-left">
       <div class="stats-link pull-right">
-        <%= link_to "sharespeare.herokuapp.com", root_path, class: "footer-link" %>
+        <%= link_to "www.sharespeare.fr", root_path, class: "footer-link" %>
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-6 ml-auto mr-auto">
                 <h2 class="title"> <%= @book.title %> </h2>
-                <%= social_share_button_tag("Voyez ce livre !", :url => "https://sharespeare.herokuapp.com/bookcopy/#{@book.id}") %>
+                <%= social_share_button_tag("Voyez ce livre !", :url => "https://www.sharespeare.fr/bookcopy/#{@book.id}") %>
                 <h5 class="category"><%= @book.author %></h5>
                 <h6 class="main-price"><%= @book.category %></h6>
 
