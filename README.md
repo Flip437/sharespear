@@ -1,7 +1,7 @@
 # README
 Bonjour à tous et bienvenue sur shaRespeare, l'application de partage de livre en ligne dans votre quartier.
 
-I/ Pour voir la version en ligne du site, vous pouvez aller à l'adresse suivante : https://sharespeare.herokuapp.com/
+I/ Pour voir la version en ligne du site, vous pouvez aller à l'adresse suivante : https://www.sharespeare.fr/
 
 II/ Pour lancer le site localement:
   1. cloner le repo localement
