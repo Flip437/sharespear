@@ -6,7 +6,7 @@
       <div class="media">
 
         <%= link_to user_path(current_user.id) do %>
-          <div class="avatar">     
+          <div class="avatar">
             <% if post.user.avatar.attached? %>
               <%= image_tag post.user.avatar, class:"img-fluid", style:"max-width: 200%;" %>
             <% else %>
