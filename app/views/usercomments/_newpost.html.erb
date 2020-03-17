@@ -20,7 +20,7 @@
             <div class="media-body">
               <%= form_with scope: :post, url: user_usercomments_path(@user), html: {class: "nifty_form"}, remote: true do |f| %>
                 <br>
-                <%= f.text_area :content, size: "60x12", class: "form-control", placeholder: "Donne ton avis sur le livre" %>
+                <%= f.text_area :content, size: "60x12", class: "form-control", placeholder: "Donne ton avis sur cet utilisateur" %>
                 <br>
                 <%= button_tag( :class => "btn btn-primary pull-right") do %>
                   Commenter <i class="now-ui-icons ui-1_send"></i>
