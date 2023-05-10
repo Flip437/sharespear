@@ -1,6 +1,7 @@
 class BookCopy < ApplicationRecord
   belongs_to :user
   has_many :posts
+  has_many :borrows, dependent: :destroy
 
   validates :title, presence: true, length: { minimum: 1 }
   validates :author, presence: true, length: { minimum: 2 }
@@ -71,55 +72,6 @@ class BookCopy < ApplicationRecord
       end
     return sessiona
   end
-
-
-
-
-  def createif(bookinfos)
-    if bookinfos["description"]
-      if bookinfos["description"].length > 400
-          description=bookinfos["description"].slice(1..300)
-      end
-    end
-    if bookinfos['imageLinks']
-      photo = bookinfos['imageLinks']['thumbnail']
-    else
-      photo="no_picture_found_sk.png"
-    end
-
-    if  bookinfos["categories"]==nil
-      category = "Other"
-    else
-      category = bookinfos["categories"][0]
-    end
-    if  bookinfos["description"]==nil
-      description = "..."
-    else
-      description = bookinfos["description"]
-    end
-    if  bookinfos["authors"]==nil
-      author = "~"
-    else
-      author = bookinfos["authors"][0]
-    end
-    if  bookinfos["title"]==nil
-      title = "~"
-    else
-      title = bookinfos["title"]
-    end
-    if  bookinfos["industryIdentifiers"]==nil
-      isbn = "~"
-    else
-      isbn = bookinfos['industryIdentifiers'][0]['identifier']
-    end
-    if  bookinfos["publishedDate"]==nil
-      date = "~"
-    else
-      date = bookinfos['publishedDate']
-    end
-    return title, author, description, category, photo, isbn, date
-  end
-
 
   def already_borrowed(user)
     if Borrow.where(["user_id = ? and book_copy_id = ? and borrow_status = ?", user.id, self.id, 3]).count != 0

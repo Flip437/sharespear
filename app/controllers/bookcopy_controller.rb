@@ -1,10 +1,10 @@
 class BookcopyController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_book_copy, only: %i[show destroy]
 
   def show
-    @book = BookCopy.find(params[:id])
-    @url = 'http://covers.openlibrary.org/b/isbn/#{@book.isbn}.jpg'
-    @post_array = @book.posts
+    @url = "http://covers.openlibrary.org/b/isbn/#{@book_copy.isbn}.jpg"
+    @post_array = @book_copy.posts
   end
 
   def new; end
@@ -32,22 +32,20 @@ class BookcopyController < ApplicationController
   end
 
   def destroy
+    # @book_copy.status=2
+    # borrows_book = Borrow.where({ book_copy_id: @book_copy.id })
+    # borrows_book.each do |book|
+    #   book.borrow_status=2
+    #   book.save
+    # end
+    # @book_copy.save
 
-    book = BookCopy.find(params[:id])
-    book.status=2
-    borrows_book = Borrow.where({ book_copy_id: book.id })
-    borrows_book.each do |book|
-      book.borrow_status=2
-      book.save
-    end
-    book.save
-
-    if book.status==2
+    if @book_copy.destroy
       flash[:success] = "Livre supprimé :)"
-        redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user)
     else
       flash[:error] = "Erreur de suppression :("
-        redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user)
     end
   end
 
@@ -62,6 +60,9 @@ class BookcopyController < ApplicationController
       :photo_link,
       :isbn
     )
-end
+  end
 
+  def find_book_copy
+    @book_copy = BookCopy.find(params[:id])
+  end
 end
