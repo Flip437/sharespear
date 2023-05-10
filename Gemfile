@@ -72,7 +72,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'database_cleaner'
 gem "faker", "~> 2.7"
 gem "table_print", "~> 1.5"
-gem "devise", "~> 4.7"
+gem "devise"
 gem 'rename', '~> 1.0', '>= 1.0.6'
 gem 'mailjet', '~> 1.5', '>= 1.5.4'
 gem 'nokogiri'
@@ -85,3 +85,4 @@ gem 'activeadmin'
 gem 'social-share-button', '~> 0.1.6'
 gem 'meta-tags'
 gem "sassc-rails"
+gem 'awesome_print', '~> 1.9', '>= 1.9.2'

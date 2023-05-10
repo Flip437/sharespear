@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable
 
   has_many :book_copies
   has_many :borrows
@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_many :sent_comments, foreign_key: 'commenter_id', class_name: "Usercomment"
   has_many :received_comments, foreign_key: 'commented_id', class_name: "Usercomment"
-    
+
   has_many :follows
   has_one_attached :avatar
 

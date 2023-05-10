@@ -1,7 +1,5 @@
-require 'nokogiri'
-require 'open-uri'
 class BookcopyController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def show
     @book = BookCopy.find(params[:id])
@@ -9,65 +7,19 @@ before_action :authenticate_user!
     @post_array = @book.posts
   end
 
-  def new
-    @new_book_copy = BookCopy.new
-    #if params[:book_copy]
-    #session.delete(:book_info)
-    #session.delete(:isbn)
-    #@isbn = params[:book_copy]["isbn"].gsub(/[.\s]/, '')
-    #@book_infos = @new_book_copy.newbook(@isbn)
+  def new; end
 
-    #session[:book_info] = @book_infos
-    #session[:isbn] = @isbn
-    #end
-    if params[:book_copy]
-      session.delete(:book_info)
+  def search_book_or_author
+    book_title = params[:title]
+    @book_infos_table = SearchBookService.search_books(book_title)
 
-      @title = params[:book_copy]["title"].gsub(/[.\s]/, '')
-
-
-
-
-      @book_infos_table=[]
-      book_infos1 = @new_book_copy.newbook_title(@title,0)
-
-      if book_infos1 != "0"
-
-          attributs1 = @new_book_copy.createif(book_infos1)
-          @book_infos_table << attributs1
-
-
-
-          book_infos2 = @new_book_copy.newbook_title(@title,1)
-          if book_infos2 != "0"
-
-              attributs2 = @new_book_copy.createif(book_infos2)
-              @book_infos_table << attributs2
-
-
-              book_infos3 = @new_book_copy.newbook_title(@title,2)
-              if book_infos3 != "0"
-
-                  attributs3 = @new_book_copy.createif(book_infos3)
-                  @book_infos_table << attributs3
-              end
-
-          end
-
-    
-
-      else
-
-        @book_infos_table=0
-
-      end
-
-      session[:book_info] =  @book_infos_table
-
-    end
+    render :new
   end
 
   def create
+    #TODO
+    #not wortking since session is not fill with books anymore
+    #TODO
     numero_selected = params[:numero_selected]
     book_information = session[:book_info][numero_selected.to_i]
 

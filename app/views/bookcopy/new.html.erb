@@ -1,34 +1,17 @@
 <div class="my-auto" style= "background-image: url(<%= asset_path "back_img2.jpg" %>);background-size: cover; height: 100vh;">
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="container">
-
-<div class="card bg-light-gray" id='book-form'>
-  <div class="card-header text-center">
-    <h4 class='mt-2 mb-0'>Rentrez le <b>Titre</b> ou <b>Auteur</b> de votre livre</h4>
+  <div class="container pt-5">
+    <div class="card bg-light-gray" id='book-form'>
+      <div class="card-header text-center">
+        <h4 class='mt-2 mb-0'>Rentrez le <b>Titre</b> ou <b>Auteur</b> de votre livre</h4>
+      </div>
+      <center>
+        <%#= form_for( @new_book_copy, url: new_bookcopy_path(:index => 1), html: {method: "get", class: "form-group col-md-6"}, remote: true) do |f| %>
+        <%= form_with url: search_book_or_author_bookcopy_index_path, method: :get, class: "form-group col-md-6" do |f| %>
+          <%= f.text_field :title, class: "form-control text-center", autofocus: true %>
+        <%= f.submit "Rechercher" , class: "btn btn-primary btn-round text-center"%>
+        <% end %>
+      </center>
+    </div>
+    <div id="book-receiver"></div>
   </div>
-
-  <center>
-  <%= form_for( @new_book_copy, url: new_bookcopy_path(:index => 1), html: {method: "get"}, remote: true) do |f| %>
-
-  <div class="form-group col-md-6">
-    <%= f.label ' ' %><br>
-    <%= f.text_field :title, class: "form-control text-center"%>
-  </div>
-
-
-  <%= f.submit "Rechercher" , class: "btn btn-primary btn-round text-center"%>
-  <% end %>
-  </center>
-</div>
-
-<div id="book-receiver">
-
-</div>
-
-</div>
-
 </div>

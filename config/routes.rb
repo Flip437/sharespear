@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :bookcopy do
+    collection do
+      get :search_book_or_author
+    end
     resources :borrow
     resources :posts do
       resources :comments
