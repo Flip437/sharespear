@@ -3,14 +3,14 @@
     <%if @book_infos_table.nil? %>
       <h1>Nous n'avons pas trouvé votre livre</h1>
     <%else %>
-      <% @book_infos_table.each_with_index do |book, index| %>
+      <% @book_infos_table.each do |book| %>
         <h4 class='mt-2 mb-0'></h4>
         <h4><%= book[:title] %></h4>
         <p>Auteur(s) : <%= book[:author] %></p>
-        <%= image_tag(book[:photo]) if book[:photo] %>
+        <%= image_tag(book[:photo_link]) if book[:photo_link] %>
         <p>Date : <%= book[:date] %></p>
         <p>ISBN : <%= book[:isbn] %></p>
-        <%= link_to "Ajouter",  bookcopy_index_path(:numero_selected => index ), :method=> :post, class: "btn btn-primary btn-round"%>
+        <%= link_to "Ajouter", bookcopy_index_path(book_copy: book), method: :post, class: "btn btn-primary btn-round" %>
       <% end %>
     <% end %>
   </div>

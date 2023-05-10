@@ -19,7 +19,7 @@ module SearchBookService
 
   def parse_book(book_infos)
     description=book_infos["description"].slice(1..300) if book_infos["description"] && book_infos["description"].length > 400
-    photo = book_infos['imageLinks'] ? book_infos['imageLinks']['thumbnail'] : "no_picture_found_sk.png"
+    photo_link = book_infos['imageLinks'] ? book_infos['imageLinks']['thumbnail'] : "no_picture_found_sk.png"
     book_infos["categories"].nil? ? category = "Other" : category = book_infos["categories"][0]
     description = book_infos["description"].nil? ? "..." : book_infos["description"]
     author = book_infos["authors"].nil? ? "~" : book_infos["authors"][0]
@@ -32,7 +32,7 @@ module SearchBookService
       author: author,
       description: description,
       category: category,
-      photo: photo,
+      photo_link: photo_link,
       isbn: isbn,
       date: date
     }

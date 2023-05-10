@@ -9,10 +9,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
   resources :searchbar, only: :index
-  resources :landing_page, only: :index 
+  resources :landing_page, only: :index
   resources :search_friend, only: :index
   resources :home, only: [:index, :new, :create]
-  resources :user do
+  resources :users do
     resources :dashboard, only: [:index, :update]
     resources :avatars, only: [:create]
     resources :follow, only: [:create,:destroy, :show]

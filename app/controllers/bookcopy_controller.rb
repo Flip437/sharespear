@@ -17,27 +17,13 @@ class BookcopyController < ApplicationController
   end
 
   def create
-    #TODO
-    #not wortking since session is not fill with books anymore
-    #TODO
-    numero_selected = params[:numero_selected]
-    book_information = session[:book_info][numero_selected.to_i]
+    new_book_copy = BookCopy.new(book_copy_params.to_h)
+    new_book_copy.user = current_user
+    new_book_copy.status = 1
 
-
-    new_book_copy = BookCopy.create(
-      title:  book_information[0],
-      author: book_information[1],
-      description: book_information[2],
-      status: 1,
-      category: book_information[3],
-      user_id: current_user.id,
-      photo_link: book_information[4],
-      isbn: book_information[5]
-    )
-
-    if new_book_copy
+    if new_book_copy.save
       flash[:success] = "Livre ajouté à votre bibliothèque:)"
-      redirect_to new_bookcopy_path
+      redirect_to user_path(current_user)
     else
       flash[:error] = "Erreur d'ajout du livre :("
       redirect_to new_bookcopy_path
@@ -64,5 +50,18 @@ class BookcopyController < ApplicationController
         redirect_to user_path(current_user.id)
     end
   end
+
+  private
+
+  def book_copy_params
+    params.require(:book_copy).permit(
+      :title,
+      :author,
+      :description,
+      :category,
+      :photo_link,
+      :isbn
+    )
+end
 
 end
