@@ -1,99 +1,94 @@
 <div class="my-auto" style= "background-image: url('https://images.unsplash.com/photo-1517770413964-df8ca61194a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');background-size: cover; height: 100vh;">
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="container">
-  <div class="card card-pricing">
-    <div class="card-body">
-      <h6 class="category">Mes informations</h6>
-      <div class="icon icon-primary">
-          <i class="now-ui-icons users_circle-08"></i>
-      </div>
-      <h3 class="card-title"><%= User.find(current_user.id).first_name %> <%= User.find(current_user.id).last_name %></h3>
+  <div class="container pt-5">
+    <div class="card card-pricing">
+      <div class="card-body">
+        <h6 class="category">Mes informations</h6>
+        <div class="icon icon-primary">
+            <i class="now-ui-icons users_circle-08"></i>
+        </div>
+        <h3 class="card-title"><%= User.find(current_user.id).first_name %> <%= User.find(current_user.id).last_name %></h3>
         <%= form_for(@user, url: user_path(@user.id), html: {method: "patch"}) do |f| %>
-
-        <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-12">
             <%= f.label 'Email*' %><br>
             <%= f.email_field :email, class: "form-control", readonly: true%>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-12">
             <%= f.label 'Password*' %><br>
             <%= f.password_field :password, class: "form-control"%>
           </div>
-        </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <%= f.label 'Pseudo*' %><br>
+          <div class="form-group col-md-12">
+            <%= f.label 'Prénom' %><br>
             <%= f.text_field :first_name, class: "form-control"%>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-12">
             <%= f.label 'Nom' %><br>
             <%= f.text_field :last_name, class: "form-control"%>
           </div>
-        </div>
 
-        <div class="form-group">
-          <%= f.label 'Description' %><br>
-          <%= f.text_area :description, class: "form-control"%>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-12">
+            <%= f.label 'Description' %><br>
+            <%= f.text_area :description, class: "form-control"%>
+          </div>
+
+          <div class="form-group col-md-12">
             <%= f.label 'Ville*' %>
-            <%= f.select :city, options_for_select(
-              [
-                ['Lyon'],
-
-              ]),{}, { class: "form form-group form-control"} %>
+            <%= f.select :city, options_for_select([["Lyon","Lyon"], ["Paris","Paris"]]), class: "form form-group form-control" %>
           </div>
-          <div class="form-group col-md-2">
-              <%= f.label 'Votre_Arrondissement*' %><br />
-              <%= f.select :zip_code,  [["Lyon 1 - Terreaux ","69001"],["Lyon 2 - Bellecour","69002"],["Lyon 3 - La Part-Dieu","69003"],["Lyon 4 - Croix-Rousse","69004"],["Lyon 5 - Vieux Lyon","69005"],["Lyon 6 - Brotteaux","69006"],["Lyon 7 - Jean Macé","69007"],["Lyon 8 - Monplaisir","69008"], ["Lyon 9 - Vaise","69009"],["Villeurbanne","69100"],["Caluire-et-Cuire","69300"],["La Mulatière","69142"],["Tassin-la-Demi-Lune","69160"],["Écully","69130"],["Oullins","69600"],["Bron","69500"]] , autofocus: true, autocomplete: "quartier", class: 'form-control', id: 'sign_up_form'%>
+          <div class="col-lg-6 col-md-8 col-sm-5">
+            <div class="dropdown bootstrap-select">
+              <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round btn-block" title="Single Select" tabindex="-98">
+                <option class="bs-title-option" value=""></option>
+                <option disabled="" selected="">Single Option</option>
+                <option value="2">Foobar</option>
+                <option value="3">Is great</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-12">
+            <%= f.label 'Votre_Arrondissement*' %><br />
+            <%= f.select :zip_code,  [["Lyon 1 - Terreaux ","69001"],["Lyon 2 - Bellecour","69002"],["Lyon 3 - La Part-Dieu","69003"],["Lyon 4 - Croix-Rousse","69004"],["Lyon 5 - Vieux Lyon","69005"],["Lyon 6 - Brotteaux","69006"],["Lyon 7 - Jean Macé","69007"],["Lyon 8 - Monplaisir","69008"], ["Lyon 9 - Vaise","69009"],["Villeurbanne","69100"],["Caluire-et-Cuire","69300"],["La Mulatière","69142"],["Tassin-la-Demi-Lune","69160"],["Écully","69130"],["Oullins","69600"],["Bron","69500"]] , autofocus: true, autocomplete: "quartier", class: 'form-control', id: 'sign_up_form'%>
+          </div>
+          <div class="form-group col-md-12">
             <%= f.label 'Telephone' %><br>
             <%= f.telephone_field :phone, class: "form-control"%>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
+
+          <div class="form-group col-md-12">
             <%= f.label 'Adresse' %><br>
             <%= f.text_field :street, class: "form-control"%>
           </div>
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-12">
             <%= f.label 'Numero de rue' %><br>
             <%= f.text_field :street_nb, class: "form-control"%>
           </div>
-        </div>
-        <%= link_to "Modifier mon mot de passe", edit_user_registration_path, class:"btn btn-primary btn-round"%>
-        <%= f.submit "Modifier les informations" , class: "btn btn-primary btn-round"%>
-        <% end %>
-        <p></p>
-        <h3>Votre avatar</h3>
-        <%if @user.avatar.attached?%>
-          <div class="card card-img-top" style="width: 20rem;">
-          <div class="card-avatar">
 
-            <%= image_tag @user.avatar, alt: 'avatar' %>
-
-          </div>
-          </div>
-        <%else%>
-          <p>=== Vous n'avez pas d'avatar ===</p>
-        <%end%>
-
-        <%= form_tag user_avatars_path(@user), multipart: true do %>
-          <%= file_field_tag :avatar %>
-          <%= submit_tag "mettre à jour", class: "btn btn-primary btn-round" %>
+          <%= link_to "Modifier mon mot de passe", edit_user_registration_path, class:"btn btn-primary btn-round"%>
+          <%= f.submit "Modifier les informations" , class: "btn btn-primary btn-round"%>
         <% end %>
 
+          <h3>Votre avatar</h3>
+          <%if @user.avatar.attached?%>
+            <div class="card card-img-top" style="width: 20rem;">
+            <div class="card-avatar">
 
+              <%= image_tag @user.avatar, alt: 'avatar' %>
+
+            </div>
+            </div>
+          <%else%>
+            <p>=== Vous n'avez pas d'avatar ===</p>
+          <%end%>
+
+          <%= form_tag user_avatars_path(@user), multipart: true do %>
+            <%= file_field_tag :avatar %>
+            <%= submit_tag "mettre à jour", class: "btn btn-primary btn-round" %>
+          <% end %>
+
+
+      </div>
     </div>
+
+
   </div>
-
-
-</div>
 </div>

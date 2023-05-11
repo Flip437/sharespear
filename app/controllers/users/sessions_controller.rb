@@ -10,14 +10,15 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
+    debugger
     @email = params[:user][:email]
     puts "EMAILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
     puts @email = params[:user][:email]
     puts "EMAILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
     if User.find_by(email: @email) == nil
       flash[:error] = "Tu n'as pas de compte utilisateur, merci d'en créer un :)"
-    elsif User.find_by(email: @email).confirmed? == false
-      flash[:error] = "Merci de confirmer ton email avant de te connecter :D"
+    # elsif User.find_by(email: @email).confirmed?
+      # flash[:error] = "Merci de confirmer ton email avant de te connecter :D"
     end
     super
   end

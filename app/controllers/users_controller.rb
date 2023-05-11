@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  before_action :find_user, only: %i[show update]
 
   def create
     @user = User.new
@@ -12,7 +13,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @user_library = BookCopy.where(user_id: @user.id, status: [0,1] )
     @user_follow = Follow.where(user_id: @user.id, active: true)
     @user_follow_query = Follow.where(user_id: current_user.id, follow_user_id: @user.id, active: true).first
@@ -72,33 +72,39 @@ class UsersController < ApplicationController
     if zip=="69500"
       @zip_name = "Bron"
     end
-
-
-
-
-
-
   end
 
   def update
-    user = User.find_by_email(params[:user][:email])
-
-    if user.valid_password?(params[:user][:password])
-      user_to_change = User.find(current_user.id)
-      user_to_change.update(first_name: params[:user][:first_name])
-      user_to_change.update(last_name: params[:user][:last_name])
-      user_to_change.update(description: params[:user][:description])
-      user_to_change.update(city: params[:user][:city])
-      user_to_change.update(zip_code: params[:user][:zip_code])
-      user_to_change.update(street: params[:user][:street])
-      user_to_change.update(street_nb: params[:user][:street_nb])
-      user_to_change.update(phone: params[:user][:phone])
-
-      flash[:success] = "Tes informations ont été mises à jour ! :)"
-
-    else
+    unless @user.valid_password?(user_params.to_h[:password])
       flash[:error] = "Erreur, peux tu entrer ton mot de passe svp :|"
+      redirect_to edit_user_path(current_user.id)
+    end
+
+    if @user.update(user_params.to_h)
+      flash[:success] = "Tes informations ont été mises à jour ! :)"
+    else
+      flash[:error] = "Une erreur s'est produite lors de la mise à jour de tes données"
     end
     redirect_to edit_user_path(current_user.id)
+  end
+
+  private
+
+  def find_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :description,
+      :city,
+      :zip_code,
+      :street,
+      :street_nb,
+      :phone,
+      :password
+    )
   end
 end

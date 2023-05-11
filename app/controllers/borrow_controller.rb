@@ -1,5 +1,5 @@
 class BorrowController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   def new
       @borrow = Borrow.new
       @book = BookCopy.find(params[:bookcopy_id])

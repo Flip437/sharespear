@@ -1,5 +1,5 @@
 class BookcopyController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :find_book_copy, only: %i[show destroy]
 
   def show
