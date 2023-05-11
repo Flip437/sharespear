@@ -23,11 +23,11 @@
           </div>
           <div class="col-md-8">
               <h3 class="card-title">
-                <%= link_to book.title, bookcopy_path(book.id) %>
+                <%= link_to book.title, book_copy_path(book.id) %>
 
               </h3>
               <p class="card-description">
-                <%=book.description%>  <%= link_to " Lire plus", bookcopy_path(book.id) %>
+                <%=book.description%>  <%= link_to " Lire plus", book_copy_path(book.id) %>
               </p>
               <h6 class="category text-primary">
                 <%=book.category%>

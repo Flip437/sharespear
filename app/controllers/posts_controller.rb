@@ -7,26 +7,26 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.like += 1
     @post.save
-    redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+    redirect_to book_copy_path(BookCopy.find(params[:book_copy_id]))
   end
 
   def create
       @post = Post.new(post_params)
       @post.user_id = current_user.id
-      @book = BookCopy.find(params[:bookcopy_id])
+      @book = BookCopy.find(params[:book_copy_id])
       @post.book_copy = @book      
       
-      @bookid = params[:bookcopy_id]
+      @bookid = params[:book_copy_id]
       @ajaxindex = Post.where("book_copy_id = #{@bookid}").count
 
       if @post.save
           respond_to do |f|
-            f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
+            f.html { redirect_to book_copy_path(BookCopy.find(params[:book_copy_id])) }
             f.js 
           end
       else
           flash[:error] = "Désolé, il y a eu une erreur"
-          redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+          redirect_to book_copy_path(BookCopy.find(params[:book_copy_id]))
       end
   end
 
@@ -41,12 +41,12 @@ class PostsController < ApplicationController
 
     if @post.destroy
       respond_to do |f|
-        f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
+        f.html { redirect_to book_copy_path(BookCopy.find(params[:book_copy_id])) }
         f.js 
       end
     else
       flash[:error] = "Désolé, il y a eu une erreur"
-      redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+      redirect_to book_copy_path(BookCopy.find(params[:book_copy_id]))
     end
   end
 

@@ -1,17 +1,30 @@
 class Borrow < ApplicationRecord
   attr_accessor :duree
-  after_create :borrow_asking, :borrow_time_remaining
+  # after_create :borrow_asking, :borrow_time_remaining
   belongs_to :book_copy
   belongs_to :user
+
+  BORROW_STATUSES = %w[
+    pending
+    accepted
+    declined
+    cancelled
+    book_gived_back
+  ].freeze
+
+  BORROW_STATUSES.each do |status_name|
+    const_set(status_name.upcase, status_name)
+  end
 
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :start_date_in_the_future
   validate :end_date_after_start_date
 
-
   validates :message, presence: true, length: { maximum: 400 }
-  validates :borrow_status, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 3 }
+  # validates :borrow_status, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 3 }
+  validates_inclusion_of :borrow_status, in: BORROW_STATUSES
+
   validates :user_id, presence: true
   validates :book_copy_id, presence: true
   validate :user_id_borrow_different_user_id_book_owner

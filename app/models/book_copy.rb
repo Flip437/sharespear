@@ -12,8 +12,8 @@ class BookCopy < ApplicationRecord
   validates :status, inclusion: { in: [ 0, 1,2 ] }
   validates :user_id, presence: true
 
-  def borrow_status_0?
-    return Borrow.where(["borrow_status = ? and book_copy_id = ?", 0, self.id])
+  def borrow_status_accepted?
+    return Borrow.where(["borrow_status = ? and book_copy_id = ?", Borrow::ACCEPTED, self.id])
   end
 
   def borrow_status_2?
@@ -74,7 +74,7 @@ class BookCopy < ApplicationRecord
   end
 
   def already_borrowed(user)
-    if Borrow.where(["user_id = ? and book_copy_id = ? and borrow_status = ?", user.id, self.id, 3]).count != 0
+    if Borrow.where(["user_id = ? and book_copy_id = ? and borrow_status = ?", user.id, self.id, Borrow::BOOK_GIVED_BACK]).count != 0
       return true
     else
       return false

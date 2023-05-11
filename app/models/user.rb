@@ -52,15 +52,15 @@ class User < ApplicationRecord
   end
 
   def book_I_borrow_tab
-    return Borrow.where(["user_id = ? and borrow_status = ?",self.id, 2])
+    return Borrow.where(["user_id = ? and borrow_status = ?",self.id, Borrow::ACCEPTED])
   end
 
   def book_I_borrow_recup_tab
-    return  Borrow.where(["user_id = ? and borrow_status = ?",self.id, 3])
+    return  Borrow.where(["user_id = ? and borrow_status = ?",self.id, Borrow::BOOK_GIVED_BACK])
   end
 
   def book_asked_to_borrow
-    return Borrow.where(["user_id = ? and borrow_status = ?",self.id, 0])
+    return Borrow.where(["user_id = ? and borrow_status = ?",self.id, Borrow::PENDING])
   end
 
   def self.search(search)

@@ -38,7 +38,7 @@
 
                     <% if current_user.id==@user.id %>
                     <center>
-                      <%= link_to 'Ajouter des livres', new_bookcopy_path, class: "btn btn-primary btn-round btn-lg" %>
+                      <%= link_to 'Ajouter des livres', new_book_copy_path, class: "btn btn-primary btn-round btn-lg" %>
                       <%= link_to 'Modifier mes informations', edit_user_path(@user.id), class: "btn btn-default btn-round btn-lg" %>
                       </center>
                     <% else %>
@@ -77,7 +77,7 @@
                   <h3 class="title text-center">Ma bibliothèque</h3>
                   <% if current_user.id==@user.id %>
                     <div class="container section">
-                      <%= link_to 'Ajouter des livres', new_bookcopy_path, class: "btn btn-default btn-round btn-lg" %>
+                      <%= link_to 'Ajouter des livres', new_book_copy_path, class: "btn btn-default btn-round btn-lg" %>
                     </div>
                   <% end %>
                   <br>
@@ -94,7 +94,7 @@
                         <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
                         <%= image_tag(book.photo_link) %>
                         <p class="card-text">Genre : <%= book.category %></p>
-                        <%= link_to "Plus de détails", bookcopy_path(book.id), class:"card-link" %>
+                        <%= link_to "Plus de détails", book_copy_path(book.id), class:"card-link" %>
                       </div>
                     </div>
                   <% end %>

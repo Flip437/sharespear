@@ -1,19 +1,17 @@
-
-
 <div class="container">
   <h1></h1>
   <div class="card text-center card-pricing">
     <div class="card-header mt-2">
-      <% if @borrow_to_show.borrow_status==0 %>
+      <% if @borrow.borrow_status==0 %>
         <span class="badge badge-warning">demande en cours...</span>
       <% end %>
-      <% if @borrow_to_show.borrow_status==1 %>
+      <% if @borrow.borrow_status==1 %>
         <span class="badge badge-danger">prêt refusé</span>
       <% end %>
-      <% if @borrow_to_show.borrow_status==2 %>
+      <% if @borrow.borrow_status==2 %>
         <span class="badge badge-success">prêt accepté</span>
       <% end %>
-      <% if @borrow_to_show.borrow_status==3 %>
+      <% if @borrow.borrow_status==3 %>
         <span class="badge badge-success">prêt terminé</span>
       <% end %>
 
@@ -23,29 +21,29 @@
           <i class="now-ui-icons education_agenda-bookmark"></i>
       </div>
 
-      <h4 class="card-title"><%= @book_to_show.title %></h4>
+      <h4 class="card-title"><%= @book_copy.title %></h4>
       <p class="card-text">Appartennant à : <%= @user_preteur.first_name %> <%= @user_preteur.last_name %></p>
       <p class="card-text">Demandé par : <%= @user_emprunteur.first_name %> <%= @user_emprunteur.last_name %></p>
-      <p class="card-text">du <%= @borrow_to_show.start_date.strftime('%d %b  %Y')%> au <%= @borrow_to_show.end_date.strftime('%d %b  %Y')%> </p>
+      <p class="card-text">du <%= @borrow.start_date.strftime('%d %b  %Y')%> au <%= @borrow.end_date.strftime('%d %b  %Y')%> </p>
       <div class="card">
         <div class="card-body">
           <blockquote class="blockquote blockquote-primary mb-0">
-            <p><%= @borrow_to_show.message %></p>
+            <p><%= @borrow.message %></p>
             <footer class="blockquote-footer">Message envoyé par  <%= @user_emprunteur.first_name %> <%= @user_emprunteur.last_name %></footer>
           </blockquote>
         </div>
       </div>
 
-      <% if @borrow_to_show.borrow_status==0  && current_user.id== @user_preteur.id %>
-      <button type="button" class="btn btn-primary"><%= link_to "Accepter", bookcopy_borrow_path(@borrow_to_show.book_copy_id,@borrow_to_show.id, :bouton_value => 1), method:"patch"%></button>
-      <button type="button" class="btn btn-primary" ><%= link_to "Refuser", bookcopy_borrow_path(@borrow_to_show.book_copy_id,@borrow_to_show.id, :bouton_value => 0), method:"patch"%></button>
+      <% if @borrow.borrow_status==0  && current_user.id== @user_preteur.id %>
+        <%= link_to "Accepter", book_copy_borrow_path(@book_copy, @borrow, borrow_status: Borrow::ACCEPTED), method: :patch, class: "btn btn-primary" %>
+        <%= link_to "Refuser", book_copy_borrow_path(@book_copy, @borrow, borrow_status: Borrow::DECLINED), method: :patch, class: "btn btn-primary" %>
       <% end %>
 
     </div>
 
   </div>
 
-  <% if @borrow_to_show.borrow_status==0 && current_user.id== @user_preteur.id %>
+  <% if @borrow.borrow_status==0 && current_user.id== @user_preteur.id %>
   <center><h1></h1></center>
   <div class="card card-pricing">
     <div class="card-body">
@@ -64,7 +62,7 @@
   <% end %>
 
 
-  <% if @borrow_to_show.borrow_status==2 && current_user.id== @user_preteur.id %>
+  <% if @borrow.borrow_status==2 && current_user.id== @user_preteur.id %>
   <center><h1></h1></center>
   <div class="card card-pricing">
     <div class="card-body">
@@ -82,7 +80,7 @@
   </div>
   <% end %>
 
-  <% if @borrow_to_show.borrow_status==3 && current_user.id== @user_preteur.id %>
+  <% if @borrow.borrow_status==3 && current_user.id== @user_preteur.id %>
   <center><h1>Information de contact</h1></center>
   <div class="card card-pricing">
     <div class="card-body">
@@ -101,7 +99,7 @@
   <% end %>
 
 
-  <% if @borrow_to_show.borrow_status==2 && current_user.id== @user_emprunteur.id %>
+  <% if @borrow.borrow_status==2 && current_user.id== @user_emprunteur.id %>
   <center><h1>Information de contact</h1></center>
   <div class="card card-pricing">
     <div class="card-body">
@@ -120,7 +118,7 @@
   <% end %>
 
 
-  <% if @borrow_to_show.borrow_status==3 && current_user.id== @user_emprunteur.id %>
+  <% if @borrow.borrow_status==3 && current_user.id== @user_emprunteur.id %>
   <center><h1>Information de contact</h1></center>
   <div class="card card-pricing">
     <div class="card-body">

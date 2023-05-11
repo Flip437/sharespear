@@ -7,28 +7,28 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.like += 1
     @comment.save
-    redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+    redirect_to book_copy_path(BookCopy.find(params[:book_copy_id]))
   end
 
   def create
       @comment = Comment.new(comment_params)
       @comment.user_id = current_user.id
-      @book = BookCopy.find(params[:bookcopy_id])
+      @book = BookCopy.find(params[:book_copy_id])
       @post = Post.find(params[:post_id])
       @comment.post = @post
 
-      @bookid = params[:bookcopy_id]
+      @bookid = params[:book_copy_id]
       @postid = params[:post_id]
       @ajaxindex = Comment.where("post_id = #{@postid}").count
 
       if @comment.save
           respond_to do |f|
-            f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
+            f.html { redirect_to book_copy_path(BookCopy.find(params[:book_copy_id])) }
             f.js 
           end
       else
           flash[:error] = "Désolé, il y a eu une erreur"
-          redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+          redirect_to book_copy_path(BookCopy.find(params[:book_copy_id]))
       end
   end
 
@@ -43,14 +43,14 @@ class CommentsController < ApplicationController
   
     if @comment.destroy
       respond_to do |f|
-        f.html { redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id])) }
+        f.html { redirect_to book_copy_path(BookCopy.find(params[:book_copy_id])) }
         f.js 
       end
 
     else
       puts @comment.errors
       flash[:error] = "Désolé, il y a eu une erreur :("
-      redirect_to bookcopy_path(BookCopy.find(params[:bookcopy_id]))
+      redirect_to book_copy_path(BookCopy.find(params[:book_copy_id]))
     end
   end
 

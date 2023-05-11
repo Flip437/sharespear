@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_11_105912) do
+ActiveRecord::Schema.define(version: 2020_02_11_133312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2023_03_11_105912) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.text "message"
-    t.integer "borrow_status"
+    t.string "borrow_status", default: "pending"
     t.bigint "user_id"
     t.bigint "book_copy_id"
     t.datetime "created_at", null: false

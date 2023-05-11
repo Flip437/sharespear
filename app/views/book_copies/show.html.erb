@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-6 ml-auto mr-auto">
                 <h2 class="title"> <%= @book_copy.title %> </h2>
-                <%= social_share_button_tag("Voyez ce livre !", :url => "https://www.sharespeare.fr/bookcopy/#{@book_copy.id}") %>
+                <%= social_share_button_tag("Voyez ce livre !", :url => "https://www.sharespeare.fr/book_copy/#{@book_copy.id}") %>
                 <h5 class="category"><%= @book_copy.author %></h5>
                 <h6 class="main-price"><%= @book_copy.category %></h6>
 
@@ -50,10 +50,10 @@
                 </div>
                 <div class="row justify-content-center">
                 <% if @book_copy.user_id==current_user.id %>
-                  <%= link_to "Supprimer", bookcopy_path(@book_copy.id), method:"delete", class:"btn btn-primary"%>
+                  <%= link_to "Supprimer", book_copy_path(@book_copy.id), method:"delete", class:"btn btn-primary"%>
                 <% elsif %>
                   <% @book_copy.status==1 && @book_copy.already_borrowed(current_user) == false %>
-                    <%= link_to "Emprunter", new_bookcopy_borrow_path(@book_copy.id), class:"btn btn-primary btn-round btn-lg"%>
+                    <%= link_to "Emprunter", new_book_copy_borrow_path(@book_copy.id), class:"btn btn-primary btn-round btn-lg"%>
                 <% elsif %>
                   <% @book_copy.status==1 && @book_copy.already_borrowed(current_user) == true %>
                   <div class="card" data-background-color="black">
@@ -63,7 +63,7 @@
                           Veux-tu tout de même le réemprunter ??
                       </p>
                       <div class="card-footer text-center">
-                          <%= link_to "Oui", new_bookcopy_borrow_path(@book_copy.id), class:"btn btn-primary btn-round btn-lg"%>
+                          <%= link_to "Oui", new_book_copy_borrow_path(@book_copy.id), class:"btn btn-primary btn-round btn-lg"%>
                       </div>
                     </div>
                   </div>

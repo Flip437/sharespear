@@ -43,10 +43,10 @@
             <div class="col-md-7">
               <h6 class="category text-info mt-3"><%=book_array[0].category%></h6>
               <h3 class="card-title">
-                <%= link_to book_array[0].title, bookcopy_path(book_array[0].id) %>
+                <%= link_to book_array[0].title, book_copy_path(book_array[0].id) %>
               </h3>
               <p class="card-description">
-                <%=book_array[0].description%><%= link_to "Voir plus", bookcopy_path(book_array[0].id) %>
+                <%=book_array[0].description%><%= link_to "Voir plus", book_copy_path(book_array[0].id) %>
               </p>
               <h6>                <% if book_array[0].status==0 %>
                 <span class="badge badge-warning">Emprenté</span>
@@ -70,10 +70,10 @@
                     <i class="now-ui-icons now-ui-icons media-2_sound-wave"></i> <%=book_array[1].category%>
                   </h6>
                   <h3 class="card-title">
-                    <%= link_to book_array[1].title, bookcopy_path(book_array[1].id) %>
+                    <%= link_to book_array[1].title, book_copy_path(book_array[1].id) %>
                   </h3>
                   <p class="card-description">
-                    <%=book_array[1].description%> <%= link_to "Voir plus", bookcopy_path(book_array[1].id) %>
+                    <%=book_array[1].description%> <%= link_to "Voir plus", book_copy_path(book_array[1].id) %>
                   </p>
                   <h6>                <% if book_array[1].status==0 %>
                     <span class="badge badge-warning">Emprenté</span>
@@ -136,7 +136,7 @@
                                 <h5 class="card-description">"<%=book_array[2].description%>
                                 </h5>
                                 <h3 class="card-title">
-                                  <%= link_to book_array[2].title, bookcopy_path(book_array[2].id) %>
+                                  <%= link_to book_array[2].title, book_copy_path(book_array[2].id) %>
                                 </h3>
 
                                 <div class="card-footer">
@@ -171,7 +171,7 @@
                                 <div class="card-body">
                                   <h5 class="card-description">"<%=book_array[3].description%>"
                                   </h5>
-                                  <h3 class="card-title"><%= link_to book_array[3].title, bookcopy_path(book_array[3].id) %></h3>
+                                  <h3 class="card-title"><%= link_to book_array[3].title, book_copy_path(book_array[3].id) %></h3>
 
                                   <div class="card-footer">
                                     <h6 class="category text-primary"><%=book_array[3].category%></h6>
@@ -232,7 +232,7 @@
                           </div>
                           <div class="col-md-8">
                             <h3 class="card-title">
-                              <%= link_to book_array[a].title, bookcopy_path(book_array[a].id) %>
+                              <%= link_to book_array[a].title, book_copy_path(book_array[a].id) %>
 
 
                             </h3>
@@ -243,7 +243,7 @@
                               <span class="badge badge-success">Disponible</span>
                               <% end %></h6>
                               <p class="card-description">
-                                <%=book_array[a].description%>  <%= link_to " Lire plus", bookcopy_path(book_array[a].id) %>
+                                <%=book_array[a].description%>  <%= link_to " Lire plus", book_copy_path(book_array[a].id) %>
                               </p>
                               <h6 class="category text-primary">
                                 <%=book_array[a].category%>

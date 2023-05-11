@@ -12,9 +12,9 @@
         <% @book_copy_not_available_tab.each {|n| %>
         <li class="list-group-item"><b><%="#{n.title}"%></b> <br /> <%=" #{n.author}"%>
         <br>
-        <%= link_to "Livre recupéré", bookcopy_borrow_path(n.id, n.borrow_status_2?.last.id,:bouton_value => 2), method:"patch", class: "btn btn-primary btn-round btn-small btn-sm"%>
+        <%= link_to "Livre recupéré", book_copy_borrow_path(n.id, n.borrow_status_2?.last.id,:bouton_value => 2), method:"patch", class: "btn btn-primary btn-round btn-small btn-sm"%>
         <%= link_to "Demander retour", user_dashboard_path(current_user.id, n.id), method:"patch", class: "btn btn-primary btn-round btn-sm" %>
-        <%= link_to "Detail", bookcopy_borrow_path(n.id,n.borrow_status_2?.last.id), class: "btn btn-primary btn-round btn-sm"%>
+        <%= link_to "Detail", book_copy_borrow_path(n.id,n.borrow_status_2?.last.id), class: "btn btn-primary btn-round btn-sm"%>
 
         </li>
         <% } %>
@@ -33,9 +33,9 @@
           <% @ask_book_tab.each {|n| %>
           <li class="list-group-item"><b><%= BookCopy.find(n.book_copy_id).title %></b> <br> <%="Demandé par: #{User.find(n.user_id).first_name}"%> | Jusqu'au : <%="#{n.end_date.strftime('%d %b %Y')}"%>
             <br>
-            <%= link_to "Accepter", bookcopy_borrow_path(n.book_copy_id,n.id, :bouton_value => 1), method:"patch", class: "btn btn-primary btn-round btn-sm"%>
-            <%= link_to "Refuser", bookcopy_borrow_path(n.book_copy_id,n.id, :bouton_value => 0), method:"patch",class: "btn btn-primary btn-round btn-sm"%>
-            <%= link_to "Detail", bookcopy_borrow_path(n.book_copy_id,n.id),class: "btn btn-primary btn-round btn-sm" %>
+            <%= link_to "Accepter", book_copy_borrow_path(n.book_copy_id,n.id, :bouton_value => 1), method:"patch", class: "btn btn-primary btn-round btn-sm"%>
+            <%= link_to "Refuser", book_copy_borrow_path(n.book_copy_id,n.id, :bouton_value => 0), method:"patch",class: "btn btn-primary btn-round btn-sm"%>
+            <%= link_to "Detail", book_copy_borrow_path(n.book_copy_id,n.id),class: "btn btn-primary btn-round btn-sm" %>
           </li>
           <% } %>
         </ul>
@@ -55,12 +55,12 @@
       <% @book_I_borrow_tab.each {|n| %>
       <li class="list-group-item"><b><%= BookCopy.find(n.book_copy_id).title %></b> <br><%=" Jusqu'au: #{n.end_date.strftime('%d %b %Y')}"%>
       <br />
-      <%= link_to "Detail", bookcopy_borrow_path(n.book_copy_id,n.id), class:"btn btn-primary btn-sm btn-round"%>
+      <%= link_to "Detail", book_copy_borrow_path(n.book_copy_id,n.id), class:"btn btn-primary btn-sm btn-round"%>
       <% } %>
       <% @book_I_borrow_recup_tab.each {|n| %>
       <li class="list-group-item"> <b><%= BookCopy.find(n.book_copy_id).title %></b> <br><%=" Deadline: #{n.end_date.strftime('%b %d %Y')}"%>
         <br />
-        <%= link_to "Detail", bookcopy_borrow_path(n.book_copy_id,n.id), class: "btn btn-primary btn-sm btn-round"%>
+        <%= link_to "Detail", book_copy_borrow_path(n.book_copy_id,n.id), class: "btn btn-primary btn-sm btn-round"%>
       <% } %>
 
     </ul>
@@ -76,7 +76,7 @@
     <ul class="list-group list-group-flush gugu">
       <% @book_asked_to_borrow.each {|n| %>
       <li class="list-group-item"><b><%= BookCopy.find(n.book_copy_id).title %></b>   <br>
-        <%= link_to "Detail", bookcopy_borrow_path(n.book_copy_id,n.id), class: "btn btn-primary btn-sm btn-round"%>
+        <%= link_to "Detail", book_copy_borrow_path(n.book_copy_id,n.id), class: "btn btn-primary btn-sm btn-round"%>
       </li>
 
       <% } %>

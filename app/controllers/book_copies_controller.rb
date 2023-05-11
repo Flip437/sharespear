@@ -1,4 +1,4 @@
-class BookcopyController < ApplicationController
+class BookCopiesController < ApplicationController
   # before_action :authenticate_user!
   before_action :find_book_copy, only: %i[show destroy]
 
@@ -26,7 +26,7 @@ class BookcopyController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash[:error] = "Erreur d'ajout du livre :("
-      redirect_to new_bookcopy_path
+      redirect_to new_book_copy_path
     end
 
   end

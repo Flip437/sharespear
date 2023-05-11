@@ -22,12 +22,12 @@
 
           <div class="media-footer">
 
-            <%= link_to bookcopy_post_path(@book, post), :method=> :put, :class => "btn btn-danger btn-neutral pull-right" do %>
+            <%= link_to book_copy_post_path(@book, post), :method=> :put, :class => "btn btn-danger btn-neutral pull-right" do %>
               <i class="now-ui-icons ui-2_favourite-28"></i> <%= post.like %>
             <%end%>
 
             <% if post.user == current_user %>
-              <%= link_to bookcopy_post_path(@book, post, :loopindex => index), :method=> :delete, remote: true, :class => "btn btn-danger btn-neutral pull-right postbtndel#{index}" do %>
+              <%= link_to book_copy_post_path(@book, post, :loopindex => index), :method=> :delete, remote: true, :class => "btn btn-danger btn-neutral pull-right postbtndel#{index}" do %>
                 <i class="now-ui-icons ui-1_simple-remove"></i>
               <%end%>
             <% end %>

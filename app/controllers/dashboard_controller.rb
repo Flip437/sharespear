@@ -9,7 +9,7 @@ class DashboardController < ApplicationController
     book_copy_available_tab=@user.book_copy_available_tab
     @ask_book_tab=[]
     book_copy_available_tab.each do |n|
-      tab=n.borrow_status_0?
+      tab=n.borrow_status_accepted?
       if(tab.empty?)
       else
         @ask_book_tab=tab+@ask_book_tab

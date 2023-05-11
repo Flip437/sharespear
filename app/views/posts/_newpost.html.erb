@@ -18,7 +18,7 @@
           <h5 class="media-heading"> <%= current_user.first_name %> </h5>
           <div class="media media-post">
             <div class="media-body">
-              <%= form_with scope: :post, url: bookcopy_posts_path(@book_copy), html: {class: "nifty_form"}, remote: true do |f| %>
+              <%= form_with scope: :post, url: book_copy_posts_path(@book_copy), html: {class: "nifty_form"}, remote: true do |f| %>
                 <br>
                 <%= f.text_area :content, size: "60x12", class: "form-control", placeholder: "Donne ton avis sur le livre" %>
                 <br>

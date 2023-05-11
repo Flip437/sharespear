@@ -19,11 +19,11 @@ Rails.application.routes.draw do
     resources :usercomments
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :bookcopy do
+  resources :book_copies do
     collection do
       get :search_book_or_author
     end
-    resources :borrow
+    resources :borrows
     resources :posts do
       resources :comments
     end
