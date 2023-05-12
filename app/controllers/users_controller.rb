@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_user, only: %i[show update edit]
   #PROVISOIRE, à supprimer quand !authenticate user sera rétabli
-  before_action :set_current_user_as_params_user
+  # before_action :set_current_user_as_params_user
 
   def create
     @user = User.new
@@ -12,6 +12,21 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
+  end
+
+  def dashboard
+    #Mes livres prêté
+    @book_copy_not_available_tab=current_user.book_copy_not_available_tab
+
+    #Demandes de prêt reçu
+    @ask_book_tab = Borrow.where(borrowed_user: current_user)
+    #Mes emprunts
+    @book_I_borrow_tab = current_user.book_I_borrow_tab
+    @book_I_borrow_recup_tab = current_user.book_I_borrow_recup_tab
+    # @book_asked_to_borrow = Borrow.where(borrower_user: current_user, borrow_status: Borrow::ACCEPTED)
+    #Mes demandes d'emprunt envoyé :
+    # @book_asked_to_borrow = @user.book_asked_to_borrow
+    @pending_borrows = Borrow.where(borrower_user: current_user, borrow_status: Borrow::PENDING)
   end
 
   def show

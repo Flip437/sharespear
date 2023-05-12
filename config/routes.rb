@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :search_friend, only: :index
   resources :home, only: [:index, :new, :create]
   resources :users do
-    resources :dashboard, only: [:index, :update]
+    get :dashboard
     resources :avatars, only: [:create]
     resources :follow, only: [:create,:destroy, :show]
     resources :usercomments

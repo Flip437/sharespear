@@ -32,7 +32,6 @@ class BorrowsController < ApplicationController
   end
 
   def update
-    # debugger
     # brrow status 1 refusé
     # brrow status 2 accepté
     # brrow status 3 livre récupéré
@@ -42,7 +41,7 @@ class BorrowsController < ApplicationController
 
     if @borrow.update(borrow_params)
       flash[:success] = "Vos modifications ont bien été enregistrées"
-      redirect_to user_dashboard_index_path(current_user)
+      redirect_to user_dashboard_path(current_user)
     else
       flash[:error] = "Désolé, une erreur s'est produite"
       render :show

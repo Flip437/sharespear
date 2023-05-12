@@ -37,9 +37,9 @@
               "Demandé par: <%= borrow.borrower_user.first_name %>
               | Jusqu'au : <%= borrow.end_date.strftime('%d %b %Y') %>
               <br>
-              <%= link_to "Accepter", book_copy_borrow_path(borrow.book_copy, borrow, borrow_status: Borrow::ACCEPTED), method: :patch, class: "btn btn-primary btn-round btn-sm"%>
+              <%= link_to "Accepter", book_copy_borrow_path(borrow.book_copy, borrow, borrow: { borrow_status: Borrow::ACCEPTED}), method: :patch, class: "btn btn-primary" %>
               <%= link_to "Refuser", book_copy_borrow_path(borrow.book_copy, borrow, borrow_status: Borrow::DECLINED), method: :patch,class: "btn btn-primary btn-round btn-sm"%>
-              <%= link_to "Detail", book_copy_borrow_path(borrow.book_copy, borrow),class: "btn btn-primary btn-round btn-sm" %>
+              <%= link_to "Detail", book_copy_borrow_path(borrow.book_copy, borrow, borrw: {flip: "haha"}),class: "btn btn-primary btn-round btn-sm" %>
             </li>
           <% end %>
         </ul>
