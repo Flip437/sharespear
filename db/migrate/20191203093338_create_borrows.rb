@@ -5,7 +5,8 @@ class CreateBorrows < ActiveRecord::Migration[5.2]
       t.datetime :end_date
       t.text :message
       t.string :borrow_status, default: Borrow::PENDING
-      t.belongs_to :user, index: true #cette ligne rajoute la référence à la table users
+      t.references :borrower_user, references: :users, foreign_key: { to_table: :users }
+      t.references :borrowed_user, references: :users, foreign_key: { to_table: :users}
       t.belongs_to :book_copy, index: true #cette ligne rajoute la référence à la table book_copies
 
       t.timestamps

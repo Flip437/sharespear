@@ -10,7 +10,6 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    debugger
     @email = params[:user][:email]
     puts "EMAILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
     puts @email = params[:user][:email]

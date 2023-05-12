@@ -2,7 +2,8 @@ class Borrow < ApplicationRecord
   attr_accessor :duree
   # after_create :borrow_asking, :borrow_time_remaining
   belongs_to :book_copy
-  belongs_to :user
+  belongs_to :borrower_user, class_name: "User"
+  belongs_to :borrowed_user, class_name: "User"
 
   BORROW_STATUSES = %w[
     pending
@@ -22,17 +23,13 @@ class Borrow < ApplicationRecord
   validate :end_date_after_start_date
 
   validates :message, presence: true, length: { maximum: 400 }
-  # validates :borrow_status, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 3 }
   validates_inclusion_of :borrow_status, in: BORROW_STATUSES
 
-  validates :user_id, presence: true
+  validates :borrower_user_id, presence: true
+  validates :borrowed_user_id, presence: true
   validates :book_copy_id, presence: true
-  validate :user_id_borrow_different_user_id_book_owner
-  #validate :user_id_cant_borrow_more_than_10_books_same_time
+  validate :borrower_user_is_not_borrowed_user
   validate :user_cant_borrow_a_book_not_available
-
-
-
 
   private
 
@@ -70,15 +67,13 @@ class Borrow < ApplicationRecord
 
   end
 
-  def user_id_borrow_different_user_id_book_owner
-    if user_id == BookCopy.find(book_copy_id).user_id
-        errors.add(:user_id, "can't borrow your book")
-    end
+  def borrower_user_is_not_borrowed_user
+    errors.add(:borrower_user_id, "can't borrow your book") if borrower_user_id == borrowed_user_id
   end
 
   def user_cant_borrow_a_book_not_available
     if BookCopy.find(book_copy_id).status == 0
-        errors.add(:user_id, "can't borrow this book it's not available")
+        errors.add(:borrower_user_id, "can't borrow this book it's not available")
     end
   end
 

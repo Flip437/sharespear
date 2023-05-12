@@ -7,6 +7,12 @@ class User < ApplicationRecord
 
   has_many :book_copies
   has_many :borrows
+  has_many :borrows
+
+  has_many :requesting_borrows, class_name: "Borrow", foreign_key: "borrower_user_id"
+  has_many :requested_borrows, class_name: "Borrow", foreign_key: "borrowed_user_id"
+
+
   has_many :posts
   has_many :comments
 
@@ -52,11 +58,11 @@ class User < ApplicationRecord
   end
 
   def book_I_borrow_tab
-    return Borrow.where(["user_id = ? and borrow_status = ?",self.id, Borrow::ACCEPTED])
+    return Borrow.where(borrower_user: self, borrow_status: Borrow::ACCEPTED)
   end
 
   def book_I_borrow_recup_tab
-    return  Borrow.where(["user_id = ? and borrow_status = ?",self.id, Borrow::BOOK_GIVED_BACK])
+    return Borrow.where(borrower_user: self, borrow_status: Borrow::BOOK_GIVED_BACK)
   end
 
   def book_asked_to_borrow

@@ -30,19 +30,20 @@
       <div class="card-body">
         <center><h3><b>Demandes de prêts</b></h3></center>
         <ul class="list-group list-group-flush gugu">
-          <% @ask_book_tab.each {|n| %>
-          <li class="list-group-item"><b><%= BookCopy.find(n.book_copy_id).title %></b> <br> <%="Demandé par: #{User.find(n.user_id).first_name}"%> | Jusqu'au : <%="#{n.end_date.strftime('%d %b %Y')}"%>
-            <br>
-            <%= link_to "Accepter", book_copy_borrow_path(n.book_copy_id,n.id, :bouton_value => 1), method:"patch", class: "btn btn-primary btn-round btn-sm"%>
-            <%= link_to "Refuser", book_copy_borrow_path(n.book_copy_id,n.id, :bouton_value => 0), method:"patch",class: "btn btn-primary btn-round btn-sm"%>
-            <%= link_to "Detail", book_copy_borrow_path(n.book_copy_id,n.id),class: "btn btn-primary btn-round btn-sm" %>
-          </li>
-          <% } %>
+          <% @ask_book_tab.each do |borrow| %>
+            <li class="list-group-item">
+              <b><%= borrow.book_copy.title %></b>
+              <br>
+              "Demandé par: <%= borrow.borrower_user.first_name %>
+              | Jusqu'au : <%= borrow.end_date.strftime('%d %b %Y') %>
+              <br>
+              <%= link_to "Accepter", book_copy_borrow_path(borrow.book_copy, borrow, borrow_status: Borrow::ACCEPTED), method: :patch, class: "btn btn-primary btn-round btn-sm"%>
+              <%= link_to "Refuser", book_copy_borrow_path(borrow.book_copy, borrow, borrow_status: Borrow::DECLINED), method: :patch,class: "btn btn-primary btn-round btn-sm"%>
+              <%= link_to "Detail", book_copy_borrow_path(borrow.book_copy, borrow),class: "btn btn-primary btn-round btn-sm" %>
+            </li>
+          <% end %>
         </ul>
       </div>
-
-
-
     </div>
   </div>
   <div class="row">
@@ -74,12 +75,13 @@
       <center><h3><b>Mes demandes d'emprunts</b></h3></center>
     </div>
     <ul class="list-group list-group-flush gugu">
-      <% @book_asked_to_borrow.each {|n| %>
-      <li class="list-group-item"><b><%= BookCopy.find(n.book_copy_id).title %></b>   <br>
-        <%= link_to "Detail", book_copy_borrow_path(n.book_copy_id,n.id), class: "btn btn-primary btn-sm btn-round"%>
-      </li>
-
-      <% } %>
+      <% @pending_borrows.each do |borrow| %>
+        <li class="list-group-item">
+          <b><%= borrow.book_copy.title %></b>
+          <br>
+          <%= link_to "Detail", book_copy_borrow_path(borrow.book_copy_id,borrow.id), class: "btn btn-primary btn-sm btn-round"%>
+        </li>
+      <% end %>
     </ul>
   </div>
 

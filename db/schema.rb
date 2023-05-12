@@ -89,12 +89,14 @@ ActiveRecord::Schema.define(version: 2020_02_11_133312) do
     t.datetime "end_date"
     t.text "message"
     t.string "borrow_status", default: "pending"
-    t.bigint "user_id"
+    t.bigint "borrower_user_id"
+    t.bigint "borrowed_user_id"
     t.bigint "book_copy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_copy_id"], name: "index_borrows_on_book_copy_id"
-    t.index ["user_id"], name: "index_borrows_on_user_id"
+    t.index ["borrowed_user_id"], name: "index_borrows_on_borrowed_user_id"
+    t.index ["borrower_user_id"], name: "index_borrows_on_borrower_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -168,4 +170,6 @@ ActiveRecord::Schema.define(version: 2020_02_11_133312) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "borrows", "users", column: "borrowed_user_id"
+  add_foreign_key "borrows", "users", column: "borrower_user_id"
 end

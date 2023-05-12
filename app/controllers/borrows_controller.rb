@@ -9,7 +9,9 @@ class BorrowsController < ApplicationController
 
   def create
     borrow = Borrow.new(borrow_params)
-    borrow.user_id = current_user.id
+    # borrow.user = current_user
+    borrow.borrower_user = current_user
+    borrow.borrowed_user = @book_copy.user
     borrow.book_copy = @book_copy
     borrow.start_date = Date.today
     borrow.end_date = Date.today >> params[:borrow][:duree].to_i
@@ -25,12 +27,12 @@ class BorrowsController < ApplicationController
   end
 
   def show
-    @user_preteur = User.find(@book_copy.user_id)
-    @user_emprunteur = User.find(@borrow.user_id)
+    @user_preteur = @borrow.borrowed_user
+    @user_emprunteur = @borrow.borrower_user
   end
 
   def update
-    debugger
+    # debugger
     # brrow status 1 refusé
     # brrow status 2 accepté
     # brrow status 3 livre récupéré
@@ -81,9 +83,6 @@ class BorrowsController < ApplicationController
       book_copy_status_update.update(status: 1)
       # UserMailer.borrow_book_rendered_email(@borrow).deliver_now
     end
-
-    redirect_to user_dashboard_index_path(current_user)
-
   end
 
   private
@@ -93,10 +92,10 @@ class BorrowsController < ApplicationController
   end
 
   def borrow_params
-      params.require(:borrow).permit(
-        :message,
-        :borrow_status
-      )
+    params.require(:borrow).permit(
+      :message,
+      :borrow_status
+    )
   end
 
   def find_book_copy

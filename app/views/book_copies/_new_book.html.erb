@@ -10,7 +10,7 @@
         <%= image_tag(book[:photo_link]) if book[:photo_link] %>
         <p>Date : <%= book[:date] %></p>
         <p>ISBN : <%= book[:isbn] %></p>
-        <%= link_to "Ajouter", book_copy_index_path(book_copy: book), method: :post, class: "btn btn-primary btn-round" %>
+        <%= link_to "Ajouter", book_copies_path(book_copy: book), method: :post, class: "btn btn-primary btn-round" %>
       <% end %>
     <% end %>
   </div>

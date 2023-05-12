@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <% if @borrow.borrow_status==0  && current_user.id== @user_preteur.id %>
+      <% if @borrow.borrow_status == Borrow::PENDING && @borrow.borrower_user != current_user %>
         <%= link_to "Accepter", book_copy_borrow_path(@book_copy, @borrow, borrow_status: Borrow::ACCEPTED), method: :patch, class: "btn btn-primary" %>
         <%= link_to "Refuser", book_copy_borrow_path(@book_copy, @borrow, borrow_status: Borrow::DECLINED), method: :patch, class: "btn btn-primary" %>
       <% end %>

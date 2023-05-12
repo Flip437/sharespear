@@ -74,7 +74,7 @@ class BookCopy < ApplicationRecord
   end
 
   def already_borrowed(user)
-    if Borrow.where(["user_id = ? and book_copy_id = ? and borrow_status = ?", user.id, self.id, Borrow::BOOK_GIVED_BACK]).count != 0
+    if Borrow.where(["borrower_user_id = ? and book_copy_id = ? and borrow_status = ?", user.id, self.id, Borrow::BOOK_GIVED_BACK]).count != 0
       return true
     else
       return false

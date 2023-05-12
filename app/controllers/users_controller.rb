@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!
-  before_action :find_user, only: %i[show update]
+  before_action :authenticate_user!
+  before_action :find_user, only: %i[show update edit]
+  #PROVISOIRE, à supprimer quand !authenticate user sera rétabli
+  before_action :set_current_user_as_params_user
 
   def create
     @user = User.new
@@ -90,6 +92,10 @@ class UsersController < ApplicationController
 
   private
 
+  def set_current_user_as_params_user
+    current_user = User.find(params[:id])
+  end
+
   def find_user
     @user = User.find(params[:id])
   end
@@ -98,6 +104,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :first_name,
       :last_name,
+      :email, #when passing email to params, user gets unlogged
       :description,
       :city,
       :zip_code,
