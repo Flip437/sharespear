@@ -17,7 +17,7 @@
                 <h7 class="category"> <%= @zip_name %></h7>
                 <div class="content">
                     <div class="social-description">
-                        <h2><%= @user_library.count %></h2>
+                        <h2><%= current_user.book_copies.count %></h2>
                         <p>Livres</p>
                     </div>
                     <div class="social-description">
@@ -81,15 +81,14 @@
                     </div>
                   <% end %>
                   <br>
-                  <% @user_library.each do |book| %>
+                  <% current_user.book_copies.each do |book| %>
                     <div class="card" style="width: 20rem;">
                       <div class="card-body">
-                        <% if book.status==0 %>
-                          <span class="badge badge-warning">Empreinté</span>
-                        <% end %>
-                        <% if book.status==1 %>
-                          <span class="badge badge-success">Disponible</span>
-                        <% end %>
+                        <% book_copy_presenter = BookCopyPresenter.new(book) %>
+                        <%= book_copy_presenter.book_copy_status_babdge%>
+
+
+
                         <h4 class="card-title"><%= book.title %></h4>
                         <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
                         <%= image_tag(book.photo_link) %>
@@ -102,7 +101,7 @@
 
                 <div class="col-md-12">
                   <h3 class="title text-center">Mes avis</h3>
-                </div>  
+                </div>
 
               </div>
             </center>
@@ -112,7 +111,7 @@
 
 <% @usercomment_array.each.with_index do |post, index| %>
   <%= render "usercomments/post", post: post, index: index  %>
-<% end %>                  
+<% end %>
 <div class="post_receiver">
 </div>
 <%= render "usercomments/newpost" %>

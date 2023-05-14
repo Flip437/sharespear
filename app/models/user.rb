@@ -50,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def book_copy_not_available_tab
-    return BookCopy.where(["status = ? and user_id = ?", 0, self.id])
+    book_copies.where(status: BookCopy::NOT_AVAILABLE)
   end
 
   def book_copy_available_tab
@@ -62,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def book_I_borrow_recup_tab
-    return Borrow.where(borrower_user: self, borrow_status: Borrow::BOOK_GIVED_BACK)
+    return Borrow.where(borrower_user: self, borrow_status: Borrow::FINISHED)
   end
 
   def book_asked_to_borrow

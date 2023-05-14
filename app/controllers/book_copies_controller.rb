@@ -19,7 +19,7 @@ class BookCopiesController < ApplicationController
   def create
     new_book_copy = BookCopy.new(book_copy_params.to_h)
     new_book_copy.user = current_user
-    new_book_copy.status = 1
+    new_book_copy.status = BookCopy::AVAILABLE
 
     if new_book_copy.save
       flash[:success] = "Livre ajouté à votre bibliothèque:)"

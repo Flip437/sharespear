@@ -1,6 +1,7 @@
 class Borrow < ApplicationRecord
   attr_accessor :duree
   # after_create :borrow_asking, :borrow_time_remaining
+  after_save :update_book_status, if: :saved_change_to_borrow_status?
   belongs_to :book_copy
   belongs_to :borrower_user, class_name: "User"
   belongs_to :borrowed_user, class_name: "User"
@@ -10,12 +11,15 @@ class Borrow < ApplicationRecord
     accepted
     declined
     cancelled
-    book_gived_back
+    finished
   ].freeze
 
   BORROW_STATUSES.each do |status_name|
     const_set(status_name.upcase, status_name)
   end
+
+  STATUS_FOR_ABAILABLE_BOOK_COPY = [PENDING, DECLINED, CANCELLED, FINISHED]
+  STATUS_FOR_NOT_ABAILABLE_BOOK_COPY = [ACCEPTED]
 
   validates :start_date, presence: true
   validates :end_date, presence: true
@@ -32,6 +36,12 @@ class Borrow < ApplicationRecord
   validate :user_cant_borrow_a_book_not_available
 
   private
+
+  def update_book_status
+    debugger
+    STATUS_FOR_ABAILABLE_BOOK_COPY.include?(borrow_status) ? book_copy.status = BookCopy::AVAILABLE : book_copy.status = BookCopy::NOT_AVAILABLE
+    book_copy.save
+  end
 
   def borrow_asking
     UserMailer.borrow_asking_email(self).deliver_now
@@ -72,7 +82,7 @@ class Borrow < ApplicationRecord
   end
 
   def user_cant_borrow_a_book_not_available
-    if BookCopy.find(book_copy_id).status == 0
+    if BookCopy.find(book_copy_id).status == BookCopy::NOT_AVAILABLE
         errors.add(:borrower_user_id, "can't borrow this book it's not available")
     end
   end

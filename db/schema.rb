@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_133312) do
     t.string "title"
     t.string "author"
     t.text "description"
-    t.integer "status"
+    t.string "status"
     t.string "category"
     t.string "isbn"
     t.string "photo_link", default: ""

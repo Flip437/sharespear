@@ -3,13 +3,19 @@ class BookCopy < ApplicationRecord
   has_many :posts
   has_many :borrows, dependent: :destroy
 
+  BOOK_COPY_STATUSES = %w[available not_available available_soon lost]
+
+  BOOK_COPY_STATUSES.each do |status_name|
+    const_set(status_name.upcase, status_name)
+  end
+
   validates :title, presence: true, length: { minimum: 1 }
   validates :author, presence: true, length: { minimum: 2 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :category, presence: true
   validates :photo_link, presence: true
   validates :isbn, presence: true
-  validates :status, inclusion: { in: [ 0, 1,2 ] }
+  validates_inclusion_of :status, in: BOOK_COPY_STATUSES
   validates :user_id, presence: true
 
   def borrow_status_accepted?
@@ -74,7 +80,7 @@ class BookCopy < ApplicationRecord
   end
 
   def already_borrowed(user)
-    if Borrow.where(["borrower_user_id = ? and book_copy_id = ? and borrow_status = ?", user.id, self.id, Borrow::BOOK_GIVED_BACK]).count != 0
+    if Borrow.where(["borrower_user_id = ? and book_copy_id = ? and borrow_status = ?", user.id, self.id, Borrow::FINISHED]).count != 0
       return true
     else
       return false
