@@ -1,9 +1,17 @@
 class User < ApplicationRecord
-  # after_save :welcome_send
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable,
+         :confirmable,
+         :lockable,
+         :timeoutable
+        #  :trackable
+        #  :omniauthable
+
+  after_save :welcome_send
 
   has_many :book_copies
   has_many :borrows
@@ -11,7 +19,6 @@ class User < ApplicationRecord
 
   has_many :requesting_borrows, class_name: "Borrow", foreign_key: "borrower_user_id"
   has_many :requested_borrows, class_name: "Borrow", foreign_key: "borrowed_user_id"
-
 
   has_many :posts
   has_many :comments
