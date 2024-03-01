@@ -38,7 +38,6 @@ class Borrow < ApplicationRecord
   private
 
   def update_book_status
-    debugger
     STATUS_FOR_ABAILABLE_BOOK_COPY.include?(borrow_status) ? book_copy.status = BookCopy::AVAILABLE : book_copy.status = BookCopy::NOT_AVAILABLE
     book_copy.save
   end

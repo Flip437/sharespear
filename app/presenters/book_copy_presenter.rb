@@ -4,7 +4,6 @@ class BookCopyPresenter
 	end
 
 	def book_copy_status_babdge
-		debugger
 		if @book_copy.status = BookCopy::AVAILABLE
 			'<span class="badge badge-success">Disponible</span>'.html_safe
 		else

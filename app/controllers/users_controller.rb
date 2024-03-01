@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_user, only: %i[show update edit]
-  #PROVISOIRE, à supprimer quand !authenticate user sera rétabli
-  # before_action :set_current_user_as_params_user
+  before_action :set_current_user_as_params_user
 
   def create
     @user = User.new

@@ -11,10 +11,14 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     user = User.find_by(email: params[:user][:email])
-    return flash[:error] = "Tu n'as pas de compte utilisateur, merci d'en créer un :)" unless user
-    return flash[:error] = "Merci de confirmer ton email avant de te connecter :D" unless user.confirmed?
 
-    super
+    if user && user.valid_password?(params[:user][:password])
+      sign_in(user)
+      redirect_to root_path, notice: "Vous êtes maintenant connecté!"
+    else
+      flash.now[:alert] = "Adresse email ou mot de passe incorrect."
+      render :new
+    end
   end
 
   # DELETE /resource/sign_out
@@ -24,7 +28,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # protected
 
-  # # If you have extra params to permit, append them to the sanitizer.
+  # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end

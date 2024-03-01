@@ -1,9 +1,23 @@
-<% if flash[:success] %>
+<% flash.each do |type, message| %>
+  <% if type == 'notice' %>
     <div class="alert alert-success" role="alert">
-        <%= flash[:success] %>
+      <%= message %>
     </div>
-<% elsif flash[:error] %>
+  <% elsif type == 'alert' %>
     <div class="alert alert-danger" role="alert">
-        <%= flash[:error] %>
+      <%= message %>
     </div>
+  <% elsif type == 'error' %>
+    <div class="alert alert-danger" role="alert">
+      <%= message %>
+    </div>
+  <% elsif type == 'warning' %>
+    <div class="alert alert-warning" role="alert">
+      <%= message %>
+    </div>
+  <% else %>
+    <div class="alert alert-info" role="alert">
+      <%= message %>
+    </div>
+  <% end %>
 <% end %>
