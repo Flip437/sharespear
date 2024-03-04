@@ -10,10 +10,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
 
-  def create
-    super
-    flash[:success] = "Vérifie maintenant tes emails et confirme ton compte :D"
-  end
+  # def create
+  #   super
+  #   flash[:success] = "Vérifie maintenant tes emails et confirme ton compte :D"
+  # end
 
   # GET /resource/edit
   # def edit

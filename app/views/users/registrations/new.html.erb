@@ -9,7 +9,7 @@
 <div class="card col" style="width: 30rem; opacity: 0.95; ">
 	<br>
 	<h2>S'inscrire</h2>
-	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+	<%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
 	  <%= render "devise/shared/error_messages", resource: resource %>
 			<div class="field">
 				<%= f.label :Pseudo %><br>

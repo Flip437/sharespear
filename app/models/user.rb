@@ -11,8 +11,6 @@ class User < ApplicationRecord
         #  :trackable
         #  :omniauthable
 
-  after_save :welcome_send
-
   has_many :book_copies
   has_many :borrows
   has_many :borrows
@@ -49,7 +47,7 @@ class User < ApplicationRecord
   # end
 
   def welcome_send
-      UserMailer.welcome_email(self).deliver_now
+    UserMailer.welcome_email(self).deliver_now
   end
 
   def after_confirmation

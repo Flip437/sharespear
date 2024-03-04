@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
 
   def new
   end
@@ -27,8 +28,6 @@ class HomeController < ApplicationController
 
 
       def index
-
-
         @avatar_array = ['sharespeare1.png', 'sharespeare2.png','sharespeare3.png','sharespeare4.png','sharespeare5.png','sharespeare6.png','sharespeare7.png','sharespeare8.png']
 
 

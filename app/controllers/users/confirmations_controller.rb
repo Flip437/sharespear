@@ -1,35 +1,39 @@
-# frozen_string_literal: true
+# # frozen_string_literal: true
 
-class Users::ConfirmationsController < Devise::ConfirmationsController
-  # GET /resource/confirmation/new
-  # def new
-  #   super
-  # end
-  private
-  def after_confirmation_path_for(resource_name, resource)
-    sign_in(resource) # In case you want to sign in the user
-    your_new_after_confirmation_path
-  end
+# class Users::ConfirmationsController < Devise::ConfirmationsController
+#   # GET /resource/confirmation/new
+#   # def new
+#   #   super
+#   # end
+#   private
+    # The path used after confirmation.
+    def after_confirmation_path_for(resource_name, resource)
+      if signed_in?(resource_name)
+        signed_in_root_path(resource)
+      else
+        new_user_session_path(resource_name)
+      end
+    end
 
-  # POST /resource/confirmation
-  # def create
-  #   super
-  # end
+#   # POST /resource/confirmation
+#   # def create
+#   #   super
+#   # end
 
-  # GET /resource/confirmation?confirmation_token=abcdef
-  # def show
-  #   super
-  # end
+#   # GET /resource/confirmation?confirmation_token=abcdef
+#   # def show
+#   #   super
+#   # end
 
-  # protected
+#   # protected
 
-  # The path used after resending confirmation instructions.
-  # def after_resending_confirmation_instructions_path_for(resource_name)
-  #   super(resource_name)
-  # end
+#   # The path used after resending confirmation instructions.
+#   # def after_resending_confirmation_instructions_path_for(resource_name)
+#   #   super(resource_name)
+#   # end
 
-  # The path used after confirmation.
-  # def after_confirmation_path_for(resource_name, resource)
-  #   super(resource_name, resource)
-  # end
-end
+#   # The path used after confirmation.
+#   # def after_confirmation_path_for(resource_name, resource)
+#   #   super(resource_name, resource)
+#   # end
+# end

@@ -17,26 +17,19 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-    <%= render 'layouts/flashborrow' %>
+    <%= render 'layouts/flash' %>
     <%= yield %>
   </body>
 
   <footer class="footer footer-default sticky-bottom ">
-      <div class=" container ">
-          <nav>
-              <ul>
-                  <li>
-                    <%=link_to "Sharespeare", landing_page_index_path%>
-                  </li>
-                  <li>
-                    <%=link_to "Nous contacter", landing_page_index_path%>
-                  </li>
-              </ul>
-          </nav>
-          <div class="copyright" id="copyright">
-            ©2019, <%=link_to "Sharespeare", landing_page_index_path%> est Pensé et Codé avec le Coeur par Flip et Arthur à LYON
-          </div>
-      </div>
+    <div class=" container ">
+      <nav>
+        <ul>
+          <li><%=link_to "Sharespeare", landing_page_index_path%></li>
+          <li><%=link_to "Nous contacter", landing_page_index_path%></li>
+        </ul>
+      </nav>
+      <div class="copyright" id="copyright">©2019, <%=link_to "Sharespeare", landing_page_index_path%> est Pensé et Codé avec le Coeur par Flip et Arthur à LYON</div>
+    </div>
   </footer>
-
 </html>
