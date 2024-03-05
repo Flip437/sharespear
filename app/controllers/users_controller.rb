@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_user, only: %i[show update edit]
-  before_action :set_current_user_as_params_user
 
   def create
     @user = User.new
@@ -104,10 +103,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def set_current_user_as_params_user
-    current_user = User.find(params[:id])
-  end
 
   def find_user
     @user = User.find(params[:id])

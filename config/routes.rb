@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'home#index'
 
   get 'comments/New'
   get 'comments/Create'
   get 'mailback/new'
 
-  root 'home#index'
   resources :searchbar, only: :index
   resources :landing_page, only: :index
   resources :search_friend, only: :index

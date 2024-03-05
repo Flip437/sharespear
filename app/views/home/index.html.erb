@@ -1,5 +1,4 @@
 <% if current_user && @length_tab_book_copy_all>0 %>
-
     <div class="jumbotron" style="background-image: url(<%= asset_path 'back_img3.jpg' %>); background-size: 100%; background-size: cover;">
         <div class="col-md-8 ml-auto mr-auto text-center">
             <div class="container for-about">
@@ -66,7 +65,7 @@
 
 
 <div id="reco">
-  <%= render 'home/recommendation', book_array: @book_copy_array %>
+  <%= render 'home/recommendation', book_array: @near_availabled_book_copies %>
 </div>
 <% end %>
 

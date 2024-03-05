@@ -27,6 +27,26 @@ class User < ApplicationRecord
   has_many :follows
   has_one_attached :avatar
 
+  ZIP_CODES_NAMES = {
+    '69001': "Lyon 1 - Terreaux",
+    '69002': "Lyon 2 - Bellecour",
+    '69003': "Lyon 3 - La Part-Dieu",
+    '69004': "Lyon 4 - Croix-Rousse",
+    '69005': "Lyon 5 - Vieux Lyon",
+    '69006': "Lyon 1 - Terreaux",
+    '69007': "Lyon 7 - Jean Macé",
+    '69008': "Lyon 8 - Monplaisir",
+    '69009': "Lyon 9 - Vaise",
+    '69100': "Villeurbanne",
+    '69100': "Villeurbanne",
+    '69300': "Caluire-et-Cuire",
+    '69142': "La Mulatière",
+    '69160': "Tassin-la-Demi-Lune",
+    '69130': "Écully",
+    '69600': "Oullins",
+    '69500': "Bron"
+  }
+
   # instead of deleting, indicate the user requested a delete & timestamp it
  def soft_delete
    update_attribute(:deleted_at, Time.current)
