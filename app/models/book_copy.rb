@@ -87,4 +87,18 @@ class BookCopy < ApplicationRecord
     end
   end
 
+  def self.filtered_book_copies(current_user, selector)
+    book_copies = BookCopy.joins(:user).order("RANDOM()").limit(20)
+    return book_copies unless selector
+    return book_copies.where(category: selector[:category]) if selector[:category].present?
+
+    case selector[:filter]
+    when "friends"
+      book_copies
+    when "near_by"
+      book_copies.where(users: {zip_code: current_user.zip_code})
+    when "all"
+      book_copies
+    end
+  end
 end

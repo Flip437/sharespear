@@ -1,4 +1,4 @@
-<% if current_user && @length_tab_book_copy_all>0 %>
+<% unless @near_availabled_book_copies.empty? %>
     <div class="jumbotron" style="background-image: url(<%= asset_path 'back_img3.jpg' %>); background-size: 100%; background-size: cover;">
         <div class="col-md-8 ml-auto mr-auto text-center">
             <div class="container for-about">
@@ -34,32 +34,8 @@
         </h2>
         <h4 class="description">Trouvez un livre autour de chez vous..</h4>
         <br>
-        <ul class="nav nav-pills nav-pills-danger justify-content-center" role="tablist">
-            <li class="nav-item">
-                <%= link_to "Mes Amis",  home_index_path(:category_selected => "Amis"), class: "nav-link", style: "color: orange;",remote:true %>
-            </li>
-            <li class="nav-item">
-                <%= link_to "Tout genre",  home_index_path(:category_selected => "All"), class: "nav-link", remote:true %>
-            </li>
-            <% if @dropD.length > 2 %>
-            <% 3.times { |i| %>
-                <li class="nav-item">
-                    <% a = rand(@dropD.length) %>
-                    <%= link_to @dropD[a],  home_index_path(:category_selected => @dropD[a]), class: "nav-link", remote:true %>
-                </li>
-            <% } %>
-                <li class="dropdown">
-                    <button class="btn btn-secondary btn-round dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin: 0px; padding: 1.1em;">
-                        Autre
-                    </button>
-                    <div class="dropdown-menu gugu" aria-labelledby="dropdownMenuButton">
-                        <% (@dropD.length).times { |i| %>
-                        <%= link_to @dropD[i],  home_index_path(:category_selected => @dropD[i]), class: "dropdown-item", remote:true %>
-                        <% } %>
-                    </div>
-                </li>
-            <% end %>
-        </ul>
+
+        <%= render 'category_selector' %>
     </div>
 
 
@@ -69,7 +45,7 @@
 </div>
 <% end %>
 
-<% if current_user && @length_tab_book_copy_all==0 %>
+<% if current_user && @near_availabled_book_copies.empty? %>
 <div class="header-2">
   <div class="page-header header-filter" id="hello_world">
       <div class="page-header-image" style="background-image: url(<%= asset_path 'back_img3.jpg' %>);filter: blur(2px);"></div>
