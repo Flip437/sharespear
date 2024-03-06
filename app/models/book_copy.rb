@@ -88,11 +88,12 @@ class BookCopy < ApplicationRecord
   end
 
   def self.filtered_book_copies(current_user, selector)
+    #TODO allow filtering with several categories in _category_selector.html.erb
     book_copies = BookCopy.joins(:user).order("RANDOM()").limit(20)
     return book_copies unless selector
     return book_copies if selector[:filter] == "all"
 
-    book_copies = book_copies.where(category: selector[:category]) if selector[:category].present?
+    book_copies = book_copies.where(category: selector[:categories]) if selector[:categories].present?
     book_copies = book_copies if selector[:filter] == "friends"
     book_copies = book_copies.where(users: {zip_code: current_user.zip_code}) if selector[:filter] == "near_by"
     book_copies

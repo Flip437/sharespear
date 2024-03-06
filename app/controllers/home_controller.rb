@@ -42,6 +42,6 @@ class HomeController < ApplicationController
   private
 
   def permitted_params_for_filter
-    return params.require(:selector).permit(:filter, :category) if params[:selector]
+    return params.require(:selector).permit(:filter, :categories) if params[:selector]
   end
 end

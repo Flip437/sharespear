@@ -9,7 +9,7 @@
 	<% shuffled_categories = @categories.shuffle %>
 	<% shuffled_categories[0, @displayed_categories_count].each do |category| %>
 		<li class="nav-item">
-			<%= link_to category, home_index_path(selector: { category: category }), class: "nav-link", remote:true %>
+			<%= link_to category, home_index_path(selector: { categories: category }), class: "nav-link", remote:true %>
 		</li>
 	<% end %>
 
@@ -19,7 +19,7 @@
 		</button>
 		<% shuffled_categories[@displayed_categories_count..-1].each do |category| %>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<%= link_to category, home_index_path(selector: { category: category }), class: "dropdown-item", remote:true %>
+				<%= link_to category, home_index_path(selector: { categories: category }), class: "dropdown-item", remote:true %>
 			</div>
 		<% end %>
 		</li>
