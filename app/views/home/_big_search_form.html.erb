@@ -1,0 +1,28 @@
+<div class="header-2">
+	<div class="page-header header-filter" id="hello_world">
+  	<div class="page-header-image" style="background-image: url(<%= asset_path 'back_img3.jpg' %>);filter: blur(2px);"></div>
+  		<div class="container">
+    		<div class="row">
+      		<div class="col-md-8 ml-auto mr-auto text-center">
+        		<%= image_tag("Artboard_1.png") %>
+         		<h2 class="title">Empruntez, Lisez, Prêtez</h2>
+         		<h5 class="font-weight-normal">Trouvez votre prochaine lecture en fonction de vos goûts proche de chez vous.</h5>
+
+						<div class="card card-login card-plain">
+							<div class="form-group">
+								<%= form_tag searchbar_index_path, method: :get do %>
+									<%= text_field_tag :search1, params[:search1], placeholder: "Recherche un livre", class:'form-control text-dark', id:'search_bar' %>
+									<%= button_tag("Rechercher", class: 'btn btn-primary btn-round btn-lg') %>
+									<%= link_to "Soutenir ShaRespeare.fr",
+															"https://paypal.me/pools/c/8lQxWDyKwS",
+															method: :get,
+															class: 'btn btn-default btn-round shopping_credit-card btn-lg' %>
+								<% end %>
+							</div>
+						</div>
+       		</div>
+     		</div>
+   		</div>
+ 		</div>
+	</div>
+</div>

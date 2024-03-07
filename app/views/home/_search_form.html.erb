@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col">
+	</div>
+	<div class="col-7">
+		<div class="card card-login card-plain text-center">
+			<%= form_tag searchbar_index_path, method: :get do %>
+			<div class="form-group">
+				<%= text_field_tag :search1, params[:search1], placeholder: "Rechercher un livre à Lyon", class:'form-control text-dark', id:'search_bar' %>
+				<br><br/>
+				<%= button_tag "Rechercher", class: 'btn btn-primary btn-round btn-lg' %> <%= link_to "Soutenir ShaRespeare.fr", "https://paypal.me/pools/c/8lQxWDyKwS", method: :get, class: 'btn btn-default btn-round shopping_credit-card btn-lg'  %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="col">
+	</div>
+</div>
