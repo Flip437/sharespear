@@ -1,0 +1,9 @@
+<% if message.is_a?(Array) %>
+	<ul>
+		<% message.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+<% else %>
+		<%= message %>
+<% end %>

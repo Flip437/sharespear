@@ -1,0 +1,20 @@
+fr:
+  book_copies:
+    new:
+      enter_title_author: "Rentrez le <b>Titre</b> ou <b>Auteur</b> de votre livre"
+      search: "Rechercher"
+  users:
+    dashboard:
+      my_loaned_books: "Mes livres prêtés"
+      retrieve_book: "Récupérer le livre"
+      request_return: "Demander le retour"
+      details: "Détails"
+      loan_requests: "Demandes de prêts"
+      requested_by: "Demandé par"
+      until: "Jusqu'au"
+      accept: "Accepter"
+      refuse: "Refuser"
+      my_borrowed_books: "Mes emprunts"
+      deadline: "Date limite"
+      my_borrow_requests: "Mes demandes d'emprunts"
+      my_loan_requests: "Mes demandes de prêts"

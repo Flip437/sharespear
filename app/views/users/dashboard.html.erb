@@ -1,91 +1,84 @@
 <div class="my-auto" style= "background-image: url(<%= asset_path "back_img2.jpg" %>);background-size: cover; height: 100vh;">
-<br>
-<div class="container">
-<br />
-<center>
-  <div class="row">
-  <div class="card col" style="width: 33rem;">
-    <div class="card-body">
-      <center><h3><b>Mes livres prêtés</b></h3></center>
+  <br>
+  <div class="container">
+    <br />
+    <center>
+      <div class="row">
+        <div class="card col" style="width: 33rem;">
+          <div class="card-body">
+            <center><h3><b><%= t('.my_loaned_books') %></b></h3></center>
 
-      <ul class="list-group list-group-flush gugu">
-        <% @book_copy_not_available_tab.each {|n| %>
-        <li class="list-group-item"><b><%="#{n.title}"%></b> <br /> <%=" #{n.author}"%>
-        <br>
-        <%= link_to "Livre recupéré", book_copy_borrow_path(n.id, n.borrow_status_2?.last.id,:bouton_value => 2), method:"patch", class: "btn btn-primary btn-round btn-small btn-sm"%>
-        <%= link_to "Demander retour", user_dashboard_path(current_user.id, n.id), method:"patch", class: "btn btn-primary btn-round btn-sm" %>
-        <%= link_to "Detail", book_copy_borrow_path(n.id,n.borrow_status_2?.last.id), class: "btn btn-primary btn-round btn-sm"%>
-
-        </li>
-        <% } %>
-      </ul>
-    </div>
-
-  </div>
-  <div class="col-1">
-
-  </div>
-
-    <div class="card col" style="width: 33rem;">
-      <div class="card-body">
-        <center><h3><b>Demandes de prêts</b></h3></center>
-        <ul class="list-group list-group-flush gugu">
-          <% @ask_book_tab.each do |borrow| %>
-            <li class="list-group-item">
-              <b><%= borrow.book_copy.title %></b>
-              <br>
-              "Demandé par: <%= borrow.borrower_user.first_name %>
-              | Jusqu'au : <%= borrow.end_date.strftime('%d %b %Y') %>
-              <br>
-              <%= link_to "Accepter", book_copy_borrow_path(borrow.book_copy, borrow, borrow: { borrow_status: Borrow::ACCEPTED}), method: :patch, class: "btn btn-primary" %>
-              <%= link_to "Refuser", book_copy_borrow_path(borrow.book_copy, borrow, borrow_status: Borrow::DECLINED), method: :patch,class: "btn btn-primary btn-round btn-sm"%>
-              <%= link_to "Detail", book_copy_borrow_path(borrow.book_copy, borrow, borrw: {flip: "haha"}),class: "btn btn-primary btn-round btn-sm" %>
-            </li>
-          <% end %>
-        </ul>
+            <ul class="list-group list-group-flush gugu">
+              <% @book_copy_not_available_tab.each do |n| %>
+                <li class="list-group-item">
+                  <b><%= n.title %></b> <br /> <%= n.author %>
+                  <br>
+                  <%= link_to t('.retrieve_book'), book_copy_borrow_path(n.id, n.borrow_status_2?.last.id,:bouton_value => 2), method:"patch", class: "btn btn-primary btn-round btn-small btn-sm" %>
+                  <%= link_to t('.request_return'), user_dashboard_path(current_user.id, n.id), method:"patch", class: "btn btn-primary btn-round btn-sm" %>
+                  <%= link_to t('.details'), book_copy_borrow_path(n.id,n.borrow_status_2?.last.id), class: "btn btn-primary btn-round btn-sm" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="card col" style="width: 33rem;">
+          <div class="card-body">
+            <center><h3><b><%= t('.loan_requests') %></b></h3></center>
+            <ul class="list-group list-group-flush gugu">
+              <% @ask_book_tab.each do |borrow| %>
+                <li class="list-group-item">
+                  <b><%= borrow.book_copy.title %></b>
+                  <br>
+                  <%= t('.requested_by') %> <%= borrow.borrower_user.first_name %>
+                  | <%= t('.until') %> <%= borrow.end_date.strftime('%d %b %Y') %>
+                  <br>
+                  <%= link_to t('.accept'), book_copy_borrow_path(borrow.book_copy, borrow, borrow: { borrow_status: Borrow::ACCEPTED}), method: :patch, class: "btn btn-primary" %>
+                  <%= link_to t('.refuse'), book_copy_borrow_path(borrow.book_copy, borrow, borrow_status: Borrow::DECLINED), method: :patch,class: "btn btn-primary btn-round btn-sm" %>
+                  <%= link_to t('.details'), book_copy_borrow_path(borrow.book_copy, borrow, borrw: {flip: "haha"}),class: "btn btn-primary btn-round btn-sm" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-
-  <div class="card col" style="width: 33rem;">
-    <div class="card-body">
-      <center><h3><b>Mes emprunts</b></h3></center>
-    </div>
-    <ul class="list-group list-group-flush gugu">
-      <% @book_I_borrow_tab.each {|n| %>
-      <li class="list-group-item"><b><%= BookCopy.find(n.book_copy_id).title %></b> <br><%=" Jusqu'au: #{n.end_date.strftime('%d %b %Y')}"%>
-      <br />
-      <%= link_to "Detail", book_copy_borrow_path(n.book_copy_id,n.id), class:"btn btn-primary btn-sm btn-round"%>
-      <% } %>
-      <% @book_I_borrow_recup_tab.each {|n| %>
-      <li class="list-group-item"> <b><%= BookCopy.find(n.book_copy_id).title %></b> <br><%=" Deadline: #{n.end_date.strftime('%b %d %Y')}"%>
-        <br />
-        <%= link_to "Detail", book_copy_borrow_path(n.book_copy_id,n.id), class: "btn btn-primary btn-sm btn-round"%>
-      <% } %>
-
-    </ul>
-  </div>
-
-  <div class="col-1">
-  </div>
-
-  <div class="card col" style="width: 33rem;">
-    <div class="card-body">
-      <center><h3><b>Mes demandes d'emprunts</b></h3></center>
-    </div>
-    <ul class="list-group list-group-flush gugu">
-      <% @pending_borrows.each do |borrow| %>
-        <li class="list-group-item">
-          <b><%= borrow.book_copy.title %></b>
-          <br>
-          <%= link_to "Detail", book_copy_borrow_path(borrow.book_copy_id,borrow.id), class: "btn btn-primary btn-sm btn-round"%>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  </div>
-  </center>
+      <div class="row">
+        <div class="card col" style="width: 33rem;">
+          <div class="card-body">
+            <center><h3><b><%= t('.my_borrowed_books') %></b></h3></center>
+          </div>
+          <ul class="list-group list-group-flush gugu">
+            <% @book_I_borrow_tab.each do |n| %>
+              <li class="list-group-item">
+                <b><%= BookCopy.find(n.book_copy_id).title %></b> <br><%= t('.until') %> <%= n.end_date.strftime('%d %b %Y') %>
+                <br />
+                <%= link_to t('.details'), book_copy_borrow_path(n.book_copy_id,n.id), class:"btn btn-primary btn-sm btn-round" %>
+              </li>
+            <% end %>
+            <% @book_I_borrow_recup_tab.each do |n| %>
+              <li class="list-group-item"> <b><%= BookCopy.find(n.book_copy_id).title %></b> <br><%= t('.deadline') %> <%= n.end_date.strftime('%b %d %Y') %>
+                <br />
+                <%= link_to t('.details'), book_copy_borrow_path(n.book_copy_id,n.id), class: "btn btn-primary btn-sm btn-round" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-1"></div>
+        <div class="card col" style="width: 33rem;">
+          <div class="card-body">
+            <center><h3><b><%= t('.my_borrow_requests') %></b></h3></center>
+          </div>
+          <ul class="list-group list-group-flush gugu">
+            <% @pending_borrows.each do |borrow| %>
+              <li class="list-group-item">
+                <b><%= borrow.book_copy.title %></b>
+                <br>
+                <%= link_to t('.details'), book_copy_borrow_path(borrow.book_copy_id,borrow.id), class: "btn btn-primary btn-sm btn-round" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </center>
   </div>
 </div>

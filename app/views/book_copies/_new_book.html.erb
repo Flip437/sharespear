@@ -1,8 +1,8 @@
 <div class="card bg-light-gray" id='book-form'>
   <div class="card-header text-center">
-    <%if @book_infos_table.nil? %>
+    <% if @book_infos_table.nil? %>
       <h1>Nous n'avons pas trouvé votre livre</h1>
-    <%else %>
+    <% else %>
       <% @book_infos_table.each do |book| %>
         <h4 class='mt-2 mb-0'></h4>
         <h4><%= book[:title] %></h4>

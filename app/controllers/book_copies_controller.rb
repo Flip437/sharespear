@@ -1,5 +1,5 @@
 class BookCopiesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :find_book_copy, only: %i[show destroy]
 
   def show
@@ -10,8 +10,7 @@ class BookCopiesController < ApplicationController
   def new; end
 
   def search_book_or_author
-    book_title = params[:title]
-    @book_infos_table = SearchBookService.search_books(book_title)
+    @book_infos_table = SearchBookService.search_books(params[:title])
 
     render :new
   end
@@ -32,19 +31,11 @@ class BookCopiesController < ApplicationController
   end
 
   def destroy
-    # @book_copy.status=2
-    # borrows_book = Borrow.where({ book_copy_id: @book_copy.id })
-    # borrows_book.each do |book|
-    #   book.borrow_status=2
-    #   book.save
-    # end
-    # @book_copy.save
-
     if @book_copy.destroy
       flash[:success] = "Livre supprimé :)"
       redirect_to user_path(current_user)
     else
-      flash[:error] = "Erreur de suppression :("
+      flash[:error] = @book_copy.errors.full_messages
       redirect_to user_path(current_user)
     end
   end

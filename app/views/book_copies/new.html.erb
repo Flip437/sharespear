@@ -1,16 +1,19 @@
-<div class="my-auto" style= "background-image: url(<%= asset_path "back_img2.jpg" %>);background-size: cover; height: 100vh;">
+<div class="my-auto" style="background-image: url(<%= asset_path 'back_img2.jpg' %>); background-size: cover; height: 100vh;">
   <div class="container pt-5">
-    <div class="card bg-light-gray" id='book-form'>
+    <div class="card bg-light-gray" id="book-form">
       <div class="card-header text-center">
-        <h4 class='mt-2 mb-0'>Rentrez le <b>Titre</b> ou <b>Auteur</b> de votre livre</h4>
+        <h4 class="mt-2 mb-0"><%= t('.enter_title_author').html_safe %></h4>
       </div>
-      <center>
-        <%#= form_for( @new_book_copy, url: new_book_copy_path(:index => 1), html: {method: "get", class: "form-group col-md-6"}, remote: true) do |f| %>
-        <%= form_with url: search_book_or_author_book_copies_path, method: :get, class: "form-group col-md-6" do |f| %>
-          <%= f.text_field :title, class: "form-control text-center", autofocus: true %>
-        <%= f.submit "Rechercher" , class: "btn btn-primary btn-round text-center"%>
-        <% end %>
-      </center>
+      <div class="row justify-content-center"> <!-- Nouvelle ligne pour centrer le contenu -->
+        <div class="col-md-6"> <!-- Utilisation de la grille Bootstrap -->
+          <%= form_with url: search_book_or_author_book_copies_path, method: :get, class: "form-group" do |f| %>
+            <%= f.text_field :title, class: "form-control text-center", autofocus: true %>
+            <div class="text-center"> <!-- Ajout de la classe text-center pour centrer le bouton -->
+              <%= f.submit t('.search'), class: "btn btn-primary btn-round" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div id="book-receiver"></div>
   </div>

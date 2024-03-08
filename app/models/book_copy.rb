@@ -1,5 +1,6 @@
 class BookCopy < ApplicationRecord
   belongs_to :user
+  before_destroy :can_be_destroyed?
   has_many :posts
   has_many :borrows, dependent: :destroy
 
@@ -97,5 +98,14 @@ class BookCopy < ApplicationRecord
     book_copies = book_copies if selector[:filter] == "friends"
     book_copies = book_copies.where(users: {zip_code: current_user.zip_code}) if selector[:filter] == "near_by"
     book_copies
+  end
+
+  private
+
+  def can_be_destroyed?
+    return true if status == AVAILABLE
+
+    errors.add(:book_copy, "Votre livre n'est pas disponible, il ne peut pas être supprimé")
+    throw(:abort)
   end
 end
